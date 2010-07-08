@@ -1,0 +1,32 @@
+http://develop.github.com/
+com.github.api.v2
+only json.
+authenticate:
+
+User API
+	searchUsersByName
+	searchUsersByEmail
+	getUser
+	getCurrentUser
+	updateProfile
+	getFollowers
+	getFollowing
+	followUser
+	unfollowUser
+	getWatchedRepositories
+	getKeys
+	addKey
+	removeKey
+	getEmails
+	addEmail
+	removeEmail
+	
+Issues API
+	searchIssues
+	listIssues
+	viewIssue
+	getComments
+	openIssue
+	closeIssue
+	reopenIssue
+	
