@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="github-java-sdk">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="github-java-sdk.classpath">
+        <pathelement location="target"/>
+        <pathelement location="dev-lib/junit-4.5.jar"/>
+        <pathelement location="dev-lib/commons-cli-1.2.jar"/>
+        <pathelement location="lib/gson-1.4.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target"/>
+        <copy includeemptydirs="false" todir="target">
+            <fileset dir="schema/src/main/java" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="target">
+            <fileset dir="core/src/main/java" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="target">
+            <fileset dir="core/src/main/resources" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="target">
+            <fileset dir="core/src/test/java" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="target">
+            <fileset dir="core/src/test/resources" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="target">
+            <fileset dir="examples/src/resources" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="target">
+            <fileset dir="examples/src/java" excludes="**/*.launch, **/*.java"/>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
+            <src path="schema/src/main/java"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
+            <src path="core/src/main/java"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
+            <src path="core/src/main/resources"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
+            <src path="core/src/test/java"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
+            <src path="core/src/test/resources"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
+            <src path="examples/src/resources"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
+            <src path="examples/src/java"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target name="AllTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.github.api.v2.services.AllTests" todir="${junit.output.dir}"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
