@@ -11,5 +11,5 @@
 	<classpathentry kind="lib" path="dev-lib/junit-4.5.jar"/>
 	<classpathentry kind="lib" path="dev-lib/commons-cli-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/gson-1.4.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="target"/>
 </classpath>
