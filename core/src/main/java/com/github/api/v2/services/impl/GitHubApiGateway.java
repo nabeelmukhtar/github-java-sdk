@@ -28,7 +28,7 @@ import com.github.api.v2.services.constant.ApplicationConstants;
 public abstract class GitHubApiGateway {
 	
     /** The LOG. */
-    protected final Logger LOG = Logger.getLogger(getClass().getCanonicalName());
+    protected final Logger logger = Logger.getLogger(getClass().getCanonicalName());
 	
 	/** The Constant GZIP_ENCODING. */
 	private static final String GZIP_ENCODING = "gzip";
@@ -364,7 +364,7 @@ public abstract class GitHubApiGateway {
 		        is.close();
 	    	}
 	    } catch (IOException e) {
-	    	LOG.log(Level.SEVERE, "An error occurred while closing stream.", e);	
+	    	logger.log(Level.SEVERE, "An error occurred while closing stream.", e);	
 	    }
 	}
 
@@ -379,7 +379,7 @@ public abstract class GitHubApiGateway {
 	    		connection.disconnect();
 	    	}
 	    } catch (Exception e) {
-	    	LOG.log(Level.SEVERE, "An error occurred while disconnecting connection.", e);	
+	    	logger.log(Level.SEVERE, "An error occurred while disconnecting connection.", e);	
 	    }
 	}
 
@@ -402,42 +402,6 @@ public abstract class GitHubApiGateway {
 			    }
 			}
 
-	/**
-	 * Read response.
-	 * 
-	 * @param clazz the clazz
-	 * @param is the is
-	 * 
-	 * @return the t
-	 */
-	protected <T> T readResponse(Class<T> clazz, InputStream is) {
-	    try {
-	        return unmarshallObject(clazz, is);
-	    } finally {
-	        closeStream(is);
-	    }
-	}
-	
-
-    /**
-     * Unmarshall object.
-     * 
-     * @param clazz the clazz
-     * @param xmlContent the xml content
-     * 
-     * @return the t
-     */
-    protected abstract <T> T unmarshallObject(Class<T> clazz, InputStream xmlContent);
-
-    /**
-     * Marshall object.
-     * 
-     * @param element the element
-     * 
-     * @return the string
-     */
-    protected abstract String marshallObject(Object element);
-    
     /**
      * Encode url.
      * 

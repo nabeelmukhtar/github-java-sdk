@@ -1,19 +1,23 @@
 package com.github.api.v2.services.impl;
 
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import com.github.api.v2.schema.SchemaEntity;
 import com.github.api.v2.services.AsyncResponseHandler;
+import com.github.api.v2.services.GitHubException;
 import com.github.api.v2.services.GitHubService;
 import com.github.api.v2.services.constant.ApplicationConstants;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 /**
  * The Class BaseGoogleSearchApiQuery.
@@ -60,9 +64,10 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	 * 
 	 * @return the paged list< t>
 	 */
-	protected <T> List<T> unmarshallList(JsonObject response) {
-		// TODO-NM: Implement this method.
-		return null;
+	protected <T> List<T> unmarshallList(Class<T> clazz, JsonElement response) {
+		Gson gson = getGsonBuilder().create();
+		Type collectionType = new TypeToken<List<T>>(){}.getType();
+		return gson.fromJson(response, collectionType);
 	}
 	
 	/**
@@ -72,9 +77,9 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	 * 
 	 * @return the t
 	 */
-	protected <T> T unmarshall(JsonElement object) {
-		// TODO-NM: Implement this method.
-		return null;
+	protected <T> T unmarshall(Class<T> clazz, JsonElement response) {
+		Gson gson = getGsonBuilder().create();
+		return gson.fromJson(response, clazz);
 	}
 
 	/**
@@ -95,13 +100,6 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 		handlers.add(handler);
 	}
 	
-    /* (non-Javadoc)
-     * @see com.google.code.stackexchange.client.impl.StackOverflowApiGateway#marshallObject(java.lang.Object)
-     */
-    protected String marshallObject(Object element) {
-    	return null;
-    }
-    
 	/**
 	 * Gets the gson builder.
 	 * 
@@ -122,12 +120,14 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 		return builder;
 	}
     
-	/* (non-Javadoc)
-	 * @see com.google.code.googlesearch.client.impl.GoogleSearchApiGateway#unmarshallObject(java.lang.Class, java.io.InputStream)
-	 */
-	@Override
-	protected <V> V unmarshallObject(Class<V> clazz, InputStream xmlContent) {
-		return null;
+	protected JsonElement unmarshall(InputStream jsonContent) {
+        try {
+        	return parser.parse(new InputStreamReader(jsonContent));
+        } catch (Exception e) {
+            throw new GitHubException(e);
+        } finally {
+	        closeStream(jsonContent);
+	    }
 	}
 	
 	/**

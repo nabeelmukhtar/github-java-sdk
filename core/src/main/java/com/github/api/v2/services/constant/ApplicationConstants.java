@@ -31,27 +31,23 @@ public final class ApplicationConstants {
         }
     }
 
-    /** The Constant VALIDATE_XML. */
-    public static final boolean VALIDATE_XML = getBooleanProperty("com.google.code.stackexchange.client.validateXml");
-
-    /** The Constant DEFAULT_PAGE_SIZE. */
-    public static final int DEFAULT_PAGE_SIZE =
-        getIntProperty("com.googleapis.ajax.services.client.defaultPageSize");
-
     /** The Constant CONTENT_ENCODING. */
-    public static final String CONTENT_ENCODING = getProperty("com.googleapis.ajax.services.client.encoding");
+    public static final String CONTENT_ENCODING = getProperty("com.github.api.v2.services.encoding");
 
     /** The Constant DEFAULT_API_VERSION. */
-    public static final String DEFAULT_API_VERSION = getProperty("com.googleapis.ajax.services.client.defaultApiVersion");
+    public static final String DEFAULT_API_VERSION = getProperty("com.github.api.v2.services.defaultApiVersion");
+    
+    /** The Constant DEFAULT_API_VERSION. */
+    public static final String DEFAULT_FORMAT = getProperty("com.github.api.v2.services.defaultFormat");
     
     /** The Constant RFC822DATEFORMAT. */
-    public static final String RFC822DATEFORMAT = getProperty("com.googleapis.ajax.services.client.dateFormat");
+    public static final String RFC822DATEFORMAT = getProperty("com.github.api.v2.services.dateFormat");
     
     /** The Constant CONNECT_TIMEOUT. */
-    public static final int CONNECT_TIMEOUT = getIntProperty("com.googleapis.ajax.services.client.connectTimeout");
+    public static final int CONNECT_TIMEOUT = getIntProperty("com.github.api.v2.services.connectTimeout");
     
     /** The Constant READ_TIMEOUT. */
-    public static final int READ_TIMEOUT = getIntProperty("com.googleapis.ajax.services.client.readTimeout");
+    public static final int READ_TIMEOUT = getIntProperty("com.github.api.v2.services.readTimeout");
     
     /**
      * Instantiates a new application constants.
