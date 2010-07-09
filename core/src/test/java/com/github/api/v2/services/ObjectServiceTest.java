@@ -1,8 +1,14 @@
 package com.github.api.v2.services;
 
+import java.io.InputStream;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.github.api.v2.schema.Blob;
+import com.github.api.v2.schema.Tree;
 
 public class ObjectServiceTest extends BaseGitHubServiceTest {
 	private ObjectService service;
@@ -21,22 +27,25 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testGetBlob() {
-		fail("Not yet implemented");
+		Blob blob = service.getBlob("", "", "", "");
+		assertNotNull("Blob cannot be null or empty", blob);
 	}
 
 	@Test
 	public void testGetBlobs() {
-		fail("Not yet implemented");
+		List<Blob> blobs = service.getBlobs("", "", "");
+		assertNotNullOrEmpty("Blobs cannot be null or empty", blobs);
 	}
 
 	@Test
 	public void testGetObjectContent() {
-		fail("Not yet implemented");
+		InputStream objectContent = service.getObjectContent("", "", "");
+		assertNotNullOrEmpty("Object content cannot be null or empty", convertStreamToString(objectContent));
 	}
 
 	@Test
 	public void testGetTree() {
-		fail("Not yet implemented");
+		List<Tree> trees = service.getTree("", "", "");
+		assertNotNullOrEmpty("Tree cannot be null or empty", trees);
 	}
-
 }

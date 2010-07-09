@@ -1,8 +1,13 @@
 package com.github.api.v2.services;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.github.api.v2.schema.Commit;
+import com.github.api.v2.schema.Network;
 
 public class NetworkServiceTest extends BaseGitHubServiceTest {
 	private NetworkService service;
@@ -21,17 +26,20 @@ public class NetworkServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testGetNetworkDataStringStringString() {
-		fail("Not yet implemented");
+		List<Commit> commits = service.getNetworkData("", "", "");
+		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
 	}
 
 	@Test
 	public void testGetNetworkDataStringStringStringIntInt() {
-		fail("Not yet implemented");
+		List<Commit> commits = service.getNetworkData("", "", "", 1, 5);
+		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
 	}
 
 	@Test
 	public void testGetNetworkMeta() {
-		fail("Not yet implemented");
+		Network networkMeta = service.getNetworkMeta("", "");
+		assertNotNull("Network cannot be null", networkMeta);
 	}
 
 }

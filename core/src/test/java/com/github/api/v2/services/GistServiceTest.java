@@ -1,8 +1,13 @@
 package com.github.api.v2.services;
 
+import java.io.InputStream;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.github.api.v2.schema.Gist;
 
 public class GistServiceTest extends BaseGitHubServiceTest {
 	private GistService service;
@@ -21,17 +26,19 @@ public class GistServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testGetGist() {
-		fail("Not yet implemented");
+		Gist gist = service.getGist("");
+		assertNotNull("Gist cannot be null", gist);
 	}
 
 	@Test
 	public void testGetGistContent() {
-		fail("Not yet implemented");
+		InputStream gistContent = service.getGistContent("", "");
+		assertNotNullOrEmpty("Gist content cannot be null or empty", convertStreamToString(gistContent));
 	}
 
 	@Test
 	public void testGetUserGists() {
-		fail("Not yet implemented");
+		List<Gist> gists = service.getUserGists("");
+		assertNotNullOrEmpty("Gists cannot be null or empty.", gists);
 	}
-
 }
