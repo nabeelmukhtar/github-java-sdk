@@ -27,10 +27,6 @@ import com.google.gson.reflect.TypeToken;
 public class RepositoryServiceImpl extends BaseGitHubService implements
 		RepositoryService {
 
-	public RepositoryServiceImpl(String applicationId) {
-		super(applicationId);
-	}
-
 	@Override
 	public void addCollaborator(String repositoryName, String collaboratorName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.ADD_COLLABORATOR_URL);

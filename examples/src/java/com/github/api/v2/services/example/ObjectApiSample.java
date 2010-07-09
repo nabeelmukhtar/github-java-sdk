@@ -64,7 +64,7 @@ public class ObjectApiSample {
             printHelp(options);            
         } // else if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) 
         {
-    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance(line.getOptionValue(APPLICATION_KEY_OPTION));
+    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
     		ObjectService service = factory.createObjectService();
     		List<Tree> trees = service.getTree("facebook", "tornado", "7b80c2f4db226d6fa3a7");
     		for (Tree tree : trees) {

@@ -59,7 +59,7 @@ public class UserApiSample {
             printHelp(options);            
         } else // if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) 
         	{
-    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance(line.getOptionValue(APPLICATION_KEY_OPTION));
+    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
     		UserService service = factory.createUserService();
     		List<User> users = service.searchUsersByName("john");
     		for (User user : users) {

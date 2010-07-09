@@ -51,6 +51,9 @@ public final class TestConstants {
     /** The Constant TEST_REPOSITORY_NAME. */
     public static final String TEST_ISSUE_NUMBER =
         testConstants.getProperty("com.github.api.v2.services.testIssueNo");
+    /** The Constant TEST_REPOSITORY_NAME. */
+    public static final String TEST_COMMIT_HASH =
+        testConstants.getProperty("com.github.api.v2.services.testCommitHash");
     /**
      * Instantiates a new test constants.
      */

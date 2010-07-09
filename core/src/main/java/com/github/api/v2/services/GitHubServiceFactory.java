@@ -19,16 +19,12 @@ import com.github.api.v2.services.impl.UserServiceImpl;
  */
 public class GitHubServiceFactory {
 
-    /** The application key. */
-    private String applicationKey;
-
     /**
      * Instantiates a new google search query factory.
      * 
      * @param applicationKey the application key
      */
-	private GitHubServiceFactory(String applicationKey) {
-        this.applicationKey = applicationKey;
+	private GitHubServiceFactory() {
     }
 	
     /**
@@ -38,8 +34,8 @@ public class GitHubServiceFactory {
      * 
      * @return the google search query factory
      */
-    public static GitHubServiceFactory newInstance(String applicationKey) {
-        return new GitHubServiceFactory(applicationKey);
+    public static GitHubServiceFactory newInstance() {
+        return new GitHubServiceFactory();
     }
     
     /**
@@ -48,7 +44,7 @@ public class GitHubServiceFactory {
      * @return the blog search query
      */
     public CommitService createCommitService() {
-    	return new CommitServiceImpl(applicationKey);
+    	return new CommitServiceImpl();
     }
     
     /**
@@ -57,7 +53,7 @@ public class GitHubServiceFactory {
      * @return the book search query
      */
     public GistService createGistService() {
-    	return new GistServiceImpl(applicationKey);
+    	return new GistServiceImpl();
     }
     
     /**
@@ -66,7 +62,7 @@ public class GitHubServiceFactory {
      * @return the image search query
      */
     public IssueService createIssueService() {
-    	return new IssueServiceImpl(applicationKey);
+    	return new IssueServiceImpl();
     }
     
     /**
@@ -75,7 +71,7 @@ public class GitHubServiceFactory {
      * @return the local search query
      */
     public NetworkService createNetworkService() {
-    	return new NetworkServiceImpl(applicationKey);
+    	return new NetworkServiceImpl();
     }
 
     /**
@@ -84,7 +80,7 @@ public class GitHubServiceFactory {
      * @return the news search query
      */
     public ObjectService createObjectService() {
-    	return new ObjectServiceImpl(applicationKey);
+    	return new ObjectServiceImpl();
     }
     
     /**
@@ -93,7 +89,7 @@ public class GitHubServiceFactory {
      * @return the patent search query
      */
     public RepositoryService createRepositoryService() {
-    	return new RepositoryServiceImpl(applicationKey);
+    	return new RepositoryServiceImpl();
     }
     
     /**
@@ -102,6 +98,6 @@ public class GitHubServiceFactory {
      * @return the video search query
      */
     public UserService createUserService() {
-    	return new UserServiceImpl(applicationKey);
+    	return new UserServiceImpl();
     }
 }

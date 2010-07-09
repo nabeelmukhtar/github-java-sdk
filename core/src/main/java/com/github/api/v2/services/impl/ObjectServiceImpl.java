@@ -22,10 +22,6 @@ import com.google.gson.reflect.TypeToken;
 public class ObjectServiceImpl extends BaseGitHubService implements
 		ObjectService {
 
-	public ObjectServiceImpl(String applicationId) {
-		super(applicationId);
-	}
-
 	@Override
 	public Blob getBlob(String userName, String repositoryName, String treeSha,
 			String filePath) {

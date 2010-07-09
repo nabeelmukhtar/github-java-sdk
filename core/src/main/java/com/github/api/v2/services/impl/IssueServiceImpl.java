@@ -24,10 +24,6 @@ import com.google.gson.reflect.TypeToken;
 public class IssueServiceImpl extends BaseGitHubService implements
 		IssueService {
 
-	public IssueServiceImpl(String applicationId) {
-		super(applicationId);
-	}
-
 	@Override
 	public void addComment(String userName, String repositoryName,
 			int issueNumber, String comment) {

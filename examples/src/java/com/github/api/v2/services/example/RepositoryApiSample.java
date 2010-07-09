@@ -61,7 +61,7 @@ public class RepositoryApiSample {
             printHelp(options);            
         } else // if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) 
         	{
-    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance(line.getOptionValue(APPLICATION_KEY_OPTION));
+    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
     		RepositoryService service = factory.createRepositoryService();
     		List<Repository> repositories = service.searchRepositories("hadoop");
     		for (Repository repository : repositories) {

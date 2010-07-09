@@ -14,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ import java.util.zip.GZIPInputStream;
 
 import com.github.api.v2.services.GitHubException;
 import com.github.api.v2.services.constant.ApplicationConstants;
+import com.github.api.v2.services.util.Base64;
 
 /**
  * The Class GoogleSearchApiGateway.
@@ -36,11 +38,14 @@ public abstract class GitHubApiGateway {
 	/** The Constant REFERRER. */
 	private static final String REFERRER = "Referer";
 	
-	/** The request headers. */
-	protected Map<String, String> requestHeaders;
+	/** The Constant REFERRER. */
+	private static final String AUTHORIZATION = "Authorization";
 	
-	/** The application key. */
-	protected String applicationKey;
+	/** The Constant REFERRER. */
+	private static final String BASIC = "Basic ";
+	
+	/** The request headers. */
+	protected Map<String, String> requestHeaders = new HashMap<String, String>();
 	
 	/** The user ip address. */
 	protected String userIpAddress;
@@ -104,24 +109,6 @@ public abstract class GitHubApiGateway {
 	}
 
 	/**
-	 * Gets the application key.
-	 * 
-	 * @return the application key
-	 */
-	public String getApplicationKey() {
-		return applicationKey;
-	}
-
-	/**
-	 * Sets the application key.
-	 * 
-	 * @param applicationKey the new application key
-	 */
-	public void setApplicationKey(String applicationKey) {
-		this.applicationKey = applicationKey;
-	}
-	
-	/**
 	 * Sets the referrer.
 	 * 
 	 * @param referrer the new referrer
@@ -138,6 +125,16 @@ public abstract class GitHubApiGateway {
 	public void setUserIpAddress(String userIpAddress) {
 		this.userIpAddress = userIpAddress;
 	}
+
+    /**
+     * Sets the application key.
+     * 
+     * @param applicationKey the new application key
+     */
+    public void setCredentials(String userName, String applicationKey) {
+    	String credentials = userName + ":" + applicationKey;
+    	requestHeaders.put(AUTHORIZATION, BASIC + Base64.encodeBytes(credentials.getBytes()));
+    }
 	
 	/**
 	 * Convert stream to string.

@@ -59,7 +59,7 @@ public class NetworkApiSample {
             printHelp(options);            
         } // else if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) 
         {
-    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance(line.getOptionValue(APPLICATION_KEY_OPTION));
+    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
     		NetworkService service = factory.createNetworkService();
     		List<Commit> commits = service.getNetworkData("facebook", "tornado", "7b80c2f4db226d6fa3a7f3dfa59277da1d642f91");
     		for (Commit commit : commits) {

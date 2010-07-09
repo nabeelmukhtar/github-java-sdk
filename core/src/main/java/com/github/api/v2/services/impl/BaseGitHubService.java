@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,10 +48,7 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	 * 
 	 * @param applicationId the application id
 	 */
-	public BaseGitHubService(String applicationId) {
-		super.setApplicationKey(applicationId);
-        requestHeaders = new HashMap<String, String>();
-
+	public BaseGitHubService() {
         // by default we compress contents
         requestHeaders.put("Accept-Encoding", "gzip, deflate");
 	}
@@ -63,9 +59,8 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	 * @param applicationId the application id
 	 * @param apiVersion the api version
 	 */
-	public BaseGitHubService(String applicationId, String apiVersion) {
-		this(applicationId);
-		super.setApiVersion(apiVersion);
+	public BaseGitHubService(String apiVersion) {
+		setApiVersion(apiVersion);
 	}
 	
 	/**

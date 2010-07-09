@@ -20,10 +20,6 @@ import com.google.gson.reflect.TypeToken;
 public class CommitServiceImpl extends BaseGitHubService implements
 		CommitService {
 
-	public CommitServiceImpl(String applicationId) {
-		super(applicationId);
-	}
-
 	@Override
 	public Commit getCommit(String userName, String repositoryName, String sha) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.CommitApiUrls.GET_COMMIT_URL);

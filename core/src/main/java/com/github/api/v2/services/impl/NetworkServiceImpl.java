@@ -21,10 +21,6 @@ import com.google.gson.reflect.TypeToken;
 public class NetworkServiceImpl extends BaseGitHubService implements
 		NetworkService {
 
-	public NetworkServiceImpl(String applicationId) {
-		super(applicationId);
-	}
-
 	@Override
 	public List<Commit> getNetworkData(String userName, String repositoryName,
 			String networkHash) {

@@ -60,7 +60,7 @@ public class CommitApiSample {
             printHelp(options);            
         } // else if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) 
         {
-    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance(line.getOptionValue(APPLICATION_KEY_OPTION));
+    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
     		CommitService service = factory.createCommitService();
     		
     		List<Commit> commits = service.getCommits("facebook", "tornado", Repository.MASTER, "setup.py");

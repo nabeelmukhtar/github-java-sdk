@@ -27,7 +27,7 @@ public class GitHubJsonServiceTest extends BaseGitHubServiceTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		factory = GitHubServiceFactory.newInstance(TestConstants.TEST_API_KEY);
+		factory = GitHubServiceFactory.newInstance();
 	}
 
 	/* (non-Javadoc)

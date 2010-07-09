@@ -21,10 +21,6 @@ import com.google.gson.reflect.TypeToken;
 public class GistServiceImpl extends BaseGitHubService implements
 		GistService {
 
-	public GistServiceImpl(String applicationId) {
-		super(applicationId);
-	}
-
 	@Override
 	public Gist getGist(String gistId) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.GistApiUrls.GET_GIST_URL);

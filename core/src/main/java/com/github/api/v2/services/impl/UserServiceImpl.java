@@ -24,10 +24,6 @@ import com.google.gson.reflect.TypeToken;
 public class UserServiceImpl extends BaseGitHubService implements
 		UserService {
 
-	public UserServiceImpl(String applicationId) {
-		super(applicationId);
-	}
-
 	@Override
 	public void addEmail(String email) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.ADD_EMAIL_URL);

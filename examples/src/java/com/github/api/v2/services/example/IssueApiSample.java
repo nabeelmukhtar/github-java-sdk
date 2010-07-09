@@ -59,7 +59,7 @@ public class IssueApiSample {
             printHelp(options);            
         } else // if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) 
         	{
-    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance(line.getOptionValue(APPLICATION_KEY_OPTION));
+    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
     		IssueService service = factory.createIssueService();
     		List<Issue> issues = service.searchIssues("facebook", "tornado", Issue.State.OPEN, "type");
     		for (Issue issue : issues) {

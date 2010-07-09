@@ -10,8 +10,6 @@ import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 
-import com.github.api.v2.services.constant.TestConstants;
-
 /**
  * The Class BaseGoogleSearchClientTest.
  */
@@ -26,8 +24,7 @@ public class BaseGitHubServiceTest extends TestCase {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test API Key"), TestConstants.TEST_API_KEY);
-		factory = GitHubServiceFactory.newInstance(TestConstants.TEST_API_KEY);
+		factory = GitHubServiceFactory.newInstance();
 	}
 
 	@After

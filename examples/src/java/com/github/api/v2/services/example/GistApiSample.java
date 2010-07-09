@@ -62,7 +62,7 @@ public class GistApiSample {
             printHelp(options);            
         } // else if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) 
         {
-    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance(line.getOptionValue(APPLICATION_KEY_OPTION));
+    		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
     		GistService service = factory.createGistService();
     		Gist gist = service.getGist("289179");
     		printResult(gist);

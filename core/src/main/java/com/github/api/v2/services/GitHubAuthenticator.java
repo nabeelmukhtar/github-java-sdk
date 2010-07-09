@@ -14,15 +14,8 @@ public interface GitHubAuthenticator extends GitHubCommunicator {
      * 
      * @param applicationKey the new application key
      */
-    public void setApplicationKey(String applicationKey);
+    public void setCredentials(String userName, String applicationKey);
 
-    /**
-     * Gets the application key.
-     * 
-     * @return the application key
-     */
-    public String getApplicationKey();
-    
 	/**
 	 * Sets the user ip address.
 	 * 
