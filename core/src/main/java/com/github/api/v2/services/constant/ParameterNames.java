@@ -67,4 +67,32 @@ public interface ParameterNames {
 	
 	/** The Constant FORMAT. */
 	public static final String FORMAT = "format";
+	
+	public static final String NAME = "name";
+	
+	public static final String BLOG = "blog";
+	
+	public static final String COMPANY = "company";
+	
+	public static final String LOCATION = "location";
+	
+	public static final String ID = "id";
+	
+	public static final String TITLE = "title";
+	
+	public static final String KEY = "key";
+	
+	public static final String BODY = "body";
+	
+	public static final String COMMENT = "comment";
+	
+	public static final String DESCRIPTION = "description";
+	
+	public static final String HOME_PAGE = "homepage";
+	
+	public static final String HAS_WIKI = "has_wiki";
+	
+	public static final String HAS_ISSUES = "has_issues";
+	
+	public static final String HAS_DOWNLOADS = "has_downloads";
 }

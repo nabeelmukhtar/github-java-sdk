@@ -4,6 +4,7 @@
 package com.github.api.v2.services.example;
 
 import java.text.MessageFormat;
+import java.util.List;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -13,7 +14,9 @@ import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+import com.github.api.v2.schema.Issue;
 import com.github.api.v2.services.GitHubServiceFactory;
+import com.github.api.v2.services.IssueService;
 
 /**
  * The Class WebSample.
@@ -54,11 +57,23 @@ public class IssueApiSample {
     private static void processCommandLine(CommandLine line, Options options) {
         if(line.hasOption(HELP_OPTION)) {
             printHelp(options);            
-        } else if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) {
+        } else // if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) 
+        	{
     		GitHubServiceFactory factory = GitHubServiceFactory.newInstance(line.getOptionValue(APPLICATION_KEY_OPTION));
-        } else {
-        	printHelp(options);
+    		IssueService service = factory.createIssueService();
+    		List<Issue> issues = service.searchIssues("facebook", "tornado", Issue.State.OPEN, "type");
+    		for (Issue issue : issues) {
+    			printResult(issue);
+    		}
+    		Issue issue = service.getIssue("facebook", "tornado", 1);
+    		printResult(issue);
+//        } else {
+//        	printHelp(options);
         }
+	}
+
+	private static void printResult(Issue issue) {
+		System.out.println(issue);
 	}
 
 	/**

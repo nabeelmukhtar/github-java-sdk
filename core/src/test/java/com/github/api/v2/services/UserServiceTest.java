@@ -12,15 +12,18 @@ import org.junit.Test;
  *
  */
 public class UserServiceTest extends BaseGitHubServiceTest {
+	private UserService service;
 
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
+		service = factory.createUserService();
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
+		service = null;
 	}
 
 	@Test

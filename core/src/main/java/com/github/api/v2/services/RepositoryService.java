@@ -19,9 +19,9 @@ import com.github.api.v2.schema.Repository.Visibility;
  */
 public interface RepositoryService extends GitHubService {
 	public List<Repository> searchRepositories(String query);
-	public List<Repository> searchRepositories(String query, String language);
+	public List<Repository> searchRepositories(String query, Language language);
 	public List<Repository> searchRepositories(String query, int pageNumber);
-	public List<Repository> searchRepositories(String query, String language, int pageNumber);
+	public List<Repository> searchRepositories(String query, Language language, int pageNumber);
 	public Repository getRepository(String userName, String repositoryName);
 	public void updateRepository(Repository repository);
 	public List<Repository> getRepositories(String userName);
@@ -31,9 +31,9 @@ public interface RepositoryService extends GitHubService {
 	public void createRepository(String name, String description, String homePage, Visibility visibility);
 	public void deleteRepository(String repositoryName);
 	public void changeVisibility(String repositoryName, Visibility visibility);
-	public List<Key> getKeys(String repositoryName);
-	public String addKey(String repositoryName, String title, String key);
-	public void removeKey(String repository, String id);
+	public List<Key> getDeployKeys(String repositoryName);
+	public String addDeployKey(String repositoryName, String title, String key);
+	public void removeDeployKey(String repository, String id);
 	public List<User> getCollaborators(String userName, String repositoryName);
 	public void addCollaborator(String repositoryName, String collaboratorName);
 	public void removeCollaborator(String repositoryName, String collaboratorName);

@@ -94,9 +94,9 @@ public final class GitHubApiUrls {
     	public static final String CREATE_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.createRepository");
     	public static final String DELETE_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.deleteRepository");
     	public static final String CHANGE_VISIBILITY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.changeVisibility");
-    	public static final String GET_KEYS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getKeys");
-    	public static final String ADD_KEY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.addKey");
-    	public static final String REMOVE_KEY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.removeKey");
+    	public static final String GET_DEPLOY_KEYS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getKeys");
+    	public static final String ADD_DEPLOY_KEY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.addKey");
+    	public static final String REMOVE_DEPLOY_KEY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.removeKey");
     	public static final String GET_COLLABORATORS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getCollaborators");
     	public static final String ADD_COLLABORATOR_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.addCollaborator");
     	public static final String REMOVE_COLLABORATOR_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.removeCollaborator");

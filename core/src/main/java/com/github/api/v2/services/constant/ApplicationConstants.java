@@ -41,7 +41,7 @@ public final class ApplicationConstants {
     public static final String DEFAULT_FORMAT = getProperty("com.github.api.v2.services.defaultFormat");
     
     /** The Constant RFC822DATEFORMAT. */
-    public static final String RFC822DATEFORMAT = getProperty("com.github.api.v2.services.dateFormat");
+    public static final String DATE_FORMAT = getProperty("com.github.api.v2.services.dateFormat");
     
     /** The Constant CONNECT_TIMEOUT. */
     public static final int CONNECT_TIMEOUT = getIntProperty("com.github.api.v2.services.connectTimeout");

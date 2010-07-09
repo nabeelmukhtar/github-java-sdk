@@ -4,18 +4,27 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.github.api.v2.schema.Issue;
+import com.github.api.v2.schema.Language;
+import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.SchemaEntity;
 import com.github.api.v2.services.AsyncResponseHandler;
 import com.github.api.v2.services.GitHubException;
 import com.github.api.v2.services.GitHubService;
 import com.github.api.v2.services.constant.ApplicationConstants;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
@@ -32,6 +41,8 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
     
     /** The handlers. */
     private List<AsyncResponseHandler<List<? extends SchemaEntity>>> handlers = new ArrayList<AsyncResponseHandler<List<? extends SchemaEntity>>>();
+    
+    protected static final Map<String, String> EMPTY_PARAMETERS = Collections.emptyMap(); 
 	
 	/**
 	 * Instantiates a new base google search api query.
@@ -58,28 +69,15 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	}
 	
 	/**
-	 * Unmarshall list.
-	 * 
-	 * @param response the response
-	 * 
-	 * @return the paged list< t>
-	 */
-	protected <T> List<T> unmarshallList(Class<T> clazz, JsonElement response) {
-		Gson gson = getGsonBuilder().create();
-		Type collectionType = new TypeToken<List<T>>(){}.getType();
-		return gson.fromJson(response, collectionType);
-	}
-	
-	/**
 	 * Unmarshall.
 	 * 
 	 * @param object the object
 	 * 
 	 * @return the t
 	 */
-	protected <T> T unmarshall(Class<T> clazz, JsonElement response) {
+	protected <T> T unmarshall(TypeToken<T> typeToken, JsonElement response) {
 		Gson gson = getGsonBuilder().create();
-		return gson.fromJson(response, clazz);
+		return gson.fromJson(response, typeToken.getType());
 	}
 
 	/**
@@ -107,16 +105,29 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	 */
 	protected GsonBuilder getGsonBuilder() {
 		GsonBuilder builder = new GsonBuilder();
-		builder.setDateFormat(ApplicationConstants.RFC822DATEFORMAT);
-//		builder.registerTypeAdapter(ListingType.class, new JsonDeserializer<ListingType>() {
-//
-//			@Override
-//			public ListingType deserialize(JsonElement arg0, Type arg1,
-//					JsonDeserializationContext arg2) throws JsonParseException {
-//				return ListingType.fromValue(arg0.getAsString());
-//			}
-//			
-//		});
+		builder.setDateFormat(ApplicationConstants.DATE_FORMAT);
+		builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
+		builder.registerTypeAdapter(Issue.State.class, new JsonDeserializer<Issue.State>() {
+			@Override
+			public Issue.State deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Issue.State.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Repository.Visibility.class, new JsonDeserializer<Repository.Visibility>() {
+			@Override
+			public Repository.Visibility deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Repository.Visibility.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Language.class, new JsonDeserializer<Language>() {
+			@Override
+			public Language deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Language.fromValue(arg0.getAsString());
+			}
+		});
 		return builder;
 	}
     

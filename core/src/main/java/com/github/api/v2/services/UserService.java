@@ -19,8 +19,8 @@ public interface UserService extends GitHubService {
 	public User getUser(String userName);
 	public User getCurrentUser();
 	public void updateUser(User user);
-	public List<User> getUserFollowers(String userName);
-	public List<User> getUserFollowing(String userName);
+	public List<String> getUserFollowers(String userName);
+	public List<String> getUserFollowing(String userName);
 	public void followUser(String userName);
 	public void unfollowUser(String userName);
 	public List<Repository> getWatchedRepositories(String userName);

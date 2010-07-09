@@ -5,15 +5,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ObjectServiceTest extends BaseGitHubServiceTest {
+	private ObjectService service;
 
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
+		service = factory.createObjectService();
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
+		service = null;
 	}
 
 	@Test
