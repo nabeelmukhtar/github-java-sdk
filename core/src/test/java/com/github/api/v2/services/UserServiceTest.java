@@ -3,9 +3,15 @@
  */
 package com.github.api.v2.services;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.github.api.v2.schema.Key;
+import com.github.api.v2.schema.Repository;
+import com.github.api.v2.schema.User;
 
 /**
  * @author nmukhtar
@@ -28,81 +34,90 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testAddEmail() {
-		fail("Not yet implemented");
+		service.addEmail("");
 	}
 
 	@Test
 	public void testAddKey() {
-		fail("Not yet implemented");
+		service.addKey("", "");
 	}
 
 	@Test
 	public void testFollowUser() {
-		fail("Not yet implemented");
+		service.followUser("");
 	}
 
 	@Test
 	public void testGetCurrentUser() {
-		fail("Not yet implemented");
+		User user = service.getCurrentUser();
+		assertNotNull("User cannot be null.", user);
 	}
 
 	@Test
 	public void testGetEmails() {
-		fail("Not yet implemented");
+		List<String> emails = service.getEmails();
+		assertNotNullOrEmpty("Emails cannot be null or empty.", emails);
 	}
 
 	@Test
 	public void testGetKeys() {
-		fail("Not yet implemented");
+		List<Key> keys = service.getKeys();
+		assertNotNullOrEmpty("Keys cannot be null or empty.", keys);
 	}
 
 	@Test
 	public void testGetUser() {
-		fail("Not yet implemented");
+		User user = service.getUser("");
+		assertNotNull("User cannot be null.", user);
 	}
 
 	@Test
 	public void testGetUserFollowers() {
-		fail("Not yet implemented");
+		List<String> userFollowers = service.getUserFollowers("");
+		assertNotNullOrEmpty("User followers cannot be null or empty.", userFollowers);
 	}
 
 	@Test
 	public void testGetUserFollowing() {
-		fail("Not yet implemented");
+		List<String> userFollowing = service.getUserFollowing("");
+		assertNotNullOrEmpty("User followering cannot be null or empty.", userFollowing);
 	}
 
 	@Test
 	public void testGetWatchedRepositories() {
-		fail("Not yet implemented");
+		List<Repository> repositories = service.getWatchedRepositories("");
+		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testRemoveEmail() {
-		fail("Not yet implemented");
+		service.removeEmail("");
 	}
 
 	@Test
 	public void testRemoveKey() {
-		fail("Not yet implemented");
+		service.removeKey("");
 	}
 
 	@Test
 	public void testSearchUsersByEmail() {
-		fail("Not yet implemented");
+		List<User> users = service.searchUsersByEmail("");
+		assertNotNullOrEmpty("Users cannot be null or empty.", users);
 	}
 
 	@Test
 	public void testSearchUsersByName() {
-		fail("Not yet implemented");
+		List<User> users = service.searchUsersByName("");
+		assertNotNullOrEmpty("Users cannot be null or empty.", users);
 	}
 
 	@Test
 	public void testUnfollowUser() {
-		fail("Not yet implemented");
+		service.unfollowUser("");
 	}
 
 	@Test
 	public void testUpdateUser() {
-		fail("Not yet implemented");
+//		service.updateUser(user);
 	}
 }

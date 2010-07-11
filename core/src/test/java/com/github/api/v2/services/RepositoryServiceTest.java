@@ -1,8 +1,17 @@
 package com.github.api.v2.services;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.github.api.v2.schema.Key;
+import com.github.api.v2.schema.Language;
+import com.github.api.v2.schema.Repository;
+import com.github.api.v2.schema.Tag;
+import com.github.api.v2.schema.User;
 
 public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	private RepositoryService service;
@@ -21,132 +30,147 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testAddCollaborator() {
-		fail("Not yet implemented");
+		service.addCollaborator("", "");
 	}
 
 	@Test
 	public void testAddKey() {
-		fail("Not yet implemented");
+		service.addDeployKey("", "", "");
 	}
 
 	@Test
 	public void testChangeVisibility() {
-		fail("Not yet implemented");
+		service.changeVisibility("", Repository.Visibility.PRIVATE);
 	}
 
 	@Test
 	public void testCreateRepository() {
-		fail("Not yet implemented");
+		service.createRepository("", "", "", Repository.Visibility.PUBLIC);
 	}
 
 	@Test
 	public void testDeleteRepository() {
-		fail("Not yet implemented");
+		service.deleteRepository("");
 	}
 
 	@Test
 	public void testForkRepository() {
-		fail("Not yet implemented");
+		service.forkRepository("", "");
 	}
 
 	@Test
 	public void testGetBranches() {
-		fail("Not yet implemented");
+		List<Tag> branches = service.getBranches("", "");
+		assertNotNullOrEmpty("Branches cannot be null or empty.", branches);
 	}
 
 	@Test
 	public void testGetCollaborators() {
-		fail("Not yet implemented");
+		List<User> collaborators = service.getCollaborators("", "");
+		assertNotNullOrEmpty("Collaborators cannot be null or empty.", collaborators);
 	}
 
 	@Test
 	public void testGetContributors() {
-		fail("Not yet implemented");
+		List<User> contributors = service.getContributors("", "");
+		assertNotNullOrEmpty("Contributors cannot be null or empty.", contributors);
 	}
 
 	@Test
 	public void testGetForks() {
-		fail("Not yet implemented");
+		List<Repository> forks = service.getForks("", "");
+		assertNotNullOrEmpty("Forks cannot be null or empty.", forks);
 	}
 
 	@Test
 	public void testGetKeys() {
-		fail("Not yet implemented");
+		List<Key> keys = service.getDeployKeys("");
+		assertNotNullOrEmpty("Keys cannot be null or empty.", keys);
 	}
 
 	@Test
 	public void testGetLanguageBreakdown() {
-		fail("Not yet implemented");
+		Map<Language, Long> languageBreakdown = service.getLanguageBreakdown("", "");
+		assertFalse("Language breakdon vannot be null or empty.", (languageBreakdown == null || languageBreakdown.isEmpty()));
 	}
 
 	@Test
 	public void testGetPushableRepositories() {
-		fail("Not yet implemented");
+		List<Repository> repositories = service.getPushableRepositories();
+		assertNotNullOrEmpty("Pushable repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testGetRepositories() {
-		fail("Not yet implemented");
+		List<Repository> repositories = service.getRepositories("");
+		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testGetRepository() {
-		fail("Not yet implemented");
+		Repository repository = service.getRepository("", "");
+		assertNotNull("Repository cannot be null.", repository);
 	}
 
 	@Test
 	public void testGetTags() {
-		fail("Not yet implemented");
+		List<Tag> tags = service.getTags("", "");
+		assertNotNullOrEmpty("Tags cannot be null or empty.", tags);
 	}
 
 	@Test
 	public void testGetWatchers() {
-		fail("Not yet implemented");
+		List<User> watchers = service.getWatchers("", "");
+		assertNotNullOrEmpty("Watchers cannot be null or empty.", watchers);
 	}
 
 	@Test
 	public void testRemoveCollaborator() {
-		fail("Not yet implemented");
+		service.removeCollaborator("", "");
 	}
 
 	@Test
 	public void testRemoveKey() {
-		fail("Not yet implemented");
+		service.removeDeployKey("", "");
 	}
 
 	@Test
 	public void testSearchRepositoriesString() {
-		fail("Not yet implemented");
+		List<Repository> repositories = service.searchRepositories("");
+		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testSearchRepositoriesStringString() {
-		fail("Not yet implemented");
+		List<Repository> repositories = service.searchRepositories("", Language.Java);
+		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testSearchRepositoriesStringInt() {
-		fail("Not yet implemented");
+		List<Repository> repositories = service.searchRepositories("", 1);
+		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testSearchRepositoriesStringStringInt() {
-		fail("Not yet implemented");
+		List<Repository> repositories = service.searchRepositories("", Language.Java, 1);
+		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testUnwatchRepository() {
-		fail("Not yet implemented");
+		service.unwatchRepository("", "");
 	}
 
 	@Test
 	public void testUpdateRepository() {
-		fail("Not yet implemented");
+//		service.updateRepository(repository);
 	}
 
 	@Test
 	public void testWatchRepository() {
-		fail("Not yet implemented");
+		service.watchRepository("", "");
 	}
 
 }

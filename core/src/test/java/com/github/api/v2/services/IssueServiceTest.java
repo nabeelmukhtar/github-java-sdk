@@ -1,8 +1,13 @@
 package com.github.api.v2.services;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.github.api.v2.schema.Comment;
+import com.github.api.v2.schema.Issue;
 
 public class IssueServiceTest extends BaseGitHubServiceTest {
 	private IssueService service;
@@ -21,62 +26,67 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testAddComment() {
-		fail("Not yet implemented");
+		service.addComment("", "", 1, "");
 	}
 
 	@Test
 	public void testAddLabel() {
-		fail("Not yet implemented");
+		service.addLabel("", "", 1, "");
 	}
 
 	@Test
 	public void testCloseIssue() {
-		fail("Not yet implemented");
+		service.closeIssue("", "", 1);
 	}
 
 	@Test
 	public void testCreateIssue() {
-		fail("Not yet implemented");
+		service.createIssue("", "", "", "");
 	}
 
 	@Test
 	public void testGetIssue() {
-		fail("Not yet implemented");
+		Issue issue = service.getIssue("", "", 1);
+		assertNotNull("Issue cannot be null.", issue);
 	}
 
 	@Test
 	public void testGetIssueComments() {
-		fail("Not yet implemented");
+		List<Comment> issueComments = service.getIssueComments("", "", 1);
+		assertNotNullOrEmpty("Issue comments cannot be null or empty.", issueComments);
 	}
 
 	@Test
 	public void testGetIssueLabels() {
-		fail("Not yet implemented");
+		List<String> issueLabels = service.getIssueLabels("", "");
+		assertNotNullOrEmpty("Issue labels should not be null or empty.", issueLabels);
 	}
 
 	@Test
 	public void testGetIssues() {
-		fail("Not yet implemented");
+		List<Issue> issues = service.getIssues("", "", Issue.State.OPEN);
+		assertNotNullOrEmpty("Issues cannot be null or empty.", issues);
 	}
 
 	@Test
 	public void testRemoveLabel() {
-		fail("Not yet implemented");
+		List<String> labels = service.removeLabel("", "", 1, "");
+		assertFalse("Label should not be in the list.", labels.contains(""));
 	}
 
 	@Test
 	public void testReopenIssue() {
-		fail("Not yet implemented");
+		service.reopenIssue("", "", 1);
 	}
 
 	@Test
 	public void testSearchIssues() {
-		fail("Not yet implemented");
+		List<Issue> issues = service.searchIssues("", "", Issue.State.OPEN, "");
+		assertNotNullOrEmpty("Issues cannot be null or empty.", issues);
 	}
 
 	@Test
 	public void testUpdateIssue() {
-		fail("Not yet implemented");
+		service.updateIssue("", "", 1, "", "");
 	}
-
 }
