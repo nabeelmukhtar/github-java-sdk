@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.github.api.v2.schema.Key;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.User;
+import com.github.api.v2.services.constant.TestConstants;
 
 /**
  * @author nmukhtar
@@ -34,17 +35,21 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testAddEmail() {
-		service.addEmail("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
+		service.addEmail(TestConstants.TEST_EMAIL);
 	}
 
 	@Test
 	public void testAddKey() {
-		service.addKey("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key Title."), TestConstants.TEST_KEY_TITLE);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key."), TestConstants.TEST_KEY);
+		service.addKey(TestConstants.TEST_KEY_TITLE, TestConstants.TEST_KEY);
 	}
 
 	@Test
 	public void testFollowUser() {
-		service.followUser("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+		service.followUser(TestConstants.TEST_USER_NAME);
 	}
 
 	@Test
@@ -67,53 +72,62 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testGetUser() {
-		User user = service.getUser("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+		User user = service.getUser(TestConstants.TEST_USER_NAME);
 		assertNotNull("User cannot be null.", user);
 	}
 
 	@Test
 	public void testGetUserFollowers() {
-		List<String> userFollowers = service.getUserFollowers("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+		List<String> userFollowers = service.getUserFollowers(TestConstants.TEST_USER_NAME);
 		assertNotNullOrEmpty("User followers cannot be null or empty.", userFollowers);
 	}
 
 	@Test
 	public void testGetUserFollowing() {
-		List<String> userFollowing = service.getUserFollowing("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+		List<String> userFollowing = service.getUserFollowing(TestConstants.TEST_USER_NAME);
 		assertNotNullOrEmpty("User followering cannot be null or empty.", userFollowing);
 	}
 
 	@Test
 	public void testGetWatchedRepositories() {
-		List<Repository> repositories = service.getWatchedRepositories("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+		List<Repository> repositories = service.getWatchedRepositories(TestConstants.TEST_USER_NAME);
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testRemoveEmail() {
-		service.removeEmail("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
+		service.removeEmail(TestConstants.TEST_EMAIL);
 	}
 
 	@Test
 	public void testRemoveKey() {
-		service.removeKey("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key Id."), TestConstants.TEST_KEY_ID);
+		service.removeKey(TestConstants.TEST_KEY_ID);
 	}
 
 	@Test
 	public void testSearchUsersByEmail() {
-		List<User> users = service.searchUsersByEmail("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
+		List<User> users = service.searchUsersByEmail(TestConstants.TEST_EMAIL);
 		assertNotNullOrEmpty("Users cannot be null or empty.", users);
 	}
 
 	@Test
 	public void testSearchUsersByName() {
-		List<User> users = service.searchUsersByName("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+		List<User> users = service.searchUsersByName(TestConstants.TEST_USER_NAME);
 		assertNotNullOrEmpty("Users cannot be null or empty.", users);
 	}
 
 	@Test
 	public void testUnfollowUser() {
-		service.unfollowUser("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+		service.unfollowUser(TestConstants.TEST_USER_NAME);
 	}
 
 	@Test

@@ -10,7 +10,7 @@ import com.github.api.v2.services.CommitService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -24,9 +24,9 @@ public class CommitServiceImpl extends BaseGitHubService implements
 	public Commit getCommit(String userName, String repositoryName, String sha) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.CommitApiUrls.GET_COMMIT_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, sha).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<Commit>(){}, json.getAsJsonObject().get("commit"));
+        return unmarshall(new TypeToken<Commit>(){}, json.get("commit"));
 	}
 
 	@Override
@@ -34,9 +34,9 @@ public class CommitServiceImpl extends BaseGitHubService implements
 			String branch) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.CommitApiUrls.GET_COMMITS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branch).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Commit>>(){}, json.getAsJsonObject().get("commits"));
+        return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));
 	}
 
 	@Override
@@ -44,8 +44,8 @@ public class CommitServiceImpl extends BaseGitHubService implements
 			String branch, String filePath) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.CommitApiUrls.GET_COMMITS_FILE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branch).withField(ParameterNames.FILE_PATH, filePath).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Commit>>(){}, json.getAsJsonObject().get("commits"));
+        return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));
 	}
 }

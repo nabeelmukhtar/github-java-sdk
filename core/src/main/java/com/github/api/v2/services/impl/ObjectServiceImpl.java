@@ -12,7 +12,7 @@ import com.github.api.v2.services.ObjectService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -27,9 +27,9 @@ public class ObjectServiceImpl extends BaseGitHubService implements
 			String filePath) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.ObjectApiUrls.GET_BLOBS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, treeSha).withField(ParameterNames.FILE_PATH, filePath).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<Blob>(){}, json.getAsJsonObject().get("blob"));
+        return unmarshall(new TypeToken<Blob>(){}, json.get("blob"));
 	}
 
 	@Override
@@ -37,9 +37,9 @@ public class ObjectServiceImpl extends BaseGitHubService implements
 			String treeSha) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.ObjectApiUrls.GET_BLOBS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, treeSha).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Blob>>(){}, json.getAsJsonObject().get("blobs"));
+        return unmarshall(new TypeToken<List<Blob>>(){}, json.get("blobs"));
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class ObjectServiceImpl extends BaseGitHubService implements
 			String treeSha) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.ObjectApiUrls.GET_TREE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, treeSha).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Tree>>(){}, json.getAsJsonObject().get("tree"));
+        return unmarshall(new TypeToken<List<Tree>>(){}, json.get("tree"));
 	}
 }

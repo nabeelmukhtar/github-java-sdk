@@ -30,8 +30,8 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 	public void testGetBlob() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_TREE_SHA);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_FILE_PATH);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Tree SHA."), TestConstants.TEST_TREE_SHA);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test File Path."), TestConstants.TEST_FILE_PATH);
 		Blob blob = service.getBlob(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_TREE_SHA, TestConstants.TEST_FILE_PATH);
 		assertNotNull("Blob cannot be null or empty", blob);
 	}
@@ -40,7 +40,7 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 	public void testGetBlobs() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_TREE_SHA);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Tree SHA."), TestConstants.TEST_TREE_SHA);
 		List<Blob> blobs = service.getBlobs(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_TREE_SHA);
 		assertNotNullOrEmpty("Blobs cannot be null or empty", blobs);
 	}
@@ -49,7 +49,7 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 	public void testGetObjectContent() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_TREE_SHA);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Tree SHA."), TestConstants.TEST_TREE_SHA);
 		InputStream objectContent = service.getObjectContent(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_TREE_SHA);
 		assertNotNullOrEmpty("Object content cannot be null or empty", convertStreamToString(objectContent));
 	}
@@ -58,7 +58,7 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 	public void testGetTree() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_TREE_SHA);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Tree SHA."), TestConstants.TEST_TREE_SHA);
 		List<Tree> trees = service.getTree(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_TREE_SHA);
 		assertNotNullOrEmpty("Tree cannot be null or empty", trees);
 	}

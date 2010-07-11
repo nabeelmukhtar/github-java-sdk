@@ -14,7 +14,7 @@ import com.github.api.v2.services.UserService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -54,63 +54,63 @@ public class UserServiceImpl extends BaseGitHubService implements
 	public User getCurrentUser() {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_CURRENT_USER_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<User>(){}, json.getAsJsonObject().get("user"));
+        return unmarshall(new TypeToken<User>(){}, json.get("user"));
 	}
 
 	@Override
 	public List<String> getEmails() {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_EMAILS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<String>>(){}, json.getAsJsonObject().get("emails"));
+        return unmarshall(new TypeToken<List<String>>(){}, json.get("emails"));
 	}
 
 	@Override
 	public List<Key> getKeys() {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_KEYS_URL);
         String                apiUrl  = builder.buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Key>>(){}, json.getAsJsonObject().get("keys"));
+        return unmarshall(new TypeToken<List<Key>>(){}, json.get("keys"));
 	}
 
 	@Override
 	public User getUser(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_USER_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<User>(){}, json.getAsJsonObject().get("user"));
+        return unmarshall(new TypeToken<User>(){}, json.get("user"));
 	}
 
 	@Override
 	public List<String> getUserFollowers(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_USER_FOLLOWERS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<String>>(){}, json.getAsJsonObject().get("users"));
+        return unmarshall(new TypeToken<List<String>>(){}, json.get("users"));
 	}
 
 	@Override
 	public List<String> getUserFollowing(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_USER_FOLLOWING_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<String>>(){}, json.getAsJsonObject().get("users"));
+        return unmarshall(new TypeToken<List<String>>(){}, json.get("users"));
 	}
 
 	@Override
 	public List<Repository> getWatchedRepositories(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_WATCHED_REPOSITORIES_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Repository>>(){}, json.getAsJsonObject().get("repositories"));
+        return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
 	@Override
@@ -135,18 +135,18 @@ public class UserServiceImpl extends BaseGitHubService implements
 	public List<User> searchUsersByEmail(String email) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.SEARCH_USERS_BY_NAME_URL);
         String                apiUrl  = builder.withField(ParameterNames.EMAIL, email).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<User>>(){}, json.getAsJsonObject().get("users"));
+        return unmarshall(new TypeToken<List<User>>(){}, json.get("users"));
 	}
 
 	@Override
 	public List<User> searchUsersByName(String name) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.SEARCH_USERS_BY_NAME_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, name).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<User>>(){}, json.getAsJsonObject().get("users"));
+        return unmarshall(new TypeToken<List<User>>(){}, json.get("users"));
 	}
 
 	@Override

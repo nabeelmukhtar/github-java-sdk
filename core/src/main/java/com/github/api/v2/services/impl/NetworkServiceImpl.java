@@ -11,7 +11,7 @@ import com.github.api.v2.services.NetworkService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -26,9 +26,9 @@ public class NetworkServiceImpl extends BaseGitHubService implements
 			String networkHash) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.NetworkApiUrls.GET_NETWORK_DATA_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NET_HASH, networkHash).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Commit>>(){}, json.getAsJsonObject().get("commits"));
+        return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));
 	}
 
 	@Override
@@ -36,16 +36,16 @@ public class NetworkServiceImpl extends BaseGitHubService implements
 			String networkHash, int startIndex, int endIndex) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.NetworkApiUrls.GET_NETWORK_DATA_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NET_HASH, networkHash).withParameter(ParameterNames.START_INDEX, String.valueOf(startIndex)).withParameter(ParameterNames.END_INDEX, String.valueOf(endIndex)).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Commit>>(){}, json.getAsJsonObject().get("commits"));
+        return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));
 	}
 
 	@Override
 	public Network getNetworkMeta(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.NetworkApiUrls.GET_NETWORK_META_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
         return unmarshall(new TypeToken<Network>(){}, json);
 	}

@@ -12,6 +12,7 @@ import com.github.api.v2.schema.Language;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.Tag;
 import com.github.api.v2.schema.User;
+import com.github.api.v2.services.constant.TestConstants;
 
 public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	private RepositoryService service;
@@ -30,68 +31,91 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testAddCollaborator() {
-		service.addCollaborator("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		service.addCollaborator(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_USER_NAME);
 	}
 
 	@Test
 	public void testAddKey() {
-		service.addDeployKey("", "", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key Title."), TestConstants.TEST_KEY_TITLE);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key."), TestConstants.TEST_KEY);
+		service.addDeployKey(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_KEY_TITLE, TestConstants.TEST_KEY);
 	}
 
 	@Test
 	public void testChangeVisibility() {
-		service.changeVisibility("", Repository.Visibility.PRIVATE);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		service.changeVisibility(TestConstants.TEST_REPOSITORY_NAME, Repository.Visibility.PRIVATE);
 	}
 
 	@Test
 	public void testCreateRepository() {
-		service.createRepository("", "", "", Repository.Visibility.PUBLIC);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository Description."), TestConstants.TEST_REPOSITORY_DESC);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository Homepage."), TestConstants.TEST_REPOSITORY_PAGE);
+		service.createRepository(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_REPOSITORY_DESC, TestConstants.TEST_REPOSITORY_PAGE, Repository.Visibility.PUBLIC);
 	}
 
 	@Test
 	public void testDeleteRepository() {
-		service.deleteRepository("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		service.deleteRepository(TestConstants.TEST_REPOSITORY_NAME);
 	}
 
 	@Test
 	public void testForkRepository() {
-		service.forkRepository("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		service.forkRepository(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 	}
 
 	@Test
 	public void testGetBranches() {
-		List<Tag> branches = service.getBranches("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		List<Tag> branches = service.getBranches(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Branches cannot be null or empty.", branches);
 	}
 
 	@Test
 	public void testGetCollaborators() {
-		List<User> collaborators = service.getCollaborators("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		List<User> collaborators = service.getCollaborators(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Collaborators cannot be null or empty.", collaborators);
 	}
 
 	@Test
 	public void testGetContributors() {
-		List<User> contributors = service.getContributors("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		List<User> contributors = service.getContributors(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Contributors cannot be null or empty.", contributors);
 	}
 
 	@Test
 	public void testGetForks() {
-		List<Repository> forks = service.getForks("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		List<Repository> forks = service.getForks(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Forks cannot be null or empty.", forks);
 	}
 
 	@Test
 	public void testGetKeys() {
-		List<Key> keys = service.getDeployKeys("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		List<Key> keys = service.getDeployKeys(TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Keys cannot be null or empty.", keys);
 	}
 
 	@Test
 	public void testGetLanguageBreakdown() {
-		Map<Language, Long> languageBreakdown = service.getLanguageBreakdown("", "");
-		assertFalse("Language breakdon vannot be null or empty.", (languageBreakdown == null || languageBreakdown.isEmpty()));
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		Map<Language, Long> languageBreakdown = service.getLanguageBreakdown(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+		assertFalse("Language breakdown vannot be null or empty.", (languageBreakdown == null || languageBreakdown.isEmpty()));
 	}
 
 	@Test
@@ -102,65 +126,82 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testGetRepositories() {
-		List<Repository> repositories = service.getRepositories("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+		List<Repository> repositories = service.getRepositories(TestConstants.TEST_USER_NAME);
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testGetRepository() {
-		Repository repository = service.getRepository("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		Repository repository = service.getRepository(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNull("Repository cannot be null.", repository);
 	}
 
 	@Test
 	public void testGetTags() {
-		List<Tag> tags = service.getTags("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		List<Tag> tags = service.getTags(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Tags cannot be null or empty.", tags);
 	}
 
 	@Test
 	public void testGetWatchers() {
-		List<User> watchers = service.getWatchers("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		List<User> watchers = service.getWatchers(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Watchers cannot be null or empty.", watchers);
 	}
 
 	@Test
 	public void testRemoveCollaborator() {
-		service.removeCollaborator("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		service.removeCollaborator(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_USER_NAME);
 	}
 
 	@Test
 	public void testRemoveKey() {
-		service.removeDeployKey("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key Id."), TestConstants.TEST_KEY_ID);
+		service.removeDeployKey(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_KEY_ID);
 	}
 
 	@Test
 	public void testSearchRepositoriesString() {
-		List<Repository> repositories = service.searchRepositories("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Query."), TestConstants.TEST_QUERY);
+		List<Repository> repositories = service.searchRepositories(TestConstants.TEST_QUERY);
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testSearchRepositoriesStringString() {
-		List<Repository> repositories = service.searchRepositories("", Language.Java);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Query."), TestConstants.TEST_QUERY);
+		List<Repository> repositories = service.searchRepositories(TestConstants.TEST_QUERY, Language.Java);
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testSearchRepositoriesStringInt() {
-		List<Repository> repositories = service.searchRepositories("", 1);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Query."), TestConstants.TEST_QUERY);
+		List<Repository> repositories = service.searchRepositories(TestConstants.TEST_QUERY, 1);
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testSearchRepositoriesStringStringInt() {
-		List<Repository> repositories = service.searchRepositories("", Language.Java, 1);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Query."), TestConstants.TEST_QUERY);
+		List<Repository> repositories = service.searchRepositories(TestConstants.TEST_QUERY, Language.Java, 1);
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
 	@Test
 	public void testUnwatchRepository() {
-		service.unwatchRepository("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		service.unwatchRepository(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 	}
 
 	@Test
@@ -170,7 +211,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testWatchRepository() {
-		service.watchRepository("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		service.watchRepository(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 	}
 
 }

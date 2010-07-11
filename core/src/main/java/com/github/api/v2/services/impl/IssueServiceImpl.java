@@ -14,7 +14,7 @@ import com.github.api.v2.services.IssueService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -31,9 +31,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.COMMENT, comment);
-        JsonElement json = unmarshall(callApiPost(apiUrl, parameters));
+        JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
         
-        unmarshall(new TypeToken<Comment>(){}, json.getAsJsonObject().get("comment"));
+        unmarshall(new TypeToken<Comment>(){}, json.get("comment"));
 	}
 
 	@Override
@@ -41,9 +41,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			int issueNumber, String label) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.ADD_LABEL_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        JsonElement json = unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        JsonObject json = unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
         
-        return unmarshall(new TypeToken<List<String>>(){}, json.getAsJsonObject().get("labels"));
+        return unmarshall(new TypeToken<List<String>>(){}, json.get("labels"));
 	}
 
 	@Override
@@ -70,9 +70,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			int issueNumber) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<Issue>(){}, json.getAsJsonObject().get("issue"));
+        return unmarshall(new TypeToken<Issue>(){}, json.get("issue"));
 	}
 
 	@Override
@@ -80,18 +80,18 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			String repositoryName, int issueNumber) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUE_COMMENTS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Comment>>(){}, json.getAsJsonObject().get("comments"));
+        return unmarshall(new TypeToken<List<Comment>>(){}, json.get("comments"));
 	}
 
 	@Override
 	public List<String> getIssueLabels(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUE_LABELS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<String>>(){}, json.getAsJsonObject().get("labels"));
+        return unmarshall(new TypeToken<List<String>>(){}, json.get("labels"));
 	}
 
 	@Override
@@ -99,9 +99,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			State state) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUES_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withFieldEnum(ParameterNames.STATE, state).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Issue>>(){}, json.getAsJsonObject().get("issues"));
+        return unmarshall(new TypeToken<List<Issue>>(){}, json.get("issues"));
 	}
 
 	@Override
@@ -109,9 +109,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			int issueNumber, String label) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.REMOVE_LABEL_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        JsonElement json = unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        JsonObject json = unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
         
-        return unmarshall(new TypeToken<List<String>>(){}, json.getAsJsonObject().get("labels"));
+        return unmarshall(new TypeToken<List<String>>(){}, json.get("labels"));
 	}
 
 	@Override
@@ -127,9 +127,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			State state, String keyword) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.SEARCH_ISSUES_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withFieldEnum(ParameterNames.STATE, state).withField(ParameterNames.KEYWORD, keyword).buildUrl();
-        JsonElement json = unmarshall(callApiGet(apiUrl));
+        JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Issue>>(){}, json.getAsJsonObject().get("issues"));
+        return unmarshall(new TypeToken<List<Issue>>(){}, json.get("issues"));
 	}
 
 	@Override

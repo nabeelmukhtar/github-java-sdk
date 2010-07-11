@@ -72,6 +72,16 @@ public final class TestConstants {
     	testConstants.getProperty("com.github.api.v2.services.testTreeHash");
 	public static final String TEST_FILE_PATH =
     	testConstants.getProperty("com.github.api.v2.services.testFilePath");
+	public static final String TEST_KEY_TITLE =
+		testConstants.getProperty("com.github.api.v2.services.testKeyTitle");
+	public static final String TEST_KEY =
+		testConstants.getProperty("com.github.api.v2.services.testKey");
+	public static final String TEST_REPOSITORY_DESC = 
+		testConstants.getProperty("com.github.api.v2.services.testRepositoryDesc");
+	public static final String TEST_REPOSITORY_PAGE = 
+		testConstants.getProperty("com.github.api.v2.services.testRepositoryPage");
+	public static final String TEST_KEY_ID = 
+		testConstants.getProperty("com.github.api.v2.services.testKeyId");
     /**
      * Instantiates a new test constants.
      */

@@ -23,6 +23,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
@@ -126,9 +127,14 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 		return builder;
 	}
     
-	protected JsonElement unmarshall(InputStream jsonContent) {
+	protected JsonObject unmarshall(InputStream jsonContent) {
         try {
-        	return parser.parse(new InputStreamReader(jsonContent));
+        	JsonElement element = parser.parse(new InputStreamReader(jsonContent));
+        	if (element.isJsonObject()) {
+        		return element.getAsJsonObject();
+        	} else {
+        		throw new GitHubException("Unknown content found in response." + element);
+        	}
         } catch (Exception e) {
             throw new GitHubException(e);
         } finally {
