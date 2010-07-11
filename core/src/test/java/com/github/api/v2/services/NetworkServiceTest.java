@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.github.api.v2.schema.Commit;
 import com.github.api.v2.schema.Network;
+import com.github.api.v2.services.constant.TestConstants;
 
 public class NetworkServiceTest extends BaseGitHubServiceTest {
 	private NetworkService service;
@@ -26,19 +27,27 @@ public class NetworkServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testGetNetworkDataStringStringString() {
-		List<Commit> commits = service.getNetworkData("", "", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Network Hash."), TestConstants.TEST_NETWORK_HASH);
+		List<Commit> commits = service.getNetworkData(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_NETWORK_HASH);
 		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
 	}
 
 	@Test
 	public void testGetNetworkDataStringStringStringIntInt() {
-		List<Commit> commits = service.getNetworkData("", "", "", 1, 5);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Network Hash."), TestConstants.TEST_NETWORK_HASH);
+		List<Commit> commits = service.getNetworkData(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_NETWORK_HASH, 1, 5);
 		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
 	}
 
 	@Test
 	public void testGetNetworkMeta() {
-		Network networkMeta = service.getNetworkMeta("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		Network networkMeta = service.getNetworkMeta(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNull("Network cannot be null", networkMeta);
 	}
 

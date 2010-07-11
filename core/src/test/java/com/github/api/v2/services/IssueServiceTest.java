@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.github.api.v2.schema.Comment;
 import com.github.api.v2.schema.Issue;
+import com.github.api.v2.services.constant.TestConstants;
 
 public class IssueServiceTest extends BaseGitHubServiceTest {
 	private IssueService service;
@@ -26,67 +27,107 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testAddComment() {
-		service.addComment("", "", 1, "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Comment."), TestConstants.TEST_ISSUE_COMMENT);
+		service.addComment(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_COMMENT);
 	}
 
 	@Test
 	public void testAddLabel() {
-		service.addLabel("", "", 1, "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Label."), TestConstants.TEST_ISSUE_LABEL);
+		service.addLabel(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_LABEL);
 	}
 
 	@Test
 	public void testCloseIssue() {
-		service.closeIssue("", "", 1);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
+		service.closeIssue(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER));
 	}
 
 	@Test
 	public void testCreateIssue() {
-		service.createIssue("", "", "", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue Title."), TestConstants.TEST_ISSUE_TITLE);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue Body."), TestConstants.TEST_ISSUE_BODY);
+		service.createIssue(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_ISSUE_TITLE, TestConstants.TEST_ISSUE_BODY);
 	}
 
 	@Test
 	public void testGetIssue() {
-		Issue issue = service.getIssue("", "", 1);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
+		Issue issue = service.getIssue(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER));
 		assertNotNull("Issue cannot be null.", issue);
 	}
 
 	@Test
 	public void testGetIssueComments() {
-		List<Comment> issueComments = service.getIssueComments("", "", 1);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
+		List<Comment> issueComments = service.getIssueComments(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER));
 		assertNotNullOrEmpty("Issue comments cannot be null or empty.", issueComments);
 	}
 
 	@Test
 	public void testGetIssueLabels() {
-		List<String> issueLabels = service.getIssueLabels("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		List<String> issueLabels = service.getIssueLabels(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Issue labels should not be null or empty.", issueLabels);
 	}
 
 	@Test
 	public void testGetIssues() {
-		List<Issue> issues = service.getIssues("", "", Issue.State.OPEN);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+		List<Issue> issues = service.getIssues(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Issue.State.OPEN);
 		assertNotNullOrEmpty("Issues cannot be null or empty.", issues);
 	}
 
 	@Test
 	public void testRemoveLabel() {
-		List<String> labels = service.removeLabel("", "", 1, "");
-		assertFalse("Label should not be in the list.", labels.contains(""));
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Label."), TestConstants.TEST_ISSUE_LABEL);
+		List<String> labels = service.removeLabel(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_LABEL);
+		assertFalse("Label should not be in the list.", labels.contains(TestConstants.TEST_ISSUE_LABEL));
 	}
 
 	@Test
 	public void testReopenIssue() {
-		service.reopenIssue("", "", 1);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
+		service.reopenIssue(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER));
 	}
 
 	@Test
 	public void testSearchIssues() {
-		List<Issue> issues = service.searchIssues("", "", Issue.State.OPEN, "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Query."), TestConstants.TEST_QUERY);
+		List<Issue> issues = service.searchIssues(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Issue.State.OPEN, TestConstants.TEST_QUERY);
 		assertNotNullOrEmpty("Issues cannot be null or empty.", issues);
 	}
 
 	@Test
 	public void testUpdateIssue() {
-		service.updateIssue("", "", 1, "", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue Title."), TestConstants.TEST_ISSUE_TITLE);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue Body."), TestConstants.TEST_ISSUE_BODY);
+		service.updateIssue(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_TITLE, TestConstants.TEST_ISSUE_BODY);
 	}
 }

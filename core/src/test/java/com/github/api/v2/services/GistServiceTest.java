@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.api.v2.schema.Gist;
+import com.github.api.v2.services.constant.TestConstants;
 
 public class GistServiceTest extends BaseGitHubServiceTest {
 	private GistService service;
@@ -26,19 +27,23 @@ public class GistServiceTest extends BaseGitHubServiceTest {
 
 	@Test
 	public void testGetGist() {
-		Gist gist = service.getGist("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Gist Id."), TestConstants.TEST_GIST_ID);
+		Gist gist = service.getGist(TestConstants.TEST_GIST_ID);
 		assertNotNull("Gist cannot be null", gist);
 	}
 
 	@Test
 	public void testGetGistContent() {
-		InputStream gistContent = service.getGistContent("", "");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Gist Id."), TestConstants.TEST_GIST_ID);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Gist File."), TestConstants.TEST_GIST_FILE);
+		InputStream gistContent = service.getGistContent(TestConstants.TEST_GIST_ID, "");
 		assertNotNullOrEmpty("Gist content cannot be null or empty", convertStreamToString(gistContent));
 	}
 
 	@Test
 	public void testGetUserGists() {
-		List<Gist> gists = service.getUserGists("");
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+		List<Gist> gists = service.getUserGists(TestConstants.TEST_USER_NAME);
 		assertNotNullOrEmpty("Gists cannot be null or empty.", gists);
 	}
 }

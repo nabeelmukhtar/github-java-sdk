@@ -54,6 +54,24 @@ public final class TestConstants {
     /** The Constant TEST_REPOSITORY_NAME. */
     public static final String TEST_COMMIT_HASH =
         testConstants.getProperty("com.github.api.v2.services.testCommitHash");
+    public static final String TEST_GIST_ID =
+        testConstants.getProperty("com.github.api.v2.services.testGistId");
+    public static final String TEST_GIST_FILE =
+        testConstants.getProperty("com.github.api.v2.services.testGistFile");
+    public static final String TEST_ISSUE_COMMENT =
+        testConstants.getProperty("com.github.api.v2.services.testIssueComment");
+    public static final String TEST_ISSUE_LABEL =
+        testConstants.getProperty("com.github.api.v2.services.testIssueLabel");
+    public static final String TEST_ISSUE_TITLE =
+        testConstants.getProperty("com.github.api.v2.services.testIssueTitle");
+    public static final String TEST_ISSUE_BODY =
+        testConstants.getProperty("com.github.api.v2.services.testIssueBody");
+	public static final String TEST_NETWORK_HASH =
+    	testConstants.getProperty("com.github.api.v2.services.testNetworkHash");
+	public static final String TEST_TREE_SHA =
+    	testConstants.getProperty("com.github.api.v2.services.testTreeHash");
+	public static final String TEST_FILE_PATH =
+    	testConstants.getProperty("com.github.api.v2.services.testFilePath");
     /**
      * Instantiates a new test constants.
      */
