@@ -6,8 +6,6 @@ package com.github.api.v2.services.constant;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -142,7 +140,7 @@ public final class GitHubApiUrls {
 	    private String urlFormat;
 	    
     	/** The parameters map. */
-	    private Map<String, Collection<String>> parametersMap = new HashMap<String, Collection<String>>();
+	    private Map<String, String> parametersMap = new HashMap<String, String>();
     	
 		/** The fields map. */
 		private Map<String, String> fieldsMap = new HashMap<String, String>();
@@ -178,12 +176,7 @@ public final class GitHubApiUrls {
 	     */
 	    public GitHubApiUrlBuilder withParameter(String name, String value) {
 	    	if (value != null && value.length() > 0) {
-	    		Collection<String> values = parametersMap.get(name);
-	    		if (values == null) {
-	    			values = new ArrayList<String>();
-		    		parametersMap.put(name, values);
-	    		}
-	    		values.add(encodeUrl(value));
+	    		parametersMap.put(name, encodeUrl(value));
 	    	}
     		
     		return this;
