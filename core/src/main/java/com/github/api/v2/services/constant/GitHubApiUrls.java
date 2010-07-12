@@ -7,8 +7,10 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,6 +36,11 @@ public final class GitHubApiUrls {
         } catch (IOException e) {
         	logger.log(Level.SEVERE, "An error occurred while loading urls.", e);
         }
+    }
+    
+    public static interface OAuthUrls {
+    	public static final String AUTHORIZE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.oauthService.authorize");
+    	public static final String ACCESS_TOKEN_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.oauthService.accessToken");
     }
     
     public static interface UserApiUrls {
@@ -193,6 +200,30 @@ public final class GitHubApiUrls {
 	    public GitHubApiUrlBuilder withParameterEnum(String name, ValueEnum value) {
 	    	withParameter(name, value.value());
     		
+    		return this;
+    	}
+	    
+    	/**
+	     * With parameter enum set.
+	     * 
+	     * @param name the name
+	     * @param enumSet the enum set
+	     * @param separator the separator
+	     * 
+	     * @return the facebook graph api url builder
+	     */
+	    public GitHubApiUrlBuilder withParameterEnumSet(String name, Set<? extends ValueEnum> enumSet, String separator) {
+	    	StringBuilder builder = new StringBuilder();
+	    	
+	    	for (Iterator<? extends ValueEnum> iterator = enumSet.iterator(); iterator.hasNext();) {
+	    		builder.append(encodeUrl(iterator.next().value()));
+	    		if (iterator.hasNext()) {
+	    			builder.append(separator);
+	    		}
+			}
+	    	
+	    	parametersMap.put(name, builder.toString());
+	    	
     		return this;
     	}
 	    

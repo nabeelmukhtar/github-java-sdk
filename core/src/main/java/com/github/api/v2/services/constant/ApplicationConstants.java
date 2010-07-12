@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  * The Class ApplicationConstants.
@@ -48,6 +49,12 @@ public final class ApplicationConstants {
     
     /** The Constant READ_TIMEOUT. */
     public static final int READ_TIMEOUT = getIntProperty("com.github.api.v2.services.readTimeout");
+    
+    /** The Constant ACCESS_TOKEN_PATTERN. */
+    public static final Pattern ACCESS_TOKEN_PATTERN = getPatternProperty("com.github.api.v2.services.accessTokenPattern");
+    
+    /** The Constant ACCESS_DENIED_PATTERN. */
+    public static final Pattern ACCESS_DENIED_PATTERN = getPatternProperty("com.github.api.v2.services.accessDeniedPattern");
     
     /**
      * Instantiates a new application constants.
@@ -130,6 +137,23 @@ public final class ApplicationConstants {
             return 0;
         } else {
             return Long.parseLong(property);
+        }
+    }
+    
+    /**
+     * Gets the pattern property.
+     * 
+     * @param key the key
+     * 
+     * @return the pattern property
+     */
+    public static Pattern getPatternProperty(String key) {
+        String property = applicationConstants.getProperty(key);
+
+        if (isNullOrEmpty(property)) {
+            return null;
+        } else {
+            return Pattern.compile(property);
         }
     }
 

@@ -7,6 +7,7 @@ import com.github.api.v2.services.impl.CommitServiceImpl;
 import com.github.api.v2.services.impl.GistServiceImpl;
 import com.github.api.v2.services.impl.IssueServiceImpl;
 import com.github.api.v2.services.impl.NetworkServiceImpl;
+import com.github.api.v2.services.impl.OAuthServiceImpl;
 import com.github.api.v2.services.impl.ObjectServiceImpl;
 import com.github.api.v2.services.impl.RepositoryServiceImpl;
 import com.github.api.v2.services.impl.UserServiceImpl;
@@ -99,5 +100,9 @@ public class GitHubServiceFactory {
      */
     public UserService createUserService() {
     	return new UserServiceImpl();
+    }
+    
+    public OAuthService createOAuthService(String clientId, String secret) {
+    	return new OAuthServiceImpl(clientId, secret);    	
     }
 }

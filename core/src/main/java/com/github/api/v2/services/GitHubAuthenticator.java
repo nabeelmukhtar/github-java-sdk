@@ -3,6 +3,8 @@
  */
 package com.github.api.v2.services;
 
+import com.github.api.v2.services.auth.Authentication;
+
 
 /**
  * The Interface GoogleSearchAuthenticationClient.
@@ -11,10 +13,9 @@ public interface GitHubAuthenticator extends GitHubCommunicator {
 
     /**
      * Sets the application key.
-     * 
-     * @param applicationKey the new application key
+     * @param authentication TODO
      */
-    public void setCredentials(String userName, String applicationKey);
+    public void setAuthentication(Authentication authentication);
 
 	/**
 	 * Sets the user ip address.

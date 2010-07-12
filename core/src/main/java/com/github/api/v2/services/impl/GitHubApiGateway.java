@@ -21,8 +21,10 @@ import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 
 import com.github.api.v2.services.GitHubException;
+import com.github.api.v2.services.auth.Authentication;
+import com.github.api.v2.services.auth.HeaderBasedAuthentication;
+import com.github.api.v2.services.auth.ParameterBasedAuthentication;
 import com.github.api.v2.services.constant.ApplicationConstants;
-import com.github.api.v2.services.util.Base64;
 
 /**
  * The Class GoogleSearchApiGateway.
@@ -38,17 +40,13 @@ public abstract class GitHubApiGateway {
 	/** The Constant REFERRER. */
 	private static final String REFERRER = "Referer";
 	
-	/** The Constant REFERRER. */
-	private static final String AUTHORIZATION = "Authorization";
-	
-	/** The Constant REFERRER. */
-	private static final String BASIC = "Basic ";
-	
 	/** The request headers. */
 	protected Map<String, String> requestHeaders = new HashMap<String, String>();
 	
 	/** The user ip address. */
 	protected String userIpAddress;
+	
+	protected Authentication authentication;
 	
 	/** The api version. */
 	protected String apiVersion = ApplicationConstants.DEFAULT_API_VERSION;
@@ -128,12 +126,10 @@ public abstract class GitHubApiGateway {
 
     /**
      * Sets the application key.
-     * 
-     * @param applicationKey the new application key
+     * @param authentication TODO
      */
-    public void setCredentials(String userName, String applicationKey) {
-    	String credentials = userName + ":" + applicationKey;
-    	requestHeaders.put(AUTHORIZATION, BASIC + Base64.encodeBytes(credentials.getBytes()));
+    public void setAuthentication(Authentication authentication) {
+    	this.authentication = authentication; 
     }
 	
 	/**
@@ -348,6 +344,16 @@ public abstract class GitHubApiGateway {
 	    } catch (IOException e) {
 	        throw new GitHubException(e);
 	    }
+	}
+	
+	protected void authenticate(Map<String, String> parameters, Map<String, String> headers) throws IOException {
+		if (authentication != null) {
+			if (authentication instanceof ParameterBasedAuthentication) {
+				parameters.putAll(((ParameterBasedAuthentication) authentication).getParameters());
+			} else if (authentication instanceof HeaderBasedAuthentication) {
+				headers.putAll(((HeaderBasedAuthentication) authentication).getHeaders());
+			}
+		}
 	}
 
 	/**

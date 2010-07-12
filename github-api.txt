@@ -2,3 +2,6 @@ http://develop.github.com/
 com.github.api.v2
 only json.
 authenticate:
+http://support.github.com/discussions/api
+http://support.github.com/discussions/api/28-oauth2-busy-developers-guide
+http://github.com/account/applications/59

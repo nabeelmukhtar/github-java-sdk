@@ -65,7 +65,8 @@ public class UserApiSample {
     		for (User user : users) {
     			printResult(user);			
     		}
-    		User user = service.getUser("nabeelmukhtar");
+    		service.setAuthentication(null);
+    		User user = service.getCurrentUser();
     		printResult(user);
 //        } else {
 //        	printHelp(options);

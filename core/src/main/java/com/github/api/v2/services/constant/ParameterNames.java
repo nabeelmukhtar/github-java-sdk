@@ -95,4 +95,24 @@ public interface ParameterNames {
 	public static final String HAS_ISSUES = "has_issues";
 	
 	public static final String HAS_DOWNLOADS = "has_downloads";
+	
+	public static final String LOGIN = "login";
+	public static final String TOKEN = "token";
+	public static final String ACCESS_TOKEN = "access_token";
+	
+    /** The Constant CLIENT_ID. */
+    public static final String CLIENT_ID = "client_id";
+    
+    /** The Constant CLIENT_SECRET. */
+    public static final String CLIENT_SECRET = "client_secret";
+    
+    /** The Constant REDIRECT_URI. */
+    public static final String REDIRECT_URI = "redirect_uri";
+    
+    /** The Constant CODE. */
+    public static final String CODE = "code";
+    
+    /** The Constant SCOPE. */
+    public static final String SCOPE = "scope";
+	
 }

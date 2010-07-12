@@ -24,6 +24,21 @@ public final class TestConstants {
         }
     }
     
+    /** The Constant TEST_CONSUMER_KEY. */
+    public static final String TEST_CLIENT_ID = testConstants.getProperty("com.github.api.v2.services.clientId");
+    
+    /** The Constant TEST_CONSUMER_SECRET. */
+    public static final String TEST_CLIENT_SECRET = testConstants.getProperty("com.github.api.v2.services.clientSecret");
+    
+    /** The Constant TEST_CODE. */
+    public static final String TEST_CODE = testConstants.getProperty("com.github.api.v2.services.code");
+    
+    /** The Constant TEST_ACCESS_TOKEN. */
+    public static final String TEST_ACCESS_TOKEN = testConstants.getProperty("com.github.api.v2.services.accessToken");
+    
+    /** The Constant TEST_CALLBACK_URL. */
+    public static final String TEST_CALLBACK_URL = testConstants.getProperty("com.github.api.v2.services.callbackUrl");
+    
     /** The Constant TEST_API_KEY. */
     public static final String TEST_API_KEY =
         testConstants.getProperty("com.github.api.v2.services.apiKey");
