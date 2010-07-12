@@ -15,6 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,10 +44,11 @@ public abstract class GitHubApiGateway {
 	/** The request headers. */
 	protected Map<String, String> requestHeaders = new HashMap<String, String>();
 	
+	/** The request headers. */
+	protected Map<String, String> requestParameters = new HashMap<String, String>();
+	
 	/** The user ip address. */
 	protected String userIpAddress;
-	
-	protected Authentication authentication;
 	
 	/** The api version. */
 	protected String apiVersion = ApplicationConstants.DEFAULT_API_VERSION;
@@ -129,7 +131,13 @@ public abstract class GitHubApiGateway {
      * @param authentication TODO
      */
     public void setAuthentication(Authentication authentication) {
-    	this.authentication = authentication; 
+		if (authentication != null) {
+			if (authentication instanceof ParameterBasedAuthentication) {
+				requestParameters.putAll(((ParameterBasedAuthentication) authentication).getParameters());
+			} else if (authentication instanceof HeaderBasedAuthentication) {
+				requestHeaders.putAll(((HeaderBasedAuthentication) authentication).getHeaders());
+			}
+		}
     }
 	
 	/**
@@ -189,6 +197,14 @@ public abstract class GitHubApiGateway {
 	protected InputStream callApiGet(String apiUrl, int expected) {
 	    try {
 	        URL               url     = new URL(apiUrl);
+	        if (!requestParameters.isEmpty()) {
+	        	if (url.getQuery() == null) {
+	        		url = new URL(apiUrl + "?" + getParametersString(requestParameters));
+	        	} else {
+	        		url = new URL(apiUrl + "&" + getParametersString(requestParameters));
+	        	}
+	        }
+	        
 	        HttpURLConnection request = (HttpURLConnection) url.openConnection();
 	
 	        if (ApplicationConstants.CONNECT_TIMEOUT > -1) {
@@ -253,6 +269,8 @@ public abstract class GitHubApiGateway {
             for (String headerName : requestHeaders.keySet()) {
                 request.setRequestProperty(headerName, requestHeaders.get(headerName));
             }
+            
+            parameters.putAll(requestParameters);
 
             request.setRequestMethod("POST");
             request.setDoOutput(true);
@@ -280,10 +298,14 @@ public abstract class GitHubApiGateway {
 	
 	protected String getParametersString(Map<String, String> parameters) {
 		StringBuilder builder = new StringBuilder();
-		for(Map.Entry<String, String> entry : parameters.entrySet()) {
+		for (Iterator<Map.Entry<String, String>> iterator = parameters.entrySet().iterator(); iterator.hasNext();) {
+			Map.Entry<String, String> entry = iterator.next();
 			builder.append(entry.getKey());
 			builder.append("=");
 			builder.append(encodeUrl(entry.getValue()));
+			if (iterator.hasNext()) {
+				builder.append("&");				
+			}
 		}
 		
 		return builder.toString();
@@ -346,16 +368,6 @@ public abstract class GitHubApiGateway {
 	    }
 	}
 	
-	protected void authenticate(Map<String, String> parameters, Map<String, String> headers) throws IOException {
-		if (authentication != null) {
-			if (authentication instanceof ParameterBasedAuthentication) {
-				parameters.putAll(((ParameterBasedAuthentication) authentication).getParameters());
-			} else if (authentication instanceof HeaderBasedAuthentication) {
-				headers.putAll(((HeaderBasedAuthentication) authentication).getHeaders());
-			}
-		}
-	}
-
 	/**
 	 * Close stream.
 	 * 

@@ -73,7 +73,7 @@ public class UserApiSample {
 	}
 
 	private static void printResult(User user) {
-		System.out.println(user.getUsername() + ":" + user.getFullname());
+		System.out.println(user.getUsername() + ":" + user.getName());
 	}
 
 	/**
