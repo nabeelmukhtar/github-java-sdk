@@ -22,6 +22,7 @@ public class OAuthServiceTest extends BaseGitHubServiceTest {
 	 * @see com.google.code.facebook.graph.client.BaseFacebookGraphApiTestCase#setUp()
 	 */
 	public void setUp() throws Exception {
+		super.setUp();
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test consumer key."), TestConstants.TEST_CLIENT_ID);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test consumer secret."), TestConstants.TEST_CLIENT_SECRET);
 		service = factory.createOAuthService(TestConstants.TEST_CLIENT_ID, TestConstants.TEST_CLIENT_SECRET);
@@ -31,6 +32,7 @@ public class OAuthServiceTest extends BaseGitHubServiceTest {
 	 * @see com.google.code.facebook.graph.client.BaseFacebookGraphApiTestCase#tearDown()
 	 */
 	public void tearDown() throws Exception {
+		super.tearDown();
 		service = null;
 	}
 
