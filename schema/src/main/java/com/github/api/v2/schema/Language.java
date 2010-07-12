@@ -64,7 +64,7 @@ public enum Language implements ValueEnum {
 	Verilog("Verilog"),
 	VHDL("VHDL"),
 	VimL("VimL"),
-	Visual_Basic("Visual Basic");
+	VisualBasic("Visual Basic");
 	
     /** The Constant stringToEnum. */
 	private static final Map<String, Language> stringToEnum = new HashMap<String, Language>();

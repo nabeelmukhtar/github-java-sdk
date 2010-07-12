@@ -10,13 +10,13 @@ import java.util.Map;
 import com.github.api.v2.schema.Key;
 import com.github.api.v2.schema.Language;
 import com.github.api.v2.schema.Repository;
-import com.github.api.v2.schema.Tag;
 import com.github.api.v2.schema.User;
 import com.github.api.v2.schema.Repository.Visibility;
 import com.github.api.v2.services.RepositoryService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -89,12 +89,12 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	}
 
 	@Override
-	public List<Tag> getBranches(String userName, String repositoryName) {
+	public Map<String, String> getBranches(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_BRANCHES_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Tag>>(){}, json.get("branches"));
+        return unmarshall(new TypeToken<Map<String, String>>(){}, json.get("branches"));
 	}
 
 	@Override
@@ -171,12 +171,12 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	}
 
 	@Override
-	public List<Tag> getTags(String userName, String repositoryName) {
+	public Map<String, String> getTags(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_TAGS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Tag>>(){}, json.get("tags"));
+        return unmarshall(new TypeToken<Map<String, String>>(){}, json.get("tags"));
 	}
 
 	@Override
@@ -269,5 +269,11 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.WATCH_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+	}
+	
+	protected GsonBuilder getGsonBuilder() {
+		GsonBuilder gson = super.getGsonBuilder();
+		gson.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		return gson;
 	}
 }

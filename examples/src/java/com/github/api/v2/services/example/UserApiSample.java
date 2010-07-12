@@ -65,8 +65,7 @@ public class UserApiSample {
     		for (User user : users) {
     			printResult(user);			
     		}
-    		service.setAuthentication(null);
-    		User user = service.getCurrentUser();
+    		User user = service.getUser("defunkt");
     		printResult(user);
 //        } else {
 //        	printHelp(options);

@@ -73,7 +73,7 @@ public class GistApiSample {
 	}
 
 	private static void printResult(Gist gist) {
-		System.out.println(gist);
+		System.out.println(gist.getDescription());
 	}
 
 	/**

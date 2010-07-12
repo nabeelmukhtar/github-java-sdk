@@ -12,6 +12,7 @@ import com.github.api.v2.schema.Issue;
 import com.github.api.v2.schema.Language;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.SchemaEntity;
+import com.github.api.v2.schema.Tree;
 import com.github.api.v2.services.AsyncResponseHandler;
 import com.github.api.v2.services.GitHubException;
 import com.github.api.v2.services.GitHubService;
@@ -122,6 +123,13 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 			public Language deserialize(JsonElement arg0, Type arg1,
 					JsonDeserializationContext arg2) throws JsonParseException {
 				return Language.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Tree.Type.class, new JsonDeserializer<Tree.Type>() {
+			@Override
+			public Tree.Type deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Tree.Type.fromValue(arg0.getAsString());
 			}
 		});
 		return builder;

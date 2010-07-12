@@ -10,7 +10,6 @@ import org.junit.Test;
 import com.github.api.v2.schema.Key;
 import com.github.api.v2.schema.Language;
 import com.github.api.v2.schema.Repository;
-import com.github.api.v2.schema.Tag;
 import com.github.api.v2.schema.User;
 import com.github.api.v2.services.constant.TestConstants;
 
@@ -75,8 +74,8 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	public void testGetBranches() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-		List<Tag> branches = service.getBranches(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
-		assertNotNullOrEmpty("Branches cannot be null or empty.", branches);
+    	Map<String, String> branches = service.getBranches(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+		assertFalse("Branches cannot be null or empty.", branches == null || branches.isEmpty());
 	}
 
 	@Test
@@ -143,8 +142,8 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	public void testGetTags() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-		List<Tag> tags = service.getTags(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
-		assertNotNullOrEmpty("Tags cannot be null or empty.", tags);
+    	Map<String, String> tags = service.getTags(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+		assertFalse("Tags cannot be null or empty.", tags == null || tags.isEmpty());
 	}
 
 	@Test

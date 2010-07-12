@@ -9,7 +9,6 @@ import java.util.Map;
 import com.github.api.v2.schema.Key;
 import com.github.api.v2.schema.Language;
 import com.github.api.v2.schema.Repository;
-import com.github.api.v2.schema.Tag;
 import com.github.api.v2.schema.User;
 import com.github.api.v2.schema.Repository.Visibility;
 
@@ -42,6 +41,6 @@ public interface RepositoryService extends GitHubService {
 	public List<User> getWatchers(String userName, String repositoryName);
 	public List<Repository> getForks(String userName, String repositoryName);
 	public Map<Language, Long> getLanguageBreakdown(String userName, String repositoryName);
-	public List<Tag> getTags(String userName, String repositoryName);
-	public List<Tag> getBranches(String userName, String repositoryName);
+	public Map<String, String> getTags(String userName, String repositoryName);
+	public Map<String, String> getBranches(String userName, String repositoryName);
 }
