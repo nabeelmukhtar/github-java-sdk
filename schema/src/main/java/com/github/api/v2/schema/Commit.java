@@ -238,4 +238,18 @@ public class Commit extends SchemaEntity {
 	public void setModified(List<Delta> modified) {
 		this.modified = modified;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Commit [added=" + added + ", author=" + author
+				+ ", authoredDate=" + authoredDate + ", committedDate="
+				+ committedDate + ", committer=" + committer + ", date=" + date
+				+ ", gravatar=" + gravatar + ", id=" + id + ", login=" + login
+				+ ", message=" + message + ", modified=" + modified
+				+ ", parents=" + parents + ", removed=" + removed + ", space="
+				+ space + ", time=" + time + ", tree=" + tree + ", url=" + url
+				+ "]";
+	}
 }

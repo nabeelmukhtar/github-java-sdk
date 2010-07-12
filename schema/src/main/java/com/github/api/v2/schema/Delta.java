@@ -40,4 +40,11 @@ public class Delta extends SchemaEntity {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Delta [diff=" + diff + ", filename=" + filename + "]";
+	}
 }

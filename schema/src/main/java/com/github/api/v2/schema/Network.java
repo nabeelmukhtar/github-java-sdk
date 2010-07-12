@@ -56,4 +56,12 @@ public class Network extends SchemaEntity {
 	public void setDates(List<Date> dates) {
 		this.dates = dates;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Network [dates=" + dates + ", focus=" + focus + ", nethash="
+				+ nethash + "]";
+	}
 }

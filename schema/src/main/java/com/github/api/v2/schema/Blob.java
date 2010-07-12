@@ -92,4 +92,13 @@ public class Blob extends SchemaEntity {
 	public void setData(String data) {
 		this.data = data;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Blob [data=" + data + ", mimeType=" + mimeType + ", mode="
+				+ mode + ", name=" + name + ", sha=" + sha + ", size=" + size
+				+ "]";
+	}
 }

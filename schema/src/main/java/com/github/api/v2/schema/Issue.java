@@ -202,4 +202,15 @@ public class Issue extends SchemaEntity {
 	public void setComments(int comments) {
 		this.comments = comments;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Issue [body=" + body + ", comments=" + comments
+				+ ", createdAt=" + createdAt + ", gravatarId=" + gravatarId
+				+ ", number=" + number + ", position=" + position + ", state="
+				+ state + ", title=" + title + ", updatedAt=" + updatedAt
+				+ ", user=" + user + ", votes=" + votes + "]";
+	}
 }

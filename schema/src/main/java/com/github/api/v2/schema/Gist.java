@@ -83,4 +83,13 @@ public class Gist extends SchemaEntity {
 	public void setFiles(List<String> files) {
 		this.files = files;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Gist [createdAt=" + createdAt + ", description=" + description
+				+ ", files=" + files + ", repo=" + repo + ", visibility="
+				+ visibility + "]";
+	}
 }

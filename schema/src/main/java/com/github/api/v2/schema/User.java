@@ -290,4 +290,22 @@ public class User extends SchemaEntity {
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "User [blog=" + blog + ", collaborators=" + collaborators
+				+ ", company=" + company + ", createdAt=" + createdAt
+				+ ", diskUsage=" + diskUsage + ", email=" + email
+				+ ", followersCount=" + followersCount + ", followingCount="
+				+ followingCount + ", fullname=" + fullname + ", gravatarId="
+				+ gravatarId + ", id=" + id + ", location=" + location
+				+ ", login=" + login + ", name=" + name
+				+ ", ownedPrivateRepoCount=" + ownedPrivateRepoCount
+				+ ", plan=" + plan + ", privateGistCount=" + privateGistCount
+				+ ", publicGistCount=" + publicGistCount + ", publicRepoCount="
+				+ publicRepoCount + ", totalPrivateRepoCount="
+				+ totalPrivateRepoCount + ", username=" + username + "]";
+	}
 }

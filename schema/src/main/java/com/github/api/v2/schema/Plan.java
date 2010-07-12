@@ -66,4 +66,12 @@ public class Plan extends SchemaEntity {
 	public void setPrivateRepos(int privateRepos) {
 		this.privateRepos = privateRepos;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Plan [collaborators=" + collaborators + ", name=" + name
+				+ ", privateRepos=" + privateRepos + ", space=" + space + "]";
+	}
 }

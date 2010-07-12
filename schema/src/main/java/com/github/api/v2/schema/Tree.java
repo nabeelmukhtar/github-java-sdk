@@ -110,4 +110,12 @@ public class Tree extends SchemaEntity {
 	public void setType(Type type) {
 		this.type = type;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Tree [mode=" + mode + ", name=" + name + ", sha=" + sha
+				+ ", type=" + type + "]";
+	}
 }

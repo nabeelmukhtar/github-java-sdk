@@ -63,7 +63,7 @@ public class Repository extends SchemaEntity {
 	private String owner;
 	private String name;
 	private String description;
-	private Visibility visibiity;
+	private Visibility visibility;
 	private String url;
 	private int openIssues;
 	private boolean fork;
@@ -136,14 +136,14 @@ public class Repository extends SchemaEntity {
 	/**
 	 * @return the visibiity
 	 */
-	public Visibility getVisibiity() {
-		return visibiity;
+	public Visibility getVisibility() {
+		return visibility;
 	}
 	/**
 	 * @param visibiity the visibiity to set
 	 */
-	public void setVisibiity(Visibility visibiity) {
-		this.visibiity = visibiity;
+	public void setVisibility(Visibility visibility) {
+		this.visibility = visibility;
 	}
 	/**
 	 * @return the url
@@ -384,5 +384,22 @@ public class Repository extends SchemaEntity {
 	 */
 	public void setHasDownloads(boolean hasDownloads) {
 		this.hasDownloads = hasDownloads;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Repository [actions=" + actions + ", created=" + created
+				+ ", description=" + description + ", followers=" + followers
+				+ ", fork=" + fork + ", forks=" + forks + ", hasDownloads="
+				+ hasDownloads + ", hasIssues=" + hasIssues + ", hasWiki="
+				+ hasWiki + ", homepage=" + homepage + ", id=" + id
+				+ ", language=" + language + ", name=" + name + ", openIssues="
+				+ openIssues + ", owner=" + owner + ", parent=" + parent
+				+ ", pushed=" + pushed + ", score=" + score + ", size=" + size
+				+ ", source=" + source + ", type=" + type + ", url=" + url
+				+ ", username=" + username + ", visibiity=" + visibility
+				+ ", watchers=" + watchers + "]";
 	}
 }

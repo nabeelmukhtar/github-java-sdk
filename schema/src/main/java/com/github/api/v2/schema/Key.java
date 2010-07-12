@@ -53,4 +53,11 @@ public class Key extends SchemaEntity {
 	public void setKey(String key) {
 		this.key = key;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Key [id=" + id + ", key=" + key + ", title=" + title + "]";
+	}
 }
