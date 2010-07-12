@@ -98,12 +98,12 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	}
 
 	@Override
-	public List<User> getCollaborators(String userName, String repositoryName) {
+	public List<String> getCollaborators(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_COLLABORATORS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<User>>(){}, json.get("collaborators"));
+        return unmarshall(new TypeToken<List<String>>(){}, json.get("collaborators"));
 	}
 
 	@Override
@@ -180,12 +180,12 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	}
 
 	@Override
-	public List<User> getWatchers(String userName, String repositoryName) {
+	public List<String> getWatchers(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_WATCHERS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<User>>(){}, json.get("watchers"));
+        return unmarshall(new TypeToken<List<String>>(){}, json.get("watchers"));
 	}
 
 	@Override

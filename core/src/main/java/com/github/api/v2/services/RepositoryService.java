@@ -33,12 +33,12 @@ public interface RepositoryService extends GitHubService {
 	public List<Key> getDeployKeys(String repositoryName);
 	public String addDeployKey(String repositoryName, String title, String key);
 	public void removeDeployKey(String repository, String id);
-	public List<User> getCollaborators(String userName, String repositoryName);
+	public List<String> getCollaborators(String userName, String repositoryName);
 	public void addCollaborator(String repositoryName, String collaboratorName);
 	public void removeCollaborator(String repositoryName, String collaboratorName);
 	public List<Repository> getPushableRepositories();
 	public List<User> getContributors(String userName, String repositoryName);
-	public List<User> getWatchers(String userName, String repositoryName);
+	public List<String> getWatchers(String userName, String repositoryName);
 	public List<Repository> getForks(String userName, String repositoryName);
 	public Map<Language, Long> getLanguageBreakdown(String userName, String repositoryName);
 	public Map<String, String> getTags(String userName, String repositoryName);
