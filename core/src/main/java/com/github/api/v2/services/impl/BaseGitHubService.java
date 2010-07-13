@@ -72,9 +72,10 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	 * 
 	 * @return the t
 	 */
+	@SuppressWarnings("unchecked")
 	protected <T> T unmarshall(TypeToken<T> typeToken, JsonElement response) {
 		Gson gson = getGsonBuilder().create();
-		return gson.fromJson(response, typeToken.getType());
+		return (T) gson.fromJson(response, typeToken.getType());
 	}
 
 	/**
