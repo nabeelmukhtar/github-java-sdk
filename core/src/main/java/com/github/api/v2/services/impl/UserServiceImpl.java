@@ -47,7 +47,7 @@ public class UserServiceImpl extends BaseGitHubService implements
 	public void followUser(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.FOLLOW_USER_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
-		callApiPost(apiUrl, EMPTY_PARAMETERS);
+		callApiPost(apiUrl, new HashMap<String, String>());
 	}
 
 	@Override
@@ -153,7 +153,7 @@ public class UserServiceImpl extends BaseGitHubService implements
 	public void unfollowUser(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.UNFOLLOW_USER_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
-		callApiPost(apiUrl, EMPTY_PARAMETERS);
+		callApiPost(apiUrl, new HashMap<String, String>());
 	}
 
 	@Override

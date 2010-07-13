@@ -25,6 +25,7 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		service = factory.createUserService();
+		service.setAuthentication(authentication);
 	}
 
 	@After

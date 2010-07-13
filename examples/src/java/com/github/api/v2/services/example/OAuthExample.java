@@ -15,9 +15,9 @@ import com.github.api.v2.services.OAuthService;
  *
  */
 public class OAuthExample {
-	private static final String CLIENT_ID = "92059e7b6b302d6b8c41";
-	private static final String CLIENT_SECRET = "b232d74b6b7d5627577d61ffb61644d8108697ec";
-	private static final String CALLBACK_URL = "http://waveclipse.appspot.com/Main";
+	private static final String CLIENT_ID = "18790e7033ab0148f05c";
+	private static final String CLIENT_SECRET = "52695c3febf1721b8bc6f569c5210d38d043696c";
+	private static final String CALLBACK_URL = "http://www.githubapitest.com";
 
 	/**
 	 * @param args

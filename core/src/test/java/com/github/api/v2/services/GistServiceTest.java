@@ -17,6 +17,7 @@ public class GistServiceTest extends BaseGitHubServiceTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		service = factory.createGistService();
+		service.setAuthentication(authentication);
 	}
 
 	@After

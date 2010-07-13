@@ -20,6 +20,7 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		service = factory.createRepositoryService();
+		service.setAuthentication(authentication);
 	}
 
 	@After

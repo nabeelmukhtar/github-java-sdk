@@ -31,7 +31,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	public void addCollaborator(String repositoryName, String collaboratorName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.ADD_COLLABORATOR_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.USER_NAME, collaboratorName).buildUrl();
-        unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	public void changeVisibility(String repositoryName, Visibility visibility) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.CHANGE_VISIBILITY_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).withFieldEnum(ParameterNames.VISIBILITY, visibility).buildUrl();
-        JsonObject json = unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         
         unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
 	}
@@ -75,7 +75,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	public void deleteRepository(String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.DELETE_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        JsonObject json = unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         
         unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
 	}
@@ -84,7 +84,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	public Repository forkRepository(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.FORK_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        JsonObject json = unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         return unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
 	}
 
@@ -193,7 +193,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 			String collaboratorName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.REMOVE_COLLABORATOR_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.USER_NAME, collaboratorName).buildUrl();
-        unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 
 	@Override
@@ -246,7 +246,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	public void unwatchRepository(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.UNWATCH_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 
 	@Override
@@ -268,7 +268,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	public void watchRepository(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.WATCH_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 	
 	protected GsonBuilder getGsonBuilder() {

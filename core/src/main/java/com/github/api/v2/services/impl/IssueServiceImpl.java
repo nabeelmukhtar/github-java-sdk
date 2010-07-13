@@ -41,7 +41,7 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			int issueNumber, String label) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.ADD_LABEL_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        JsonObject json = unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         
         return unmarshall(new TypeToken<List<String>>(){}, json.get("labels"));
 	}
@@ -51,7 +51,7 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			int issueNumber) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.CLOSE_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-		callApiPost(apiUrl, EMPTY_PARAMETERS);
+		callApiPost(apiUrl, new HashMap<String, String>());
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			int issueNumber, String label) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.REMOVE_LABEL_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        JsonObject json = unmarshall(callApiPost(apiUrl, EMPTY_PARAMETERS));
+        JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
         
         return unmarshall(new TypeToken<List<String>>(){}, json.get("labels"));
 	}
@@ -119,7 +119,7 @@ public class IssueServiceImpl extends BaseGitHubService implements
 			int issueNumber) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.REOPEN_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-		callApiPost(apiUrl, EMPTY_PARAMETERS);
+		callApiPost(apiUrl, new HashMap<String, String>());
 	}
 
 	@Override

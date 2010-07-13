@@ -4,9 +4,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import com.github.api.v2.schema.Issue;
 import com.github.api.v2.schema.Language;
@@ -43,8 +41,6 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
     /** The handlers. */
     private List<AsyncResponseHandler<List<? extends SchemaEntity>>> handlers = new ArrayList<AsyncResponseHandler<List<? extends SchemaEntity>>>();
     
-    protected static final Map<String, String> EMPTY_PARAMETERS = Collections.emptyMap(); 
-	
 	/**
 	 * Instantiates a new base google search api query.
 	 * 

@@ -18,6 +18,7 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		service = factory.createObjectService();
+		service.setAuthentication(authentication);
 	}
 
 	@After

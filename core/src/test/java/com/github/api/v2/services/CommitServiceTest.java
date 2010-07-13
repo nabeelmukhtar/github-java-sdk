@@ -17,6 +17,7 @@ public class CommitServiceTest extends BaseGitHubServiceTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		service = factory.createCommitService();
+		service.setAuthentication(authentication);
 	}
 
 	@After

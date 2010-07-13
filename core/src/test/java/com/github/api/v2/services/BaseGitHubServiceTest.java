@@ -14,6 +14,10 @@ import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 
+import com.github.api.v2.services.auth.Authentication;
+import com.github.api.v2.services.auth.OAuthAuthentication;
+import com.github.api.v2.services.constant.TestConstants;
+
 /**
  * The Class BaseGoogleSearchClientTest.
  */
@@ -25,10 +29,15 @@ public class BaseGitHubServiceTest extends TestCase {
 	/** The factory. */
 	protected GitHubServiceFactory factory;
 	
+	protected Authentication authentication;
+	
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Access Token."), TestConstants.TEST_ACCESS_TOKEN);
+    	authentication = new OAuthAuthentication(TestConstants.TEST_ACCESS_TOKEN);
 		factory = GitHubServiceFactory.newInstance();
+		
 	}
 
 	@After

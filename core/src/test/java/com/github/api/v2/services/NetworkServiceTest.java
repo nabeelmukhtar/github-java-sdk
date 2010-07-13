@@ -17,6 +17,7 @@ public class NetworkServiceTest extends BaseGitHubServiceTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		service = factory.createNetworkService();
+		service.setAuthentication(authentication);
 	}
 
 	@After
