@@ -21,12 +21,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * @author nmukhtar
- *
+ * The Class RepositoryServiceImpl.
  */
 public class RepositoryServiceImpl extends BaseGitHubService implements
 		RepositoryService {
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#addCollaborator(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void addCollaborator(String repositoryName, String collaboratorName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.ADD_COLLABORATOR_URL);
@@ -34,6 +36,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#addDeployKey(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public String addDeployKey(String repositoryName, String title, String key) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.ADD_DEPLOY_KEY_URL);
@@ -46,6 +51,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<String>(){}, json);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#changeVisibility(java.lang.String, com.github.api.v2.schema.Repository.Visibility)
+	 */
 	@Override
 	public void changeVisibility(String repositoryName, Visibility visibility) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.CHANGE_VISIBILITY_URL);
@@ -55,6 +63,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#createRepository(java.lang.String, java.lang.String, java.lang.String, com.github.api.v2.schema.Repository.Visibility)
+	 */
 	@Override
 	public void createRepository(String name, String description,
 			String homePage, Visibility visibility) {
@@ -70,6 +81,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#deleteRepository(java.lang.String)
+	 */
 	@Override
 	public void deleteRepository(String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.DELETE_REPOSITORY_URL);
@@ -82,6 +96,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         }
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#forkRepository(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Repository forkRepository(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.FORK_REPOSITORY_URL);
@@ -90,6 +107,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getBranches(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Map<String, String> getBranches(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_BRANCHES_URL);
@@ -99,6 +119,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<Map<String, String>>(){}, json.get("branches"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getCollaborators(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<String> getCollaborators(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_COLLABORATORS_URL);
@@ -108,6 +131,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<String>>(){}, json.get("collaborators"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getContributors(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<User> getContributors(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_CONTRIBUTORS_URL);
@@ -117,6 +143,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<User>>(){}, json.get("contributors"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getForks(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<Repository> getForks(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_FORKS_URL);
@@ -126,6 +155,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("network"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getDeployKeys(java.lang.String)
+	 */
 	@Override
 	public List<Key> getDeployKeys(String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_DEPLOY_KEYS_URL);
@@ -135,6 +167,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Key>>(){}, json.get("public_keys"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getLanguageBreakdown(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Map<Language, Long> getLanguageBreakdown(String userName,
 			String repositoryName) {
@@ -145,6 +180,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<Map<Language, Long>>(){}, json.get("languages"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getPushableRepositories()
+	 */
 	@Override
 	public List<Repository> getPushableRepositories() {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_PUSHABLE_REPOSITORIES_URL);
@@ -154,6 +192,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getRepositories(java.lang.String)
+	 */
 	@Override
 	public List<Repository> getRepositories(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_REPOSITORIES_URL);
@@ -163,6 +204,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getRepository(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Repository getRepository(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_REPOSITORY_URL);
@@ -172,6 +216,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getTags(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Map<String, String> getTags(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_TAGS_URL);
@@ -181,6 +228,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<Map<String, String>>(){}, json.get("tags"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getWatchers(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<String> getWatchers(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_WATCHERS_URL);
@@ -190,6 +240,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<String>>(){}, json.get("watchers"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#removeCollaborator(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void removeCollaborator(String repositoryName,
 			String collaboratorName) {
@@ -198,6 +251,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#removeDeployKey(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void removeDeployKey(String repositoryName, String id) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.REMOVE_DEPLOY_KEY_URL);
@@ -207,6 +263,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         unmarshall(callApiPost(apiUrl, parameters));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#searchRepositories(java.lang.String)
+	 */
 	@Override
 	public List<Repository> searchRepositories(String query) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.SEARCH_REPOSITORIES_URL);
@@ -216,6 +275,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#searchRepositories(java.lang.String, com.github.api.v2.schema.Language)
+	 */
 	@Override
 	public List<Repository> searchRepositories(String query, Language language) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.SEARCH_REPOSITORIES_URL);
@@ -225,6 +287,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#searchRepositories(java.lang.String, int)
+	 */
 	@Override
 	public List<Repository> searchRepositories(String query, int pageNumber) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.SEARCH_REPOSITORIES_URL);
@@ -234,6 +299,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#searchRepositories(java.lang.String, com.github.api.v2.schema.Language, int)
+	 */
 	@Override
 	public List<Repository> searchRepositories(String query, Language language,
 			int pageNumber) {
@@ -244,6 +312,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#unwatchRepository(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void unwatchRepository(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.UNWATCH_REPOSITORY_URL);
@@ -251,6 +322,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#updateRepository(com.github.api.v2.schema.Repository)
+	 */
 	@Override
 	public void updateRepository(Repository repository) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.UPDATE_REPOSITORY_URL);
@@ -266,6 +340,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#watchRepository(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void watchRepository(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.WATCH_REPOSITORY_URL);
@@ -273,6 +350,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
+	 */
 	protected GsonBuilder getGsonBuilder() {
 		GsonBuilder gson = super.getGsonBuilder();
 		gson.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");

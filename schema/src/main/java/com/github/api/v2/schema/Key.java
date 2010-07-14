@@ -4,51 +4,74 @@
 package com.github.api.v2.schema;
 
 /**
- * @author nmukhtar
- *
+ * The Class Key.
  */
 public class Key extends SchemaEntity {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
+	/** The id. */
 	private String id;
+	
+	/** The title. */
 	private String title;
+	
+	/** The key. */
 	private String key;
+	
 	/**
+	 * Gets the id.
+	 * 
 	 * @return the id
 	 */
 	public String getId() {
 		return id;
 	}
+	
 	/**
-	 * @param id the id to set
+	 * Sets the id.
+	 * 
+	 * @param id
+	 *            the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	/**
+	 * Gets the title.
+	 * 
 	 * @return the title
 	 */
 	public String getTitle() {
 		return title;
 	}
+	
 	/**
-	 * @param title the title to set
+	 * Sets the title.
+	 * 
+	 * @param title
+	 *            the new title
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
 	/**
+	 * Gets the key.
+	 * 
 	 * @return the key
 	 */
 	public String getKey() {
 		return key;
 	}
+	
 	/**
-	 * @param key the key to set
+	 * Sets the key.
+	 * 
+	 * @param key
+	 *            the new key
 	 */
 	public void setKey(String key) {
 		this.key = key;

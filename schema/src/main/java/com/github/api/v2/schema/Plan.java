@@ -4,64 +4,96 @@
 package com.github.api.v2.schema;
 
 /**
- * @author nmukhtar
- *
+ * The Class Plan.
  */
 public class Plan extends SchemaEntity {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -716103936969784665L;
 	
+	/** The name. */
 	private String name;
+	
+	/** The collaborators. */
 	private int collaborators;
+	
+	/** The space. */
 	private long space;
+	
+	/** The private repos. */
 	private int privateRepos;
+	
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name
+	 *            the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
+	 * Gets the collaborators.
+	 * 
 	 * @return the collaborators
 	 */
 	public int getCollaborators() {
 		return collaborators;
 	}
+	
 	/**
-	 * @param collaborators the collaborators to set
+	 * Sets the collaborators.
+	 * 
+	 * @param collaborators
+	 *            the new collaborators
 	 */
 	public void setCollaborators(int collaborators) {
 		this.collaborators = collaborators;
 	}
+	
 	/**
+	 * Gets the space.
+	 * 
 	 * @return the space
 	 */
 	public long getSpace() {
 		return space;
 	}
+	
 	/**
-	 * @param space the space to set
+	 * Sets the space.
+	 * 
+	 * @param space
+	 *            the new space
 	 */
 	public void setSpace(long space) {
 		this.space = space;
 	}
+	
 	/**
-	 * @return the privateRepos
+	 * Gets the private repos.
+	 * 
+	 * @return the private repos
 	 */
 	public int getPrivateRepos() {
 		return privateRepos;
 	}
+	
 	/**
-	 * @param privateRepos the privateRepos to set
+	 * Sets the private repos.
+	 * 
+	 * @param privateRepos
+	 *            the new private repos
 	 */
 	public void setPrivateRepos(int privateRepos) {
 		this.privateRepos = privateRepos;

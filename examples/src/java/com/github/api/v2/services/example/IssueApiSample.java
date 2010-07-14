@@ -10,15 +10,16 @@ import com.github.api.v2.services.GitHubServiceFactory;
 import com.github.api.v2.services.IssueService;
 
 /**
- * The Class WebSample.
+ * The Class IssueApiSample.
  */
 public class IssueApiSample {
 
     /**
-     * The main method.
-     * 
-     * @param args the arguments
-     */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the arguments
+	 */
 	public static void main(String[] args) {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 		IssueService service = factory.createIssueService();
@@ -30,6 +31,12 @@ public class IssueApiSample {
 		printResult(issue);
 	}
     
+	/**
+	 * Prints the result.
+	 * 
+	 * @param issue
+	 *            the issue
+	 */
 	private static void printResult(Issue issue) {
 		System.out.println(issue);
 	}

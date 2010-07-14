@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.github.api.v2.services;
 
 import java.io.InputStream;
@@ -11,9 +14,17 @@ import com.github.api.v2.schema.Blob;
 import com.github.api.v2.schema.Tree;
 import com.github.api.v2.services.constant.TestConstants;
 
+/**
+ * The Class ObjectServiceTest.
+ */
 public class ObjectServiceTest extends BaseGitHubServiceTest {
+	
+	/** The service. */
 	private ObjectService service;
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#setUp()
+	 */
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
@@ -21,12 +32,18 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 		service.setAuthentication(authentication);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#tearDown()
+	 */
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
 		service = null;
 	}
 
+	/**
+	 * Test get blob.
+	 */
 	@Test
 	public void testGetBlob() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -37,6 +54,9 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 		assertNotNull("Blob cannot be null or empty", blob);
 	}
 
+	/**
+	 * Test get blobs.
+	 */
 	@Test
 	public void testGetBlobs() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -46,6 +66,9 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Blobs cannot be null or empty", blobs);
 	}
 
+	/**
+	 * Test get object content.
+	 */
 	@Test
 	public void testGetObjectContent() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -55,6 +78,9 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Object content cannot be null or empty", convertStreamToString(objectContent));
 	}
 
+	/**
+	 * Test get tree.
+	 */
 	@Test
 	public void testGetTree() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);

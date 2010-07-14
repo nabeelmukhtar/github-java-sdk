@@ -14,15 +14,16 @@ import com.github.api.v2.services.auth.OAuthAuthentication;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
- * The Class WebSample.
+ * The Class RepositoryApiSample.
  */
 public class RepositoryApiSample {
 
     /**
-     * The main method.
-     * 
-     * @param args the arguments
-     */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the arguments
+	 */
 	public static void main(String[] args) {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 		RepositoryService service = factory.createRepositoryService();
@@ -37,6 +38,12 @@ public class RepositoryApiSample {
 		System.out.println(pushableRepositories.size());
 	}
     
+	/**
+	 * Prints the result.
+	 * 
+	 * @param repository
+	 *            the repository
+	 */
 	private static void printResult(Repository repository) {
 		System.out.println(repository);
 	}

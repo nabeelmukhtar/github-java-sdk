@@ -13,8 +13,16 @@ import com.github.api.v2.schema.ValueEnum;
  * The Interface OAuthService.
  */
 public interface OAuthService extends GitHubService {
+	
+	/**
+	 * The Enum Permission.
+	 */
 	public enum Permission implements ValueEnum {
-		USER("user"), REPOSITORY("repo");
+		
+		/** The USER. */
+		USER("user"), 
+ /** The REPOSITORY. */
+ REPOSITORY("repo");
 		
 	    /** The Constant stringToEnum. */
 		private static final Map<String, Permission> stringToEnum = new HashMap<String, Permission>();
@@ -29,14 +37,18 @@ public interface OAuthService extends GitHubService {
 	    private final String value;
 	    
 	    /**
-	     * Instantiates a new blog sort order.
-	     * 
-	     * @param value the value
-	     */
+		 * Instantiates a new permission.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 	    Permission(String value) {
 	        this.value = value;
 	    }
 
+		/* (non-Javadoc)
+		 * @see com.github.api.v2.schema.ValueEnum#value()
+		 */
 		@Override
 		public String value() {
 			return value;
@@ -45,9 +57,10 @@ public interface OAuthService extends GitHubService {
 		/**
 		 * From value.
 		 * 
-		 * @param value the value
+		 * @param value
+		 *            the value
 		 * 
-		 * @return the blog sort order
+		 * @return the permission
 		 */
 		public static Permission fromValue(String value) {
 			return stringToEnum.get(value);
@@ -55,31 +68,36 @@ public interface OAuthService extends GitHubService {
 	}
 
     /**
-     * Gets the authorization url.
-     * 
-     * @param callBackUrl the call back url
-     * 
-     * @return the authorization url
-     */
+	 * Gets the authorization url.
+	 * 
+	 * @param callBackUrl
+	 *            the call back url
+	 * 
+	 * @return the authorization url
+	 */
     public String getAuthorizationUrl(String callBackUrl);
     
     /**
-     * Gets the authorization url.
-     * 
-     * @param callBackUrl the call back url
-     * @param permissions the permissions
-     * 
-     * @return the authorization url
-     */
+	 * Gets the authorization url.
+	 * 
+	 * @param callBackUrl
+	 *            the call back url
+	 * @param permissions
+	 *            the permissions
+	 * 
+	 * @return the authorization url
+	 */
     public String getAuthorizationUrl(String callBackUrl, Set<Permission> permissions);
 
     /**
-     * Gets the access token.
-     * 
-     * @param callBackUrl the call back url
-     * @param code the code
-     * 
-     * @return the access token
-     */
+	 * Gets the access token.
+	 * 
+	 * @param callBackUrl
+	 *            the call back url
+	 * @param code
+	 *            the code
+	 * 
+	 * @return the access token
+	 */
     public String getAccessToken(String callBackUrl, String code);
 }

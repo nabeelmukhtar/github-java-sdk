@@ -4,38 +4,52 @@
 package com.github.api.v2.schema;
 
 /**
- * @author nmukhtar
- *
+ * The Class Delta.
  */
 public class Delta extends SchemaEntity {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1779660351774171098L;
 	
+	/** The diff. */
 	private String diff;
+	
+	/** The filename. */
 	private String filename;
+	
 	/**
+	 * Gets the diff.
+	 * 
 	 * @return the diff
 	 */
 	public String getDiff() {
 		return diff;
 	}
+	
 	/**
-	 * @param diff the diff to set
+	 * Sets the diff.
+	 * 
+	 * @param diff
+	 *            the new diff
 	 */
 	public void setDiff(String diff) {
 		this.diff = diff;
 	}
+	
 	/**
+	 * Gets the filename.
+	 * 
 	 * @return the filename
 	 */
 	public String getFilename() {
 		return filename;
 	}
+	
 	/**
-	 * @param filename the filename to set
+	 * Sets the filename.
+	 * 
+	 * @param filename
+	 *            the new filename
 	 */
 	public void setFilename(String filename) {
 		this.filename = filename;

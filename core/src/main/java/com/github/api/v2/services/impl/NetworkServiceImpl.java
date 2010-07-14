@@ -16,12 +16,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * @author nmukhtar
- *
+ * The Class NetworkServiceImpl.
  */
 public class NetworkServiceImpl extends BaseGitHubService implements
 		NetworkService {
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.NetworkService#getNetworkData(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<Commit> getNetworkData(String userName, String repositoryName,
 			String networkHash) {
@@ -32,6 +34,9 @@ public class NetworkServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.NetworkService#getNetworkData(java.lang.String, java.lang.String, java.lang.String, int, int)
+	 */
 	@Override
 	public List<Commit> getNetworkData(String userName, String repositoryName,
 			String networkHash, int startIndex, int endIndex) {
@@ -42,6 +47,9 @@ public class NetworkServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.NetworkService#getNetworkMeta(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Network getNetworkMeta(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.NetworkApiUrls.GET_NETWORK_META_URL);
@@ -50,6 +58,10 @@ public class NetworkServiceImpl extends BaseGitHubService implements
         
         return unmarshall(new TypeToken<Network>(){}, json);
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
+	 */
 	protected GsonBuilder getGsonBuilder() {
 		GsonBuilder gson = super.getGsonBuilder();
 		gson.setDateFormat("yyyy-MM-dd HH:mm:ss");

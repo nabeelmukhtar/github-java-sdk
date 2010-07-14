@@ -8,12 +8,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author nmukhtar
- *
+ * The Class Issue.
  */
 public class Issue extends SchemaEntity {
+	
+	/**
+	 * The Enum State.
+	 */
 	public enum State implements ValueEnum {
+		
+		/** The OPEN. */
 		OPEN("open"),
+		
+		/** The CLOSED. */
 		CLOSED("closed");
 		
 	    /** The Constant stringToEnum. */
@@ -29,14 +36,18 @@ public class Issue extends SchemaEntity {
 	    private final String value;
 	    
 	    /**
-	     * Instantiates a new blog sort order.
-	     * 
-	     * @param value the value
-	     */
+		 * Instantiates a new state.
+		 * 
+		 * @param value
+		 *            the value
+		 */
 	    State(String value) {
 	        this.value = value;
 	    }
 
+		/* (non-Javadoc)
+		 * @see com.github.api.v2.schema.ValueEnum#value()
+		 */
 		@Override
 		public String value() {
 			return value;
@@ -45,159 +56,256 @@ public class Issue extends SchemaEntity {
 		/**
 		 * From value.
 		 * 
-		 * @param value the value
+		 * @param value
+		 *            the value
 		 * 
-		 * @return the blog sort order
+		 * @return the state
 		 */
 		public static State fromValue(String value) {
 			return stringToEnum.get(value);
 		}
 	}
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
+	/** The user. */
 	private String user;
+	
+	/** The gravatar id. */
 	private String gravatarId;
+	
+	/** The updated at. */
 	private Date updatedAt;
+	
+	/** The votes. */
 	private int votes;
+	
+	/** The number. */
 	private int number;
+	
+	/** The comments. */
 	private int comments;
+	
+	/** The position. */
 	private double position;
+	
+	/** The title. */
 	private String title;
+	
+	/** The body. */
 	private String body;
+	
+	/** The state. */
 	private State state;
+	
+	/** The created at. */
 	private Date createdAt;
+	
 	/**
+	 * Gets the user.
+	 * 
 	 * @return the user
 	 */
 	public String getUser() {
 		return user;
 	}
+	
 	/**
-	 * @param user the user to set
+	 * Sets the user.
+	 * 
+	 * @param user
+	 *            the new user
 	 */
 	public void setUser(String user) {
 		this.user = user;
 	}
+	
 	/**
-	 * @return the gravatarId
+	 * Gets the gravatar id.
+	 * 
+	 * @return the gravatar id
 	 */
 	public String getGravatarId() {
 		return gravatarId;
 	}
+	
 	/**
-	 * @param gravatarId the gravatarId to set
+	 * Sets the gravatar id.
+	 * 
+	 * @param gravatarId
+	 *            the new gravatar id
 	 */
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;
 	}
+	
 	/**
-	 * @return the updatedAt
+	 * Gets the updated at.
+	 * 
+	 * @return the updated at
 	 */
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
+	
 	/**
-	 * @param updatedAt the updatedAt to set
+	 * Sets the updated at.
+	 * 
+	 * @param updatedAt
+	 *            the new updated at
 	 */
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
 	/**
+	 * Gets the votes.
+	 * 
 	 * @return the votes
 	 */
 	public int getVotes() {
 		return votes;
 	}
+	
 	/**
-	 * @param votes the votes to set
+	 * Sets the votes.
+	 * 
+	 * @param votes
+	 *            the new votes
 	 */
 	public void setVotes(int votes) {
 		this.votes = votes;
 	}
+	
 	/**
+	 * Gets the number.
+	 * 
 	 * @return the number
 	 */
 	public int getNumber() {
 		return number;
 	}
+	
 	/**
-	 * @param number the number to set
+	 * Sets the number.
+	 * 
+	 * @param number
+	 *            the new number
 	 */
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	
 	/**
+	 * Gets the position.
+	 * 
 	 * @return the position
 	 */
 	public double getPosition() {
 		return position;
 	}
+	
 	/**
-	 * @param position the position to set
+	 * Sets the position.
+	 * 
+	 * @param position
+	 *            the new position
 	 */
 	public void setPosition(double position) {
 		this.position = position;
 	}
+	
 	/**
+	 * Gets the title.
+	 * 
 	 * @return the title
 	 */
 	public String getTitle() {
 		return title;
 	}
+	
 	/**
-	 * @param title the title to set
+	 * Sets the title.
+	 * 
+	 * @param title
+	 *            the new title
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
 	/**
+	 * Gets the body.
+	 * 
 	 * @return the body
 	 */
 	public String getBody() {
 		return body;
 	}
+	
 	/**
-	 * @param body the body to set
+	 * Sets the body.
+	 * 
+	 * @param body
+	 *            the new body
 	 */
 	public void setBody(String body) {
 		this.body = body;
 	}
+	
 	/**
+	 * Gets the state.
+	 * 
 	 * @return the state
 	 */
 	public State getState() {
 		return state;
 	}
+	
 	/**
-	 * @param state the state to set
+	 * Sets the state.
+	 * 
+	 * @param state
+	 *            the new state
 	 */
 	public void setState(State state) {
 		this.state = state;
 	}
+	
 	/**
-	 * @return the createdAt
+	 * Gets the created at.
+	 * 
+	 * @return the created at
 	 */
 	public Date getCreatedAt() {
 		return createdAt;
 	}
+	
 	/**
-	 * @param createdAt the createdAt to set
+	 * Sets the created at.
+	 * 
+	 * @param createdAt
+	 *            the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
+	
 	/**
+	 * Gets the comments.
+	 * 
 	 * @return the comments
 	 */
 	public int getComments() {
 		return comments;
 	}
+	
 	/**
-	 * @param comments the comments to set
+	 * Sets the comments.
+	 * 
+	 * @param comments
+	 *            the new comments
 	 */
 	public void setComments(int comments) {
 		this.comments = comments;

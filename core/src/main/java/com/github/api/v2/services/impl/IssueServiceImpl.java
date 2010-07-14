@@ -18,12 +18,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * @author nmukhtar
- *
+ * The Class IssueServiceImpl.
  */
 public class IssueServiceImpl extends BaseGitHubService implements
 		IssueService {
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#addComment(java.lang.String, java.lang.String, int, java.lang.String)
+	 */
 	@Override
 	public void addComment(String userName, String repositoryName,
 			int issueNumber, String comment) {
@@ -34,6 +36,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         callApiPost(apiUrl, parameters);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#addLabel(java.lang.String, java.lang.String, int, java.lang.String)
+	 */
 	@Override
 	public List<String> addLabel(String userName, String repositoryName,
 			int issueNumber, String label) {
@@ -44,6 +49,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<String>>(){}, json.get("labels"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#closeIssue(java.lang.String, java.lang.String, int)
+	 */
 	@Override
 	public void closeIssue(String userName, String repositoryName,
 			int issueNumber) {
@@ -52,6 +60,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, new HashMap<String, String>());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#createIssue(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void createIssue(String userName, String repositoryName,
 			String title, String body) {
@@ -63,6 +74,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, parameters);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#getIssue(java.lang.String, java.lang.String, int)
+	 */
 	@Override
 	public Issue getIssue(String userName, String repositoryName,
 			int issueNumber) {
@@ -73,6 +87,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<Issue>(){}, json.get("issue"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#getIssueComments(java.lang.String, java.lang.String, int)
+	 */
 	@Override
 	public List<Comment> getIssueComments(String userName,
 			String repositoryName, int issueNumber) {
@@ -83,6 +100,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Comment>>(){}, json.get("comments"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#getIssueLabels(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<String> getIssueLabels(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUE_LABELS_URL);
@@ -92,6 +112,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<String>>(){}, json.get("labels"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#getIssues(java.lang.String, java.lang.String, com.github.api.v2.schema.Issue.State)
+	 */
 	@Override
 	public List<Issue> getIssues(String userName, String repositoryName,
 			State state) {
@@ -102,6 +125,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Issue>>(){}, json.get("issues"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#removeLabel(java.lang.String, java.lang.String, int, java.lang.String)
+	 */
 	@Override
 	public List<String> removeLabel(String userName, String repositoryName,
 			int issueNumber, String label) {
@@ -112,6 +138,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<String>>(){}, json.get("labels"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#reopenIssue(java.lang.String, java.lang.String, int)
+	 */
 	@Override
 	public void reopenIssue(String userName, String repositoryName,
 			int issueNumber) {
@@ -120,6 +149,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, new HashMap<String, String>());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#searchIssues(java.lang.String, java.lang.String, com.github.api.v2.schema.Issue.State, java.lang.String)
+	 */
 	@Override
 	public List<Issue> searchIssues(String userName, String repositoryName,
 			State state, String keyword) {
@@ -130,6 +162,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Issue>>(){}, json.get("issues"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#updateIssue(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void updateIssue(String userName, String repositoryName,
 			int issueNumber, String title, String body) {

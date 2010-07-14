@@ -28,11 +28,11 @@ import com.github.api.v2.services.auth.ParameterBasedAuthentication;
 import com.github.api.v2.services.constant.ApplicationConstants;
 
 /**
- * The Class GoogleSearchApiGateway.
+ * The Class GitHubApiGateway.
  */
 public abstract class GitHubApiGateway {
 	
-    /** The LOG. */
+    /** The logger. */
     protected final Logger logger = Logger.getLogger(getClass().getCanonicalName());
 	
 	/** The Constant GZIP_ENCODING. */
@@ -44,7 +44,7 @@ public abstract class GitHubApiGateway {
 	/** The request headers. */
 	protected Map<String, String> requestHeaders = new HashMap<String, String>();
 	
-	/** The request headers. */
+	/** The request parameters. */
 	protected Map<String, String> requestParameters = new HashMap<String, String>();
 	
 	/** The user ip address. */
@@ -65,7 +65,8 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Sets the api version.
 	 * 
-	 * @param apiVersion the new api version
+	 * @param apiVersion
+	 *            the new api version
 	 */
 	public void setApiVersion(String apiVersion) {
 		this.apiVersion = apiVersion;
@@ -74,7 +75,8 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Sets the request headers.
 	 * 
-	 * @param requestHeaders the request headers
+	 * @param requestHeaders
+	 *            the request headers
 	 */
 	public void setRequestHeaders(Map<String, String> requestHeaders) {
 	    this.requestHeaders = requestHeaders;
@@ -92,8 +94,10 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Adds the request header.
 	 * 
-	 * @param headerName the header name
-	 * @param headerValue the header value
+	 * @param headerName
+	 *            the header name
+	 * @param headerValue
+	 *            the header value
 	 */
 	public void addRequestHeader(String headerName, String headerValue) {
 	    requestHeaders.put(headerName, headerValue);
@@ -102,7 +106,8 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Removes the request header.
 	 * 
-	 * @param headerName the header name
+	 * @param headerName
+	 *            the header name
 	 */
 	public void removeRequestHeader(String headerName) {
 	    requestHeaders.remove(headerName);
@@ -111,7 +116,8 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Sets the referrer.
 	 * 
-	 * @param referrer the new referrer
+	 * @param referrer
+	 *            the new referrer
 	 */
 	public void setReferrer(String referrer) {
 		requestHeaders.put(REFERRER, referrer);
@@ -120,16 +126,19 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Sets the user ip address.
 	 * 
-	 * @param userIpAddress the new user ip address
+	 * @param userIpAddress
+	 *            the new user ip address
 	 */
 	public void setUserIpAddress(String userIpAddress) {
 		this.userIpAddress = userIpAddress;
 	}
 
     /**
-     * Sets the application key.
-     * @param authentication TODO
-     */
+	 * Sets the authentication.
+	 * 
+	 * @param authentication
+	 *            the new authentication
+	 */
     public void setAuthentication(Authentication authentication) {
 		if (authentication != null) {
 			if (authentication instanceof ParameterBasedAuthentication) {
@@ -143,7 +152,8 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Convert stream to string.
 	 * 
-	 * @param is the is
+	 * @param is
+	 *            the is
 	 * 
 	 * @return the string
 	 */
@@ -176,9 +186,10 @@ public abstract class GitHubApiGateway {
 	}
 
 	/**
-	 * Call api method.
+	 * Call api get.
 	 * 
-	 * @param apiUrl the api url
+	 * @param apiUrl
+	 *            the api url
 	 * 
 	 * @return the input stream
 	 */
@@ -187,10 +198,12 @@ public abstract class GitHubApiGateway {
 	}
 
 	/**
-	 * Call api method.
+	 * Call api get.
 	 * 
-	 * @param apiUrl the api url
-	 * @param expected the expected
+	 * @param apiUrl
+	 *            the api url
+	 * @param expected
+	 *            the expected
 	 * 
 	 * @return the input stream
 	 */
@@ -236,8 +249,10 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Call api post.
 	 * 
-	 * @param apiUrl the api url
-	 * @param parameters the parameters
+	 * @param apiUrl
+	 *            the api url
+	 * @param parameters
+	 *            the parameters
 	 * 
 	 * @return the input stream
 	 */
@@ -248,9 +263,12 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Call api post.
 	 * 
-	 * @param apiUrl the api url
-	 * @param parameters the parameters
-	 * @param expected the expected
+	 * @param apiUrl
+	 *            the api url
+	 * @param parameters
+	 *            the parameters
+	 * @param expected
+	 *            the expected
 	 * 
 	 * @return the input stream
 	 */
@@ -297,6 +315,14 @@ public abstract class GitHubApiGateway {
 		}
 	}
 	
+	/**
+	 * Gets the parameters string.
+	 * 
+	 * @param parameters
+	 *            the parameters
+	 * 
+	 * @return the parameters string
+	 */
 	protected String getParametersString(Map<String, String> parameters) {
 		StringBuilder builder = new StringBuilder();
 		for (Iterator<Map.Entry<String, String>> iterator = parameters.entrySet().iterator(); iterator.hasNext();) {
@@ -315,11 +341,16 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Call api method.
 	 * 
-	 * @param apiUrl the api url
-	 * @param xmlContent the xml content
-	 * @param contentType the content type
-	 * @param method the method
-	 * @param expected the expected
+	 * @param apiUrl
+	 *            the api url
+	 * @param xmlContent
+	 *            the xml content
+	 * @param contentType
+	 *            the content type
+	 * @param method
+	 *            the method
+	 * @param expected
+	 *            the expected
 	 * 
 	 * @return the input stream
 	 */
@@ -373,7 +404,8 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Close stream.
 	 * 
-	 * @param is the is
+	 * @param is
+	 *            the is
 	 */
 	protected void closeStream(InputStream is) {
 	    try {
@@ -388,7 +420,8 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Close connection.
 	 * 
-	 * @param connection the connection
+	 * @param connection
+	 *            the connection
 	 */
 	protected void closeConnection(HttpURLConnection connection) {
 	    try {
@@ -403,12 +436,15 @@ public abstract class GitHubApiGateway {
 	/**
 	 * Gets the wrapped input stream.
 	 * 
-	 * @param is the is
-	 * @param gzip the gzip
+	 * @param is
+	 *            the is
+	 * @param gzip
+	 *            the gzip
 	 * 
 	 * @return the wrapped input stream
 	 * 
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	protected InputStream getWrappedInputStream(InputStream is, boolean gzip)
 			throws IOException {
@@ -420,12 +456,13 @@ public abstract class GitHubApiGateway {
 			}
 
     /**
-     * Encode url.
-     * 
-     * @param original the original
-     * 
-     * @return the string
-     */
+	 * Encode url.
+	 * 
+	 * @param original
+	 *            the original
+	 * 
+	 * @return the string
+	 */
     private static String encodeUrl(String original) {
     	try {
 			return URLEncoder.encode(original, ApplicationConstants.CONTENT_ENCODING);

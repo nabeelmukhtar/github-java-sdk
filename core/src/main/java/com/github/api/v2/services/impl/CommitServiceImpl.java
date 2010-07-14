@@ -15,12 +15,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * @author nmukhtar
- *
+ * The Class CommitServiceImpl.
  */
 public class CommitServiceImpl extends BaseGitHubService implements
 		CommitService {
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.CommitService#getCommit(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Commit getCommit(String userName, String repositoryName, String sha) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.CommitApiUrls.GET_COMMIT_URL);
@@ -30,6 +32,9 @@ public class CommitServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<Commit>(){}, json.get("commit"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.CommitService#getCommits(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<Commit> getCommits(String userName, String repositoryName,
 			String branch) {
@@ -40,6 +45,9 @@ public class CommitServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.CommitService#getCommits(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<Commit> getCommits(String userName, String repositoryName,
 			String branch, String filePath) {
@@ -50,6 +58,9 @@ public class CommitServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
+	 */
 	@Override
 	protected GsonBuilder getGsonBuilder() {
 		GsonBuilder gson = super.getGsonBuilder();

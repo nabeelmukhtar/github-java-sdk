@@ -10,15 +10,16 @@ import com.github.api.v2.services.GitHubServiceFactory;
 import com.github.api.v2.services.NetworkService;
 
 /**
- * The Class WebSample.
+ * The Class NetworkApiSample.
  */
 public class NetworkApiSample {
 
     /**
-     * The main method.
-     * 
-     * @param args the arguments
-     */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the arguments
+	 */
 	public static void main(String[] args) {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 		NetworkService service = factory.createNetworkService();
@@ -28,6 +29,12 @@ public class NetworkApiSample {
 		}
 	}
     
+	/**
+	 * Prints the result.
+	 * 
+	 * @param commit
+	 *            the commit
+	 */
 	private static void printResult(Commit commit) {
 		System.out.println(commit);
 	}

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.github.api.v2.services;
 
 import java.util.List;
@@ -10,9 +13,17 @@ import com.github.api.v2.schema.Commit;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.services.constant.TestConstants;
 
+/**
+ * The Class CommitServiceTest.
+ */
 public class CommitServiceTest extends BaseGitHubServiceTest {
+	
+	/** The service. */
 	private CommitService service;
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#setUp()
+	 */
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
@@ -20,12 +31,18 @@ public class CommitServiceTest extends BaseGitHubServiceTest {
 		service.setAuthentication(authentication);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#tearDown()
+	 */
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
 		service = null;
 	}
 
+	/**
+	 * Test get commit.
+	 */
 	@Test
 	public void testGetCommit() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -35,6 +52,9 @@ public class CommitServiceTest extends BaseGitHubServiceTest {
 		assertNotNull("Commit cannot be null", commit);
 	}
 
+	/**
+	 * Test get commits string string string.
+	 */
 	@Test
 	public void testGetCommitsStringStringString() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -44,6 +64,9 @@ public class CommitServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Commits cannot be null or empty", commits);
 	}
 
+	/**
+	 * Test get commits string string string string.
+	 */
 	@Test
 	public void testGetCommitsStringStringStringString() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);

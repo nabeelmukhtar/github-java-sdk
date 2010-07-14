@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.github.api.v2.services;
 
 import java.util.List;
@@ -10,9 +13,17 @@ import com.github.api.v2.schema.Commit;
 import com.github.api.v2.schema.Network;
 import com.github.api.v2.services.constant.TestConstants;
 
+/**
+ * The Class NetworkServiceTest.
+ */
 public class NetworkServiceTest extends BaseGitHubServiceTest {
+	
+	/** The service. */
 	private NetworkService service;
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#setUp()
+	 */
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
@@ -20,12 +31,18 @@ public class NetworkServiceTest extends BaseGitHubServiceTest {
 		service.setAuthentication(authentication);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#tearDown()
+	 */
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
 		service = null;
 	}
 
+	/**
+	 * Test get network data string string string.
+	 */
 	@Test
 	public void testGetNetworkDataStringStringString() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -35,6 +52,9 @@ public class NetworkServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
 	}
 
+	/**
+	 * Test get network data string string string int int.
+	 */
 	@Test
 	public void testGetNetworkDataStringStringStringIntInt() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -44,6 +64,9 @@ public class NetworkServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
 	}
 
+	/**
+	 * Test get network meta.
+	 */
 	@Test
 	public void testGetNetworkMeta() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);

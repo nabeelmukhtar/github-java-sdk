@@ -15,12 +15,16 @@ import com.github.api.v2.schema.User;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
- * @author nmukhtar
- *
+ * The Class UserServiceTest.
  */
 public class UserServiceTest extends BaseGitHubServiceTest {
+	
+	/** The service. */
 	private UserService service;
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#setUp()
+	 */
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
@@ -28,18 +32,27 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 		service.setAuthentication(authentication);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#tearDown()
+	 */
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
 		service = null;
 	}
 
+	/**
+	 * Test add email.
+	 */
 	@Test
 	public void testAddEmail() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
 		service.addEmail(TestConstants.TEST_EMAIL);
 	}
 
+	/**
+	 * Test add key.
+	 */
 	@Test
 	public void testAddKey() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key Title."), TestConstants.TEST_KEY_TITLE);
@@ -47,30 +60,45 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 		service.addKey(TestConstants.TEST_KEY_TITLE, TestConstants.TEST_KEY);
 	}
 
+	/**
+	 * Test follow user.
+	 */
 	@Test
 	public void testFollowUser() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
 		service.followUser(TestConstants.TEST_USER_NAME);
 	}
 
+	/**
+	 * Test get current user.
+	 */
 	@Test
 	public void testGetCurrentUser() {
 		User user = service.getCurrentUser();
 		assertNotNull("User cannot be null.", user);
 	}
 
+	/**
+	 * Test get emails.
+	 */
 	@Test
 	public void testGetEmails() {
 		List<String> emails = service.getEmails();
 		assertNotNullOrEmpty("Emails cannot be null or empty.", emails);
 	}
 
+	/**
+	 * Test get keys.
+	 */
 	@Test
 	public void testGetKeys() {
 		List<Key> keys = service.getKeys();
 		assertNotNullOrEmpty("Keys cannot be null or empty.", keys);
 	}
 
+	/**
+	 * Test get user by username.
+	 */
 	@Test
 	public void testGetUserByUsername() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -78,6 +106,9 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 		assertNotNull("User cannot be null.", user);
 	}
 
+	/**
+	 * Test get user followers.
+	 */
 	@Test
 	public void testGetUserFollowers() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -85,6 +116,9 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("User followers cannot be null or empty.", userFollowers);
 	}
 
+	/**
+	 * Test get user following.
+	 */
 	@Test
 	public void testGetUserFollowing() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -92,6 +126,9 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("User followering cannot be null or empty.", userFollowing);
 	}
 
+	/**
+	 * Test get watched repositories.
+	 */
 	@Test
 	public void testGetWatchedRepositories() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -99,18 +136,27 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
+	/**
+	 * Test remove email.
+	 */
 	@Test
 	public void testRemoveEmail() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
 		service.removeEmail(TestConstants.TEST_EMAIL);
 	}
 
+	/**
+	 * Test remove key.
+	 */
 	@Test
 	public void testRemoveKey() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Key Id."), TestConstants.TEST_KEY_ID);
 		service.removeKey(TestConstants.TEST_KEY_ID);
 	}
 
+	/**
+	 * Test get user by email.
+	 */
 	@Test
 	public void testGetUserByEmail() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
@@ -118,6 +164,9 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 		assertNotNull("User cannot be null or empty.", user);
 	}
 
+	/**
+	 * Test search users by name.
+	 */
 	@Test
 	public void testSearchUsersByName() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -125,12 +174,18 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Users cannot be null or empty.", users);
 	}
 
+	/**
+	 * Test unfollow user.
+	 */
 	@Test
 	public void testUnfollowUser() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
 		service.unfollowUser(TestConstants.TEST_USER_NAME);
 	}
 
+	/**
+	 * Test update user.
+	 */
 	@Test
 	public void testUpdateUser() {
 //		service.updateUser(user);

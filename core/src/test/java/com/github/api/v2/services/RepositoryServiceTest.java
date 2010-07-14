@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.github.api.v2.services;
 
 import java.util.List;
@@ -13,9 +16,17 @@ import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.User;
 import com.github.api.v2.services.constant.TestConstants;
 
+/**
+ * The Class RepositoryServiceTest.
+ */
 public class RepositoryServiceTest extends BaseGitHubServiceTest {
+	
+	/** The service. */
 	private RepositoryService service;
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#setUp()
+	 */
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
@@ -23,12 +34,18 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		service.setAuthentication(authentication);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#tearDown()
+	 */
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
 		service = null;
 	}
 
+	/**
+	 * Test create repository.
+	 */
 	@Test
 	public void testCreateRepository() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
@@ -38,6 +55,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	}
 
 	
+	/**
+	 * Test add collaborator.
+	 */
 	@Test
 	public void testAddCollaborator() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -45,6 +65,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		service.addCollaborator(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_USER_NAME);
 	}
 
+	/**
+	 * Test add key.
+	 */
 	@Test
 	public void testAddKey() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
@@ -53,12 +76,18 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		service.addDeployKey(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_KEY_TITLE, TestConstants.TEST_KEY);
 	}
 
+	/**
+	 * Test change visibility.
+	 */
 	@Test
 	public void testChangeVisibility() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
 		service.changeVisibility(TestConstants.TEST_REPOSITORY_NAME, Repository.Visibility.PRIVATE);
 	}
 
+	/**
+	 * Test fork repository.
+	 */
 	@Test
 	public void testForkRepository() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -66,6 +95,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		service.forkRepository(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 	}
 
+	/**
+	 * Test get branches.
+	 */
 	@Test
 	public void testGetBranches() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -74,6 +106,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertFalse("Branches cannot be null or empty.", branches == null || branches.isEmpty());
 	}
 
+	/**
+	 * Test get collaborators.
+	 */
 	@Test
 	public void testGetCollaborators() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -82,6 +117,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Collaborators cannot be null or empty.", collaborators);
 	}
 
+	/**
+	 * Test get contributors.
+	 */
 	@Test
 	public void testGetContributors() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -90,6 +128,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Contributors cannot be null or empty.", contributors);
 	}
 
+	/**
+	 * Test get forks.
+	 */
 	@Test
 	public void testGetForks() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -98,6 +139,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Forks cannot be null or empty.", forks);
 	}
 
+	/**
+	 * Test get keys.
+	 */
 	@Test
 	public void testGetKeys() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
@@ -105,6 +149,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Keys cannot be null or empty.", keys);
 	}
 
+	/**
+	 * Test get language breakdown.
+	 */
 	@Test
 	public void testGetLanguageBreakdown() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -113,12 +160,18 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertFalse("Language breakdown vannot be null or empty.", (languageBreakdown == null || languageBreakdown.isEmpty()));
 	}
 
+	/**
+	 * Test get pushable repositories.
+	 */
 	@Test
 	public void testGetPushableRepositories() {
 		List<Repository> repositories = service.getPushableRepositories();
 		assertNotNullOrEmpty("Pushable repositories cannot be null or empty.", repositories);
 	}
 
+	/**
+	 * Test get repositories.
+	 */
 	@Test
 	public void testGetRepositories() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -126,6 +179,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
+	/**
+	 * Test get repository.
+	 */
 	@Test
 	public void testGetRepository() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -134,6 +190,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNull("Repository cannot be null.", repository);
 	}
 
+	/**
+	 * Test get tags.
+	 */
 	@Test
 	public void testGetTags() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -142,6 +201,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertFalse("Tags cannot be null or empty.", tags == null || tags.isEmpty());
 	}
 
+	/**
+	 * Test get watchers.
+	 */
 	@Test
 	public void testGetWatchers() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -150,6 +212,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Watchers cannot be null or empty.", watchers);
 	}
 
+	/**
+	 * Test remove collaborator.
+	 */
 	@Test
 	public void testRemoveCollaborator() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -157,6 +222,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		service.removeCollaborator(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_USER_NAME);
 	}
 
+	/**
+	 * Test remove key.
+	 */
 	@Test
 	public void testRemoveKey() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
@@ -164,6 +232,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		service.removeDeployKey(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_KEY_ID);
 	}
 
+	/**
+	 * Test search repositories string.
+	 */
 	@Test
 	public void testSearchRepositoriesString() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Query."), TestConstants.TEST_QUERY);
@@ -171,6 +242,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
+	/**
+	 * Test search repositories string string.
+	 */
 	@Test
 	public void testSearchRepositoriesStringString() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Query."), TestConstants.TEST_QUERY);
@@ -178,6 +252,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
+	/**
+	 * Test search repositories string int.
+	 */
 	@Test
 	public void testSearchRepositoriesStringInt() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Query."), TestConstants.TEST_QUERY);
@@ -185,6 +262,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
+	/**
+	 * Test search repositories string string int.
+	 */
 	@Test
 	public void testSearchRepositoriesStringStringInt() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Query."), TestConstants.TEST_QUERY);
@@ -192,6 +272,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Repositories cannot be null or empty.", repositories);
 	}
 
+	/**
+	 * Test unwatch repository.
+	 */
 	@Test
 	public void testUnwatchRepository() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -199,11 +282,17 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		service.unwatchRepository(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 	}
 
+	/**
+	 * Test update repository.
+	 */
 	@Test
 	public void testUpdateRepository() {
 //		service.updateRepository(repository);
 	}
 
+	/**
+	 * Test watch repository.
+	 */
 	@Test
 	public void testWatchRepository() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -211,6 +300,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		service.watchRepository(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 	}
 
+	/**
+	 * Test delete repository.
+	 */
 	@Test
 	public void testDeleteRepository() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);

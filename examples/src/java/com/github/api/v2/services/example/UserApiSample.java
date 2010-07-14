@@ -10,15 +10,16 @@ import com.github.api.v2.services.GitHubServiceFactory;
 import com.github.api.v2.services.UserService;
 
 /**
- * The Class WebSample.
+ * The Class UserApiSample.
  */
 public class UserApiSample {
     
     /**
-     * The main method.
-     * 
-     * @param args the arguments
-     */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the arguments
+	 */
 	public static void main(String[] args) {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 		UserService service = factory.createUserService();
@@ -30,6 +31,12 @@ public class UserApiSample {
 		printResult(user);
 	}
     
+	/**
+	 * Prints the result.
+	 * 
+	 * @param user
+	 *            the user
+	 */
 	private static void printResult(User user) {
 		System.out.println(user);
 	}

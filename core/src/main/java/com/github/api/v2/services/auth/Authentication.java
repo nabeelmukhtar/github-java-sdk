@@ -4,8 +4,7 @@
 package com.github.api.v2.services.auth;
 
 /**
- * @author nmukhtar
- *
+ * The Interface Authentication.
  */
 public interface Authentication {
 

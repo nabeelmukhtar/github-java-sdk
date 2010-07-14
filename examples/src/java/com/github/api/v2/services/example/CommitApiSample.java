@@ -11,15 +11,16 @@ import com.github.api.v2.services.CommitService;
 import com.github.api.v2.services.GitHubServiceFactory;
 
 /**
- * The Class WebSample.
+ * The Class CommitApiSample.
  */
 public class CommitApiSample {
 
     /**
-     * The main method.
-     * 
-     * @param args the arguments
-     */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the arguments
+	 */
 	public static void main(String[] args) {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 		CommitService service = factory.createCommitService();
@@ -34,6 +35,12 @@ public class CommitApiSample {
 	}
     
 
+	/**
+	 * Prints the result.
+	 * 
+	 * @param commit
+	 *            the commit
+	 */
 	private static void printResult(Commit commit) {
 		System.out.println(commit);
 	}

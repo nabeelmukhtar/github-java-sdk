@@ -4,8 +4,7 @@
 package com.github.api.v2.services;
 
 /**
- * @author nmukhtar
- *
+ * The Interface GitHubService.
  */
 public interface GitHubService extends GitHubAuthenticator {
 

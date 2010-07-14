@@ -15,12 +15,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * @author nmukhtar
- *
+ * The Class GistServiceImpl.
  */
 public class GistServiceImpl extends BaseGitHubService implements
 		GistService {
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.GistService#getGist(java.lang.String)
+	 */
 	@Override
 	public Gist getGist(String gistId) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.GistApiUrls.GET_GIST_URL);
@@ -31,6 +33,9 @@ public class GistServiceImpl extends BaseGitHubService implements
         return (gists.isEmpty())? null : gists.get(0);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.GistService#getGistContent(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public InputStream getGistContent(String gistId, String fileName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.GistApiUrls.GET_GIST_CONTENT_URL);
@@ -38,6 +43,9 @@ public class GistServiceImpl extends BaseGitHubService implements
         return callApiGet(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.GistService#getUserGists(java.lang.String)
+	 */
 	@Override
 	public List<Gist> getUserGists(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.GistApiUrls.GET_USER_GISTS_URL);

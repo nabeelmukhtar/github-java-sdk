@@ -7,51 +7,74 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author nmukhtar
- *
+ * The Class Network.
  */
 public class Network extends SchemaEntity {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
+	/** The focus. */
 	private int focus;
+	
+	/** The nethash. */
 	private String nethash;
+	
+	/** The dates. */
 	private List<Date> dates;
+	
 	/**
+	 * Gets the focus.
+	 * 
 	 * @return the focus
 	 */
 	public int getFocus() {
 		return focus;
 	}
+	
 	/**
-	 * @param focus the focus to set
+	 * Sets the focus.
+	 * 
+	 * @param focus
+	 *            the new focus
 	 */
 	public void setFocus(int focus) {
 		this.focus = focus;
 	}
+	
 	/**
+	 * Gets the nethash.
+	 * 
 	 * @return the nethash
 	 */
 	public String getNethash() {
 		return nethash;
 	}
+	
 	/**
-	 * @param nethash the nethash to set
+	 * Sets the nethash.
+	 * 
+	 * @param nethash
+	 *            the new nethash
 	 */
 	public void setNethash(String nethash) {
 		this.nethash = nethash;
 	}
+	
 	/**
+	 * Gets the dates.
+	 * 
 	 * @return the dates
 	 */
 	public List<Date> getDates() {
 		return dates;
 	}
+	
 	/**
-	 * @param dates the dates to set
+	 * Sets the dates.
+	 * 
+	 * @param dates
+	 *            the new dates
 	 */
 	public void setDates(List<Date> dates) {
 		this.dates = dates;

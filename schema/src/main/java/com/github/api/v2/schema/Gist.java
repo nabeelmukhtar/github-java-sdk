@@ -9,76 +9,118 @@ import java.util.List;
 import com.github.api.v2.schema.Repository.Visibility;
 
 /**
- * @author nmukhtar
- *
+ * The Class Gist.
  */
 public class Gist extends SchemaEntity {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
+	
+	/** The description. */
 	private String description;
+	
+	/** The repo. */
 	private String repo;
+	
+	/** The visibility. */
 	private Visibility visibility;
+	
+	/** The created at. */
 	private Date createdAt;
+	
+	/** The files. */
 	private List<String> files;
+	
 	/**
+	 * Gets the description.
+	 * 
 	 * @return the description
 	 */
 	public String getDescription() {
 		return description;
 	}
+	
 	/**
-	 * @param description the description to set
+	 * Sets the description.
+	 * 
+	 * @param description
+	 *            the new description
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	/**
+	 * Gets the repo.
+	 * 
 	 * @return the repo
 	 */
 	public String getRepo() {
 		return repo;
 	}
+	
 	/**
-	 * @param repo the repo to set
+	 * Sets the repo.
+	 * 
+	 * @param repo
+	 *            the new repo
 	 */
 	public void setRepo(String repo) {
 		this.repo = repo;
 	}
+	
 	/**
+	 * Gets the visibility.
+	 * 
 	 * @return the visibility
 	 */
 	public Visibility getVisibility() {
 		return visibility;
 	}
+	
 	/**
-	 * @param visibility the visibility to set
+	 * Sets the visibility.
+	 * 
+	 * @param visibility
+	 *            the new visibility
 	 */
 	public void setVisibility(Visibility visibility) {
 		this.visibility = visibility;
 	}
+	
 	/**
-	 * @return the createdAt
+	 * Gets the created at.
+	 * 
+	 * @return the created at
 	 */
 	public Date getCreatedAt() {
 		return createdAt;
 	}
+	
 	/**
-	 * @param createdAt the createdAt to set
+	 * Sets the created at.
+	 * 
+	 * @param createdAt
+	 *            the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
+	
 	/**
+	 * Gets the files.
+	 * 
 	 * @return the files
 	 */
 	public List<String> getFiles() {
 		return files;
 	}
+	
 	/**
-	 * @param files the files to set
+	 * Sets the files.
+	 * 
+	 * @param files
+	 *            the new files
 	 */
 	public void setFiles(List<String> files) {
 		this.files = files;

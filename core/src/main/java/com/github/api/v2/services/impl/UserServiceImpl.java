@@ -18,12 +18,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * @author nmukhtar
- *
+ * The Class UserServiceImpl.
  */
 public class UserServiceImpl extends BaseGitHubService implements
 		UserService {
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#addEmail(java.lang.String)
+	 */
 	@Override
 	public void addEmail(String email) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.ADD_EMAIL_URL);
@@ -33,6 +35,9 @@ public class UserServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, parameters);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#addKey(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void addKey(String title, String key) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.ADD_KEY_URL);
@@ -43,6 +48,9 @@ public class UserServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, parameters);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#followUser(java.lang.String)
+	 */
 	@Override
 	public void followUser(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.FOLLOW_USER_URL);
@@ -50,6 +58,9 @@ public class UserServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, new HashMap<String, String>());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#getCurrentUser()
+	 */
 	@Override
 	public User getCurrentUser() {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_CURRENT_USER_URL);
@@ -59,6 +70,9 @@ public class UserServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<User>(){}, json.get("user"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#getEmails()
+	 */
 	@Override
 	public List<String> getEmails() {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_EMAILS_URL);
@@ -68,6 +82,9 @@ public class UserServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<String>>(){}, json.get("emails"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#getKeys()
+	 */
 	@Override
 	public List<Key> getKeys() {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_KEYS_URL);
@@ -77,6 +94,9 @@ public class UserServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Key>>(){}, json.get("keys"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#getUserByUsername(java.lang.String)
+	 */
 	@Override
 	public User getUserByUsername(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_USER_URL);
@@ -86,6 +106,9 @@ public class UserServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<User>(){}, json.get("user"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#getUserFollowers(java.lang.String)
+	 */
 	@Override
 	public List<String> getUserFollowers(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_USER_FOLLOWERS_URL);
@@ -95,6 +118,9 @@ public class UserServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<String>>(){}, json.get("users"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#getUserFollowing(java.lang.String)
+	 */
 	@Override
 	public List<String> getUserFollowing(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_USER_FOLLOWING_URL);
@@ -104,6 +130,9 @@ public class UserServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<String>>(){}, json.get("users"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#getWatchedRepositories(java.lang.String)
+	 */
 	@Override
 	public List<Repository> getWatchedRepositories(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_WATCHED_REPOSITORIES_URL);
@@ -113,6 +142,9 @@ public class UserServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#removeEmail(java.lang.String)
+	 */
 	@Override
 	public void removeEmail(String email) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.REMOVE_EMAIL_URL);
@@ -122,6 +154,9 @@ public class UserServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, parameters);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#removeKey(java.lang.String)
+	 */
 	@Override
 	public void removeKey(String id) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.REMOVE_KEY_URL);
@@ -131,6 +166,9 @@ public class UserServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, parameters);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#getUserByEmail(java.lang.String)
+	 */
 	@Override
 	public User getUserByEmail(String email) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.SEARCH_USERS_BY_EMAIL_URL);
@@ -140,6 +178,9 @@ public class UserServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<User>(){}, json.get("user"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#searchUsersByName(java.lang.String)
+	 */
 	@Override
 	public List<User> searchUsersByName(String name) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.SEARCH_USERS_BY_NAME_URL);
@@ -149,6 +190,9 @@ public class UserServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<User>>(){}, json.get("users"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#unfollowUser(java.lang.String)
+	 */
 	@Override
 	public void unfollowUser(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.UNFOLLOW_USER_URL);
@@ -156,6 +200,9 @@ public class UserServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, new HashMap<String, String>());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#updateUser(com.github.api.v2.schema.User)
+	 */
 	@Override
 	public void updateUser(User user) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.UPDATE_USER_URL);

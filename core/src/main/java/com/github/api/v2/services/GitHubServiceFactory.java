@@ -16,92 +16,98 @@ import com.github.api.v2.services.impl.UserServiceImpl;
 
 
 /**
- * A factory for creating GoogleSearchQuery objects.
+ * A factory for creating GitHubService objects.
  */
 public class GitHubServiceFactory {
 
     /**
-     * Instantiates a new google search query factory.
-     * 
-     * @param applicationKey the application key
-     */
+	 * Instantiates a new git hub service factory.
+	 */
 	private GitHubServiceFactory() {
     }
 	
     /**
-     * New instance.
-     * 
-     * @param applicationKey the application key
-     * 
-     * @return the google search query factory
-     */
+	 * New instance.
+	 * 
+	 * @return the git hub service factory
+	 */
     public static GitHubServiceFactory newInstance() {
         return new GitHubServiceFactory();
     }
     
     /**
-     * New blog search query.
-     * 
-     * @return the blog search query
-     */
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the commit service
+	 */
     public CommitService createCommitService() {
     	return new CommitServiceImpl();
     }
     
     /**
-     * New book search query.
-     * 
-     * @return the book search query
-     */
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the gist service
+	 */
     public GistService createGistService() {
     	return new GistServiceImpl();
     }
     
     /**
-     * New image search query.
-     * 
-     * @return the image search query
-     */
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the issue service
+	 */
     public IssueService createIssueService() {
     	return new IssueServiceImpl();
     }
     
     /**
-     * New local search query.
-     * 
-     * @return the local search query
-     */
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the network service
+	 */
     public NetworkService createNetworkService() {
     	return new NetworkServiceImpl();
     }
 
     /**
-     * New news search query.
-     * 
-     * @return the news search query
-     */
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the object service
+	 */
     public ObjectService createObjectService() {
     	return new ObjectServiceImpl();
     }
     
     /**
-     * New patent search query.
-     * 
-     * @return the patent search query
-     */
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the repository service
+	 */
     public RepositoryService createRepositoryService() {
     	return new RepositoryServiceImpl();
     }
     
     /**
-     * New video search query.
-     * 
-     * @return the video search query
-     */
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the user service
+	 */
     public UserService createUserService() {
     	return new UserServiceImpl();
     }
     
+    /**
+	 * Creates a new GitHubService object.
+	 * 
+	 * @param clientId
+	 *            the client id
+	 * @param secret
+	 *            the secret
+	 * 
+	 * @return the o auth service
+	 */
     public OAuthService createOAuthService(String clientId, String secret) {
     	return new OAuthServiceImpl(clientId, secret);    	
     }

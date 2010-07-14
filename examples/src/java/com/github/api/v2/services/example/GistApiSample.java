@@ -13,15 +13,16 @@ import com.github.api.v2.services.GistService;
 import com.github.api.v2.services.GitHubServiceFactory;
 
 /**
- * The Class WebSample.
+ * The Class GistApiSample.
  */
 public class GistApiSample {
 
     /**
-     * The main method.
-     * 
-     * @param args the arguments
-     */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the arguments
+	 */
 	public static void main(String[] args) {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 		GistService service = factory.createGistService();
@@ -30,6 +31,12 @@ public class GistApiSample {
 		System.out.println(convertStreamToString(service.getGistContent("289179", "TimeZoneDSTUtil.java")));
 	}
     
+	/**
+	 * Prints the result.
+	 * 
+	 * @param gist
+	 *            the gist
+	 */
 	private static void printResult(Gist gist) {
 		System.out.println(gist);
 	}
@@ -37,7 +44,8 @@ public class GistApiSample {
 	/**
 	 * Convert stream to string.
 	 * 
-	 * @param is the is
+	 * @param is
+	 *            the is
 	 * 
 	 * @return the string
 	 */

@@ -16,12 +16,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * @author nmukhtar
- *
+ * The Class ObjectServiceImpl.
  */
 public class ObjectServiceImpl extends BaseGitHubService implements
 		ObjectService {
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.ObjectService#getBlob(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Blob getBlob(String userName, String repositoryName, String treeSha,
 			String filePath) {
@@ -32,6 +34,9 @@ public class ObjectServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<Blob>(){}, json.get("blob"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.ObjectService#getBlobs(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<Blob> getBlobs(String userName, String repositoryName,
 			String treeSha) {
@@ -42,6 +47,9 @@ public class ObjectServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Blob>>(){}, json.get("blobs"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.ObjectService#getObjectContent(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public InputStream getObjectContent(String userName, String repositoryName,
 			String objectSha) {
@@ -50,6 +58,9 @@ public class ObjectServiceImpl extends BaseGitHubService implements
         return callApiGet(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.ObjectService#getTree(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<Tree> getTree(String userName, String repositoryName,
 			String treeSha) {

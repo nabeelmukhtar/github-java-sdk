@@ -11,17 +11,27 @@ import com.github.api.v2.services.GitHubServiceFactory;
 import com.github.api.v2.services.OAuthService;
 
 /**
- * @author nmukhtar
- *
+ * The Class OAuthExample.
  */
 public class OAuthExample {
+	
+	/** The Constant CLIENT_ID. */
 	private static final String CLIENT_ID = "18790e7033ab0148f05c";
+	
+	/** The Constant CLIENT_SECRET. */
 	private static final String CLIENT_SECRET = "52695c3febf1721b8bc6f569c5210d38d043696c";
+	
+	/** The Constant CALLBACK_URL. */
 	private static final String CALLBACK_URL = "http://www.githubapitest.com";
 
 	/**
+	 * The main method.
+	 * 
 	 * @param args
-	 * @throws IOException 
+	 *            the arguments
+	 * 
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
 		OAuthService service = GitHubServiceFactory.newInstance().createOAuthService(CLIENT_ID, CLIENT_SECRET);

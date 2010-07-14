@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.github.api.v2.schema;
 
 /**

@@ -14,18 +14,24 @@ import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
 
 /**
- * The Class FacebookOAuthServiceImpl.
+ * The Class OAuthServiceImpl.
  */
 public class OAuthServiceImpl extends BaseGitHubService implements OAuthService {
 
+    /** The client id. */
     private final String clientId;
+    
+    /** The secret. */
     private final String secret;
 
     /**
-     * Instantiates a new facebook o auth service impl.
-     * 
-     * @param apiConsumer the api consumer
-     */
+	 * Instantiates a new o auth service impl.
+	 * 
+	 * @param clientId
+	 *            the client id
+	 * @param secret
+	 *            the secret
+	 */
     public OAuthServiceImpl(String clientId, String secret) {
     	this.clientId = clientId;
     	this.secret = secret;

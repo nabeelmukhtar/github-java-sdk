@@ -11,7 +11,7 @@ import com.github.api.v2.services.OAuthService.Permission;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
- * The Class FacebookOAuthServiceTest.
+ * The Class OAuthServiceTest.
  */
 public class OAuthServiceTest extends BaseGitHubServiceTest {
 	

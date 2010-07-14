@@ -1,10 +1,21 @@
+/*
+ * 
+ */
 package com.github.api.v2.services;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+/**
+ * The Class AllTests.
+ */
 public class AllTests {
 
+	/**
+	 * Suite.
+	 * 
+	 * @return the test
+	 */
 	public static Test suite() {
 		TestSuite suite = new TestSuite("Test for com.github.api.v2.services");
 		//$JUnit-BEGIN$

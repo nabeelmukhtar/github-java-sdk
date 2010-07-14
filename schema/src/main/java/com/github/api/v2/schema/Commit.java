@@ -7,233 +7,382 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author nmukhtar
- *
+ * The Class Commit.
  */
 public class Commit extends SchemaEntity {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
+	
+	/** The message. */
 	private String message;
+	
+	/** The time. */
 	private long time;
+	
+	/** The parents. */
 	private List<Id> parents;
+	
+	/** The date. */
 	private Date date;
+	
+	/** The author. */
 	private User author;
+	
+	/** The id. */
 	private String id;
+	
+	/** The space. */
 	private int space;
+	
+	/** The gravatar. */
 	private String gravatar;
+	
+	/** The login. */
 	private String login;
+	
+	/** The url. */
 	private String url;
+	
+	/** The committed date. */
 	private Date committedDate;
+	
+	/** The authored date. */
 	private Date authoredDate;
+	
+	/** The tree. */
 	private String tree;
+	
+	/** The committer. */
 	private User committer;
+	
+	/** The added. */
 	private List<String> added;
+	
+	/** The removed. */
 	private List<String> removed;
+	
+	/** The modified. */
 	private List<Delta> modified;
 	
 	/**
+	 * Gets the message.
+	 * 
 	 * @return the message
 	 */
 	public String getMessage() {
 		return message;
 	}
+	
 	/**
-	 * @param message the message to set
+	 * Sets the message.
+	 * 
+	 * @param message
+	 *            the new message
 	 */
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
 	/**
+	 * Gets the time.
+	 * 
 	 * @return the time
 	 */
 	public long getTime() {
 		return time;
 	}
+	
 	/**
-	 * @param time the time to set
+	 * Sets the time.
+	 * 
+	 * @param time
+	 *            the new time
 	 */
 	public void setTime(long time) {
 		this.time = time;
 	}
+	
 	/**
+	 * Gets the parents.
+	 * 
 	 * @return the parents
 	 */
 	public List<Id> getParents() {
 		return parents;
 	}
+	
 	/**
-	 * @param parents the parents to set
+	 * Sets the parents.
+	 * 
+	 * @param parents
+	 *            the new parents
 	 */
 	public void setParents(List<Id> parents) {
 		this.parents = parents;
 	}
+	
 	/**
+	 * Gets the date.
+	 * 
 	 * @return the date
 	 */
 	public Date getDate() {
 		return date;
 	}
+	
 	/**
-	 * @param date the date to set
+	 * Sets the date.
+	 * 
+	 * @param date
+	 *            the new date
 	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
 	/**
+	 * Gets the author.
+	 * 
 	 * @return the author
 	 */
 	public User getAuthor() {
 		return author;
 	}
+	
 	/**
-	 * @param author the author to set
+	 * Sets the author.
+	 * 
+	 * @param author
+	 *            the new author
 	 */
 	public void setAuthor(User author) {
 		this.author = author;
 	}
+	
 	/**
+	 * Gets the id.
+	 * 
 	 * @return the id
 	 */
 	public String getId() {
 		return id;
 	}
+	
 	/**
-	 * @param id the id to set
+	 * Sets the id.
+	 * 
+	 * @param id
+	 *            the new id
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	/**
+	 * Gets the space.
+	 * 
 	 * @return the space
 	 */
 	public int getSpace() {
 		return space;
 	}
+	
 	/**
-	 * @param space the space to set
+	 * Sets the space.
+	 * 
+	 * @param space
+	 *            the new space
 	 */
 	public void setSpace(int space) {
 		this.space = space;
 	}
+	
 	/**
+	 * Gets the gravatar.
+	 * 
 	 * @return the gravatar
 	 */
 	public String getGravatar() {
 		return gravatar;
 	}
+	
 	/**
-	 * @param gravatar the gravatar to set
+	 * Sets the gravatar.
+	 * 
+	 * @param gravatar
+	 *            the new gravatar
 	 */
 	public void setGravatar(String gravatar) {
 		this.gravatar = gravatar;
 	}
+	
 	/**
+	 * Gets the login.
+	 * 
 	 * @return the login
 	 */
 	public String getLogin() {
 		return login;
 	}
+	
 	/**
-	 * @param login the login to set
+	 * Sets the login.
+	 * 
+	 * @param login
+	 *            the new login
 	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	
 	/**
+	 * Gets the url.
+	 * 
 	 * @return the url
 	 */
 	public String getUrl() {
 		return url;
 	}
+	
 	/**
-	 * @param url the url to set
+	 * Sets the url.
+	 * 
+	 * @param url
+	 *            the new url
 	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
 	/**
-	 * @return the committedDate
+	 * Gets the committed date.
+	 * 
+	 * @return the committed date
 	 */
 	public Date getCommittedDate() {
 		return committedDate;
 	}
+	
 	/**
-	 * @param committedDate the committedDate to set
+	 * Sets the committed date.
+	 * 
+	 * @param committedDate
+	 *            the new committed date
 	 */
 	public void setCommittedDate(Date committedDate) {
 		this.committedDate = committedDate;
 	}
+	
 	/**
-	 * @return the authoredDate
+	 * Gets the authored date.
+	 * 
+	 * @return the authored date
 	 */
 	public Date getAuthoredDate() {
 		return authoredDate;
 	}
+	
 	/**
-	 * @param authoredDate the authoredDate to set
+	 * Sets the authored date.
+	 * 
+	 * @param authoredDate
+	 *            the new authored date
 	 */
 	public void setAuthoredDate(Date authoredDate) {
 		this.authoredDate = authoredDate;
 	}
+	
 	/**
+	 * Gets the tree.
+	 * 
 	 * @return the tree
 	 */
 	public String getTree() {
 		return tree;
 	}
+	
 	/**
-	 * @param tree the tree to set
+	 * Sets the tree.
+	 * 
+	 * @param tree
+	 *            the new tree
 	 */
 	public void setTree(String tree) {
 		this.tree = tree;
 	}
+	
 	/**
+	 * Gets the committer.
+	 * 
 	 * @return the committer
 	 */
 	public User getCommitter() {
 		return committer;
 	}
+	
 	/**
-	 * @param committer the committer to set
+	 * Sets the committer.
+	 * 
+	 * @param committer
+	 *            the new committer
 	 */
 	public void setCommitter(User committer) {
 		this.committer = committer;
 	}
+	
 	/**
+	 * Gets the added.
+	 * 
 	 * @return the added
 	 */
 	public List<String> getAdded() {
 		return added;
 	}
+	
 	/**
-	 * @param added the added to set
+	 * Sets the added.
+	 * 
+	 * @param added
+	 *            the new added
 	 */
 	public void setAdded(List<String> added) {
 		this.added = added;
 	}
+	
 	/**
+	 * Gets the removed.
+	 * 
 	 * @return the removed
 	 */
 	public List<String> getRemoved() {
 		return removed;
 	}
+	
 	/**
-	 * @param removed the removed to set
+	 * Sets the removed.
+	 * 
+	 * @param removed
+	 *            the new removed
 	 */
 	public void setRemoved(List<String> removed) {
 		this.removed = removed;
 	}
+	
 	/**
+	 * Gets the modified.
+	 * 
 	 * @return the modified
 	 */
 	public List<Delta> getModified() {
 		return modified;
 	}
+	
 	/**
-	 * @param modified the modified to set
+	 * Sets the modified.
+	 * 
+	 * @param modified
+	 *            the new modified
 	 */
 	public void setModified(List<Delta> modified) {
 		this.modified = modified;

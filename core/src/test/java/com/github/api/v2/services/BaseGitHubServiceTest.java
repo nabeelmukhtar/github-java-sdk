@@ -19,7 +19,7 @@ import com.github.api.v2.services.auth.LoginTokenAuthentication;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
- * The Class BaseGoogleSearchClientTest.
+ * The Class BaseGitHubServiceTest.
  */
 public class BaseGitHubServiceTest extends TestCase {
     
@@ -29,8 +29,12 @@ public class BaseGitHubServiceTest extends TestCase {
 	/** The factory. */
 	protected GitHubServiceFactory factory;
 	
+	/** The authentication. */
 	protected Authentication authentication;
 	
+	/* (non-Javadoc)
+	 * @see junit.framework.TestCase#setUp()
+	 */
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
@@ -41,6 +45,9 @@ public class BaseGitHubServiceTest extends TestCase {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see junit.framework.TestCase#tearDown()
+	 */
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
@@ -50,8 +57,10 @@ public class BaseGitHubServiceTest extends TestCase {
 	/**
 	 * Assert not null or empty.
 	 * 
-	 * @param message the message
-	 * @param value the value
+	 * @param message
+	 *            the message
+	 * @param value
+	 *            the value
 	 */
 	protected static void assertNotNullOrEmpty(String message, String value) {
 		assertNotNull(message, value);
@@ -61,8 +70,10 @@ public class BaseGitHubServiceTest extends TestCase {
 	/**
 	 * Assert not null or empty.
 	 * 
-	 * @param message the message
-	 * @param value the value
+	 * @param message
+	 *            the message
+	 * @param value
+	 *            the value
 	 */
 	protected static void assertNotNullOrEmpty(String message, Collection<?> value) {
 		assertNotNull(message, value);
@@ -72,7 +83,8 @@ public class BaseGitHubServiceTest extends TestCase {
 	/**
 	 * Convert stream to string.
 	 * 
-	 * @param is the is
+	 * @param is
+	 *            the is
 	 * 
 	 * @return the string
 	 */

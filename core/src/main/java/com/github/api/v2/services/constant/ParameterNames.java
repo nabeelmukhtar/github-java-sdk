@@ -11,93 +11,112 @@ public interface ParameterNames {
 	/** The Constant VERSION. */
 	public static final String VERSION = "version";
 	
-	/** The Constant USER_IP_ADDRESS. */
+	/** The Constant USER_NAME. */
 	public static final String USER_NAME = "userName";
 	
-	/** The Constant RESULTSET_SIZE. */
+	/** The Constant EMAIL. */
 	public static final String EMAIL = "email";
 	
-	/** The Constant HOST_LANGUAGE. */
+	/** The Constant REPOSITORY_NAME. */
 	public static final String REPOSITORY_NAME = "repositoryName";
 	
-	/** The Constant KEY. */
+	/** The Constant KEYWORD. */
 	public static final String KEYWORD = "keyword";
 	
-	/** The Constant START. */
+	/** The Constant STATE. */
 	public static final String STATE = "state";
 	
-	/** The Constant CALLBACK. */
+	/** The Constant ISSUE_NUMBER. */
 	public static final String ISSUE_NUMBER = "issueNumber";
 	
-	/** The Constant CONTEXT. */
+	/** The Constant LABEL. */
 	public static final String LABEL = "label";
 	
-	/** The Constant CUSTOM_SEARCH_ID. */
+	/** The Constant GIST_ID. */
 	public static final String GIST_ID = "gistId";
 	
-	/** The Constant CUSTOM_SEARCH_URL. */
+	/** The Constant FILE_NAME. */
 	public static final String FILE_NAME = "fileName";
 	
-	/** The Constant SAFETY_LEVEL. */
+	/** The Constant NET_HASH. */
 	public static final String NET_HASH = "netHash";
 	
-	/** The Constant LANGUAGE_RESTRICTION. */
+	/** The Constant START_INDEX. */
 	public static final String START_INDEX = "startIndex";
 	
-	/** The Constant DUPLICATE_FILTER. */
+	/** The Constant END_INDEX. */
 	public static final String END_INDEX = "endIndex";
 	
-	/** The Constant COUNTRY_RESTRICTION. */
+	/** The Constant LANGUAGE. */
 	public static final String LANGUAGE = "language";
 	
-	/** The Constant SEARCH_CENTER_POINT. */
+	/** The Constant START_PAGE. */
 	public static final String START_PAGE = "startPage";
 	
-	/** The Constant BOUNDING_BOX. */
+	/** The Constant VISIBILITY. */
 	public static final String VISIBILITY = "visibility";
 	
-	/** The Constant TYPE_OF_LISTING. */
+	/** The Constant BRANCH. */
 	public static final String BRANCH = "branch";
 	
-	/** The Constant SCORING. */
+	/** The Constant FILE_PATH. */
 	public static final String FILE_PATH = "filePath";
 	
-	/** The Constant GEO. */
+	/** The Constant SHA. */
 	public static final String SHA = "sha";
 	
 	/** The Constant FORMAT. */
 	public static final String FORMAT = "format";
 	
+	/** The Constant NAME. */
 	public static final String NAME = "name";
 	
+	/** The Constant BLOG. */
 	public static final String BLOG = "blog";
 	
+	/** The Constant COMPANY. */
 	public static final String COMPANY = "company";
 	
+	/** The Constant LOCATION. */
 	public static final String LOCATION = "location";
 	
+	/** The Constant ID. */
 	public static final String ID = "id";
 	
+	/** The Constant TITLE. */
 	public static final String TITLE = "title";
 	
+	/** The Constant KEY. */
 	public static final String KEY = "key";
 	
+	/** The Constant BODY. */
 	public static final String BODY = "body";
 	
+	/** The Constant COMMENT. */
 	public static final String COMMENT = "comment";
 	
+	/** The Constant DESCRIPTION. */
 	public static final String DESCRIPTION = "description";
 	
+	/** The Constant HOME_PAGE. */
 	public static final String HOME_PAGE = "homepage";
 	
+	/** The Constant HAS_WIKI. */
 	public static final String HAS_WIKI = "has_wiki";
 	
+	/** The Constant HAS_ISSUES. */
 	public static final String HAS_ISSUES = "has_issues";
 	
+	/** The Constant HAS_DOWNLOADS. */
 	public static final String HAS_DOWNLOADS = "has_downloads";
 	
+	/** The Constant LOGIN. */
 	public static final String LOGIN = "login";
+	
+	/** The Constant TOKEN. */
 	public static final String TOKEN = "token";
+	
+	/** The Constant ACCESS_TOKEN. */
 	public static final String ACCESS_TOKEN = "access_token";
 	
     /** The Constant CLIENT_ID. */
@@ -115,8 +134,10 @@ public interface ParameterNames {
     /** The Constant SCOPE. */
     public static final String SCOPE = "scope";
     
+    /** The Constant PUBLIC. */
     public static final String PUBLIC = "public";
     
+    /** The Constant DELETE_TOKEN. */
     public static final String DELETE_TOKEN = "delete_token";
 	
 }

@@ -15,27 +15,29 @@ public abstract class AsyncResponseHandler<T> {
 	private Future<T> future;
 	
     /**
-     * Sets the future.
-     * 
-     * @param future the new future
-     */
+	 * Sets the future.
+	 * 
+	 * @param future
+	 *            the new future
+	 */
 	public void setFuture(Future<T> future) {
 		this.future = future;
 	}
 	
     /**
-     * Gets the future.
-     * 
-     * @return the future
-     */
+	 * Gets the future.
+	 * 
+	 * @return the future
+	 */
 	public Future<T> getFuture() {
 		return future;
 	}
 
     /**
-     * Handle response.
-     * 
-     * @param response the response
-     */
+	 * Handle response.
+	 * 
+	 * @param response
+	 *            the response
+	 */
     public abstract void handleResponse(T response);
 }

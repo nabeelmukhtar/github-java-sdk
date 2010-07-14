@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.github.api.v2.services.impl;
 
 import java.io.InputStream;
@@ -28,7 +31,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * The Class BaseGoogleSearchApiQuery.
+ * The Class BaseGitHubService.
  */
 public abstract class BaseGitHubService extends GitHubApiGateway implements GitHubService {
 	
@@ -42,9 +45,7 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
     private List<AsyncResponseHandler<List<? extends SchemaEntity>>> handlers = new ArrayList<AsyncResponseHandler<List<? extends SchemaEntity>>>();
     
 	/**
-	 * Instantiates a new base google search api query.
-	 * 
-	 * @param applicationId the application id
+	 * Instantiates a new base git hub service.
 	 */
 	public BaseGitHubService() {
         // by default we compress contents
@@ -52,10 +53,10 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	}
 
 	/**
-	 * Instantiates a new base google search api query.
+	 * Instantiates a new base git hub service.
 	 * 
-	 * @param applicationId the application id
-	 * @param apiVersion the api version
+	 * @param apiVersion
+	 *            the api version
 	 */
 	public BaseGitHubService(String apiVersion) {
 		setApiVersion(apiVersion);
@@ -64,7 +65,10 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	/**
 	 * Unmarshall.
 	 * 
-	 * @param object the object
+	 * @param typeToken
+	 *            the type token
+	 * @param response
+	 *            the response
 	 * 
 	 * @return the t
 	 */
@@ -77,7 +81,8 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	/**
 	 * Notify observers.
 	 * 
-	 * @param response the response
+	 * @param response
+	 *            the response
 	 */
 	protected void notifyObservers(List<? extends SchemaEntity> response) {
 		for(AsyncResponseHandler<List<? extends SchemaEntity>> handler : handlers) {
@@ -87,6 +92,12 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	
 	/* (non-Javadoc)
 	 * @see com.google.code.stackexchange.client.query.StackExchangeApiQuery#addResonseHandler(com.google.code.stackexchange.client.AsyncResponseHandler)
+	 */
+	/**
+	 * Adds the resonse handler.
+	 * 
+	 * @param handler
+	 *            the handler
 	 */
 	public void addResonseHandler(AsyncResponseHandler<List<? extends SchemaEntity>> handler) {
 		handlers.add(handler);
@@ -132,6 +143,14 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 		return builder;
 	}
     
+	/**
+	 * Unmarshall.
+	 * 
+	 * @param jsonContent
+	 *            the json content
+	 * 
+	 * @return the json object
+	 */
 	protected JsonObject unmarshall(InputStream jsonContent) {
         try {
         	JsonElement element = parser.parse(new InputStreamReader(jsonContent));
@@ -148,11 +167,12 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	}
 	
 	/**
-	 * Creates the google search api url builder.
+	 * Creates the git hub api url builder.
 	 * 
-	 * @param urlFormat the url format
+	 * @param urlFormat
+	 *            the url format
 	 * 
-	 * @return the google search api url builder
+	 * @return the git hub api url builder
 	 */
 	protected GitHubApiUrlBuilder createGitHubApiUrlBuilder(String urlFormat) {
 		return new GitHubApiUrlBuilder(urlFormat);

@@ -24,10 +24,10 @@ public final class TestConstants {
         }
     }
     
-    /** The Constant TEST_CONSUMER_KEY. */
+    /** The Constant TEST_CLIENT_ID. */
     public static final String TEST_CLIENT_ID = testConstants.getProperty("com.github.api.v2.services.clientId");
     
-    /** The Constant TEST_CONSUMER_SECRET. */
+    /** The Constant TEST_CLIENT_SECRET. */
     public static final String TEST_CLIENT_SECRET = testConstants.getProperty("com.github.api.v2.services.clientSecret");
     
     /** The Constant TEST_CODE. */
@@ -59,46 +59,76 @@ public final class TestConstants {
     public static final String TEST_REPOSITORY_NAME =
         testConstants.getProperty("com.github.api.v2.services.testRepositoryName");
 
-    /** The Constant TEST_REPOSITORY_NAME. */
+    /** The Constant TEST_EMAIL. */
     public static final String TEST_EMAIL =
         testConstants.getProperty("com.github.api.v2.services.testEmail");
     
-    /** The Constant TEST_REPOSITORY_NAME. */
+    /** The Constant TEST_ISSUE_NUMBER. */
     public static final String TEST_ISSUE_NUMBER =
         testConstants.getProperty("com.github.api.v2.services.testIssueNo");
-    /** The Constant TEST_REPOSITORY_NAME. */
+    
+    /** The Constant TEST_COMMIT_HASH. */
     public static final String TEST_COMMIT_HASH =
         testConstants.getProperty("com.github.api.v2.services.testCommitHash");
+    
+    /** The Constant TEST_GIST_ID. */
     public static final String TEST_GIST_ID =
         testConstants.getProperty("com.github.api.v2.services.testGistId");
+    
+    /** The Constant TEST_GIST_FILE. */
     public static final String TEST_GIST_FILE =
         testConstants.getProperty("com.github.api.v2.services.testGistFile");
+    
+    /** The Constant TEST_ISSUE_COMMENT. */
     public static final String TEST_ISSUE_COMMENT =
         testConstants.getProperty("com.github.api.v2.services.testIssueComment");
+    
+    /** The Constant TEST_ISSUE_LABEL. */
     public static final String TEST_ISSUE_LABEL =
         testConstants.getProperty("com.github.api.v2.services.testIssueLabel");
+    
+    /** The Constant TEST_ISSUE_TITLE. */
     public static final String TEST_ISSUE_TITLE =
         testConstants.getProperty("com.github.api.v2.services.testIssueTitle");
+    
+    /** The Constant TEST_ISSUE_BODY. */
     public static final String TEST_ISSUE_BODY =
         testConstants.getProperty("com.github.api.v2.services.testIssueBody");
+	
+	/** The Constant TEST_NETWORK_HASH. */
 	public static final String TEST_NETWORK_HASH =
     	testConstants.getProperty("com.github.api.v2.services.testNetworkHash");
+	
+	/** The Constant TEST_TREE_SHA. */
 	public static final String TEST_TREE_SHA =
     	testConstants.getProperty("com.github.api.v2.services.testTreeHash");
+	
+	/** The Constant TEST_FILE_PATH. */
 	public static final String TEST_FILE_PATH =
     	testConstants.getProperty("com.github.api.v2.services.testFilePath");
+	
+	/** The Constant TEST_KEY_TITLE. */
 	public static final String TEST_KEY_TITLE =
 		testConstants.getProperty("com.github.api.v2.services.testKeyTitle");
+	
+	/** The Constant TEST_KEY. */
 	public static final String TEST_KEY =
 		testConstants.getProperty("com.github.api.v2.services.testKey");
+	
+	/** The Constant TEST_REPOSITORY_DESC. */
 	public static final String TEST_REPOSITORY_DESC = 
 		testConstants.getProperty("com.github.api.v2.services.testRepositoryDesc");
+	
+	/** The Constant TEST_REPOSITORY_PAGE. */
 	public static final String TEST_REPOSITORY_PAGE = 
 		testConstants.getProperty("com.github.api.v2.services.testRepositoryPage");
+	
+	/** The Constant TEST_KEY_ID. */
 	public static final String TEST_KEY_ID = 
 		testConstants.getProperty("com.github.api.v2.services.testKeyId");
+    
     /**
-     * Instantiates a new test constants.
-     */
+	 * Instantiates a new test constants.
+	 */
     private TestConstants() {}
 }

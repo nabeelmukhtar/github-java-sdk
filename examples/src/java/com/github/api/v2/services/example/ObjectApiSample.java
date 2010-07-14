@@ -15,15 +15,16 @@ import com.github.api.v2.services.GitHubServiceFactory;
 import com.github.api.v2.services.ObjectService;
 
 /**
- * The Class WebSample.
+ * The Class ObjectApiSample.
  */
 public class ObjectApiSample {
 
     /**
-     * The main method.
-     * 
-     * @param args the arguments
-     */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the arguments
+	 */
 	public static void main(String[] args) {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 		ObjectService service = factory.createObjectService();
@@ -38,10 +39,22 @@ public class ObjectApiSample {
 		System.out.println(convertStreamToString(service.getObjectContent("facebook", "tornado", "7b80c2f4db226d6fa3a7f3dfa59277da1d642f91")));
 	}
     
+	/**
+	 * Prints the result.
+	 * 
+	 * @param blob
+	 *            the blob
+	 */
 	private static void printResult(Blob blob) {
 		System.out.println(blob);
 	}
 
+	/**
+	 * Prints the result.
+	 * 
+	 * @param tree
+	 *            the tree
+	 */
 	private static void printResult(Tree tree) {
 		System.out.println(tree);
 	}
@@ -49,7 +62,8 @@ public class ObjectApiSample {
 	/**
 	 * Convert stream to string.
 	 * 
-	 * @param is the is
+	 * @param is
+	 *            the is
 	 * 
 	 * @return the string
 	 */

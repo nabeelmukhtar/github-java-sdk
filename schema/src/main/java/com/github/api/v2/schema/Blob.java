@@ -4,90 +4,140 @@
 package com.github.api.v2.schema;
 
 /**
- * @author nmukhtar
- *
+ * The Class Blob.
  */
 public class Blob extends SchemaEntity {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
+	/** The name. */
 	private String name;
+	
+	/** The size. */
 	private int size;
+	
+	/** The sha. */
 	private String sha;
+	
+	/** The mode. */
 	private String mode;
+	
+	/** The mime type. */
 	private String mimeType;
+	
+	/** The data. */
 	private String data;
+	
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name
+	 *            the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
+	 * Gets the size.
+	 * 
 	 * @return the size
 	 */
 	public int getSize() {
 		return size;
 	}
+	
 	/**
-	 * @param size the size to set
+	 * Sets the size.
+	 * 
+	 * @param size
+	 *            the new size
 	 */
 	public void setSize(int size) {
 		this.size = size;
 	}
+	
 	/**
+	 * Gets the sha.
+	 * 
 	 * @return the sha
 	 */
 	public String getSha() {
 		return sha;
 	}
+	
 	/**
-	 * @param sha the sha to set
+	 * Sets the sha.
+	 * 
+	 * @param sha
+	 *            the new sha
 	 */
 	public void setSha(String sha) {
 		this.sha = sha;
 	}
+	
 	/**
+	 * Gets the mode.
+	 * 
 	 * @return the mode
 	 */
 	public String getMode() {
 		return mode;
 	}
+	
 	/**
-	 * @param mode the mode to set
+	 * Sets the mode.
+	 * 
+	 * @param mode
+	 *            the new mode
 	 */
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
+	
 	/**
-	 * @return the mimeType
+	 * Gets the mime type.
+	 * 
+	 * @return the mime type
 	 */
 	public String getMimeType() {
 		return mimeType;
 	}
+	
 	/**
-	 * @param mimeType the mimeType to set
+	 * Sets the mime type.
+	 * 
+	 * @param mimeType
+	 *            the new mime type
 	 */
 	public void setMimeType(String mimeType) {
 		this.mimeType = mimeType;
 	}
+	
 	/**
+	 * Gets the data.
+	 * 
 	 * @return the data
 	 */
 	public String getData() {
 		return data;
 	}
+	
 	/**
-	 * @param data the data to set
+	 * Sets the data.
+	 * 
+	 * @param data
+	 *            the new data
 	 */
 	public void setData(String data) {
 		this.data = data;

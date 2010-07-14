@@ -6,89 +6,140 @@ package com.github.api.v2.schema;
 import java.util.Date;
 
 /**
- * @author nmukhtar
- *
+ * The Class Comment.
  */
 public class Comment extends SchemaEntity {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
+	
+	/** The created at. */
 	private Date createdAt;
+	
+	/** The body. */
 	private String body;
+	
+	/** The updated at. */
 	private Date updatedAt;
+	
+	/** The id. */
 	private long id;
+	
+	/** The user. */
 	private String user;
+	
+	/** The gravatar id. */
 	private String gravatarId;
+	
 	/**
-	 * @return the createdAt
+	 * Gets the created at.
+	 * 
+	 * @return the created at
 	 */
 	public Date getCreatedAt() {
 		return createdAt;
 	}
+	
 	/**
-	 * @param createdAt the createdAt to set
+	 * Sets the created at.
+	 * 
+	 * @param createdAt
+	 *            the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
+	
 	/**
+	 * Gets the body.
+	 * 
 	 * @return the body
 	 */
 	public String getBody() {
 		return body;
 	}
+	
 	/**
-	 * @param body the body to set
+	 * Sets the body.
+	 * 
+	 * @param body
+	 *            the new body
 	 */
 	public void setBody(String body) {
 		this.body = body;
 	}
+	
 	/**
-	 * @return the updatedAt
+	 * Gets the updated at.
+	 * 
+	 * @return the updated at
 	 */
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
+	
 	/**
-	 * @param updatedAt the updatedAt to set
+	 * Sets the updated at.
+	 * 
+	 * @param updatedAt
+	 *            the new updated at
 	 */
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
 	/**
+	 * Gets the id.
+	 * 
 	 * @return the id
 	 */
 	public long getId() {
 		return id;
 	}
+	
 	/**
-	 * @param id the id to set
+	 * Sets the id.
+	 * 
+	 * @param id
+	 *            the new id
 	 */
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 	/**
+	 * Gets the user.
+	 * 
 	 * @return the user
 	 */
 	public String getUser() {
 		return user;
 	}
+	
 	/**
-	 * @param user the user to set
+	 * Sets the user.
+	 * 
+	 * @param user
+	 *            the new user
 	 */
 	public void setUser(String user) {
 		this.user = user;
 	}
+	
 	/**
-	 * @return the gravatarId
+	 * Gets the gravatar id.
+	 * 
+	 * @return the gravatar id
 	 */
 	public String getGravatarId() {
 		return gravatarId;
 	}
+	
 	/**
-	 * @param gravatarId the gravatarId to set
+	 * Sets the gravatar id.
+	 * 
+	 * @param gravatarId
+	 *            the new gravatar id
 	 */
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;
