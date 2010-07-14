@@ -13,7 +13,6 @@
     <path id="github-java-sdk.classpath">
         <pathelement location="target"/>
         <pathelement location="dev-lib/junit-4.5.jar"/>
-        <pathelement location="dev-lib/commons-cli-1.2.jar"/>
         <pathelement location="lib/gson-1.4.jar"/>
     </path>
     <target name="init">
@@ -83,6 +82,86 @@
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
             <test name="com.github.api.v2.services.AllTests" todir="${junit.output.dir}"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </junit>
+    </target>
+    <target name="CommitApiSample">
+        <java classname="com.github.api.v2.services.example.CommitApiSample" failonerror="true" fork="yes">
+            <classpath refid="github-java-sdk.classpath"/>
+        </java>
+    </target>
+    <target name="CommitServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.github.api.v2.services.CommitServiceTest" todir="${junit.output.dir}"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </junit>
+    </target>
+    <target name="GistApiSample">
+        <java classname="com.github.api.v2.services.example.GistApiSample" failonerror="true" fork="yes">
+            <classpath refid="github-java-sdk.classpath"/>
+        </java>
+    </target>
+    <target name="GistServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.github.api.v2.services.GistServiceTest" todir="${junit.output.dir}"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </junit>
+    </target>
+    <target name="IssueApiSample">
+        <java classname="com.github.api.v2.services.example.IssueApiSample" failonerror="true" fork="yes">
+            <classpath refid="github-java-sdk.classpath"/>
+        </java>
+    </target>
+    <target name="IssueServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.github.api.v2.services.IssueServiceTest" todir="${junit.output.dir}"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </junit>
+    </target>
+    <target name="NetworkApiSample">
+        <java classname="com.github.api.v2.services.example.NetworkApiSample" failonerror="true" fork="yes">
+            <classpath refid="github-java-sdk.classpath"/>
+        </java>
+    </target>
+    <target name="OAuthExample (1)">
+        <java classname="com.github.api.v2.services.example.OAuthExample" failonerror="true" fork="yes">
+            <classpath refid="github-java-sdk.classpath"/>
+        </java>
+    </target>
+    <target name="ObjectApiSample">
+        <java classname="com.github.api.v2.services.example.ObjectApiSample" failonerror="true" fork="yes">
+            <classpath refid="github-java-sdk.classpath"/>
+        </java>
+    </target>
+    <target name="RepositoryApiSample">
+        <java classname="com.github.api.v2.services.example.RepositoryApiSample" failonerror="true" fork="yes">
+            <classpath refid="github-java-sdk.classpath"/>
+        </java>
+    </target>
+    <target name="UserApiSample">
+        <java classname="com.github.api.v2.services.example.UserApiSample" failonerror="true" fork="yes">
+            <classpath refid="github-java-sdk.classpath"/>
+        </java>
+    </target>
+    <target name="NetworkServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.github.api.v2.services.NetworkServiceTest" todir="${junit.output.dir}"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </junit>
+    </target>
+    <target name="ObjectServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.github.api.v2.services.ObjectServiceTest" todir="${junit.output.dir}"/>
             <classpath refid="github-java-sdk.classpath"/>
         </junit>
     </target>
