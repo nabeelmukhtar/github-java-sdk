@@ -15,7 +15,7 @@ import org.junit.After;
 import org.junit.Before;
 
 import com.github.api.v2.services.auth.Authentication;
-import com.github.api.v2.services.auth.OAuthAuthentication;
+import com.github.api.v2.services.auth.LoginTokenAuthentication;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
@@ -34,8 +34,9 @@ public class BaseGitHubServiceTest extends TestCase {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Access Token."), TestConstants.TEST_ACCESS_TOKEN);
-    	authentication = new OAuthAuthentication(TestConstants.TEST_ACCESS_TOKEN);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test API Key."), TestConstants.TEST_API_KEY);
+    	authentication = new LoginTokenAuthentication(TestConstants.TEST_USER_NAME, TestConstants.TEST_API_KEY);
 		factory = GitHubServiceFactory.newInstance();
 		
 	}

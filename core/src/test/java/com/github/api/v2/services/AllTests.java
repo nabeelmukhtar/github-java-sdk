@@ -8,7 +8,7 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite("Test for com.github.api.v2.services");
 		//$JUnit-BEGIN$
-		suite.addTestSuite(OAuthServiceTest.class);
+//		suite.addTestSuite(OAuthServiceTest.class);
 		suite.addTestSuite(CommitServiceTest.class);
 		suite.addTestSuite(RepositoryServiceTest.class);
 		suite.addTestSuite(IssueServiceTest.class);

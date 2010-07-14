@@ -31,9 +31,7 @@ public class IssueServiceImpl extends BaseGitHubService implements
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.COMMENT, comment);
-        JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
-        
-        unmarshall(new TypeToken<Comment>(){}, json.get("comment"));
+        callApiPost(apiUrl, parameters);
 	}
 
 	@Override
@@ -142,5 +140,4 @@ public class IssueServiceImpl extends BaseGitHubService implements
         parameters.put(ParameterNames.BODY, body);
 		callApiPost(apiUrl, parameters);
 	}
-
 }

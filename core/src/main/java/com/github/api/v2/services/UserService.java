@@ -15,8 +15,8 @@ import com.github.api.v2.schema.User;
  */
 public interface UserService extends GitHubService {
 	public List<User> searchUsersByName(String name);
-	public List<User> searchUsersByEmail(String email);
-	public User getUser(String userName);
+	public User getUserByEmail(String email);
+	public User getUserByUsername(String userName);
 	public User getCurrentUser();
 	public void updateUser(User user);
 	public List<String> getUserFollowers(String userName);

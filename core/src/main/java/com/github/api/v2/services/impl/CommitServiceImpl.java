@@ -10,6 +10,7 @@ import com.github.api.v2.services.CommitService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -47,5 +48,12 @@ public class CommitServiceImpl extends BaseGitHubService implements
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
         return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));
+	}
+	
+	@Override
+	protected GsonBuilder getGsonBuilder() {
+		GsonBuilder gson = super.getGsonBuilder();
+		gson.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		return gson;
 	}
 }

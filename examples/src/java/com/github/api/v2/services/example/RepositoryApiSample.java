@@ -19,6 +19,8 @@ import com.github.api.v2.schema.Language;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.services.GitHubServiceFactory;
 import com.github.api.v2.services.RepositoryService;
+import com.github.api.v2.services.auth.OAuthAuthentication;
+import com.github.api.v2.services.constant.TestConstants;
 
 /**
  * The Class WebSample.
@@ -69,6 +71,9 @@ public class RepositoryApiSample {
 			}
     		Map<Language, Long> breakDown = service.getLanguageBreakdown("facebook", "tornado");
     		System.out.println(breakDown);
+    		service.setAuthentication(new OAuthAuthentication(TestConstants.TEST_ACCESS_TOKEN));
+    		List<Repository> pushableRepositories = service.getPushableRepositories();
+    		System.out.println(pushableRepositories.size());
 //        } else {
 //        	printHelp(options);
         }

@@ -222,7 +222,8 @@ public abstract class GitHubApiGateway {
 	        request.connect();
 	        
 	        if (request.getResponseCode() != expected) {
-	            throw new GitHubException(convertStreamToString(request.getErrorStream()));
+	            throw new GitHubException(convertStreamToString(getWrappedInputStream(request.getErrorStream(),
+                        GZIP_ENCODING.equalsIgnoreCase(request.getContentEncoding()))));
 	        } else {
 	            return getWrappedInputStream(request.getInputStream(),
 	                                         GZIP_ENCODING.equalsIgnoreCase(request.getContentEncoding()));
@@ -283,7 +284,7 @@ public abstract class GitHubApiGateway {
 
             request.connect();
             
-            if (request.getResponseCode() == HttpURLConnection.HTTP_INTERNAL_ERROR) {
+            if (request.getResponseCode() != expected) {
                 return getWrappedInputStream(request.getErrorStream(),
                         GZIP_ENCODING.equalsIgnoreCase(request.getContentEncoding()));
             } else {
@@ -358,7 +359,8 @@ public abstract class GitHubApiGateway {
 	        request.connect();
 	        
 	        if (request.getResponseCode() != expected) {
-	            throw new GitHubException(convertStreamToString(request.getErrorStream()));
+	            throw new GitHubException(convertStreamToString(getWrappedInputStream(request.getErrorStream(),
+                        GZIP_ENCODING.equalsIgnoreCase(request.getContentEncoding()))));
 	        } else {
 	            return getWrappedInputStream(request.getInputStream(),
 	                                         GZIP_ENCODING.equalsIgnoreCase(request.getContentEncoding()));

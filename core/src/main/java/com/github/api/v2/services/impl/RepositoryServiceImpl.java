@@ -61,11 +61,10 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.CREATE_REPOSITORY_URL);
         String                apiUrl  = builder.buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
-        parameters.put(ParameterNames.DESCRIPTION, "");
-        parameters.put(ParameterNames.HOME_PAGE, "");
-        parameters.put(ParameterNames.HAS_WIKI, "");
-        parameters.put(ParameterNames.HAS_ISSUES, "");
-        parameters.put(ParameterNames.HAS_DOWNLOADS, "");
+        parameters.put(ParameterNames.NAME, name);
+        parameters.put(ParameterNames.DESCRIPTION, description);
+        parameters.put(ParameterNames.HOME_PAGE, homePage);
+        parameters.put(ParameterNames.PUBLIC, ((visibility == Visibility.PUBLIC)? "1" : "0"));
         JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
         
         unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
@@ -76,8 +75,11 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.DELETE_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
-        
-        unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
+        if (json.has("delete_token")) {
+        	Map<String, String> parameters = new HashMap<String, String>();
+        	parameters.put(ParameterNames.DELETE_TOKEN, json.get("delete_token").getAsString());
+        	callApiPost(apiUrl, parameters);
+        }
 	}
 
 	@Override

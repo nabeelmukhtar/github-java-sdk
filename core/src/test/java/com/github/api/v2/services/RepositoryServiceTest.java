@@ -30,6 +30,15 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	}
 
 	@Test
+	public void testCreateRepository() {
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository Description."), TestConstants.TEST_REPOSITORY_DESC);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository Homepage."), TestConstants.TEST_REPOSITORY_PAGE);
+		service.createRepository(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_REPOSITORY_DESC, TestConstants.TEST_REPOSITORY_PAGE, Repository.Visibility.PUBLIC);
+	}
+
+	
+	@Test
 	public void testAddCollaborator() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
@@ -48,20 +57,6 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	public void testChangeVisibility() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
 		service.changeVisibility(TestConstants.TEST_REPOSITORY_NAME, Repository.Visibility.PRIVATE);
-	}
-
-	@Test
-	public void testCreateRepository() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository Description."), TestConstants.TEST_REPOSITORY_DESC);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository Homepage."), TestConstants.TEST_REPOSITORY_PAGE);
-		service.createRepository(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_REPOSITORY_DESC, TestConstants.TEST_REPOSITORY_PAGE, Repository.Visibility.PUBLIC);
-	}
-
-	@Test
-	public void testDeleteRepository() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-		service.deleteRepository(TestConstants.TEST_REPOSITORY_NAME);
 	}
 
 	@Test
@@ -216,4 +211,9 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 		service.watchRepository(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 	}
 
+	@Test
+	public void testDeleteRepository() {
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+//		service.deleteRepository(TestConstants.TEST_REPOSITORY_NAME);
+	}
 }

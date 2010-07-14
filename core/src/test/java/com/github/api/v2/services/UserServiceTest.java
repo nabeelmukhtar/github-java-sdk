@@ -72,9 +72,9 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 	}
 
 	@Test
-	public void testGetUser() {
+	public void testGetUserByUsername() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-		User user = service.getUser(TestConstants.TEST_USER_NAME);
+		User user = service.getUserByUsername(TestConstants.TEST_USER_NAME);
 		assertNotNull("User cannot be null.", user);
 	}
 
@@ -112,10 +112,10 @@ public class UserServiceTest extends BaseGitHubServiceTest {
 	}
 
 	@Test
-	public void testSearchUsersByEmail() {
+	public void testGetUserByEmail() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Email."), TestConstants.TEST_EMAIL);
-		List<User> users = service.searchUsersByEmail(TestConstants.TEST_EMAIL);
-		assertNotNullOrEmpty("Users cannot be null or empty.", users);
+		User user = service.getUserByEmail(TestConstants.TEST_EMAIL);
+		assertNotNull("User cannot be null or empty.", user);
 	}
 
 	@Test

@@ -114,5 +114,9 @@ public interface ParameterNames {
     
     /** The Constant SCOPE. */
     public static final String SCOPE = "scope";
+    
+    public static final String PUBLIC = "public";
+    
+    public static final String DELETE_TOKEN = "delete_token";
 	
 }

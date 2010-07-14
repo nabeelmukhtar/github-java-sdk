@@ -37,7 +37,7 @@ public class GistServiceTest extends BaseGitHubServiceTest {
 	public void testGetGistContent() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Gist Id."), TestConstants.TEST_GIST_ID);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Gist File."), TestConstants.TEST_GIST_FILE);
-		InputStream gistContent = service.getGistContent(TestConstants.TEST_GIST_ID, "");
+		InputStream gistContent = service.getGistContent(TestConstants.TEST_GIST_ID, TestConstants.TEST_GIST_FILE);
 		assertNotNullOrEmpty("Gist content cannot be null or empty", convertStreamToString(gistContent));
 	}
 

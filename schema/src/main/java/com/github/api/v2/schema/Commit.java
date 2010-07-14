@@ -18,7 +18,7 @@ public class Commit extends SchemaEntity {
 	private static final long serialVersionUID = 9155892708485181542L;
 	private String message;
 	private long time;
-	private List<String> parents;
+	private List<Id> parents;
 	private Date date;
 	private User author;
 	private String id;
@@ -30,8 +30,8 @@ public class Commit extends SchemaEntity {
 	private Date authoredDate;
 	private String tree;
 	private User committer;
-	private List<Delta> added;
-	private List<Delta> removed;
+	private List<String> added;
+	private List<String> removed;
 	private List<Delta> modified;
 	
 	/**
@@ -61,13 +61,13 @@ public class Commit extends SchemaEntity {
 	/**
 	 * @return the parents
 	 */
-	public List<String> getParents() {
+	public List<Id> getParents() {
 		return parents;
 	}
 	/**
 	 * @param parents the parents to set
 	 */
-	public void setParents(List<String> parents) {
+	public void setParents(List<Id> parents) {
 		this.parents = parents;
 	}
 	/**
@@ -205,25 +205,25 @@ public class Commit extends SchemaEntity {
 	/**
 	 * @return the added
 	 */
-	public List<Delta> getAdded() {
+	public List<String> getAdded() {
 		return added;
 	}
 	/**
 	 * @param added the added to set
 	 */
-	public void setAdded(List<Delta> added) {
+	public void setAdded(List<String> added) {
 		this.added = added;
 	}
 	/**
 	 * @return the removed
 	 */
-	public List<Delta> getRemoved() {
+	public List<String> getRemoved() {
 		return removed;
 	}
 	/**
 	 * @param removed the removed to set
 	 */
-	public void setRemoved(List<Delta> removed) {
+	public void setRemoved(List<String> removed) {
 		this.removed = removed;
 	}
 	/**

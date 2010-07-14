@@ -11,6 +11,7 @@ import com.github.api.v2.services.NetworkService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -48,5 +49,10 @@ public class NetworkServiceImpl extends BaseGitHubService implements
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
         return unmarshall(new TypeToken<Network>(){}, json);
+	}
+	protected GsonBuilder getGsonBuilder() {
+		GsonBuilder gson = super.getGsonBuilder();
+		gson.setDateFormat("yyyy-MM-dd HH:mm:ss");
+		return gson;
 	}
 }

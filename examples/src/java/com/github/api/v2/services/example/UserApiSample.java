@@ -65,7 +65,7 @@ public class UserApiSample {
     		for (User user : users) {
     			printResult(user);			
     		}
-    		User user = service.getUser("defunkt");
+    		User user = service.getUserByEmail("nabeelmukhtar@yahoo.com");
     		printResult(user);
 //        } else {
 //        	printHelp(options);

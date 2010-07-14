@@ -7,3 +7,7 @@ http://support.github.com/discussions/api/28-oauth2-busy-developers-guide
 http://github.com/account/applications/59
 http://github.com/account/applications/61
 githubapitest
+
+Commit class is not complete.
+Network and commit should be separate.
+Remove commons cli.

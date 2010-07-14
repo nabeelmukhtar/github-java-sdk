@@ -78,7 +78,7 @@ public class UserServiceImpl extends BaseGitHubService implements
 	}
 
 	@Override
-	public User getUser(String userName) {
+	public User getUserByUsername(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_USER_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
@@ -132,12 +132,12 @@ public class UserServiceImpl extends BaseGitHubService implements
 	}
 
 	@Override
-	public List<User> searchUsersByEmail(String email) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.SEARCH_USERS_BY_NAME_URL);
+	public User getUserByEmail(String email) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.SEARCH_USERS_BY_EMAIL_URL);
         String                apiUrl  = builder.withField(ParameterNames.EMAIL, email).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<User>>(){}, json.get("users"));
+        return unmarshall(new TypeToken<User>(){}, json.get("user"));
 	}
 
 	@Override
