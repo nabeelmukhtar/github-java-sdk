@@ -31,6 +31,8 @@ public class Gist extends SchemaEntity {
 	/** The files. */
 	private List<String> files;
 	
+	private String owner;
+	
 	/**
 	 * Gets the description.
 	 * 
@@ -125,6 +127,21 @@ public class Gist extends SchemaEntity {
 	public void setFiles(List<String> files) {
 		this.files = files;
 	}
+	
+	/**
+	 * @return the owner
+	 */
+	public String getOwner() {
+		return owner;
+	}
+
+	/**
+	 * @param owner the owner to set
+	 */
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -132,6 +149,6 @@ public class Gist extends SchemaEntity {
 	public String toString() {
 		return "Gist [createdAt=" + createdAt + ", description=" + description
 				+ ", files=" + files + ", repo=" + repo + ", visibility="
-				+ visibility + "]";
+				+ visibility + ", owner=" + owner + "]";
 	}
 }

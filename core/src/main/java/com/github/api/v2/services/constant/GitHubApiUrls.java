@@ -246,6 +246,9 @@ public final class GitHubApiUrls {
     	
 	    /** The Constant GET_BRANCHES_URL. */
 	    public static final String GET_BRANCHES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getBranches");
+
+	    /** The Constant GET_REPOSITORY_ARCHIVE_URL. */
+	    public static final String GET_REPOSITORY_ARCHIVE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.repositoryService.getRepositoryArchive");
     }
     
     /**

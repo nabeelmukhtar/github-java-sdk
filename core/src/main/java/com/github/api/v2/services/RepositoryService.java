@@ -5,6 +5,7 @@ package com.github.api.v2.services;
 
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipInputStream;
 
 import com.github.api.v2.schema.Key;
 import com.github.api.v2.schema.Language;
@@ -303,4 +304,6 @@ public interface RepositoryService extends GitHubService {
 	 * @return the branches
 	 */
 	public Map<String, String> getBranches(String userName, String repositoryName);
+	
+	public ZipInputStream getRepositoryArchive(String userName, String repositoryName);
 }

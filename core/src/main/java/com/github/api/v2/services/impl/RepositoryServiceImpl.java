@@ -6,6 +6,7 @@ package com.github.api.v2.services.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipInputStream;
 
 import com.github.api.v2.schema.Key;
 import com.github.api.v2.schema.Language;
@@ -348,6 +349,13 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.WATCH_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
+	}
+	
+	@Override
+	public ZipInputStream getRepositoryArchive(String userName, String repositoryName) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_REPOSITORY_ARCHIVE_URL);
+	    String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
+	    return new ZipInputStream(callApiGet(apiUrl));
 	}
 	
 	/* (non-Javadoc)
