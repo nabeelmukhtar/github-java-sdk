@@ -82,6 +82,8 @@ public class FeedServiceImpl extends GitHubApiGateway implements
 			return populateFeed(feed);
 		} catch (Exception e) {
 			throw new GitHubException("Error while fetching feed.", e);
+		} finally {
+			closeStream(is);
 		}
 	}
 	
