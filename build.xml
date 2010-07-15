@@ -14,6 +14,8 @@
         <pathelement location="target"/>
         <pathelement location="dev-lib/junit-4.5.jar"/>
         <pathelement location="lib/gson-1.4.jar"/>
+        <pathelement location="lib/rome-1.0.jar"/>
+        <pathelement location="lib/jdom-1.0.jar"/>
     </path>
     <target name="init">
         <mkdir dir="target"/>
@@ -129,6 +131,14 @@
             <classpath refid="github-java-sdk.classpath"/>
         </java>
     </target>
+    <target name="NetworkServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.github.api.v2.services.NetworkServiceTest" todir="${junit.output.dir}"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </junit>
+    </target>
     <target name="OAuthExample (1)">
         <java classname="com.github.api.v2.services.example.OAuthExample" failonerror="true" fork="yes">
             <classpath refid="github-java-sdk.classpath"/>
@@ -138,6 +148,14 @@
         <java classname="com.github.api.v2.services.example.ObjectApiSample" failonerror="true" fork="yes">
             <classpath refid="github-java-sdk.classpath"/>
         </java>
+    </target>
+    <target name="ObjectServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.github.api.v2.services.ObjectServiceTest" todir="${junit.output.dir}"/>
+            <classpath refid="github-java-sdk.classpath"/>
+        </junit>
     </target>
     <target name="RepositoryApiSample">
         <java classname="com.github.api.v2.services.example.RepositoryApiSample" failonerror="true" fork="yes">
@@ -149,19 +167,16 @@
             <classpath refid="github-java-sdk.classpath"/>
         </java>
     </target>
-    <target name="NetworkServiceTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="com.github.api.v2.services.NetworkServiceTest" todir="${junit.output.dir}"/>
+    <target name="FeedSample">
+        <java classname="com.github.api.v2.services.example.FeedSample" failonerror="true" fork="yes">
             <classpath refid="github-java-sdk.classpath"/>
-        </junit>
+        </java>
     </target>
-    <target name="ObjectServiceTest">
+    <target name="FeedServiceTest">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="com.github.api.v2.services.ObjectServiceTest" todir="${junit.output.dir}"/>
+            <test name="com.github.api.v2.services.FeedServiceTest" todir="${junit.output.dir}"/>
             <classpath refid="github-java-sdk.classpath"/>
         </junit>
     </target>
