@@ -28,6 +28,18 @@
       <version>1.4</version>
       <scope>compile</scope>
     </dependency>
+	<dependency>
+		<groupId>rome</groupId>
+		<artifactId>rome</artifactId>
+		<version>0.9</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>jdom</groupId>
+		<artifactId>jdom</artifactId>
+		<version>1.1</version>
+		<scope>compile</scope>
+	</dependency>
     <dependency>
       <groupId>com.github.api.v2</groupId>
       <artifactId>github-java-schema</artifactId>

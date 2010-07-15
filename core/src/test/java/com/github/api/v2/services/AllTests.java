@@ -27,6 +27,7 @@ public class AllTests {
 		suite.addTestSuite(NetworkServiceTest.class);
 		suite.addTestSuite(UserServiceTest.class);
 		suite.addTestSuite(GistServiceTest.class);
+		suite.addTestSuite(FeedServiceTest.class);
 		//$JUnit-END$
 		return suite;
 	}

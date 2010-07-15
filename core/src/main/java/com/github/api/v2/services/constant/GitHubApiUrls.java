@@ -285,6 +285,29 @@ public final class GitHubApiUrls {
     }
     
     /**
+	 * The Interface ObjectApiUrls.
+	 */
+    public static interface FeedUrls {
+	    /** The Constant GET_PUBLIC_USER_FEED_URL. */
+	    public static final String GET_PUBLIC_USER_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getPublicUserFeed");
+
+	    /** The Constant GET_PRIVATE_USER_FEED_URL. */
+	    public static final String GET_PRIVATE_USER_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getPrivateUserFeed");
+
+	    /** The Constant GET_COMMIT_FEED_URL. */
+	    public static final String GET_COMMIT_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getCommitFeed");
+
+	    /** The Constant GET_NETWORK_FEED_URL. */
+	    public static final String GET_NETWORK_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getNetworkFeed");
+
+	    /** The Constant GET_WIKI_FEED_URL. */
+	    public static final String GET_WIKI_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getWikiFeed");
+
+	    /** The Constant GET_PUBLIC_TIMELINE_FEED_URL. */
+	    public static final String GET_PUBLIC_TIMELINE_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getPublicTimelineFeed");
+    }
+    
+    /**
 	 * Instantiates a new git hub api urls.
 	 */
     private GitHubApiUrls() {}

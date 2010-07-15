@@ -4,6 +4,7 @@
 package com.github.api.v2.services;
 
 import com.github.api.v2.services.impl.CommitServiceImpl;
+import com.github.api.v2.services.impl.FeedServiceImpl;
 import com.github.api.v2.services.impl.GistServiceImpl;
 import com.github.api.v2.services.impl.IssueServiceImpl;
 import com.github.api.v2.services.impl.NetworkServiceImpl;
@@ -111,4 +112,9 @@ public class GitHubServiceFactory {
     public OAuthService createOAuthService(String clientId, String secret) {
     	return new OAuthServiceImpl(clientId, secret);    	
     }
+    
+    public FeedService createFeedService() {
+    	return new FeedServiceImpl();    	
+    }
+    
 }

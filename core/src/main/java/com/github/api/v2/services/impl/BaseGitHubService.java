@@ -35,9 +35,6 @@ import com.google.gson.reflect.TypeToken;
  */
 public abstract class BaseGitHubService extends GitHubApiGateway implements GitHubService {
 	
-	/** The api url builder. */
-	protected GitHubApiUrlBuilder apiUrlBuilder;
-    
     /** The parser. */
     private final JsonParser parser = new JsonParser();
     

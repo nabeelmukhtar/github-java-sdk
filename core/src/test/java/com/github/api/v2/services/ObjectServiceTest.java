@@ -22,9 +22,6 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 	/** The service. */
 	private ObjectService service;
 
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.BaseGitHubServiceTest#setUp()
-	 */
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
@@ -32,9 +29,6 @@ public class ObjectServiceTest extends BaseGitHubServiceTest {
 		service.setAuthentication(authentication);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.BaseGitHubServiceTest#tearDown()
-	 */
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
