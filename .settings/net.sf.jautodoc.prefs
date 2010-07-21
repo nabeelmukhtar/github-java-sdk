@@ -1,7 +1,10 @@
-#Wed Jul 14 18:06:56 GMT+05:00 2010
+#Wed Jul 21 16:42:29 GMT+05:00 2010
+add_header=true
 add_todo=false
 eclipse.preferences.version=1
+header_text=/*\r\n * Copyright 2010 Nabeel Mukhtar \r\n * \r\n * Licensed under the Apache License, Version 2.0 (the "License"); \r\n * you may not use this file except in compliance with the License. \r\n * You may obtain a copy of the License at \r\n * \r\n *  http\://www.apache.org/licenses/LICENSE-2.0\r\n * \r\n * Unless required by applicable law or agreed to in writing, software\r\n * distributed under the License is distributed on an "AS IS" BASIS,\r\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. \r\n * See the License for the specific language governing permissions and\r\n * limitations under the License. \r\n * \r\n */
 mode=mode_replace
 project_specific_settings=true
+replace_header=true
 replacements=<?xml version\="1.0" standalone\="yes"?>\n\n<replacements>\n<replacement key\="get" scope\="1" mode\="0">Gets the</replacement>\n<replacement key\="set" scope\="1" mode\="0">Sets the</replacement>\n<replacement key\="add" scope\="1" mode\="0">Adds the</replacement>\n<replacement key\="edit" scope\="1" mode\="0">Edits the</replacement>\n<replacement key\="remove" scope\="1" mode\="0">Removes the</replacement>\n<replacement key\="init" scope\="1" mode\="0">Inits the</replacement>\n<replacement key\="parse" scope\="1" mode\="0">Parses the</replacement>\n<replacement key\="create" scope\="1" mode\="0">Creates the</replacement>\n<replacement key\="build" scope\="1" mode\="0">Builds the</replacement>\n<replacement key\="is" scope\="1" mode\="0">Checks if is</replacement>\n<replacement key\="print" scope\="1" mode\="0">Prints the</replacement>\n<replacement key\="has" scope\="1" mode\="0">Checks for</replacement>\n</replacements>\n\n
 use_internal_formatter=true
