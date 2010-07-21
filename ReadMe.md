@@ -10,6 +10,7 @@ This project has only one dependency on Gson which can be downloaded [here](http
 ## Key Features
 The library implements all the methods of GitHub API v.2.0. Additionally it has methods for reading various atom feeds from the GitHub site. It also has a method for downloading the source as a zip archive.
 The library is divided into various services each implementing a specific portion of the API.
+
 * UserService: Provides methods of the [User API](http://develop.github.com/p/users.html).
 * IssueService: Provides methods of the [Issues API](http://develop.github.com/p/issues.html).
 * GistService: Provides methods of the [Gist API](http://develop.github.com/p/gist.html).
