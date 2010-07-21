@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.api.v2.schema.Feed;
+import com.github.api.v2.schema.Repository;
 import com.github.api.v2.services.constant.TestConstants;
 
 public class FeedServiceTest extends BaseGitHubServiceTest {
@@ -27,7 +28,7 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
 	public void testGetCommitFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	Feed feed = service.getCommitFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+    	Feed feed = service.getCommitFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Repository.MASTER);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}

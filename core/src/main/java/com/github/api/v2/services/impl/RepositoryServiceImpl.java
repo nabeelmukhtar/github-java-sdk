@@ -352,9 +352,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	}
 	
 	@Override
-	public ZipInputStream getRepositoryArchive(String userName, String repositoryName) {
+	public ZipInputStream getRepositoryArchive(String userName, String repositoryName, String branchName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_REPOSITORY_ARCHIVE_URL);
-	    String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, Repository.MASTER).buildUrl();
+	    String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branchName).buildUrl();
 	    return new ZipInputStream(callApiGet(apiUrl));
 	}
 	

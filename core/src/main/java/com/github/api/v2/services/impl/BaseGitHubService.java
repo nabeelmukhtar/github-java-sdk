@@ -6,6 +6,7 @@ package com.github.api.v2.services.impl;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,8 @@ import com.google.gson.reflect.TypeToken;
  * The Class BaseGitHubService.
  */
 public abstract class BaseGitHubService extends GitHubApiGateway implements GitHubService {
+	
+	protected static final Charset UTF_8_CHAR_SET = Charset.forName(ApplicationConstants.CONTENT_ENCODING);
 	
     /** The parser. */
     private final JsonParser parser = new JsonParser();
@@ -150,7 +153,7 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	 */
 	protected JsonObject unmarshall(InputStream jsonContent) {
         try {
-        	JsonElement element = parser.parse(new InputStreamReader(jsonContent));
+        	JsonElement element = parser.parse(new InputStreamReader(jsonContent, UTF_8_CHAR_SET));
         	if (element.isJsonObject()) {
         		return element.getAsJsonObject();
         	} else {

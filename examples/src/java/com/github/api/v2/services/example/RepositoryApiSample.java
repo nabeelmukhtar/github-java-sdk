@@ -33,7 +33,7 @@ public class RepositoryApiSample {
 		}
 		Map<Language, Long> breakDown = service.getLanguageBreakdown("facebook", "tornado");
 		System.out.println(breakDown);
-		ZipInputStream zip = service.getRepositoryArchive("nabeelmukhtar", "github-java-sdk");
+		ZipInputStream zip = service.getRepositoryArchive("nabeelmukhtar", "github-java-sdk", Repository.MASTER);
 		ZipEntry entry = null;
 		while ((entry = zip.getNextEntry()) != null) {
 			System.out.println(entry.getName());

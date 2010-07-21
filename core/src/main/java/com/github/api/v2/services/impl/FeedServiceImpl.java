@@ -11,7 +11,6 @@ import org.xml.sax.InputSource;
 
 import com.github.api.v2.schema.Feed;
 import com.github.api.v2.schema.FeedEntry;
-import com.github.api.v2.schema.Repository;
 import com.github.api.v2.services.FeedService;
 import com.github.api.v2.services.GitHubException;
 import com.github.api.v2.services.constant.GitHubApiUrls;
@@ -34,9 +33,9 @@ public class FeedServiceImpl extends GitHubApiGateway implements
 	}
 
 	@Override
-	public Feed getCommitFeed(String userName, String repositoryName) {
+	public Feed getCommitFeed(String userName, String repositoryName, String branchName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_COMMIT_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, Repository.MASTER).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branchName).buildUrl();
         return unmarshall(callApiGet(apiUrl));
 	}
 

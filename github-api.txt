@@ -27,3 +27,26 @@ http://github.com/apache/cassandra/network/feed
 http://wiki.github.com/apache/cassandra/wikis.atom
 http://feeds.feedburner.com/thechangelog
 http://github.com/timeline.
+
+This library provides a wrapper for GitHub APi v2. Its
+
+Description
+License
+Requirements
+Key Features
+Usage
+	Typical
+	Authenticated
+More Info (Links to Wiki Pages)	
+	
+Wiki
+Getting Started
+Maven Support
+Spring Configuration
+OAuth Flow.
+Asynchronous API
+API Design
+Android Configuration
+
+	
+

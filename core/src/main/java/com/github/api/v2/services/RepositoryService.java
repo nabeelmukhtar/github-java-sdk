@@ -305,5 +305,5 @@ public interface RepositoryService extends GitHubService {
 	 */
 	public Map<String, String> getBranches(String userName, String repositoryName);
 	
-	public ZipInputStream getRepositoryArchive(String userName, String repositoryName);
+	public ZipInputStream getRepositoryArchive(String userName, String repositoryName, String branchName);
 }
