@@ -1,3 +1,4 @@
+# GitHub Java SDK
 ## Description
 This project provides a Java wrapper for the [GitHub API v.2.0](http://develop.github.com/).
  
@@ -6,6 +7,8 @@ This project is open source with [Apache License, Version 2.0](http://www.apache
  
 ## Requirements
 This project has only one dependency on Gson which can be downloaded [here](http://code.google.com/p/google-gson/). If you plan to use the Feed Service than additional jars [ROME](http://rome.dev.java.net/) and [JDOM](http://www.jdom.org/) are required.
+
+If the Feed Service is not used, the library can be employed on AppEngine and Android platforms as well.
  
 ## Key Features
 The library implements all the methods of GitHub API v.2.0. Additionally it has methods for reading various atom feeds from the GitHub site. It also has a method for downloading the source as a zip archive.
