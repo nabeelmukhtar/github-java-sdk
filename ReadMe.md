@@ -21,7 +21,7 @@ The library is divided into various services each implementing a specific portio
 * RepositoryService: Provides methods of the [Repository API](http://develop.github.com/p/repo.html).
 * CommitService: Provides methods of the [Commit API](http://develop.github.com/p/commits.html).
 * ObjectService: Provides methods of the [Object API](http://develop.github.com/p/object.html).
-* FeedService: Provides methods for reading the ATOM/RSS feeds.
+* FeedService: Provides methods for reading the Atom/RSS feeds.
 
  
 ## Usage
