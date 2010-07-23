@@ -14,7 +14,7 @@ Commit class is not complete.
 X. 2. Remove commons cli.
 X. 3. Add Feed methods using atom.
 4. Update rrpo and user methods need to be fixed.
-5. Gist and repo visibility.
+X. 5. Gist and repo visibility.
 6. Network Meta is not complete.
 7. Fix Network API.
 X. 8. Add a Readme.

@@ -18,11 +18,13 @@ package com.github.api.v2.services.impl;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.api.v2.schema.Gist;
 import com.github.api.v2.schema.Issue;
 import com.github.api.v2.schema.Language;
 import com.github.api.v2.schema.Repository;
@@ -34,6 +36,7 @@ import com.github.api.v2.services.GitHubService;
 import com.github.api.v2.services.constant.ApplicationConstants;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
 import com.google.gson.FieldNamingPolicy;
+import com.google.gson.FieldNamingStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -125,6 +128,19 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 		GsonBuilder builder = new GsonBuilder();
 		builder.setDateFormat(ApplicationConstants.DATE_FORMAT);
 		builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
+		builder.setFieldNamingStrategy(new FieldNamingStrategy() {
+			@Override
+			public String translateName(Field field) {
+				if (field.getType().equals(Repository.Visibility.class)) {
+					return "private";
+				} else if (field.getType().equals(Gist.Visibility.class)) {
+					return "public";
+				} else {
+					return field.getName();
+				}
+			}
+			
+		});
 		builder.registerTypeAdapter(Issue.State.class, new JsonDeserializer<Issue.State>() {
 			@Override
 			public Issue.State deserialize(JsonElement arg0, Type arg1,
@@ -136,7 +152,14 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 			@Override
 			public Repository.Visibility deserialize(JsonElement arg0, Type arg1,
 					JsonDeserializationContext arg2) throws JsonParseException {
-				return Repository.Visibility.fromValue(arg0.getAsString());
+				return (arg0.getAsBoolean())? Repository.Visibility.PRIVATE : Repository.Visibility.PUBLIC;
+			}
+		});
+		builder.registerTypeAdapter(Gist.Visibility.class, new JsonDeserializer<Gist.Visibility>() {
+			@Override
+			public Gist.Visibility deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return (arg0.getAsBoolean())? Gist.Visibility.PUBLIC : Gist.Visibility.PRIVATE;
 			}
 		});
 		builder.registerTypeAdapter(Language.class, new JsonDeserializer<Language>() {

@@ -17,15 +17,68 @@
 package com.github.api.v2.schema;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-
-import com.github.api.v2.schema.Repository.Visibility;
+import java.util.Map;
 
 /**
  * The Class Gist.
  */
 public class Gist extends SchemaEntity {
+	
+	/**
+	 * The Enum Visibility.
+	 */
+	public enum Visibility implements ValueEnum {
+		
+		/** The PUBLIC. */
+		PUBLIC("public"), 
+ /** The PRIVATE. */
+ PRIVATE("private");
+		
+	    /** The Constant stringToEnum. */
+		private static final Map<String, Visibility> stringToEnum = new HashMap<String, Visibility>();
 
+		static { // Initialize map from constant name to enum constant
+			for (Visibility op : values()) {
+				stringToEnum.put(op.value(), op);
+			}
+		}
+		
+	    /** The value. */
+	    private final String value;
+	    
+	    /**
+		 * Instantiates a new visibility.
+		 * 
+		 * @param value
+		 *            the value
+		 */
+	    Visibility(String value) {
+	        this.value = value;
+	    }
+
+		/* (non-Javadoc)
+		 * @see com.github.api.v2.schema.ValueEnum#value()
+		 */
+		@Override
+		public String value() {
+			return value;
+		}
+		
+		/**
+		 * From value.
+		 * 
+		 * @param value
+		 *            the value
+		 * 
+		 * @return the visibility
+		 */
+		public static Visibility fromValue(String value) {
+			return stringToEnum.get(value);
+		}
+	}
+	
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
