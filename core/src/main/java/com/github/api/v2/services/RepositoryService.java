@@ -195,7 +195,7 @@ public interface RepositoryService extends GitHubService {
 	 * 
 	 * @return the string
 	 */
-	public String addDeployKey(String repositoryName, String title, String key);
+	public List<Key> addDeployKey(String repositoryName, String title, String key);
 	
 	/**
 	 * Removes the deploy key.

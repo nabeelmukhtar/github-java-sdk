@@ -54,7 +54,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	 * @see com.github.api.v2.services.RepositoryService#addDeployKey(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public String addDeployKey(String repositoryName, String title, String key) {
+	public List<Key> addDeployKey(String repositoryName, String title, String key) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.ADD_DEPLOY_KEY_URL);
         String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
@@ -62,7 +62,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         parameters.put(ParameterNames.KEY, key);
         JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
         
-        return unmarshall(new TypeToken<String>(){}, json);
+        return unmarshall(new TypeToken<List<Key>>(){}, json.get("public_keys"));
 	}
 
 	/* (non-Javadoc)
