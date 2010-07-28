@@ -175,6 +175,16 @@ public class IssueServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Issue>>(){}, json.get("issues"));
 	}
 
+	@Override
+	public List<Issue> getIssues(String userName, String repositoryName,
+			String label) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUES_BY_LABEL_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<Issue>>(){}, json.get("issues"));
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#updateIssue(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)
 	 */

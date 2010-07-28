@@ -6,6 +6,7 @@ http://support.github.com/discussions/api
 http://support.github.com/discussions/api/28-oauth2-busy-developers-guide
 http://github.com/account/applications/59
 http://github.com/account/applications/61
+http://github.com/develop/develop.github.com
 githubapitest
 http://ajax.googleapis.com/ajax/services/feed/load?&q=http://github.com/apache.atom&v=1.0
 

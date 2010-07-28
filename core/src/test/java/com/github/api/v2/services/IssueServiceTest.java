@@ -182,6 +182,15 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Issues cannot be null or empty.", issues);
 	}
 
+	@Test
+	public void testGetIssuesByLabel() {
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Label."), TestConstants.TEST_ISSUE_LABEL);
+		List<Issue> issues = service.getIssues(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_ISSUE_LABEL);
+		assertNotNullOrEmpty("Issues cannot be null or empty.", issues);
+	}
+	
 	/**
 	 * Test update issue.
 	 */

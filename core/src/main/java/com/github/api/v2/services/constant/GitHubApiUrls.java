@@ -157,6 +157,8 @@ public final class GitHubApiUrls {
     	
 	    /** The Constant ADD_COMMENT_URL. */
 	    public static final String ADD_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.addComment");
+
+		public static final String GET_ISSUES_BY_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssuesByLabel");
     }
     
     /**
