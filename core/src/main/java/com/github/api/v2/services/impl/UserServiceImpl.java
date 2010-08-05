@@ -221,11 +221,11 @@ public class UserServiceImpl extends BaseGitHubService implements
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.UPDATE_USER_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, user.getUsername()).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
-        parameters.put(ParameterNames.NAME, user.getName());
-        parameters.put(ParameterNames.EMAIL, user.getEmail());
-        parameters.put(ParameterNames.BLOG, user.getBlog());
-        parameters.put(ParameterNames.COMPANY, user.getCompany());
-        parameters.put(ParameterNames.LOCATION, user.getLocation());
+        parameters.put("values[" + ParameterNames.NAME + "]", user.getName());
+        parameters.put("values[" + ParameterNames.EMAIL + "]", user.getEmail());
+        parameters.put("values[" + ParameterNames.BLOG + "]", user.getBlog());
+        parameters.put("values[" + ParameterNames.COMPANY + "]", user.getCompany());
+        parameters.put("values[" + ParameterNames.LOCATION + "]", user.getLocation());
 		callApiPost(apiUrl, parameters);
 	}
 

@@ -344,11 +344,11 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.UPDATE_REPOSITORY_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, "").withField(ParameterNames.REPOSITORY_NAME, "").buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
-        parameters.put(ParameterNames.DESCRIPTION, "");
-        parameters.put(ParameterNames.HOME_PAGE, "");
-        parameters.put(ParameterNames.HAS_WIKI, "");
-        parameters.put(ParameterNames.HAS_ISSUES, "");
-        parameters.put(ParameterNames.HAS_DOWNLOADS, "");
+        parameters.put("values[" + ParameterNames.DESCRIPTION + "]", repository.getDescription());
+        parameters.put("values[" + ParameterNames.HOME_PAGE + "]", repository.getHomepage());
+        parameters.put("values[" + ParameterNames.HAS_WIKI + "]", String.valueOf(repository.isHasWiki()));
+        parameters.put("values[" + ParameterNames.HAS_ISSUES + "]", String.valueOf(repository.isHasIssues()));
+        parameters.put("values[" + ParameterNames.HAS_DOWNLOADS + "]", String.valueOf(repository.isHasDownloads()));
         JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
         
         unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
