@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * The Class Network.
  */
-public class Network extends SchemaEntity {
+public class NetworkMeta extends SchemaEntity {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
@@ -35,6 +35,9 @@ public class Network extends SchemaEntity {
 	
 	/** The dates. */
 	private List<Date> dates;
+	
+	private List<NetworkUser> users;
+	private List<Block> blocks;
 	
 	/**
 	 * Gets the focus.
@@ -92,12 +95,42 @@ public class Network extends SchemaEntity {
 	public void setDates(List<Date> dates) {
 		this.dates = dates;
 	}
+	
+	/**
+	 * @return the users
+	 */
+	public List<NetworkUser> getUsers() {
+		return users;
+	}
+
+	/**
+	 * @param users the users to set
+	 */
+	public void setUsers(List<NetworkUser> users) {
+		this.users = users;
+	}
+
+	/**
+	 * @return the blocks
+	 */
+	public List<Block> getBlocks() {
+		return blocks;
+	}
+
+	/**
+	 * @param blocks the blocks to set
+	 */
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Network [dates=" + dates + ", focus=" + focus + ", nethash="
-				+ nethash + "]";
+		return "NetworkMeta [blocks=" + blocks + ", dates=" + dates
+				+ ", focus=" + focus + ", nethash=" + nethash + ", users="
+				+ users + "]";
 	}
 }

@@ -18,7 +18,7 @@ package com.github.api.v2.services.example;
 
 import java.util.List;
 
-import com.github.api.v2.schema.Commit;
+import com.github.api.v2.schema.NetworkCommit;
 import com.github.api.v2.services.GitHubServiceFactory;
 import com.github.api.v2.services.NetworkService;
 
@@ -36,8 +36,8 @@ public class NetworkApiSample {
 	public static void main(String[] args) {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 		NetworkService service = factory.createNetworkService();
-		List<Commit> commits = service.getNetworkData("facebook", "tornado", "7b80c2f4db226d6fa3a7f3dfa59277da1d642f91");
-		for (Commit commit : commits) {
+		List<NetworkCommit> commits = service.getNetworkData("facebook", "tornado", "7b80c2f4db226d6fa3a7f3dfa59277da1d642f91");
+		for (NetworkCommit commit : commits) {
 			printResult(commit);
 		}
 	}
@@ -48,7 +48,7 @@ public class NetworkApiSample {
 	 * @param commit
 	 *            the commit
 	 */
-	private static void printResult(Commit commit) {
+	private static void printResult(NetworkCommit commit) {
 		System.out.println(commit);
 	}
 }

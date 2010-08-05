@@ -18,8 +18,8 @@ package com.github.api.v2.services;
 
 import java.util.List;
 
-import com.github.api.v2.schema.Commit;
-import com.github.api.v2.schema.Network;
+import com.github.api.v2.schema.NetworkCommit;
+import com.github.api.v2.schema.NetworkMeta;
 
 /**
  * The Interface NetworkService.
@@ -36,7 +36,7 @@ public interface NetworkService extends GitHubService {
 	 * 
 	 * @return the network meta
 	 */
-	public Network getNetworkMeta(String userName, String repositoryName);
+	public NetworkMeta getNetworkMeta(String userName, String repositoryName);
 	
 	/**
 	 * Gets the network data.
@@ -50,7 +50,7 @@ public interface NetworkService extends GitHubService {
 	 * 
 	 * @return the network data
 	 */
-	public List<Commit> getNetworkData(String userName, String repositoryName, String networkHash);
+	public List<NetworkCommit> getNetworkData(String userName, String repositoryName, String networkHash);
 	
 	/**
 	 * Gets the network data.
@@ -68,5 +68,5 @@ public interface NetworkService extends GitHubService {
 	 * 
 	 * @return the network data
 	 */
-	public List<Commit> getNetworkData(String userName, String repositoryName, String networkHash, int startIndex, int endIndex);
+	public List<NetworkCommit> getNetworkData(String userName, String repositoryName, String networkHash, int startIndex, int endIndex);
 }

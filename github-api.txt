@@ -11,13 +11,13 @@ githubapitest
 http://ajax.googleapis.com/ajax/services/feed/load?&q=http://github.com/apache.atom&v=1.0
 
 Commit class is not complete.
-1. Network and commit should be separate.
+X. 1. Network and commit should be separate.
 X. 2. Remove commons cli.
 X. 3. Add Feed methods using atom.
 4. Update rrpo and user methods need to be fixed.
 X. 5. Gist and repo visibility.
-6. Network Meta is not complete.
-7. Fix Network API.
+X. 6. Network Meta is not complete.
+X. 7. Fix Network API.
 X. 8. Add a Readme.
 
 Feeds

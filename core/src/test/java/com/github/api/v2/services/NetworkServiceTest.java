@@ -22,8 +22,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.api.v2.schema.Commit;
-import com.github.api.v2.schema.Network;
+import com.github.api.v2.schema.NetworkCommit;
+import com.github.api.v2.schema.NetworkMeta;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
@@ -61,7 +61,7 @@ public class NetworkServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Network Hash."), TestConstants.TEST_NETWORK_HASH);
-		List<Commit> commits = service.getNetworkData(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_NETWORK_HASH);
+		List<NetworkCommit> commits = service.getNetworkData(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_NETWORK_HASH);
 		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
 	}
 
@@ -73,7 +73,7 @@ public class NetworkServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Network Hash."), TestConstants.TEST_NETWORK_HASH);
-		List<Commit> commits = service.getNetworkData(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_NETWORK_HASH, 1, 5);
+		List<NetworkCommit> commits = service.getNetworkData(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_NETWORK_HASH, 1, 5);
 		assertNotNullOrEmpty("Commits should not be null or empty.", commits);
 	}
 
@@ -84,7 +84,7 @@ public class NetworkServiceTest extends BaseGitHubServiceTest {
 	public void testGetNetworkMeta() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-		Network networkMeta = service.getNetworkMeta(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+		NetworkMeta networkMeta = service.getNetworkMeta(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNull("Network cannot be null", networkMeta);
 	}
 
