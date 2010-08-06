@@ -50,4 +50,5 @@ API Design
 Android Configuration
 
 	
-
+Add github-java-sdk to the list of Github libraries.
+I have created a Java library for GitHub API and added it to the libaries page. You can pull the changes from http://github.com/nabeelmukhtar/develop.github.com.

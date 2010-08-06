@@ -342,7 +342,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	@Override
 	public void updateRepository(Repository repository) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.UPDATE_REPOSITORY_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, "").withField(ParameterNames.REPOSITORY_NAME, "").buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, repository.getOwner()).withField(ParameterNames.REPOSITORY_NAME, repository.getName()).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put("values[" + ParameterNames.DESCRIPTION + "]", repository.getDescription());
         parameters.put("values[" + ParameterNames.HOME_PAGE + "]", repository.getHomepage());

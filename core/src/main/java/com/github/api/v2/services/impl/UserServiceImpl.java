@@ -219,7 +219,8 @@ public class UserServiceImpl extends BaseGitHubService implements
 	@Override
 	public void updateUser(User user) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.UPDATE_USER_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, user.getUsername()).buildUrl();
+		String userName = (user.getUsername() == null) ? user.getLogin() : user.getUsername();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put("values[" + ParameterNames.NAME + "]", user.getName());
         parameters.put("values[" + ParameterNames.EMAIL + "]", user.getEmail());
