@@ -30,4 +30,9 @@ public interface FeedService extends GitHubService {
 	public Feed getNetworkFeed(String userName, String repositoryName);
 	public Feed getWikiFeed(String userName, String repositoryName);
 	public Feed getPublicTimelineFeed();
+	
+	public Feed getDiscussionsFeed();
+	public Feed getDiscussionsFeed(String topic);
+	public Feed getJobPositionsFeed();
+	public Feed getBlogFeed();
 }

@@ -320,6 +320,18 @@ public final class GitHubApiUrls {
 
 	    /** The Constant GET_PUBLIC_TIMELINE_FEED_URL. */
 	    public static final String GET_PUBLIC_TIMELINE_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getPublicTimelineFeed");
+	    
+	    /** The Constant GET_DISCUSSIONS_FEED_URL. */
+	    public static final String GET_DISCUSSIONS_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getDiscussionsFeed");
+
+	    /** The Constant GET_DISCUSSIONS_FEED_BY_TOPIC_URL. */
+	    public static final String GET_DISCUSSIONS_FEED_BY_TOPIC_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getDiscussionsFeedByTopic");
+
+	    /** The Constant GET_JOB_POSITIONS_FEED_URL. */
+	    public static final String GET_JOB_POSITIONS_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getJobPositionsFeed");
+
+	    /** The Constant GET_BLOG_FEED_URL. */
+	    public static final String GET_BLOG_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getBlogFeed");
     }
     
     /**

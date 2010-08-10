@@ -89,4 +89,32 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
+	
+	@Test
+	public void testGetBlogFeed() {
+    	Feed feed = service.getBlogFeed();
+    	assertNotNull("Feed cannot be null.", feed);
+    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	}
+
+	@Test
+	public void testGetDiscussionsFeed() {
+    	Feed feed = service.getDiscussionsFeed();
+    	assertNotNull("Feed cannot be null.", feed);
+    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	}
+
+	@Test
+	public void testGetDiscussionsFeedString() {
+    	Feed feed = service.getDiscussionsFeed("api");
+    	assertNotNull("Feed cannot be null.", feed);
+    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	}
+
+	@Test
+	public void testGetJobPositionsFeed() {
+    	Feed feed = service.getJobPositionsFeed();
+    	assertNotNull("Feed cannot be null.", feed);
+    	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
+	}
 }

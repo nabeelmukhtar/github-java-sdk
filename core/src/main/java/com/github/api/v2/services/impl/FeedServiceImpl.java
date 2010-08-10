@@ -87,6 +87,35 @@ public class FeedServiceImpl extends GitHubApiGateway implements
         return unmarshall(callApiGet(apiUrl));
 	}
 	
+	@Override
+	public Feed getBlogFeed() {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_BLOG_FEED_URL);
+        String                apiUrl  = builder.buildUrl();
+        return unmarshall(callApiGet(apiUrl));
+	}
+
+	@Override
+	public Feed getDiscussionsFeed() {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_DISCUSSIONS_FEED_URL);
+        String                apiUrl  = builder.buildUrl();
+        return unmarshall(callApiGet(apiUrl));
+	}
+
+	@Override
+	public Feed getDiscussionsFeed(String topic) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_DISCUSSIONS_FEED_BY_TOPIC_URL);
+        String                apiUrl  = builder.withField(ParameterNames.KEYWORD, topic).buildUrl();
+        return unmarshall(callApiGet(apiUrl));
+	}
+
+	@Override
+	public Feed getJobPositionsFeed() {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_JOB_POSITIONS_FEED_URL);
+        String                apiUrl  = builder.buildUrl();
+        return unmarshall(callApiGet(apiUrl));
+	}
+	
+	
 	protected Feed unmarshall(InputStream is) {
         try {
             final SyndFeedInput input = new SyndFeedInput();
