@@ -70,7 +70,6 @@ public class FeedServiceImpl extends BaseGitHubService implements
 	public Feed getPublicUserFeed(String userName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_PUBLIC_USER_FEED_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
-        System.out.println(apiUrl);
         return unmarshall(apiUrl);
 	}
 
