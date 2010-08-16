@@ -24,15 +24,15 @@ import com.github.api.v2.schema.Feed;
  */
 public interface FeedService extends GitHubService {
 	
-	public Feed getPublicUserFeed(String userName);
-	public Feed getPrivateUserFeed(String userName);
-	public Feed getCommitFeed(String userName, String repositoryName, String branchName);
-	public Feed getNetworkFeed(String userName, String repositoryName);
-	public Feed getWikiFeed(String userName, String repositoryName);
-	public Feed getPublicTimelineFeed();
+	public Feed getPublicUserFeed(String userName, int count);
+	public Feed getPrivateUserFeed(String userName, int count);
+	public Feed getCommitFeed(String userName, String repositoryName, String branchName, int count);
+	public Feed getNetworkFeed(String userName, String repositoryName, int count);
+	public Feed getWikiFeed(String userName, String repositoryName, int count);
+	public Feed getPublicTimelineFeed(int count);
 	
-	public Feed getDiscussionsFeed();
-	public Feed getDiscussionsFeed(String topic);
-	public Feed getJobPositionsFeed();
-	public Feed getBlogFeed();
+	public Feed getDiscussionsFeed(int count);
+	public Feed getDiscussionsFeed(String topic, int count);
+	public Feed getJobPositionsFeed(int count);
+	public Feed getBlogFeed(int count);
 }

@@ -35,7 +35,7 @@ public class FeedSample {
 	public static void main(String[] args) {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 		FeedService service = factory.createFeedService();
-		Feed feed = service.getPublicUserFeed("apache");
+		Feed feed = service.getPublicUserFeed("apache", 10);
 		printResult(feed);
 	}
 

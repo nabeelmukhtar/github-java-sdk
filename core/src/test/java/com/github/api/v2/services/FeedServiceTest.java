@@ -44,7 +44,7 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
 	public void testGetCommitFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	Feed feed = service.getCommitFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Repository.MASTER);
+    	Feed feed = service.getCommitFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Repository.MASTER, 10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
@@ -53,7 +53,7 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
 	public void testGetNetworkFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	Feed feed = service.getNetworkFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+    	Feed feed = service.getNetworkFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, 10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
@@ -61,14 +61,14 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
 	@Test
 	public void testGetPrivateUserFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	Feed feed = service.getPrivateUserFeed(TestConstants.TEST_USER_NAME);
+    	Feed feed = service.getPrivateUserFeed(TestConstants.TEST_USER_NAME, 10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
 	@Test
 	public void testGetPublicTimelineFeed() {
-    	Feed feed = service.getPublicTimelineFeed();
+    	Feed feed = service.getPublicTimelineFeed(10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
@@ -76,7 +76,7 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
 	@Test
 	public void testGetPublicUserFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	Feed feed = service.getPublicUserFeed(TestConstants.TEST_USER_NAME);
+    	Feed feed = service.getPublicUserFeed(TestConstants.TEST_USER_NAME, 10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
@@ -85,35 +85,35 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
 	public void testGetWikiFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	Feed feed = service.getWikiFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+    	Feed feed = service.getWikiFeed(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, 10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 	
 	@Test
 	public void testGetBlogFeed() {
-    	Feed feed = service.getBlogFeed();
+    	Feed feed = service.getBlogFeed(10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
 	@Test
 	public void testGetDiscussionsFeed() {
-    	Feed feed = service.getDiscussionsFeed();
+    	Feed feed = service.getDiscussionsFeed(10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
 	@Test
 	public void testGetDiscussionsFeedString() {
-    	Feed feed = service.getDiscussionsFeed("api");
+    	Feed feed = service.getDiscussionsFeed("api", 10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
 	@Test
 	public void testGetJobPositionsFeed() {
-    	Feed feed = service.getJobPositionsFeed();
+    	Feed feed = service.getJobPositionsFeed(10);
     	assertNotNull("Feed cannot be null.", feed);
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}

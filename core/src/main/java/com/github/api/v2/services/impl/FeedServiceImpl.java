@@ -39,72 +39,73 @@ public class FeedServiceImpl extends BaseGitHubService implements
 	}
 
 	@Override
-	public Feed getCommitFeed(String userName, String repositoryName, String branchName) {
+	public Feed getCommitFeed(String userName, String repositoryName, String branchName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_COMMIT_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branchName).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branchName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
 
 	@Override
-	public Feed getNetworkFeed(String userName, String repositoryName) {
+	public Feed getNetworkFeed(String userName, String repositoryName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_NETWORK_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
 
 	@Override
-	public Feed getPrivateUserFeed(String userName) {
+	public Feed getPrivateUserFeed(String userName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_PRIVATE_USER_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
 
 	@Override
-	public Feed getPublicTimelineFeed() {
+	public Feed getPublicTimelineFeed(int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_PUBLIC_TIMELINE_FEED_URL);
-        String                apiUrl  = builder.buildUrl();
+        String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
 
 	@Override
-	public Feed getPublicUserFeed(String userName) {
+	public Feed getPublicUserFeed(String userName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_PUBLIC_USER_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
+        System.out.println(apiUrl);
         return unmarshall(apiUrl);
 	}
 
 	@Override
-	public Feed getWikiFeed(String userName, String repositoryName) {
+	public Feed getWikiFeed(String userName, String repositoryName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_WIKI_FEED_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
 	
 	@Override
-	public Feed getBlogFeed() {
+	public Feed getBlogFeed(int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_BLOG_FEED_URL);
-        String                apiUrl  = builder.buildUrl();
+        String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
 
 	@Override
-	public Feed getDiscussionsFeed() {
+	public Feed getDiscussionsFeed(int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_DISCUSSIONS_FEED_URL);
-        String                apiUrl  = builder.buildUrl();
+        String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
 
 	@Override
-	public Feed getDiscussionsFeed(String topic) {
+	public Feed getDiscussionsFeed(String topic, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_DISCUSSIONS_FEED_BY_TOPIC_URL);
-        String                apiUrl  = builder.withField(ParameterNames.KEYWORD, topic).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.KEYWORD, topic).withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
 
 	@Override
-	public Feed getJobPositionsFeed() {
+	public Feed getJobPositionsFeed(int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_JOB_POSITIONS_FEED_URL);
-        String                apiUrl  = builder.buildUrl();
+        String                apiUrl  = builder.withParameter(ParameterNames.NUM, String.valueOf(count)).buildUrl();
         return unmarshall(apiUrl);
 	}
 	

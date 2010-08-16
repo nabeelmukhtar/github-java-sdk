@@ -152,5 +152,7 @@ public interface ParameterNames {
     
     /** The Constant DELETE_TOKEN. */
     public static final String DELETE_TOKEN = "delete_token";
+
+	public static final String NUM = "num";
 	
 }

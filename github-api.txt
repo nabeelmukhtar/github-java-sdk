@@ -59,3 +59,5 @@ Android Configuration
 	
 Add github-java-sdk to the list of Github libraries.
 I have created a Java library for GitHub API and added it to the libaries page. You can pull the changes from http://github.com/nabeelmukhtar/develop.github.com.
+
+ABQIAAAAvQycN2a0eBLRB8DGrLfzQRTQV5l3ALoWoSA9wfMrLZSV0Qnu4RQ6x1TgR7d8ayIoK_hqJWsqLImnDg
