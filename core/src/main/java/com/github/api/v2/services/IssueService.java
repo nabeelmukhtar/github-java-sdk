@@ -106,14 +106,15 @@ public interface IssueService extends GitHubService {
 	 * 
 	 * @param userName
 	 *            the user name
-	 * @param repositoryName
-	 *            the repository name
-	 * @param title
-	 *            the title
-	 * @param body
-	 *            the body
-	 */
-	public void createIssue(String userName, String repositoryName, String title, String body);
+   * @param repositoryName
+   *            the repository name
+   * @param title
+   *            the title
+   * @param body
+   * @return issueNumber
+	 *            the issue number
+   */
+	public int createIssue(String userName, String repositoryName, String title, String body);
 	
 	/**
 	 * Close issue.
