@@ -170,7 +170,7 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
 		Map<Language, Long> languageBreakdown = service.getLanguageBreakdown(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
-		assertFalse("Language breakdown vannot be null or empty.", (languageBreakdown == null || languageBreakdown.isEmpty()));
+		assertFalse("Language breakdown cannot be null or empty.", (languageBreakdown == null || languageBreakdown.isEmpty()));
 	}
 
 	/**
