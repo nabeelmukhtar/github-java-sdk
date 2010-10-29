@@ -35,7 +35,7 @@
             <fileset dir="core/src/test/resources" excludes="**/*.launch, **/*.java"/>
         </copy>
         <copy includeemptydirs="false" todir="target">
-            <fileset dir="examples/src/resources" excludes="**/*.launch, **/*.java"/>
+            <fileset dir="examples/src/java" excludes="**/*.launch, **/*.java"/>
         </copy>
         <copy includeemptydirs="false" todir="target">
             <fileset dir="examples/src/java" excludes="**/*.launch, **/*.java"/>
@@ -70,7 +70,7 @@
             <classpath refid="github-java-sdk.classpath"/>
         </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
-            <src path="examples/src/resources"/>
+            <src path="examples/src/java"/>
             <classpath refid="github-java-sdk.classpath"/>
         </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
