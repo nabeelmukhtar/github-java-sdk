@@ -300,6 +300,61 @@ public final class GitHubApiUrls {
     }
     
     /**
+	 * The Interface OrganizationApiUrls.
+	 */
+    public static interface OrganizationApiUrls {
+    	
+	    /** The Constant GET_ORGANIZATION_URL. */
+	    public static final String GET_ORGANIZATION_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getOrganization");
+	    
+	    /** The Constant UPDATE_ORGANIZATION_URL. */
+	    public static final String UPDATE_ORGANIZATION_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.updateOrganization");
+	    
+	    /** The Constant GET_ALL_REPOSITORIES_URL. */
+	    public static final String GET_ALL_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getAllRepositories");
+
+	    /** The Constant GET_PUBLIC_REPOSITORIES_URL. */
+	    public static final String GET_PUBLIC_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getPublicRepositories");
+
+	    /** The Constant GET_PUBLIC_MEMBERS_URL. */
+	    public static final String GET_PUBLIC_MEMBERS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getPublicMembers");
+
+	    /** The Constant GET_TEAMS_URL. */
+	    public static final String GET_TEAMS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getTeams");
+
+	    /** The Constant CREATE_TEAM_URL. */
+	    public static final String CREATE_TEAM_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.createTeam");
+
+	    /** The Constant GET_TEAM_URL. */
+	    public static final String GET_TEAM_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getTeam");
+
+	    /** The Constant UPDATE_TEAM_URL. */
+	    public static final String UPDATE_TEAM_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.updateTeam");
+
+	    /** The Constant DELETE_TEAM_URL. */
+	    public static final String DELETE_TEAM_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.deleteTeam");
+
+	    /** The Constant GET_TEAM_MEMBERS_URL. */
+	    public static final String GET_TEAM_MEMBERS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getTeamMembers");
+
+	    /** The Constant ADD_TEAM_MEMBER_URL. */
+	    public static final String ADD_TEAM_MEMBER_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.addTeamMember");
+
+	    /** The Constant REMOVE_TEAM_MEMBER_URL. */
+	    public static final String REMOVE_TEAM_MEMBER_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.removeTeamMember");
+	    
+	    /** The Constant GET_TEAM_REPOSITORIES_URL. */
+	    public static final String GET_TEAM_REPOSITORIES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getTeamRepositories");
+
+	    /** The Constant ADD_TEAM_REPOSITORY_URL. */
+	    public static final String ADD_TEAM_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.addTeamRepository");
+	    
+	    /** The Constant REMOVE_TEAM_REPOSITORY_URL. */
+	    public static final String REMOVE_TEAM_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.removeTeamRepository");
+    }
+    
+    
+    /**
 	 * The Interface ObjectApiUrls.
 	 */
     public static interface FeedUrls {

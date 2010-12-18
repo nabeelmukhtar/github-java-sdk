@@ -23,6 +23,7 @@ import com.github.api.v2.services.impl.IssueServiceImpl;
 import com.github.api.v2.services.impl.NetworkServiceImpl;
 import com.github.api.v2.services.impl.OAuthServiceImpl;
 import com.github.api.v2.services.impl.ObjectServiceImpl;
+import com.github.api.v2.services.impl.OrganizationServiceImpl;
 import com.github.api.v2.services.impl.RepositoryServiceImpl;
 import com.github.api.v2.services.impl.UserServiceImpl;
 
@@ -101,6 +102,15 @@ public class GitHubServiceFactory {
 	 */
     public RepositoryService createRepositoryService() {
     	return new RepositoryServiceImpl();
+    }
+    
+    /**
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the repository service
+	 */
+    public OrganizationService createOrganizationService() {
+    	return new OrganizationServiceImpl();
     }
     
     /**
