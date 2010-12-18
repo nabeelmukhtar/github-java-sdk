@@ -155,4 +155,10 @@ public interface ParameterNames {
 
 	public static final String NUM = "num";
 	
+	public static final String USER_REPOSITORY_PAIR = "userRepositoryPair";
+	
+	public static final String ORGANIZATION_NAME = "organizationName";
+	
+	public static final String TEAM_ID = "teamId";
+	
 }
