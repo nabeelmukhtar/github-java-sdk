@@ -160,5 +160,8 @@ public interface ParameterNames {
 	public static final String ORGANIZATION_NAME = "organizationName";
 	
 	public static final String TEAM_ID = "teamId";
+	public static final String PERMISSION = "permission";
+	public static final String REPO_NAMES = "repo_names";
+	public static final String BILLING_EMAIL = "billing_email";
 	
 }

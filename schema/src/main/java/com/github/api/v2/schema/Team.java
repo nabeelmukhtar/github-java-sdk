@@ -16,8 +16,10 @@
  */
 package com.github.api.v2.schema;
 
+import java.util.List;
+
 /**
- * The Class Key.
+ * The Class Team.
  */
 public class Team extends SchemaEntity {
 
@@ -27,11 +29,13 @@ public class Team extends SchemaEntity {
 	/** The id. */
 	private String id;
 	
-	/** The title. */
-	private String title;
+	/** The name. */
+	private String name;
 	
-	/** The key. */
-	private String key;
+	/** The permission. */
+	private Permission permission;
+	
+	private List<String> repoNames;
 	
 	/**
 	 * Gets the id.
@@ -51,49 +55,46 @@ public class Team extends SchemaEntity {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	/**
-	 * Gets the title.
-	 * 
-	 * @return the title
+	 * @return the name
 	 */
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
-	
+
 	/**
-	 * Sets the title.
-	 * 
-	 * @param title
-	 *            the new title
+	 * @param name the name to set
 	 */
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+
 	/**
-	 * Gets the key.
-	 * 
-	 * @return the key
+	 * @return the permission
 	 */
-	public String getKey() {
-		return key;
+	public Permission getPermission() {
+		return permission;
 	}
-	
+
 	/**
-	 * Sets the key.
-	 * 
-	 * @param key
-	 *            the new key
+	 * @param permission the permission to set
 	 */
-	public void setKey(String key) {
-		this.key = key;
+	public void setPermission(Permission permission) {
+		this.permission = permission;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+
+	/**
+	 * @return the repoNames
 	 */
-	@Override
-	public String toString() {
-		return "Key [id=" + id + ", key=" + key + ", title=" + title + "]";
+	public List<String> getRepoNames() {
+		return repoNames;
+	}
+
+	/**
+	 * @param repoNames the repoNames to set
+	 */
+	public void setRepoNames(List<String> repoNames) {
+		this.repoNames = repoNames;
 	}
 }

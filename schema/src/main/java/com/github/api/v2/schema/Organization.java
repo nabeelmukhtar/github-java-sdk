@@ -21,25 +21,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The Class Repository.
+ * The Class Organization.
  */
 public class Organization extends SchemaEntity {
 	
 	/**
-	 * The Enum Visibility.
+	 * The Enum Type.
 	 */
-	public enum Visibility implements ValueEnum {
+	public enum Type implements ValueEnum {
 		
-		/** The PUBLIC. */
-		PUBLIC("public"), 
- /** The PRIVATE. */
- PRIVATE("private");
+		/** The ORGANIZATION. */
+		ORGANIZATION("Organization");
+		
 		
 	    /** The Constant stringToEnum. */
-		private static final Map<String, Visibility> stringToEnum = new HashMap<String, Visibility>();
+		private static final Map<String, Type> stringToEnum = new HashMap<String, Type>();
 
 		static { // Initialize map from constant name to enum constant
-			for (Visibility op : values()) {
+			for (Type op : values()) {
 				stringToEnum.put(op.value(), op);
 			}
 		}
@@ -48,12 +47,12 @@ public class Organization extends SchemaEntity {
 	    private final String value;
 	    
 	    /**
-		 * Instantiates a new visibility.
+		 * Instantiates a new type.
 		 * 
 		 * @param value
 		 *            the value
 		 */
-	    Visibility(String value) {
+	    Type(String value) {
 	        this.value = value;
 	    }
 
@@ -71,132 +70,114 @@ public class Organization extends SchemaEntity {
 		 * @param value
 		 *            the value
 		 * 
-		 * @return the visibility
+		 * @return the type
 		 */
-		public static Visibility fromValue(String value) {
+		public static Type fromValue(String value) {
 			return stringToEnum.get(value);
 		}
 	}
 	
-	/** The Constant MASTER. */
-	public static final String MASTER = "master";
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2665103321482505351L;
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 9155892708485181542L;
+	/** The id. */
+	private String id;
 	
-	/** The watchers. */
-	private int watchers;
+	/** The gravatar id. */
+	private String gravatarId;
 	
-	/** The owner. */
-	private String owner;
+	/** The login. */
+	private String login;
 	
 	/** The name. */
 	private String name;
 	
-	/** The description. */
-	private String description;
+	/** The email. */
+	private String email;
 	
-	/** The visibility. */
-	private Visibility visibility;
+	/** The location. */
+	private String location;
 	
-	/** The url. */
-	private String url;
+	/** The blog. */
+	private String blog;
 	
-	/** The open issues. */
-	private int openIssues;
+	/** The company. */
+	private String company;
 	
-	/** The fork. */
-	private boolean fork;
+	/** The following count. */
+	private int followingCount;
 	
-	/** The homepage. */
-	private String homepage;
+	/** The followers count. */
+	private int followersCount;
 	
-	/** The forks. */
-	private int forks;
+	/** The public gist count. */
+	private int publicGistCount;
 	
-	/** The score. */
-	private double score;
+	/** The public repo count. */
+	private int publicRepoCount;
 	
-	/** The actions. */
-	private int actions;
+	/** The total private repo count. */
+	private int totalPrivateRepoCount;
 	
-	/** The size. */
-	private long size;
+	/** The owned private repo count. */
+	private int ownedPrivateRepoCount;
 	
-	/** The language. */
-	private Language language;
+	/** The private gist count. */
+	private int privateGistCount;
 	
-	/** The followers. */
-	private int followers;
+	/** The created at. */
+	private Date createdAt;
 	
-	/** The username. */
-	private String username;
+	private Permission permission;
 	
-	/** The type. */
-	private String type;
+	private String billingEmail;
 	
-	/** The id. */
-	private String id;
-	
-	/** The pushed. */
-	private Date pushed;
-	
-	/** The created. */
-	private Date created;
-	
-	/** The source. */
-	private String source;
-	
-	/** The parent. */
-	private String parent;
-	
-	/** The has wiki. */
-	private boolean hasWiki;
-	
-	/** The has issues. */
-	private boolean hasIssues;
-	
-	/** The has downloads. */
-	private boolean hasDownloads;
+	private Type type;
 	
 	/**
-	 * Gets the watchers.
-	 * 
-	 * @return the watchers
+	 * @return the permission
 	 */
-	public int getWatchers() {
-		return watchers;
+	public Permission getPermission() {
+		return permission;
 	}
-	
+
 	/**
-	 * Sets the watchers.
-	 * 
-	 * @param watchers
-	 *            the new watchers
+	 * @param permission the permission to set
 	 */
-	public void setWatchers(int watchers) {
-		this.watchers = watchers;
+	public void setPermission(Permission permission) {
+		this.permission = permission;
 	}
-	
+
 	/**
-	 * Gets the owner.
-	 * 
-	 * @return the owner
+	 * @return the billingEmail
 	 */
-	public String getOwner() {
-		return owner;
+	public String getBillingEmail() {
+		return billingEmail;
 	}
-	
+
 	/**
-	 * Sets the owner.
-	 * 
-	 * @param owner
-	 *            the new owner
+	 * @param billingEmail the billingEmail to set
 	 */
-	public void setOwner(String owner) {
-		this.owner = owner;
+	public void setBillingEmail(String billingEmail) {
+		this.billingEmail = billingEmail;
 	}
-	
+
+	/**
+	 * @return the type
+	 */
+	public Type getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	/**
 	 * Gets the name.
 	 * 
@@ -217,269 +198,79 @@ public class Organization extends SchemaEntity {
 	}
 	
 	/**
-	 * Gets the description.
+	 * Gets the location.
 	 * 
-	 * @return the description
+	 * @return the location
 	 */
-	public String getDescription() {
-		return description;
+	public String getLocation() {
+		return location;
 	}
 	
 	/**
-	 * Sets the description.
+	 * Sets the location.
 	 * 
-	 * @param description
-	 *            the new description
+	 * @param location
+	 *            the new location
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	
 	/**
-	 * Gets the visibility.
+	 * Gets the email.
 	 * 
-	 * @return the visibility
+	 * @return the email
 	 */
-	public Visibility getVisibility() {
-		return visibility;
+	public String getEmail() {
+		return email;
 	}
 	
 	/**
-	 * Sets the visibility.
+	 * Sets the email.
 	 * 
-	 * @param visibility
-	 *            the new visibility
+	 * @param email
+	 *            the new email
 	 */
-	public void setVisibility(Visibility visibility) {
-		this.visibility = visibility;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	/**
-	 * Gets the url.
+	 * Gets the blog.
 	 * 
-	 * @return the url
+	 * @return the blog
 	 */
-	public String getUrl() {
-		return url;
+	public String getBlog() {
+		return blog;
 	}
 	
 	/**
-	 * Sets the url.
+	 * Sets the blog.
 	 * 
-	 * @param url
-	 *            the new url
+	 * @param blog
+	 *            the new blog
 	 */
-	public void setUrl(String url) {
-		this.url = url;
+	public void setBlog(String blog) {
+		this.blog = blog;
 	}
 	
 	/**
-	 * Gets the open issues.
+	 * Gets the company.
 	 * 
-	 * @return the open issues
+	 * @return the company
 	 */
-	public int getOpenIssues() {
-		return openIssues;
+	public String getCompany() {
+		return company;
 	}
 	
 	/**
-	 * Sets the open issues.
+	 * Sets the company.
 	 * 
-	 * @param openIssues
-	 *            the new open issues
+	 * @param company
+	 *            the new company
 	 */
-	public void setOpenIssues(int openIssues) {
-		this.openIssues = openIssues;
-	}
-	
-	/**
-	 * Checks if is fork.
-	 * 
-	 * @return true, if is fork
-	 */
-	public boolean isFork() {
-		return fork;
-	}
-	
-	/**
-	 * Sets the fork.
-	 * 
-	 * @param fork
-	 *            the new fork
-	 */
-	public void setFork(boolean fork) {
-		this.fork = fork;
-	}
-	
-	/**
-	 * Gets the homepage.
-	 * 
-	 * @return the homepage
-	 */
-	public String getHomepage() {
-		return homepage;
-	}
-	
-	/**
-	 * Sets the homepage.
-	 * 
-	 * @param homepage
-	 *            the new homepage
-	 */
-	public void setHomepage(String homepage) {
-		this.homepage = homepage;
-	}
-	
-	/**
-	 * Gets the forks.
-	 * 
-	 * @return the forks
-	 */
-	public int getForks() {
-		return forks;
-	}
-	
-	/**
-	 * Sets the forks.
-	 * 
-	 * @param forks
-	 *            the new forks
-	 */
-	public void setForks(int forks) {
-		this.forks = forks;
-	}
-	
-	/**
-	 * Gets the score.
-	 * 
-	 * @return the score
-	 */
-	public double getScore() {
-		return score;
-	}
-	
-	/**
-	 * Sets the score.
-	 * 
-	 * @param score
-	 *            the new score
-	 */
-	public void setScore(double score) {
-		this.score = score;
-	}
-	
-	/**
-	 * Gets the actions.
-	 * 
-	 * @return the actions
-	 */
-	public int getActions() {
-		return actions;
-	}
-	
-	/**
-	 * Sets the actions.
-	 * 
-	 * @param actions
-	 *            the new actions
-	 */
-	public void setActions(int actions) {
-		this.actions = actions;
-	}
-	
-	/**
-	 * Gets the size.
-	 * 
-	 * @return the size
-	 */
-	public long getSize() {
-		return size;
-	}
-	
-	/**
-	 * Sets the size.
-	 * 
-	 * @param size
-	 *            the new size
-	 */
-	public void setSize(long size) {
-		this.size = size;
-	}
-	
-	/**
-	 * Gets the language.
-	 * 
-	 * @return the language
-	 */
-	public Language getLanguage() {
-		return language;
-	}
-	
-	/**
-	 * Sets the language.
-	 * 
-	 * @param language
-	 *            the new language
-	 */
-	public void setLanguage(Language language) {
-		this.language = language;
-	}
-	
-	/**
-	 * Gets the followers.
-	 * 
-	 * @return the followers
-	 */
-	public int getFollowers() {
-		return followers;
-	}
-	
-	/**
-	 * Sets the followers.
-	 * 
-	 * @param followers
-	 *            the new followers
-	 */
-	public void setFollowers(int followers) {
-		this.followers = followers;
-	}
-	
-	/**
-	 * Gets the username.
-	 * 
-	 * @return the username
-	 */
-	public String getUsername() {
-		return username;
-	}
-	
-	/**
-	 * Sets the username.
-	 * 
-	 * @param username
-	 *            the new username
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	/**
-	 * Gets the type.
-	 * 
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-	
-	/**
-	 * Sets the type.
-	 * 
-	 * @param type
-	 *            the new type
-	 */
-	public void setType(String type) {
-		this.type = type;
+	public void setCompany(String company) {
+		this.company = company;
 	}
 	
 	/**
@@ -502,152 +293,192 @@ public class Organization extends SchemaEntity {
 	}
 	
 	/**
-	 * Gets the pushed.
+	 * Gets the login.
 	 * 
-	 * @return the pushed
+	 * @return the login
 	 */
-	public Date getPushed() {
-		return pushed;
+	public String getLogin() {
+		return login;
 	}
 	
 	/**
-	 * Sets the pushed.
+	 * Sets the login.
 	 * 
-	 * @param pushed
-	 *            the new pushed
+	 * @param login
+	 *            the new login
 	 */
-	public void setPushed(Date pushed) {
-		this.pushed = pushed;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
 	/**
-	 * Gets the created.
+	 * Gets the following count.
 	 * 
-	 * @return the created
+	 * @return the following count
 	 */
-	public Date getCreated() {
-		return created;
+	public int getFollowingCount() {
+		return followingCount;
 	}
 	
 	/**
-	 * Sets the created.
+	 * Sets the following count.
 	 * 
-	 * @param created
-	 *            the new created
+	 * @param followingCount
+	 *            the new following count
 	 */
-	public void setCreated(Date created) {
-		this.created = created;
+	public void setFollowingCount(int followingCount) {
+		this.followingCount = followingCount;
 	}
 	
 	/**
-	 * Gets the source.
+	 * Gets the followers count.
 	 * 
-	 * @return the source
+	 * @return the followers count
 	 */
-	public String getSource() {
-		return source;
+	public int getFollowersCount() {
+		return followersCount;
 	}
 	
 	/**
-	 * Sets the source.
+	 * Sets the followers count.
 	 * 
-	 * @param source
-	 *            the new source
+	 * @param followersCount
+	 *            the new followers count
 	 */
-	public void setSource(String source) {
-		this.source = source;
+	public void setFollowersCount(int followersCount) {
+		this.followersCount = followersCount;
 	}
 	
 	/**
-	 * Gets the parent.
+	 * Gets the public gist count.
 	 * 
-	 * @return the parent
+	 * @return the public gist count
 	 */
-	public String getParent() {
-		return parent;
+	public int getPublicGistCount() {
+		return publicGistCount;
 	}
 	
 	/**
-	 * Sets the parent.
+	 * Sets the public gist count.
 	 * 
-	 * @param parent
-	 *            the new parent
+	 * @param publicGistCount
+	 *            the new public gist count
 	 */
-	public void setParent(String parent) {
-		this.parent = parent;
+	public void setPublicGistCount(int publicGistCount) {
+		this.publicGistCount = publicGistCount;
 	}
 	
 	/**
-	 * Checks if is checks for wiki.
+	 * Gets the public repo count.
 	 * 
-	 * @return true, if is checks for wiki
+	 * @return the public repo count
 	 */
-	public boolean isHasWiki() {
-		return hasWiki;
+	public int getPublicRepoCount() {
+		return publicRepoCount;
 	}
 	
 	/**
-	 * Sets the checks for wiki.
+	 * Sets the public repo count.
 	 * 
-	 * @param hasWiki
-	 *            the new checks for wiki
+	 * @param publicRepoCount
+	 *            the new public repo count
 	 */
-	public void setHasWiki(boolean hasWiki) {
-		this.hasWiki = hasWiki;
+	public void setPublicRepoCount(int publicRepoCount) {
+		this.publicRepoCount = publicRepoCount;
 	}
 	
 	/**
-	 * Checks if is checks for issues.
+	 * Gets the total private repo count.
 	 * 
-	 * @return true, if is checks for issues
+	 * @return the total private repo count
 	 */
-	public boolean isHasIssues() {
-		return hasIssues;
+	public int getTotalPrivateRepoCount() {
+		return totalPrivateRepoCount;
 	}
 	
 	/**
-	 * Sets the checks for issues.
+	 * Sets the total private repo count.
 	 * 
-	 * @param hasIssues
-	 *            the new checks for issues
+	 * @param totalPrivateRepoCount
+	 *            the new total private repo count
 	 */
-	public void setHasIssues(boolean hasIssues) {
-		this.hasIssues = hasIssues;
+	public void setTotalPrivateRepoCount(int totalPrivateRepoCount) {
+		this.totalPrivateRepoCount = totalPrivateRepoCount;
 	}
 	
 	/**
-	 * Checks if is checks for downloads.
+	 * Gets the owned private repo count.
 	 * 
-	 * @return true, if is checks for downloads
+	 * @return the owned private repo count
 	 */
-	public boolean isHasDownloads() {
-		return hasDownloads;
+	public int getOwnedPrivateRepoCount() {
+		return ownedPrivateRepoCount;
 	}
 	
 	/**
-	 * Sets the checks for downloads.
+	 * Sets the owned private repo count.
 	 * 
-	 * @param hasDownloads
-	 *            the new checks for downloads
+	 * @param ownedPrivateRepoCount
+	 *            the new owned private repo count
 	 */
-	public void setHasDownloads(boolean hasDownloads) {
-		this.hasDownloads = hasDownloads;
+	public void setOwnedPrivateRepoCount(int ownedPrivateRepoCount) {
+		this.ownedPrivateRepoCount = ownedPrivateRepoCount;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	
+	/**
+	 * Gets the private gist count.
+	 * 
+	 * @return the private gist count
 	 */
-	@Override
-	public String toString() {
-		return "Repository [actions=" + actions + ", created=" + created
-				+ ", description=" + description + ", followers=" + followers
-				+ ", fork=" + fork + ", forks=" + forks + ", hasDownloads="
-				+ hasDownloads + ", hasIssues=" + hasIssues + ", hasWiki="
-				+ hasWiki + ", homepage=" + homepage + ", id=" + id
-				+ ", language=" + language + ", name=" + name + ", openIssues="
-				+ openIssues + ", owner=" + owner + ", parent=" + parent
-				+ ", pushed=" + pushed + ", score=" + score + ", size=" + size
-				+ ", source=" + source + ", type=" + type + ", url=" + url
-				+ ", username=" + username + ", visibiity=" + visibility
-				+ ", watchers=" + watchers + "]";
+	public int getPrivateGistCount() {
+		return privateGistCount;
+	}
+	
+	/**
+	 * Sets the private gist count.
+	 * 
+	 * @param privateGistCount
+	 *            the new private gist count
+	 */
+	public void setPrivateGistCount(int privateGistCount) {
+		this.privateGistCount = privateGistCount;
+	}
+	
+	/**
+	 * Gets the created at.
+	 * 
+	 * @return the created at
+	 */
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	
+	/**
+	 * Sets the created at.
+	 * 
+	 * @param createdAt
+	 *            the new created at
+	 */
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	
+	/**
+	 * Gets the gravatar id.
+	 * 
+	 * @return the gravatar id
+	 */
+	public String getGravatarId() {
+		return gravatarId;
+	}
+	
+	/**
+	 * Sets the gravatar id.
+	 * 
+	 * @param gravatarId
+	 *            the new gravatar id
+	 */
+	public void setGravatarId(String gravatarId) {
+		this.gravatarId = gravatarId;
 	}
 }

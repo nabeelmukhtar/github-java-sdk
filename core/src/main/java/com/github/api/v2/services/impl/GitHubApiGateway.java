@@ -328,6 +328,64 @@ public abstract class GitHubApiGateway {
 		}
 	}
 	
+	
+	/**
+	 * Call api get.
+	 * 
+	 * @param apiUrl
+	 *            the api url
+	 * 
+	 * @return the input stream
+	 */
+	protected InputStream callApiDelete(String apiUrl) {
+		return callApiDelete(apiUrl, HttpURLConnection.HTTP_OK);
+	}
+
+	/**
+	 * Call api get.
+	 * 
+	 * @param apiUrl
+	 *            the api url
+	 * @param expected
+	 *            the expected
+	 * 
+	 * @return the input stream
+	 */
+	protected InputStream callApiDelete(String apiUrl, int expected) {
+	    try {
+	        URL               url     = new URL(apiUrl);
+
+	        HttpURLConnection request = (HttpURLConnection) url.openConnection();
+	
+	        if (ApplicationConstants.CONNECT_TIMEOUT > -1) {
+	            request.setConnectTimeout(ApplicationConstants.CONNECT_TIMEOUT);
+	        }
+	
+	        if (ApplicationConstants.READ_TIMEOUT > -1) {
+	            request.setReadTimeout(ApplicationConstants.READ_TIMEOUT);
+	        }
+	
+	        for (String headerName : requestHeaders.keySet()) {
+	            request.setRequestProperty(headerName, requestHeaders.get(headerName));
+	        }
+	        
+            request.setRequestMethod("DELETE");
+            
+	        request.connect();
+	        
+	        if (request.getResponseCode() != expected) {
+	            throw new GitHubException(convertStreamToString(getWrappedInputStream(request.getErrorStream(),
+                        GZIP_ENCODING.equalsIgnoreCase(request.getContentEncoding()))));
+	        } else {
+	            return getWrappedInputStream(request.getInputStream(),
+	                                         GZIP_ENCODING.equalsIgnoreCase(request.getContentEncoding()));
+	        }
+	    } catch (IOException e) {
+	        throw new GitHubException(e);
+	    }
+	}
+	
+	
 	/**
 	 * Gets the parameters string.
 	 * 

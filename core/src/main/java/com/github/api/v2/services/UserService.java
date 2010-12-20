@@ -19,6 +19,7 @@ package com.github.api.v2.services;
 import java.util.List;
 
 import com.github.api.v2.schema.Key;
+import com.github.api.v2.schema.Organization;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.User;
 
@@ -165,4 +166,6 @@ public interface UserService extends GitHubService {
 	 *            the email
 	 */
 	public void removeEmail(String email);
+	
+	public List<Organization> getUserOrganizations(String userName);	
 }

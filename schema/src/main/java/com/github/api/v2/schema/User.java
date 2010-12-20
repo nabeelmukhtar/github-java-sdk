@@ -89,6 +89,8 @@ public class User extends SchemaEntity {
 	/** The plan. */
 	private Plan plan;
 	
+	private Permission permission;	
+	
 	/**
 	 * Gets the name.
 	 * 
@@ -487,6 +489,21 @@ public class User extends SchemaEntity {
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;
 	}
+	
+	/**
+	 * @return the permission
+	 */
+	public Permission getPermission() {
+		return permission;
+	}
+
+	/**
+	 * @param permission the permission to set
+	 */
+	public void setPermission(Permission permission) {
+		this.permission = permission;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

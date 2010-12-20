@@ -28,9 +28,8 @@ import com.github.api.v2.schema.User;
  */
 public interface OrganizationService extends GitHubService {
 	public Organization getOrganization(String name);
-	public void updateOrganization(Organization organization);
-	public List<Organization> getUserOrganizations(String userName);	
 	public List<Organization> getUserOrganizations();	
+	public void updateOrganization(Organization organization);
 	public List<Repository> getAllOrganizationRepositories();
 	public List<Repository> getPublicRepositories(String organizationName);
 	public List<User> getPublicMembers(String organizationName);
@@ -40,9 +39,9 @@ public interface OrganizationService extends GitHubService {
 	public void updateTeam(Team team);
 	public void deleteTeam(String teamId);
 	public List<User> getTeamMembers(String teamId);
-	public void addTeamMember(String userName);
-	public void removeTeamMember(String userName);
+	public void addTeamMember(String teamId, String userName);
+	public void removeTeamMember(String teamId, String userName);
 	public List<Repository> getTeamRepositories(String teamId);
 	public void addTeamRepository(String userName, String repositoryName);
-	public void removeTeamRepository(String userName, String repositoryName);
+	public void removeTeamRepository(String teamId, String userName, String repositoryName);
 }

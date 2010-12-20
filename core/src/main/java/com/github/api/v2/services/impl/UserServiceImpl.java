@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.api.v2.schema.Key;
+import com.github.api.v2.schema.Organization;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.User;
 import com.github.api.v2.services.UserService;
@@ -211,6 +212,15 @@ public class UserServiceImpl extends BaseGitHubService implements
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.UNFOLLOW_USER_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
 		callApiPost(apiUrl, new HashMap<String, String>());
+	}
+	
+	@Override
+	public List<Organization> getUserOrganizations(String userName) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_USER_ORGANIZATIONS);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<Organization>>(){}, json.get("organizations"));
 	}
 
 	/* (non-Javadoc)

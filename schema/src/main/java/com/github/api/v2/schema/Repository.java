@@ -159,6 +159,10 @@ public class Repository extends SchemaEntity {
 	/** The has downloads. */
 	private boolean hasDownloads;
 	
+	private String organization;
+	
+	private Permission permission;
+	
 	/**
 	 * Gets the watchers.
 	 * 
@@ -633,6 +637,35 @@ public class Repository extends SchemaEntity {
 	public void setHasDownloads(boolean hasDownloads) {
 		this.hasDownloads = hasDownloads;
 	}
+	
+	/**
+	 * @return the organization
+	 */
+	public String getOrganization() {
+		return organization;
+	}
+
+	/**
+	 * @param organization the organization to set
+	 */
+	public void setOrganization(String organization) {
+		this.organization = organization;
+	}
+
+	/**
+	 * @return the permission
+	 */
+	public Permission getPermission() {
+		return permission;
+	}
+
+	/**
+	 * @param permission the permission to set
+	 */
+	public void setPermission(Permission permission) {
+		this.permission = permission;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

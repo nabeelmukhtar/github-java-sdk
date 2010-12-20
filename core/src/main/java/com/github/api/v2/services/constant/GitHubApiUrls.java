@@ -115,6 +115,10 @@ public final class GitHubApiUrls {
     	
 	    /** The Constant REMOVE_EMAIL_URL. */
 	    public static final String REMOVE_EMAIL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.removeEmail");
+	    
+	    /** The Constant GET_USER_ORGANIZATIONS. */
+	    public static final String GET_USER_ORGANIZATIONS = gitHubApiUrls.getProperty("com.github.api.v2.services.userService.getUserOrganizations");
+	    
     }
 
     /**
@@ -306,6 +310,9 @@ public final class GitHubApiUrls {
     	
 	    /** The Constant GET_ORGANIZATION_URL. */
 	    public static final String GET_ORGANIZATION_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getOrganization");
+	    
+	    /** The Constant GET_ORGANIZATION_URL. */
+	    public static final String GET_ORGANIZATIONS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getOrganizations");
 	    
 	    /** The Constant UPDATE_ORGANIZATION_URL. */
 	    public static final String UPDATE_ORGANIZATION_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.updateOrganization");
