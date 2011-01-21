@@ -89,8 +89,25 @@ public class User extends SchemaEntity {
 	/** The plan. */
 	private Plan plan;
 	
-	private Permission permission;	
+	private Permission permission;
 	
+	/** The score. */
+	private double score;
+	
+	/**
+	 * @return the score
+	 */
+	public double getScore() {
+		return score;
+	}
+
+	/**
+	 * @param score the score to set
+	 */
+	public void setScore(double score) {
+		this.score = score;
+	}
+
 	/**
 	 * Gets the name.
 	 * 

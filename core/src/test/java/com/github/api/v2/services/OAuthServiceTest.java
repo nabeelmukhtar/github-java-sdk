@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.EnumSet;
 
-import com.github.api.v2.services.OAuthService.Permission;
+import com.github.api.v2.services.OAuthService.Scope;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
@@ -73,7 +73,7 @@ public class OAuthServiceTest extends BaseGitHubServiceTest {
 	 */
 	public void testGetAuthorizationUrlSet() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test callback URL."), TestConstants.TEST_CALLBACK_URL);
-		String authorizationUrl = service.getAuthorizationUrl(TestConstants.TEST_CALLBACK_URL, EnumSet.of(Permission.USER, Permission.REPOSITORY));
+		String authorizationUrl = service.getAuthorizationUrl(TestConstants.TEST_CALLBACK_URL, EnumSet.of(Scope.USER, Scope.REPOSITORY));
 		assertNotNullOrEmpty("Authorization URL should not be null.", authorizationUrl);
 		try {
             URL               url     = new URL(authorizationUrl);

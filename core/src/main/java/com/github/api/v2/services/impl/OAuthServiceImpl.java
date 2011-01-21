@@ -65,7 +65,7 @@ public class OAuthServiceImpl extends BaseGitHubService implements OAuthService 
 	 */
 	@Override
 	public String getAuthorizationUrl(String callBackUrl,
-			Set<Permission> permissions) {
+			Set<Scope> permissions) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OAuthUrls.AUTHORIZE_URL);
 		builder.withParameter(ParameterNames.CLIENT_ID, clientId).withParameter(ParameterNames.REDIRECT_URI, callBackUrl);
 		builder.withParameterEnumSet(ParameterNames.SCOPE, permissions, ",");

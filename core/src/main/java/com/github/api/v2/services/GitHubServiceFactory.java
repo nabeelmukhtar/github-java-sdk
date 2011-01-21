@@ -24,6 +24,7 @@ import com.github.api.v2.services.impl.NetworkServiceImpl;
 import com.github.api.v2.services.impl.OAuthServiceImpl;
 import com.github.api.v2.services.impl.ObjectServiceImpl;
 import com.github.api.v2.services.impl.OrganizationServiceImpl;
+import com.github.api.v2.services.impl.PullRequestServiceImpl;
 import com.github.api.v2.services.impl.RepositoryServiceImpl;
 import com.github.api.v2.services.impl.UserServiceImpl;
 
@@ -140,4 +141,7 @@ public class GitHubServiceFactory {
     	return new FeedServiceImpl();    	
     }
     
+    public PullRequestService createPullRequestService() {
+    	return new PullRequestServiceImpl();    	
+    }
 }

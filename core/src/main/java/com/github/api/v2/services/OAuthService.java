@@ -30,7 +30,7 @@ public interface OAuthService extends GitHubService {
 	/**
 	 * The Enum Permission.
 	 */
-	public enum Permission implements ValueEnum {
+	public enum Scope implements ValueEnum {
 		
 		/** The USER. */
 		USER("user"), 
@@ -38,10 +38,10 @@ public interface OAuthService extends GitHubService {
  REPOSITORY("repo");
 		
 	    /** The Constant stringToEnum. */
-		private static final Map<String, Permission> stringToEnum = new HashMap<String, Permission>();
+		private static final Map<String, Scope> stringToEnum = new HashMap<String, Scope>();
 
 		static { // Initialize map from constant name to enum constant
-			for (Permission op : values()) {
+			for (Scope op : values()) {
 				stringToEnum.put(op.value(), op);
 			}
 		}
@@ -55,7 +55,7 @@ public interface OAuthService extends GitHubService {
 		 * @param value
 		 *            the value
 		 */
-	    Permission(String value) {
+	    Scope(String value) {
 	        this.value = value;
 	    }
 
@@ -75,7 +75,7 @@ public interface OAuthService extends GitHubService {
 		 * 
 		 * @return the permission
 		 */
-		public static Permission fromValue(String value) {
+		public static Scope fromValue(String value) {
 			return stringToEnum.get(value);
 		}
 	}
@@ -100,7 +100,7 @@ public interface OAuthService extends GitHubService {
 	 * 
 	 * @return the authorization url
 	 */
-    public String getAuthorizationUrl(String callBackUrl, Set<Permission> permissions);
+    public String getAuthorizationUrl(String callBackUrl, Set<Scope> permissions);
 
     /**
 	 * Gets the access token.

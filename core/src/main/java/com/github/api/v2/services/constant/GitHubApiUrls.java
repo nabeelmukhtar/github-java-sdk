@@ -360,6 +360,21 @@ public final class GitHubApiUrls {
 	    public static final String REMOVE_TEAM_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.removeTeamRepository");
     }
     
+    /**
+	 * The Interface PullRequestApiUrls.
+	 */
+    public static interface PullRequestApiUrls {
+    	
+	    /** The Constant CREATE_PULL_REQUEST_URL. */
+	    public static final String CREATE_PULL_REQUEST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.pullRequestService.createPullRequest");
+    	
+	    /** The Constant GET_PULL_REQUESTS_URL. */
+	    public static final String GET_PULL_REQUESTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.pullRequestService.getPullRequests");
+    	
+	    /** The Constant GET_PULL_REQUEST_URL. */
+	    public static final String GET_PULL_REQUEST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.pullRequestService.getPullRequest");
+    }
+    
     
     /**
 	 * The Interface ObjectApiUrls.

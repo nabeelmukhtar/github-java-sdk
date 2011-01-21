@@ -481,4 +481,23 @@ public class Organization extends SchemaEntity {
 	public void setGravatarId(String gravatarId) {
 		this.gravatarId = gravatarId;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Organization [billingEmail=" + billingEmail + ", blog=" + blog
+				+ ", company=" + company + ", createdAt=" + createdAt
+				+ ", email=" + email + ", followersCount=" + followersCount
+				+ ", followingCount=" + followingCount + ", gravatarId="
+				+ gravatarId + ", id=" + id + ", location=" + location
+				+ ", login=" + login + ", name=" + name
+				+ ", ownedPrivateRepoCount=" + ownedPrivateRepoCount
+				+ ", permission=" + permission + ", privateGistCount="
+				+ privateGistCount + ", publicGistCount=" + publicGistCount
+				+ ", publicRepoCount=" + publicRepoCount
+				+ ", totalPrivateRepoCount=" + totalPrivateRepoCount
+				+ ", type=" + type + "]";
+	}
 }

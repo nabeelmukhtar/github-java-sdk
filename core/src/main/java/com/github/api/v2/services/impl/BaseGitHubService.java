@@ -27,6 +27,8 @@ import java.util.List;
 import com.github.api.v2.schema.Gist;
 import com.github.api.v2.schema.Issue;
 import com.github.api.v2.schema.Language;
+import com.github.api.v2.schema.Organization;
+import com.github.api.v2.schema.Permission;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.SchemaEntity;
 import com.github.api.v2.schema.Tree;
@@ -174,6 +176,20 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 			public Tree.Type deserialize(JsonElement arg0, Type arg1,
 					JsonDeserializationContext arg2) throws JsonParseException {
 				return Tree.Type.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Organization.Type.class, new JsonDeserializer<Organization.Type>() {
+			@Override
+			public Organization.Type deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Organization.Type.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Permission.class, new JsonDeserializer<Permission>() {
+			@Override
+			public Permission deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Permission.fromValue(arg0.getAsString());
 			}
 		});
 		return builder;

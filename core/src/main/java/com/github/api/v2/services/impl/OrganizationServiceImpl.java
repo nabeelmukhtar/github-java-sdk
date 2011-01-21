@@ -93,9 +93,11 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
 	public Organization getOrganization(String name) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_ORGANIZATION_URL);
         String                apiUrl  = builder.withField(ParameterNames.ORGANIZATION_NAME, name).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-        return unmarshall(new TypeToken<Organization>(){}, json.get("organization"));
+        System.out.println(convertStreamToString(callApiGet(apiUrl)));
+//        JsonObject json = unmarshall(callApiGet(apiUrl));
+//        
+//        return unmarshall(new TypeToken<Organization>(){}, json.get("organization"));
+        return new Organization();
 	}
 
 	@Override
@@ -110,7 +112,7 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
 	@Override
 	public List<Repository> getPublicRepositories(String organizationName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_PUBLIC_REPOSITORIES_URL);
-        String                apiUrl  = builder.buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.ORGANIZATION_NAME, organizationName).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));

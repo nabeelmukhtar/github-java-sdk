@@ -1,10 +1,48 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.github.api.v2</groupId>
-    <artifactId>github-java-sdk</artifactId>
-    <version>0.1</version>
-  </parent>
-  <artifactId>github-java-schema</artifactId>
-  <packaging>jar</packaging>
+  <groupId>com.github.api.v2</groupId>
+  <artifactId>github-java-sdk</artifactId>
+  <packaging>pom</packaging>
+  <version>0.1</version>
+  <name>GitHub API Java SDK</name>
+  <inceptionYear>2010</inceptionYear>
+  <description>A Java wrapper for GitHub API.</description>
+  <url>http://github.com/nabeelmukhtar/github-java-sdk</url>
+
+  <issueManagement>
+    <system>github</system>
+    <url>http://github.com/nabeelmukhtar/github-java-sdk/issues</url>
+  </issueManagement>
+
+  <scm>
+    <connection>scm:git:git://github.com/nabeelmukhtar/github-java-sdk.git</connection>
+    <developerConnection>scm:git:git@github.com:nabeelmukhtar/github-java-sdk.git</developerConnection>
+    <url>https://nabeelmukhtar@github.com/nabeelmukhtar/github-java-sdk.git</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>Nabeel Mukhtar</name>
+      <id>nabeelmukhtar</id>
+    </developer>
+  </developers>
+	
+  <modules>
+    <module>schema</module>
+    <module>core</module>
+	<module>dist</module>
+  </modules>
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>2.3.1</version>
+			<configuration>
+				<source>1.6</source>
+				<target>1.6</target>
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
 </project>
