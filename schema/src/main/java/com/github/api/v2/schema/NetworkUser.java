@@ -20,48 +20,74 @@ import java.util.List;
 
 
 /**
- * The Class Commit.
+ * The Class NetworkUser.
  */
 public class NetworkUser extends SchemaEntity {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
+	/** The name. */
 	private String name;
+	
+	/** The repo. */
 	private String repo;
+	
+	/** The heads. */
 	private List<Head> heads;
+	
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name
+	 *            the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
+	 * Gets the repo.
+	 * 
 	 * @return the repo
 	 */
 	public String getRepo() {
 		return repo;
 	}
+	
 	/**
-	 * @param repo the repo to set
+	 * Sets the repo.
+	 * 
+	 * @param repo
+	 *            the new repo
 	 */
 	public void setRepo(String repo) {
 		this.repo = repo;
 	}
+	
 	/**
+	 * Gets the heads.
+	 * 
 	 * @return the heads
 	 */
 	public List<Head> getHeads() {
 		return heads;
 	}
+	
 	/**
-	 * @param heads the heads to set
+	 * Sets the heads.
+	 * 
+	 * @param heads
+	 *            the new heads
 	 */
 	public void setHeads(List<Head> heads) {
 		this.heads = heads;

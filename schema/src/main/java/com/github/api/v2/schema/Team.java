@@ -35,6 +35,7 @@ public class Team extends SchemaEntity {
 	/** The permission. */
 	private Permission permission;
 	
+	/** The repo names. */
 	private List<String> repoNames;
 	
 	/**
@@ -57,6 +58,8 @@ public class Team extends SchemaEntity {
 	}
 
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
@@ -64,13 +67,18 @@ public class Team extends SchemaEntity {
 	}
 
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name
+	 *            the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
+	 * Gets the permission.
+	 * 
 	 * @return the permission
 	 */
 	public Permission getPermission() {
@@ -78,21 +86,29 @@ public class Team extends SchemaEntity {
 	}
 
 	/**
-	 * @param permission the permission to set
+	 * Sets the permission.
+	 * 
+	 * @param permission
+	 *            the new permission
 	 */
 	public void setPermission(Permission permission) {
 		this.permission = permission;
 	}
 
 	/**
-	 * @return the repoNames
+	 * Gets the repo names.
+	 * 
+	 * @return the repo names
 	 */
 	public List<String> getRepoNames() {
 		return repoNames;
 	}
 
 	/**
-	 * @param repoNames the repoNames to set
+	 * Sets the repo names.
+	 * 
+	 * @param repoNames
+	 *            the new repo names
 	 */
 	public void setRepoNames(List<String> repoNames) {
 		this.repoNames = repoNames;

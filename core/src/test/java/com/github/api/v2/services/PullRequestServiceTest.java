@@ -26,13 +26,16 @@ import com.github.api.v2.schema.PullRequest;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
- * The Class ObjectServiceTest.
+ * The Class PullRequestServiceTest.
  */
 public class PullRequestServiceTest extends BaseGitHubServiceTest {
 	
 	/** The service. */
 	private PullRequestService service;
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#setUp()
+	 */
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
@@ -40,6 +43,9 @@ public class PullRequestServiceTest extends BaseGitHubServiceTest {
 		service.setAuthentication(authentication);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#tearDown()
+	 */
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
@@ -47,7 +53,7 @@ public class PullRequestServiceTest extends BaseGitHubServiceTest {
 	}
 
 	/**
-	 * Test get blob.
+	 * Test get pull request.
 	 */
 	@Test
 	public void testGetPullRequest() {
@@ -59,7 +65,7 @@ public class PullRequestServiceTest extends BaseGitHubServiceTest {
 	}
 
 	/**
-	 * Test get blobs.
+	 * Test get pull requests.
 	 */
 	@Test
 	public void testGetPullRequests() {
@@ -71,7 +77,7 @@ public class PullRequestServiceTest extends BaseGitHubServiceTest {
 	}
 
 	/**
-	 * Test get object content.
+	 * Test create pull request.
 	 */
 	@Test
 	public void testCreatePullRequest() {

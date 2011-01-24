@@ -23,19 +23,20 @@ import java.util.List;
 import com.github.api.v2.schema.Issue.State;
 
 /**
- * The Class Blob.
+ * The Class PullRequest.
  */
 public class PullRequest extends SchemaEntity {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
+	/** The user. */
 	private User user;
 	
 	/** The gravatar id. */
 	private String gravatarId;
 	
-	/** The updated at. */
+	/** The issue updated at. */
 	private Date issueUpdatedAt;
 	
 	/** The votes. */
@@ -62,14 +63,28 @@ public class PullRequest extends SchemaEntity {
 	/** The created at. */
 	private Date createdAt;
 	
+	/** The issue created at. */
 	private Date issueCreatedAt;
+	
+	/** The html url. */
 	private String htmlUrl;
+	
+	/** The diff url. */
 	private String diffUrl;
+	
+	/** The patch url. */
 	private String patchUrl;
+	
+	/** The issue user. */
 	private User issueUser;
+	
+	/** The base. */
 	private Version base;
+	
+	/** The head. */
 	private Version head;
 	
+	/** The labels. */
 	private List<String> labels = new ArrayList<String>();
 	
 	/**
@@ -111,19 +126,19 @@ public class PullRequest extends SchemaEntity {
 	}
 	
 	/**
-	 * Gets the updated at.
+	 * Gets the issue updated at.
 	 * 
-	 * @return the updated at
+	 * @return the issue updated at
 	 */
 	public Date getIssueUpdatedAt() {
 		return issueUpdatedAt;
 	}
 	
 	/**
-	 * Sets the updated at.
+	 * Sets the issue updated at.
 	 * 
 	 * @param updatedAt
-	 *            the new updated at
+	 *            the new issue updated at
 	 */
 	public void setIssueUpdatedAt(Date updatedAt) {
 		this.issueUpdatedAt = updatedAt;
@@ -282,76 +297,103 @@ public class PullRequest extends SchemaEntity {
 	}
 
 	/**
-	 * @return the issueCreatedAt
+	 * Gets the issue created at.
+	 * 
+	 * @return the issue created at
 	 */
 	public Date getIssueCreatedAt() {
 		return issueCreatedAt;
 	}
 
 	/**
-	 * @param issueCreatedAt the issueCreatedAt to set
+	 * Sets the issue created at.
+	 * 
+	 * @param issueCreatedAt
+	 *            the new issue created at
 	 */
 	public void setIssueCreatedAt(Date issueCreatedAt) {
 		this.issueCreatedAt = issueCreatedAt;
 	}
 
 	/**
-	 * @return the htmlUrl
+	 * Gets the html url.
+	 * 
+	 * @return the html url
 	 */
 	public String getHtmlUrl() {
 		return htmlUrl;
 	}
 
 	/**
-	 * @param htmlUrl the htmlUrl to set
+	 * Sets the html url.
+	 * 
+	 * @param htmlUrl
+	 *            the new html url
 	 */
 	public void setHtmlUrl(String htmlUrl) {
 		this.htmlUrl = htmlUrl;
 	}
 
 	/**
-	 * @return the diffUrl
+	 * Gets the diff url.
+	 * 
+	 * @return the diff url
 	 */
 	public String getDiffUrl() {
 		return diffUrl;
 	}
 
 	/**
-	 * @param diffUrl the diffUrl to set
+	 * Sets the diff url.
+	 * 
+	 * @param diffUrl
+	 *            the new diff url
 	 */
 	public void setDiffUrl(String diffUrl) {
 		this.diffUrl = diffUrl;
 	}
 
 	/**
-	 * @return the patchUrl
+	 * Gets the patch url.
+	 * 
+	 * @return the patch url
 	 */
 	public String getPatchUrl() {
 		return patchUrl;
 	}
 
 	/**
-	 * @param patchUrl the patchUrl to set
+	 * Sets the patch url.
+	 * 
+	 * @param patchUrl
+	 *            the new patch url
 	 */
 	public void setPatchUrl(String patchUrl) {
 		this.patchUrl = patchUrl;
 	}
 
 	/**
-	 * @return the issueUser
+	 * Gets the issue user.
+	 * 
+	 * @return the issue user
 	 */
 	public User getIssueUser() {
 		return issueUser;
 	}
 
 	/**
-	 * @param issueUser the issueUser to set
+	 * Sets the issue user.
+	 * 
+	 * @param issueUser
+	 *            the new issue user
 	 */
 	public void setIssueUser(User issueUser) {
 		this.issueUser = issueUser;
 	}
 
 	/**
+	 * Gets the base.
+	 * 
 	 * @return the base
 	 */
 	public Version getBase() {
@@ -359,13 +401,18 @@ public class PullRequest extends SchemaEntity {
 	}
 
 	/**
-	 * @param base the base to set
+	 * Sets the base.
+	 * 
+	 * @param base
+	 *            the new base
 	 */
 	public void setBase(Version base) {
 		this.base = base;
 	}
 
 	/**
+	 * Gets the head.
+	 * 
 	 * @return the head
 	 */
 	public Version getHead() {
@@ -373,13 +420,18 @@ public class PullRequest extends SchemaEntity {
 	}
 
 	/**
-	 * @param head the head to set
+	 * Sets the head.
+	 * 
+	 * @param head
+	 *            the new head
 	 */
 	public void setHead(Version head) {
 		this.head = head;
 	}
 
 	/**
+	 * Gets the labels.
+	 * 
 	 * @return the labels
 	 */
 	public List<String> getLabels() {
@@ -387,7 +439,10 @@ public class PullRequest extends SchemaEntity {
 	}
 
 	/**
-	 * @param labels the labels to set
+	 * Sets the labels.
+	 * 
+	 * @param labels
+	 *            the new labels
 	 */
 	public void setLabels(List<String> labels) {
 		this.labels = labels;

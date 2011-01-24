@@ -28,16 +28,22 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * The Class NetworkServiceImpl.
+ * The Class FeedServiceImpl.
  */
 public class FeedServiceImpl extends BaseGitHubService implements
 		FeedService {
 	
+	/**
+	 * Instantiates a new feed service impl.
+	 */
 	public FeedServiceImpl() {
         // by default we compress contents
         requestHeaders.put("Accept-Encoding", "gzip, deflate");
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getCommitFeed(java.lang.String, java.lang.String, java.lang.String, int)
+	 */
 	@Override
 	public Feed getCommitFeed(String userName, String repositoryName, String branchName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_COMMIT_FEED_URL);
@@ -45,6 +51,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
         return unmarshall(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getNetworkFeed(java.lang.String, java.lang.String, int)
+	 */
 	@Override
 	public Feed getNetworkFeed(String userName, String repositoryName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_NETWORK_FEED_URL);
@@ -52,6 +61,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
         return unmarshall(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getPrivateUserFeed(java.lang.String, int)
+	 */
 	@Override
 	public Feed getPrivateUserFeed(String userName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_PRIVATE_USER_FEED_URL);
@@ -59,6 +71,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
         return unmarshall(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getPublicTimelineFeed(int)
+	 */
 	@Override
 	public Feed getPublicTimelineFeed(int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_PUBLIC_TIMELINE_FEED_URL);
@@ -66,6 +81,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
         return unmarshall(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getPublicUserFeed(java.lang.String, int)
+	 */
 	@Override
 	public Feed getPublicUserFeed(String userName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_PUBLIC_USER_FEED_URL);
@@ -73,6 +91,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
         return unmarshall(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getWikiFeed(java.lang.String, java.lang.String, int)
+	 */
 	@Override
 	public Feed getWikiFeed(String userName, String repositoryName, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_WIKI_FEED_URL);
@@ -80,6 +101,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
         return unmarshall(apiUrl);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getBlogFeed(int)
+	 */
 	@Override
 	public Feed getBlogFeed(int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_BLOG_FEED_URL);
@@ -87,6 +111,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
         return unmarshall(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getDiscussionsFeed(int)
+	 */
 	@Override
 	public Feed getDiscussionsFeed(int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_DISCUSSIONS_FEED_URL);
@@ -94,6 +121,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
         return unmarshall(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getDiscussionsFeed(java.lang.String, int)
+	 */
 	@Override
 	public Feed getDiscussionsFeed(String topic, int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_DISCUSSIONS_FEED_BY_TOPIC_URL);
@@ -101,6 +131,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
         return unmarshall(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.FeedService#getJobPositionsFeed(int)
+	 */
 	@Override
 	public Feed getJobPositionsFeed(int count) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.FeedUrls.GET_JOB_POSITIONS_FEED_URL);
@@ -109,6 +142,14 @@ public class FeedServiceImpl extends BaseGitHubService implements
 	}
 	
 	
+	/**
+	 * Unmarshall.
+	 * 
+	 * @param apiUrl
+	 *            the api url
+	 * 
+	 * @return the feed
+	 */
 	protected Feed unmarshall(String apiUrl) {
         JsonObject response = unmarshall(callApiGet(apiUrl));
     	if (response.isJsonObject()) {
@@ -125,6 +166,9 @@ public class FeedServiceImpl extends BaseGitHubService implements
     	return null;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
+	 */
 	protected GsonBuilder getGsonBuilder() {
 		GsonBuilder gson = super.getGsonBuilder();
 		gson.setDateFormat("EEE', 'dd' 'MMM' 'yyyy' 'HH:mm:ss' 'Z");

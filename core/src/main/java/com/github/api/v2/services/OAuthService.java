@@ -28,12 +28,13 @@ import com.github.api.v2.schema.ValueEnum;
 public interface OAuthService extends GitHubService {
 	
 	/**
-	 * The Enum Permission.
+	 * The Enum Scope.
 	 */
 	public enum Scope implements ValueEnum {
 		
 		/** The USER. */
 		USER("user"), 
+ 
  /** The REPOSITORY. */
  REPOSITORY("repo");
 		
@@ -50,7 +51,7 @@ public interface OAuthService extends GitHubService {
 	    private final String value;
 	    
 	    /**
-		 * Instantiates a new permission.
+		 * Instantiates a new scope.
 		 * 
 		 * @param value
 		 *            the value
@@ -73,7 +74,7 @@ public interface OAuthService extends GitHubService {
 		 * @param value
 		 *            the value
 		 * 
-		 * @return the permission
+		 * @return the scope
 		 */
 		public static Scope fromValue(String value) {
 			return stringToEnum.get(value);

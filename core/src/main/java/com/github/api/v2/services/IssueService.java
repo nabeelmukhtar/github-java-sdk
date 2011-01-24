@@ -44,18 +44,16 @@ public interface IssueService extends GitHubService {
 	public List<Issue> searchIssues(String userName, String repositoryName, State state, String keyword);
 	
 	/**
-	 * Search issues.
+	 * Gets the issues.
 	 * 
 	 * @param userName
 	 *            the user name
 	 * @param repositoryName
 	 *            the repository name
-	 * @param state
-	 *            the state
-	 * @param keyword
-	 *            the keyword
+	 * @param label
+	 *            the label
 	 * 
-	 * @return the list< issue>
+	 * @return the issues
 	 */
 	public List<Issue> getIssues(String userName, String repositoryName, String label);
 	

@@ -27,80 +27,133 @@ public class FeedEntry extends SchemaEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
+	/** The title. */
 	private String title;
+	
+	/** The link. */
 	private String link;
+	
+	/** The author. */
 	private String author;
+	
+	/** The published date. */
 	private Date publishedDate;
+	
+	/** The content. */
 	private String content;
+	
+	/** The categories. */
 	private List<String> categories;
+	
 	/**
+	 * Gets the title.
+	 * 
 	 * @return the title
 	 */
 	public String getTitle() {
 		return title;
 	}
+	
 	/**
-	 * @param title the title to set
+	 * Sets the title.
+	 * 
+	 * @param title
+	 *            the new title
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
 	/**
+	 * Gets the link.
+	 * 
 	 * @return the link
 	 */
 	public String getLink() {
 		return link;
 	}
+	
 	/**
-	 * @param link the link to set
+	 * Sets the link.
+	 * 
+	 * @param link
+	 *            the new link
 	 */
 	public void setLink(String link) {
 		this.link = link;
 	}
+	
 	/**
+	 * Gets the author.
+	 * 
 	 * @return the author
 	 */
 	public String getAuthor() {
 		return author;
 	}
+	
 	/**
-	 * @param author the author to set
+	 * Sets the author.
+	 * 
+	 * @param author
+	 *            the new author
 	 */
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
 	/**
-	 * @return the publishedDate
+	 * Gets the published date.
+	 * 
+	 * @return the published date
 	 */
 	public Date getPublishedDate() {
 		return publishedDate;
 	}
+	
 	/**
-	 * @param publishedDate the publishedDate to set
+	 * Sets the published date.
+	 * 
+	 * @param publishedDate
+	 *            the new published date
 	 */
 	public void setPublishedDate(Date publishedDate) {
 		this.publishedDate = publishedDate;
 	}
+	
 	/**
+	 * Gets the content.
+	 * 
 	 * @return the content
 	 */
 	public String getContent() {
 		return content;
 	}
+	
 	/**
-	 * @param content the content to set
+	 * Sets the content.
+	 * 
+	 * @param content
+	 *            the new content
 	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
 	/**
+	 * Gets the categories.
+	 * 
 	 * @return the categories
 	 */
 	public List<String> getCategories() {
 		return categories;
 	}
+	
 	/**
-	 * @param categories the categories to set
+	 * Sets the categories.
+	 * 
+	 * @param categories
+	 *            the new categories
 	 */
 	public void setCategories(List<String> categories) {
 		this.categories = categories;

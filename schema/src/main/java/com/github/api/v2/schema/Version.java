@@ -18,7 +18,7 @@ package com.github.api.v2.schema;
 
 
 /**
- * The Class Tree.
+ * The Class Version.
  */
 public class Version extends SchemaEntity {
 	
@@ -41,19 +41,19 @@ public class Version extends SchemaEntity {
 	private User user;
 	
 	/**
-	 * Gets the name.
+	 * Gets the label.
 	 * 
-	 * @return the name
+	 * @return the label
 	 */
 	public String getLabel() {
 		return label;
 	}
 	
 	/**
-	 * Sets the name.
+	 * Sets the label.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param label
+	 *            the new label
 	 */
 	public void setLabel(String label) {
 		this.label = label;
@@ -79,25 +79,27 @@ public class Version extends SchemaEntity {
 	}
 	
 	/**
-	 * Gets the mode.
+	 * Gets the ref.
 	 * 
-	 * @return the mode
+	 * @return the ref
 	 */
 	public String getRef() {
 		return ref;
 	}
 	
 	/**
-	 * Sets the mode.
+	 * Sets the ref.
 	 * 
-	 * @param mode
-	 *            the new mode
+	 * @param ref
+	 *            the new ref
 	 */
 	public void setRef(String ref) {
 		this.ref = ref;
 	}
 
 	/**
+	 * Gets the repository.
+	 * 
 	 * @return the repository
 	 */
 	public Repository getRepository() {
@@ -105,13 +107,18 @@ public class Version extends SchemaEntity {
 	}
 
 	/**
-	 * @param repository the repository to set
+	 * Sets the repository.
+	 * 
+	 * @param repository
+	 *            the new repository
 	 */
 	public void setRepository(Repository repository) {
 		this.repository = repository;
 	}
 
 	/**
+	 * Gets the user.
+	 * 
 	 * @return the user
 	 */
 	public User getUser() {
@@ -119,7 +126,10 @@ public class Version extends SchemaEntity {
 	}
 
 	/**
-	 * @param user the user to set
+	 * Sets the user.
+	 * 
+	 * @param user
+	 *            the new user
 	 */
 	public void setUser(User user) {
 		this.user = user;

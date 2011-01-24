@@ -48,6 +48,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
 		return gson;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#addTeamMember(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void addTeamMember(String teamId, String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.ADD_TEAM_MEMBER_URL);
@@ -55,6 +58,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#addTeamRepository(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void addTeamRepository(String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.ADD_TEAM_REPOSITORY_URL);
@@ -62,6 +68,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#createTeam(com.github.api.v2.schema.Team)
+	 */
 	@Override
 	public void createTeam(Team team) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.CREATE_TEAM_URL);
@@ -73,6 +82,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, parameters);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#deleteTeam(java.lang.String)
+	 */
 	@Override
 	public void deleteTeam(String teamId) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.DELETE_TEAM_URL);
@@ -80,6 +92,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         callApiDelete(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getAllOrganizationRepositories()
+	 */
 	@Override
 	public List<Repository> getAllOrganizationRepositories() {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_ALL_REPOSITORIES_URL);
@@ -89,6 +104,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getOrganization(java.lang.String)
+	 */
 	@Override
 	public Organization getOrganization(String name) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_ORGANIZATION_URL);
@@ -100,6 +118,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         return new Organization();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getPublicMembers(java.lang.String)
+	 */
 	@Override
 	public List<User> getPublicMembers(String organizationName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_PUBLIC_MEMBERS_URL);
@@ -109,6 +130,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<User>>(){}, json.get("users"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getPublicRepositories(java.lang.String)
+	 */
 	@Override
 	public List<Repository> getPublicRepositories(String organizationName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_PUBLIC_REPOSITORIES_URL);
@@ -118,6 +142,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getTeam(java.lang.String)
+	 */
 	@Override
 	public Team getTeam(String teamId) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_TEAM_URL);
@@ -127,6 +154,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<Team>(){}, json.get("team"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getTeamMembers(java.lang.String)
+	 */
 	@Override
 	public List<User> getTeamMembers(String teamId) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_TEAM_MEMBERS_URL);
@@ -136,6 +166,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<User>>(){}, json.get("users"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getTeamRepositories(java.lang.String)
+	 */
 	@Override
 	public List<Repository> getTeamRepositories(String teamId) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_TEAM_REPOSITORIES_URL);
@@ -145,6 +178,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Repository>>(){}, json.get("repositories"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getTeams(java.lang.String)
+	 */
 	@Override
 	public List<Team> getTeams(String organizationName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_TEAMS_URL);
@@ -154,6 +190,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Team>>(){}, json.get("teams"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getUserOrganizations()
+	 */
 	@Override
 	public List<Organization> getUserOrganizations() {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_ORGANIZATIONS_URL);
@@ -163,6 +202,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Organization>>(){}, json.get("organizations"));
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#removeTeamMember(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void removeTeamMember(String teamId, String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.REMOVE_TEAM_MEMBER_URL);
@@ -170,6 +212,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         callApiDelete(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#removeTeamRepository(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void removeTeamRepository(String teamId, String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.REMOVE_TEAM_REPOSITORY_URL);
@@ -177,6 +222,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         callApiDelete(apiUrl);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#updateOrganization(com.github.api.v2.schema.Organization)
+	 */
 	@Override
 	public void updateOrganization(Organization organization) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.UPDATE_ORGANIZATION_URL);
@@ -191,6 +239,9 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
         callApiPost(apiUrl, parameters);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#updateTeam(com.github.api.v2.schema.Team)
+	 */
 	@Override
 	public void updateTeam(Team team) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.UPDATE_TEAM_URL);

@@ -77,9 +77,7 @@ public class Organization extends SchemaEntity {
 		}
 	}
 	
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2665103321482505351L;
 
 	/** The id. */
@@ -130,13 +128,18 @@ public class Organization extends SchemaEntity {
 	/** The created at. */
 	private Date createdAt;
 	
+	/** The permission. */
 	private Permission permission;
 	
+	/** The billing email. */
 	private String billingEmail;
 	
+	/** The type. */
 	private Type type;
 	
 	/**
+	 * Gets the permission.
+	 * 
 	 * @return the permission
 	 */
 	public Permission getPermission() {
@@ -144,27 +147,37 @@ public class Organization extends SchemaEntity {
 	}
 
 	/**
-	 * @param permission the permission to set
+	 * Sets the permission.
+	 * 
+	 * @param permission
+	 *            the new permission
 	 */
 	public void setPermission(Permission permission) {
 		this.permission = permission;
 	}
 
 	/**
-	 * @return the billingEmail
+	 * Gets the billing email.
+	 * 
+	 * @return the billing email
 	 */
 	public String getBillingEmail() {
 		return billingEmail;
 	}
 
 	/**
-	 * @param billingEmail the billingEmail to set
+	 * Sets the billing email.
+	 * 
+	 * @param billingEmail
+	 *            the new billing email
 	 */
 	public void setBillingEmail(String billingEmail) {
 		this.billingEmail = billingEmail;
 	}
 
 	/**
+	 * Gets the type.
+	 * 
 	 * @return the type
 	 */
 	public Type getType() {
@@ -172,7 +185,10 @@ public class Organization extends SchemaEntity {
 	}
 
 	/**
-	 * @param type the type to set
+	 * Sets the type.
+	 * 
+	 * @param type
+	 *            the new type
 	 */
 	public void setType(Type type) {
 		this.type = type;

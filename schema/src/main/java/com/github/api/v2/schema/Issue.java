@@ -117,25 +117,34 @@ public class Issue extends SchemaEntity {
 	/** The created at. */
 	private Date createdAt;
 	
+	/** The closed at. */
 	private Date closedAt;
 	
+	/** The labels. */
 	private List<String> labels = new ArrayList<String>();
 	
 	/**
-	 * @return the closedAt
+	 * Gets the closed at.
+	 * 
+	 * @return the closed at
 	 */
 	public Date getClosedAt() {
 		return closedAt;
 	}
 
 	/**
-	 * @param closedAt the closedAt to set
+	 * Sets the closed at.
+	 * 
+	 * @param closedAt
+	 *            the new closed at
 	 */
 	public void setClosedAt(Date closedAt) {
 		this.closedAt = closedAt;
 	}
 
 	/**
+	 * Gets the labels.
+	 * 
 	 * @return the labels
 	 */
 	public List<String> getLabels() {
@@ -143,7 +152,10 @@ public class Issue extends SchemaEntity {
 	}
 
 	/**
-	 * @param labels the labels to set
+	 * Sets the labels.
+	 * 
+	 * @param labels
+	 *            the new labels
 	 */
 	public void setLabels(List<String> labels) {
 		this.labels = labels;

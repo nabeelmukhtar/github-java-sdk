@@ -21,7 +21,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * The Class RepositoryServiceTest.
+ * The Class OrganizationServiceTest.
  */
 public class OrganizationServiceTest extends BaseGitHubServiceTest {
 	
@@ -47,91 +47,145 @@ public class OrganizationServiceTest extends BaseGitHubServiceTest {
 		service = null;
 	}
 
+	/**
+	 * Test add team member.
+	 */
 	@Test
 	public void testAddTeamMember() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test add team repository.
+	 */
 	@Test
 	public void testAddTeamRepository() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test create team.
+	 */
 	@Test
 	public void testCreateTeam() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test delete team.
+	 */
 	@Test
 	public void testDeleteTeam() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get all organization repositories.
+	 */
 	@Test
 	public void testGetAllOrganizationRepositories() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get organization.
+	 */
 	@Test
 	public void testGetOrganization() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get public members.
+	 */
 	@Test
 	public void testGetPublicMembers() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get public repositories.
+	 */
 	@Test
 	public void testGetPublicRepositories() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get team.
+	 */
 	@Test
 	public void testGetTeam() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get team members.
+	 */
 	@Test
 	public void testGetTeamMembers() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get team repositories.
+	 */
 	@Test
 	public void testGetTeamRepositories() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get teams.
+	 */
 	@Test
 	public void testGetTeams() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get user organizations string.
+	 */
 	@Test
 	public void testGetUserOrganizationsString() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test get user organizations.
+	 */
 	@Test
 	public void testGetUserOrganizations() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test remove team member.
+	 */
 	@Test
 	public void testRemoveTeamMember() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test remove team repository.
+	 */
 	@Test
 	public void testRemoveTeamRepository() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test update organization.
+	 */
 	@Test
 	public void testUpdateOrganization() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test update team.
+	 */
 	@Test
 	public void testUpdateTeam() {
 		fail("Not yet implemented");

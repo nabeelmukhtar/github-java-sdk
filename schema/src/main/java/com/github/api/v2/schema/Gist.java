@@ -33,6 +33,7 @@ public class Gist extends SchemaEntity {
 		
 		/** The PUBLIC. */
 		PUBLIC("public"), 
+ 
  /** The PRIVATE. */
  PRIVATE("private");
 		
@@ -97,6 +98,7 @@ public class Gist extends SchemaEntity {
 	/** The files. */
 	private List<String> files;
 	
+	/** The owner. */
 	private String owner;
 	
 	/**
@@ -195,6 +197,8 @@ public class Gist extends SchemaEntity {
 	}
 	
 	/**
+	 * Gets the owner.
+	 * 
 	 * @return the owner
 	 */
 	public String getOwner() {
@@ -202,7 +206,10 @@ public class Gist extends SchemaEntity {
 	}
 
 	/**
-	 * @param owner the owner to set
+	 * Sets the owner.
+	 * 
+	 * @param owner
+	 *            the new owner
 	 */
 	public void setOwner(String owner) {
 		this.owner = owner;

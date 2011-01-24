@@ -175,6 +175,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
         return unmarshall(new TypeToken<List<Issue>>(){}, json.get("issues"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#getIssues(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public List<Issue> getIssues(String userName, String repositoryName,
 			String label) {

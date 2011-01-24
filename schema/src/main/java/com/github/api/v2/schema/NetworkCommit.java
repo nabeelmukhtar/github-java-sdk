@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * The Class Commit.
+ * The Class NetworkCommit.
  */
 public class NetworkCommit extends SchemaEntity {
 

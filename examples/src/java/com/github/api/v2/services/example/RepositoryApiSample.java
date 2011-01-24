@@ -36,6 +36,9 @@ public class RepositoryApiSample {
 	 * 
 	 * @param args
 	 *            the arguments
+	 * 
+	 * @throws Exception
+	 *             the exception
 	 */
 	public static void main(String[] args) throws Exception {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();

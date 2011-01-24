@@ -167,5 +167,13 @@ public interface UserService extends GitHubService {
 	 */
 	public void removeEmail(String email);
 	
+	/**
+	 * Gets the user organizations.
+	 * 
+	 * @param userName
+	 *            the user name
+	 * 
+	 * @return the user organizations
+	 */
 	public List<Organization> getUserOrganizations(String userName);	
 }

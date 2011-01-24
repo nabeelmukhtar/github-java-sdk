@@ -162,6 +162,7 @@ public final class GitHubApiUrls {
 	    /** The Constant ADD_COMMENT_URL. */
 	    public static final String ADD_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.addComment");
 
+		/** The Constant GET_ISSUES_BY_LABEL_URL. */
 		public static final String GET_ISSUES_BY_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssuesByLabel");
     }
     
@@ -311,7 +312,7 @@ public final class GitHubApiUrls {
 	    /** The Constant GET_ORGANIZATION_URL. */
 	    public static final String GET_ORGANIZATION_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getOrganization");
 	    
-	    /** The Constant GET_ORGANIZATION_URL. */
+	    /** The Constant GET_ORGANIZATIONS_URL. */
 	    public static final String GET_ORGANIZATIONS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getOrganizations");
 	    
 	    /** The Constant UPDATE_ORGANIZATION_URL. */
@@ -377,10 +378,11 @@ public final class GitHubApiUrls {
     
     
     /**
-	 * The Interface ObjectApiUrls.
+	 * The Interface FeedUrls.
 	 */
     public static interface FeedUrls {
-	    /** The Constant GET_PUBLIC_USER_FEED_URL. */
+	    
+    	/** The Constant GET_PUBLIC_USER_FEED_URL. */
 	    public static final String GET_PUBLIC_USER_FEED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.feedService.getPublicUserFeed");
 
 	    /** The Constant GET_PRIVATE_USER_FEED_URL. */

@@ -17,49 +17,74 @@
 package com.github.api.v2.schema;
 
 /**
- * The Class Id.
+ * The Class Block.
  */
 public class Block extends SchemaEntity {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
-	/** The id. */
+	/** The name. */
 	private String name;
+	
+	/** The start. */
 	private int start;
+	
+	/** The count. */
 	private int count;
+	
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name
+	 *            the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
+	 * Gets the start.
+	 * 
 	 * @return the start
 	 */
 	public int getStart() {
 		return start;
 	}
+	
 	/**
-	 * @param start the start to set
+	 * Sets the start.
+	 * 
+	 * @param start
+	 *            the new start
 	 */
 	public void setStart(int start) {
 		this.start = start;
 	}
+	
 	/**
+	 * Gets the count.
+	 * 
 	 * @return the count
 	 */
 	public int getCount() {
 		return count;
 	}
+	
 	/**
-	 * @param count the count to set
+	 * Sets the count.
+	 * 
+	 * @param count
+	 *            the new count
 	 */
 	public void setCount(int count) {
 		this.count = count;

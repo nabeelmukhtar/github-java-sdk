@@ -52,6 +52,7 @@ import com.google.gson.reflect.TypeToken;
  */
 public abstract class BaseGitHubService extends GitHubApiGateway implements GitHubService {
 	
+	/** The Constant UTF_8_CHAR_SET. */
 	protected static final Charset UTF_8_CHAR_SET = Charset.forName(ApplicationConstants.CONTENT_ENCODING);
 	
     /** The parser. */

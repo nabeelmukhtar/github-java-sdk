@@ -31,7 +31,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * The Class ObjectServiceImpl.
+ * The Class PullRequestServiceImpl.
  */
 public class PullRequestServiceImpl extends BaseGitHubService implements
 		PullRequestService {
@@ -86,6 +86,9 @@ public class PullRequestServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, parameters);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
+	 */
 	protected GsonBuilder getGsonBuilder() {
 		GsonBuilder gson = super.getGsonBuilder();
 		gson.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");

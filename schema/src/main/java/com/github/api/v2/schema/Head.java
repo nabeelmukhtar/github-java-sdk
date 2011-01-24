@@ -17,7 +17,7 @@
 package com.github.api.v2.schema;
 
 /**
- * The Class Id.
+ * The Class Head.
  */
 public class Head extends SchemaEntity {
 
@@ -27,10 +27,13 @@ public class Head extends SchemaEntity {
 	/** The id. */
 	private String id;
 	
+	/** The name. */
 	private String name;
 	
 	
 	/**
+	 * Gets the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
@@ -38,7 +41,10 @@ public class Head extends SchemaEntity {
 	}
 
 	/**
-	 * @param name the name to set
+	 * Sets the name.
+	 * 
+	 * @param name
+	 *            the new name
 	 */
 	public void setName(String name) {
 		this.name = name;

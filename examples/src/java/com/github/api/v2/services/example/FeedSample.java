@@ -22,7 +22,7 @@ import com.github.api.v2.services.FeedService;
 import com.github.api.v2.services.GitHubServiceFactory;
 
 /**
- * The Class ObjectApiSample.
+ * The Class FeedSample.
  */
 public class FeedSample {
 
@@ -39,6 +39,12 @@ public class FeedSample {
 		printResult(feed);
 	}
 
+	/**
+	 * Prints the result.
+	 * 
+	 * @param feed
+	 *            the feed
+	 */
 	private static void printResult(Feed feed) {
 		if (feed != null) {
 			System.out.println(feed.getAuthor());

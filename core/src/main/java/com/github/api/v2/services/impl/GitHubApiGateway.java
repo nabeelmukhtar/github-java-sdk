@@ -330,7 +330,7 @@ public abstract class GitHubApiGateway {
 	
 	
 	/**
-	 * Call api get.
+	 * Call api delete.
 	 * 
 	 * @param apiUrl
 	 *            the api url
@@ -342,7 +342,7 @@ public abstract class GitHubApiGateway {
 	}
 
 	/**
-	 * Call api get.
+	 * Call api delete.
 	 * 
 	 * @param apiUrl
 	 *            the api url

@@ -214,6 +214,9 @@ public class UserServiceImpl extends BaseGitHubService implements
 		callApiPost(apiUrl, new HashMap<String, String>());
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.UserService#getUserOrganizations(java.lang.String)
+	 */
 	@Override
 	public List<Organization> getUserOrganizations(String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.UserApiUrls.GET_USER_ORGANIZATIONS);

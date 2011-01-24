@@ -24,9 +24,17 @@ import com.github.api.v2.schema.Feed;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.services.constant.TestConstants;
 
+/**
+ * The Class FeedServiceTest.
+ */
 public class FeedServiceTest extends BaseGitHubServiceTest {
+	
+	/** The service. */
 	private FeedService service;
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#setUp()
+	 */
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
@@ -34,12 +42,18 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
 		service.setAuthentication(authentication);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.BaseGitHubServiceTest#tearDown()
+	 */
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
 		service = null;
 	}
 
+	/**
+	 * Test get commit feed.
+	 */
 	@Test
 	public void testGetCommitFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -49,6 +63,9 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
+	/**
+	 * Test get network feed.
+	 */
 	@Test
 	public void testGetNetworkFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -58,6 +75,9 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
+	/**
+	 * Test get private user feed.
+	 */
 	@Test
 	public void testGetPrivateUserFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -66,6 +86,9 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
+	/**
+	 * Test get public timeline feed.
+	 */
 	@Test
 	public void testGetPublicTimelineFeed() {
     	Feed feed = service.getPublicTimelineFeed(10);
@@ -73,6 +96,9 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
+	/**
+	 * Test get public user feed.
+	 */
 	@Test
 	public void testGetPublicUserFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -81,6 +107,9 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
+	/**
+	 * Test get wiki feed.
+	 */
 	@Test
 	public void testGetWikiFeed() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
@@ -90,6 +119,9 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 	
+	/**
+	 * Test get blog feed.
+	 */
 	@Test
 	public void testGetBlogFeed() {
     	Feed feed = service.getBlogFeed(10);
@@ -97,6 +129,9 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
+	/**
+	 * Test get discussions feed.
+	 */
 	@Test
 	public void testGetDiscussionsFeed() {
     	Feed feed = service.getDiscussionsFeed(10);
@@ -104,6 +139,9 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
+	/**
+	 * Test get discussions feed string.
+	 */
 	@Test
 	public void testGetDiscussionsFeedString() {
     	Feed feed = service.getDiscussionsFeed("api", 10);
@@ -111,6 +149,9 @@ public class FeedServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty("Feed entries cannot be null or empty.", feed.getEntries());
 	}
 
+	/**
+	 * Test get job positions feed.
+	 */
 	@Test
 	public void testGetJobPositionsFeed() {
     	Feed feed = service.getJobPositionsFeed(10);

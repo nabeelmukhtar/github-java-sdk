@@ -108,7 +108,7 @@ public class GitHubServiceFactory {
     /**
 	 * Creates a new GitHubService object.
 	 * 
-	 * @return the repository service
+	 * @return the organization service
 	 */
     public OrganizationService createOrganizationService() {
     	return new OrganizationServiceImpl();
@@ -137,10 +137,20 @@ public class GitHubServiceFactory {
     	return new OAuthServiceImpl(clientId, secret);    	
     }
     
+    /**
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the feed service
+	 */
     public FeedService createFeedService() {
     	return new FeedServiceImpl();    	
     }
     
+    /**
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the pull request service
+	 */
     public PullRequestService createPullRequestService() {
     	return new PullRequestServiceImpl();    	
     }

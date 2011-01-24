@@ -364,6 +364,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.RepositoryService#getRepositoryArchive(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ZipInputStream getRepositoryArchive(String userName, String repositoryName, String branchName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_REPOSITORY_ARCHIVE_URL);

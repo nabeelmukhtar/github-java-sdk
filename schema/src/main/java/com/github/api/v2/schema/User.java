@@ -89,12 +89,15 @@ public class User extends SchemaEntity {
 	/** The plan. */
 	private Plan plan;
 	
+	/** The permission. */
 	private Permission permission;
 	
 	/** The score. */
 	private double score;
 	
 	/**
+	 * Gets the score.
+	 * 
 	 * @return the score
 	 */
 	public double getScore() {
@@ -102,7 +105,10 @@ public class User extends SchemaEntity {
 	}
 
 	/**
-	 * @param score the score to set
+	 * Sets the score.
+	 * 
+	 * @param score
+	 *            the new score
 	 */
 	public void setScore(double score) {
 		this.score = score;
@@ -508,6 +514,8 @@ public class User extends SchemaEntity {
 	}
 	
 	/**
+	 * Gets the permission.
+	 * 
 	 * @return the permission
 	 */
 	public Permission getPermission() {
@@ -515,7 +523,10 @@ public class User extends SchemaEntity {
 	}
 
 	/**
-	 * @param permission the permission to set
+	 * Sets the permission.
+	 * 
+	 * @param permission
+	 *            the new permission
 	 */
 	public void setPermission(Permission permission) {
 		this.permission = permission;

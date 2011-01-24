@@ -34,6 +34,9 @@ public class OrganizationApiSample {
 	 * 
 	 * @param args
 	 *            the arguments
+	 * 
+	 * @throws Exception
+	 *             the exception
 	 */
 	public static void main(String[] args) throws Exception {
 		GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
@@ -50,10 +53,22 @@ public class OrganizationApiSample {
 		}
 	}
     
+	/**
+	 * Prints the result.
+	 * 
+	 * @param repository
+	 *            the repository
+	 */
 	private static void printResult(Repository repository) {
 		System.out.println(repository);
 	}
 
+	/**
+	 * Prints the result.
+	 * 
+	 * @param user
+	 *            the user
+	 */
 	private static void printResult(User user) {
 		System.out.println(user);
 	}
@@ -62,7 +77,7 @@ public class OrganizationApiSample {
 	 * Prints the result.
 	 * 
 	 * @param organization
-	 *            the repository
+	 *            the organization
 	 */
 	private static void printResult(Organization organization) {
 		System.out.println(organization);

@@ -182,6 +182,9 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
 		assertNotNullOrEmpty("Issues cannot be null or empty.", issues);
 	}
 
+	/**
+	 * Test get issues by label.
+	 */
 	@Test
 	public void testGetIssuesByLabel() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);

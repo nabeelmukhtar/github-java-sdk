@@ -153,19 +153,31 @@ public interface ParameterNames {
     /** The Constant DELETE_TOKEN. */
     public static final String DELETE_TOKEN = "delete_token";
 
+	/** The Constant NUM. */
 	public static final String NUM = "num";
 	
+	/** The Constant USER_REPOSITORY_PAIR. */
 	public static final String USER_REPOSITORY_PAIR = "userRepositoryPair";
 	
+	/** The Constant ORGANIZATION_NAME. */
 	public static final String ORGANIZATION_NAME = "organizationName";
 	
+	/** The Constant TEAM_ID. */
 	public static final String TEAM_ID = "teamId";
+	
+	/** The Constant PERMISSION. */
 	public static final String PERMISSION = "permission";
+	
+	/** The Constant REPO_NAMES. */
 	public static final String REPO_NAMES = "repo_names";
+	
+	/** The Constant BILLING_EMAIL. */
 	public static final String BILLING_EMAIL = "billing_email";
 
+	/** The Constant BASE. */
 	public static final String BASE = "base";
 
+	/** The Constant HEAD. */
 	public static final String HEAD = "head";
 	
 }

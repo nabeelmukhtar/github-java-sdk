@@ -193,7 +193,7 @@ public interface RepositoryService extends GitHubService {
 	 * @param key
 	 *            the key
 	 * 
-	 * @return the string
+	 * @return the list< key>
 	 */
 	public List<Key> addDeployKey(String repositoryName, String title, String key);
 	
@@ -318,5 +318,17 @@ public interface RepositoryService extends GitHubService {
 	 */
 	public Map<String, String> getBranches(String userName, String repositoryName);
 	
+	/**
+	 * Gets the repository archive.
+	 * 
+	 * @param userName
+	 *            the user name
+	 * @param repositoryName
+	 *            the repository name
+	 * @param branchName
+	 *            the branch name
+	 * 
+	 * @return the repository archive
+	 */
 	public ZipInputStream getRepositoryArchive(String userName, String repositoryName, String branchName);
 }

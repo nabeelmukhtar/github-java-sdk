@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * The Class Network.
+ * The Class NetworkMeta.
  */
 public class NetworkMeta extends SchemaEntity {
 
@@ -36,7 +36,10 @@ public class NetworkMeta extends SchemaEntity {
 	/** The dates. */
 	private List<Date> dates;
 	
+	/** The users. */
 	private List<NetworkUser> users;
+	
+	/** The blocks. */
 	private List<Block> blocks;
 	
 	/**
@@ -97,6 +100,8 @@ public class NetworkMeta extends SchemaEntity {
 	}
 	
 	/**
+	 * Gets the users.
+	 * 
 	 * @return the users
 	 */
 	public List<NetworkUser> getUsers() {
@@ -104,13 +109,18 @@ public class NetworkMeta extends SchemaEntity {
 	}
 
 	/**
-	 * @param users the users to set
+	 * Sets the users.
+	 * 
+	 * @param users
+	 *            the new users
 	 */
 	public void setUsers(List<NetworkUser> users) {
 		this.users = users;
 	}
 
 	/**
+	 * Gets the blocks.
+	 * 
 	 * @return the blocks
 	 */
 	public List<Block> getBlocks() {
@@ -118,7 +128,10 @@ public class NetworkMeta extends SchemaEntity {
 	}
 
 	/**
-	 * @param blocks the blocks to set
+	 * Sets the blocks.
+	 * 
+	 * @param blocks
+	 *            the new blocks
 	 */
 	public void setBlocks(List<Block> blocks) {
 		this.blocks = blocks;

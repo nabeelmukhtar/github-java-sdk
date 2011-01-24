@@ -32,6 +32,7 @@ public class Repository extends SchemaEntity {
 		
 		/** The PUBLIC. */
 		PUBLIC("public"), 
+ 
  /** The PRIVATE. */
  PRIVATE("private");
 		
@@ -159,8 +160,10 @@ public class Repository extends SchemaEntity {
 	/** The has downloads. */
 	private boolean hasDownloads;
 	
+	/** The organization. */
 	private String organization;
 	
+	/** The permission. */
 	private Permission permission;
 	
 	/**
@@ -639,6 +642,8 @@ public class Repository extends SchemaEntity {
 	}
 	
 	/**
+	 * Gets the organization.
+	 * 
 	 * @return the organization
 	 */
 	public String getOrganization() {
@@ -646,13 +651,18 @@ public class Repository extends SchemaEntity {
 	}
 
 	/**
-	 * @param organization the organization to set
+	 * Sets the organization.
+	 * 
+	 * @param organization
+	 *            the new organization
 	 */
 	public void setOrganization(String organization) {
 		this.organization = organization;
 	}
 
 	/**
+	 * Gets the permission.
+	 * 
 	 * @return the permission
 	 */
 	public Permission getPermission() {
@@ -660,7 +670,10 @@ public class Repository extends SchemaEntity {
 	}
 
 	/**
-	 * @param permission the permission to set
+	 * Sets the permission.
+	 * 
+	 * @param permission
+	 *            the new permission
 	 */
 	public void setPermission(Permission permission) {
 		this.permission = permission;

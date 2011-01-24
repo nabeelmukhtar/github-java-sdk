@@ -23,7 +23,7 @@ import com.github.api.v2.services.GitHubServiceFactory;
 import com.github.api.v2.services.PullRequestService;
 
 /**
- * The Class ObjectApiSample.
+ * The Class PullRequestApiSample.
  */
 public class PullRequestApiSample {
 
@@ -48,7 +48,7 @@ public class PullRequestApiSample {
 	 * Prints the result.
 	 * 
 	 * @param pullRequest
-	 *            the blob
+	 *            the pull request
 	 */
 	private static void printResult(PullRequest pullRequest) {
 		System.out.println(pullRequest);

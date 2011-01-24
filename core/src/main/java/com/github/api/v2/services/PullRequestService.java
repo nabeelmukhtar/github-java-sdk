@@ -22,53 +22,65 @@ import com.github.api.v2.schema.PullRequest;
 import com.github.api.v2.schema.Issue.State;
 
 /**
- * The Interface ObjectService.
+ * The Interface PullRequestService.
  */
 public interface PullRequestService extends GitHubService {
 	
 	/**
-	 * Gets the tree.
+	 * Gets the pull requests.
 	 * 
 	 * @param userName
 	 *            the user name
 	 * @param repositoryName
 	 *            the repository name
-	 * @param treeSha
-	 *            the tree sha
 	 * 
-	 * @return the tree
+	 * @return the pull requests
 	 */
 	public List<PullRequest> getPullRequests(String userName, String repositoryName);
 	
 	/**
-	 * Gets the tree.
+	 * Gets the pull requests.
 	 * 
 	 * @param userName
 	 *            the user name
 	 * @param repositoryName
 	 *            the repository name
-	 * @param treeSha
-	 *            the tree sha
+	 * @param state
+	 *            the state
 	 * 
-	 * @return the tree
+	 * @return the pull requests
 	 */
 	public List<PullRequest> getPullRequests(String userName, String repositoryName, State state);
 
 	/**
-	 * Gets the blob.
+	 * Gets the pull request.
 	 * 
 	 * @param userName
 	 *            the user name
 	 * @param repositoryName
 	 *            the repository name
-	 * @param treeSha
-	 *            the tree sha
-	 * @param filePath
-	 *            the file path
+	 * @param issueNumber
+	 *            the issue number
 	 * 
-	 * @return the blob
+	 * @return the pull request
 	 */
 	public PullRequest getPullRequest(String userName, String repositoryName, int issueNumber);
 	
+	/**
+	 * Creates the pull request.
+	 * 
+	 * @param userName
+	 *            the user name
+	 * @param repositoryName
+	 *            the repository name
+	 * @param base
+	 *            the base
+	 * @param head
+	 *            the head
+	 * @param title
+	 *            the title
+	 * @param body
+	 *            the body
+	 */
 	public void createPullRequest(String userName, String repositoryName, String base, String head, String title, String body);
 }
