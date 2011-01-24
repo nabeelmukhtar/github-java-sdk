@@ -16,15 +16,17 @@
  */
 package com.github.api.v2.services.impl;
 
-import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import com.github.api.v2.schema.Blob;
-import com.github.api.v2.schema.Tree;
+import com.github.api.v2.schema.PullRequest;
+import com.github.api.v2.schema.Issue.State;
 import com.github.api.v2.services.PullRequestService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -38,49 +40,55 @@ public class PullRequestServiceImpl extends BaseGitHubService implements
 	 * @see com.github.api.v2.services.ObjectService#getBlob(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public Blob getBlob(String userName, String repositoryName, String treeSha,
-			String filePath) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.ObjectApiUrls.GET_BLOBS_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, treeSha).withField(ParameterNames.FILE_PATH, filePath).buildUrl();
+	public PullRequest getPullRequest(String userName, String repositoryName, int issueNumber) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.PullRequestApiUrls.GET_PULL_REQUEST_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<Blob>(){}, json.get("blob"));
+        return unmarshall(new TypeToken<PullRequest>(){}, json.get("pull"));
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.ObjectService#getBlobs(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Blob> getBlobs(String userName, String repositoryName,
-			String treeSha) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.ObjectApiUrls.GET_BLOBS_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, treeSha).buildUrl();
+	public List<PullRequest> getPullRequests(String userName, String repositoryName) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.PullRequestApiUrls.GET_PULL_REQUESTS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.STATE, "").buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Blob>>(){}, json.get("blobs"));
+        return unmarshall(new TypeToken<List<PullRequest>>(){}, json.get("pulls"));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.ObjectService#getBlobs(java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public List<PullRequest> getPullRequests(String userName, String repositoryName, State state) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.PullRequestApiUrls.GET_PULL_REQUESTS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.STATE, state.value()).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<PullRequest>>(){}, json.get("pulls"));
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.ObjectService#getObjectContent(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	@Override
-	public InputStream getObjectContent(String userName, String repositoryName,
-			String objectSha) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.ObjectApiUrls.GET_OBJECT_CONTENT_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, objectSha).buildUrl();
-        return callApiGet(apiUrl);
+	public void createPullRequest(String userName, String repositoryName, String base, String head, String title, String body) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.PullRequestApiUrls.CREATE_PULL_REQUEST_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
+        Map<String, String> parameters = new HashMap<String, String>();
+        parameters.put("pull[" + ParameterNames.BASE + "]", base);
+        parameters.put("pull[" + ParameterNames.HEAD + "]", head);
+        parameters.put("pull[" + ParameterNames.TITLE + "]", title);
+        parameters.put("pull[" + ParameterNames.BODY + "]", body);
+		callApiPost(apiUrl, parameters);
 	}
-
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.ObjectService#getTree(java.lang.String, java.lang.String, java.lang.String)
-	 */
-	@Override
-	public List<Tree> getTree(String userName, String repositoryName,
-			String treeSha) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.ObjectApiUrls.GET_TREE_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, treeSha).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
-        
-        return unmarshall(new TypeToken<List<Tree>>(){}, json.get("tree"));
+	
+	protected GsonBuilder getGsonBuilder() {
+		GsonBuilder gson = super.getGsonBuilder();
+		gson.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		return gson;
 	}
 }

@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="core/src/main/resources"/>
 	<classpathentry kind="src" path="core/src/test/java"/>
 	<classpathentry kind="src" path="core/src/test/resources"/>
-	<classpathentry kind="src" path="examples/src/resources"/>
 	<classpathentry kind="src" path="examples/src/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="dev-lib/junit-4.5.jar"/>

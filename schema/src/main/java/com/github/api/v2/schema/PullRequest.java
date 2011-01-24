@@ -16,6 +16,12 @@
  */
 package com.github.api.v2.schema;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import com.github.api.v2.schema.Issue.State;
+
 /**
  * The Class Blob.
  */
@@ -24,144 +30,382 @@ public class PullRequest extends SchemaEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
 	
-	/** The name. */
-	private String name;
+	private User user;
 	
-	/** The size. */
-	private int size;
+	/** The gravatar id. */
+	private String gravatarId;
 	
-	/** The sha. */
-	private String sha;
+	/** The updated at. */
+	private Date issueUpdatedAt;
 	
-	/** The mode. */
-	private String mode;
+	/** The votes. */
+	private int votes;
 	
-	/** The mime type. */
-	private String mimeType;
+	/** The number. */
+	private int number;
 	
-	/** The data. */
-	private String data;
+	/** The comments. */
+	private int comments;
+	
+	/** The position. */
+	private double position;
+	
+	/** The title. */
+	private String title;
+	
+	/** The body. */
+	private String body;
+	
+	/** The state. */
+	private State state;
+	
+	/** The created at. */
+	private Date createdAt;
+	
+	private Date issueCreatedAt;
+	private String htmlUrl;
+	private String diffUrl;
+	private String patchUrl;
+	private User issueUser;
+	private Version base;
+	private Version head;
+	
+	private List<String> labels = new ArrayList<String>();
 	
 	/**
-	 * Gets the name.
+	 * Gets the user.
 	 * 
-	 * @return the name
+	 * @return the user
 	 */
-	public String getName() {
-		return name;
+	public User getUser() {
+		return user;
 	}
 	
 	/**
-	 * Sets the name.
+	 * Sets the user.
 	 * 
-	 * @param name
-	 *            the new name
+	 * @param user
+	 *            the new user
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	/**
-	 * Gets the size.
+	 * Gets the gravatar id.
 	 * 
-	 * @return the size
+	 * @return the gravatar id
 	 */
-	public int getSize() {
-		return size;
+	public String getGravatarId() {
+		return gravatarId;
 	}
 	
 	/**
-	 * Sets the size.
+	 * Sets the gravatar id.
 	 * 
-	 * @param size
-	 *            the new size
+	 * @param gravatarId
+	 *            the new gravatar id
 	 */
-	public void setSize(int size) {
-		this.size = size;
+	public void setGravatarId(String gravatarId) {
+		this.gravatarId = gravatarId;
 	}
 	
 	/**
-	 * Gets the sha.
+	 * Gets the updated at.
 	 * 
-	 * @return the sha
+	 * @return the updated at
 	 */
-	public String getSha() {
-		return sha;
+	public Date getIssueUpdatedAt() {
+		return issueUpdatedAt;
 	}
 	
 	/**
-	 * Sets the sha.
+	 * Sets the updated at.
 	 * 
-	 * @param sha
-	 *            the new sha
+	 * @param updatedAt
+	 *            the new updated at
 	 */
-	public void setSha(String sha) {
-		this.sha = sha;
+	public void setIssueUpdatedAt(Date updatedAt) {
+		this.issueUpdatedAt = updatedAt;
 	}
 	
 	/**
-	 * Gets the mode.
+	 * Gets the votes.
 	 * 
-	 * @return the mode
+	 * @return the votes
 	 */
-	public String getMode() {
-		return mode;
+	public int getVotes() {
+		return votes;
 	}
 	
 	/**
-	 * Sets the mode.
+	 * Sets the votes.
 	 * 
-	 * @param mode
-	 *            the new mode
+	 * @param votes
+	 *            the new votes
 	 */
-	public void setMode(String mode) {
-		this.mode = mode;
+	public void setVotes(int votes) {
+		this.votes = votes;
 	}
 	
 	/**
-	 * Gets the mime type.
+	 * Gets the number.
 	 * 
-	 * @return the mime type
+	 * @return the number
 	 */
-	public String getMimeType() {
-		return mimeType;
+	public int getNumber() {
+		return number;
 	}
 	
 	/**
-	 * Sets the mime type.
+	 * Sets the number.
 	 * 
-	 * @param mimeType
-	 *            the new mime type
+	 * @param number
+	 *            the new number
 	 */
-	public void setMimeType(String mimeType) {
-		this.mimeType = mimeType;
+	public void setNumber(int number) {
+		this.number = number;
 	}
 	
 	/**
-	 * Gets the data.
+	 * Gets the position.
 	 * 
-	 * @return the data
+	 * @return the position
 	 */
-	public String getData() {
-		return data;
+	public double getPosition() {
+		return position;
 	}
 	
 	/**
-	 * Sets the data.
+	 * Sets the position.
 	 * 
-	 * @param data
-	 *            the new data
+	 * @param position
+	 *            the new position
 	 */
-	public void setData(String data) {
-		this.data = data;
+	public void setPosition(double position) {
+		this.position = position;
 	}
+	
+	/**
+	 * Gets the title.
+	 * 
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	
+	/**
+	 * Sets the title.
+	 * 
+	 * @param title
+	 *            the new title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	/**
+	 * Gets the body.
+	 * 
+	 * @return the body
+	 */
+	public String getBody() {
+		return body;
+	}
+	
+	/**
+	 * Sets the body.
+	 * 
+	 * @param body
+	 *            the new body
+	 */
+	public void setBody(String body) {
+		this.body = body;
+	}
+	
+	/**
+	 * Gets the state.
+	 * 
+	 * @return the state
+	 */
+	public State getState() {
+		return state;
+	}
+	
+	/**
+	 * Sets the state.
+	 * 
+	 * @param state
+	 *            the new state
+	 */
+	public void setState(State state) {
+		this.state = state;
+	}
+	
+	/**
+	 * Gets the created at.
+	 * 
+	 * @return the created at
+	 */
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	
+	/**
+	 * Sets the created at.
+	 * 
+	 * @param createdAt
+	 *            the new created at
+	 */
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	
+	/**
+	 * Gets the comments.
+	 * 
+	 * @return the comments
+	 */
+	public int getComments() {
+		return comments;
+	}
+	
+	/**
+	 * Sets the comments.
+	 * 
+	 * @param comments
+	 *            the new comments
+	 */
+	public void setComments(int comments) {
+		this.comments = comments;
+	}
+
+	/**
+	 * @return the issueCreatedAt
+	 */
+	public Date getIssueCreatedAt() {
+		return issueCreatedAt;
+	}
+
+	/**
+	 * @param issueCreatedAt the issueCreatedAt to set
+	 */
+	public void setIssueCreatedAt(Date issueCreatedAt) {
+		this.issueCreatedAt = issueCreatedAt;
+	}
+
+	/**
+	 * @return the htmlUrl
+	 */
+	public String getHtmlUrl() {
+		return htmlUrl;
+	}
+
+	/**
+	 * @param htmlUrl the htmlUrl to set
+	 */
+	public void setHtmlUrl(String htmlUrl) {
+		this.htmlUrl = htmlUrl;
+	}
+
+	/**
+	 * @return the diffUrl
+	 */
+	public String getDiffUrl() {
+		return diffUrl;
+	}
+
+	/**
+	 * @param diffUrl the diffUrl to set
+	 */
+	public void setDiffUrl(String diffUrl) {
+		this.diffUrl = diffUrl;
+	}
+
+	/**
+	 * @return the patchUrl
+	 */
+	public String getPatchUrl() {
+		return patchUrl;
+	}
+
+	/**
+	 * @param patchUrl the patchUrl to set
+	 */
+	public void setPatchUrl(String patchUrl) {
+		this.patchUrl = patchUrl;
+	}
+
+	/**
+	 * @return the issueUser
+	 */
+	public User getIssueUser() {
+		return issueUser;
+	}
+
+	/**
+	 * @param issueUser the issueUser to set
+	 */
+	public void setIssueUser(User issueUser) {
+		this.issueUser = issueUser;
+	}
+
+	/**
+	 * @return the base
+	 */
+	public Version getBase() {
+		return base;
+	}
+
+	/**
+	 * @param base the base to set
+	 */
+	public void setBase(Version base) {
+		this.base = base;
+	}
+
+	/**
+	 * @return the head
+	 */
+	public Version getHead() {
+		return head;
+	}
+
+	/**
+	 * @param head the head to set
+	 */
+	public void setHead(Version head) {
+		this.head = head;
+	}
+
+	/**
+	 * @return the labels
+	 */
+	public List<String> getLabels() {
+		return labels;
+	}
+
+	/**
+	 * @param labels the labels to set
+	 */
+	public void setLabels(List<String> labels) {
+		this.labels = labels;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Blob [data=" + data + ", mimeType=" + mimeType + ", mode="
-				+ mode + ", name=" + name + ", sha=" + sha + ", size=" + size
-				+ "]";
+		return "PullRequest [base=" + base + ", body=" + body + ", comments="
+				+ comments + ", createdAt=" + createdAt + ", diffUrl="
+				+ diffUrl + ", gravatarId=" + gravatarId + ", head=" + head
+				+ ", htmlUrl=" + htmlUrl + ", issueCreatedAt=" + issueCreatedAt
+				+ ", issueUpdatedAt=" + issueUpdatedAt + ", issueUser="
+				+ issueUser + ", labels=" + labels + ", number=" + number
+				+ ", patchUrl=" + patchUrl + ", position=" + position
+				+ ", state=" + state + ", title=" + title + ", user=" + user
+				+ ", votes=" + votes + "]";
 	}
 }

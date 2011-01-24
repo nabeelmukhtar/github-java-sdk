@@ -139,6 +139,10 @@ public final class TestConstants {
 	/** The Constant TEST_KEY_ID. */
 	public static final String TEST_KEY_ID = 
 		testConstants.getProperty("com.github.api.v2.services.testKeyId");
+
+	public static final String TEST_BASE_SHA = testConstants.getProperty("com.github.api.v2.services.testBaseSha");
+	
+	public static final String TEST_HEAD_SHA = testConstants.getProperty("com.github.api.v2.services.testHeadSha");
     
     /**
 	 * Instantiates a new test constants.

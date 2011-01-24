@@ -16,15 +16,13 @@
  */
 package com.github.api.v2.services;
 
-import java.io.InputStream;
 import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.api.v2.schema.Blob;
-import com.github.api.v2.schema.Tree;
+import com.github.api.v2.schema.PullRequest;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
@@ -52,48 +50,35 @@ public class PullRequestServiceTest extends BaseGitHubServiceTest {
 	 * Test get blob.
 	 */
 	@Test
-	public void testGetBlob() {
+	public void testGetPullRequest() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Tree SHA."), TestConstants.TEST_TREE_SHA);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test File Path."), TestConstants.TEST_FILE_PATH);
-		Blob blob = service.getBlob(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_TREE_SHA, TestConstants.TEST_FILE_PATH);
-		assertNotNull("Blob cannot be null or empty", blob);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue Number."), TestConstants.TEST_ISSUE_NUMBER);
+		PullRequest pullRequest = service.getPullRequest(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER));
+		assertNotNull("Pull request cannot be null or empty", pullRequest);
 	}
 
 	/**
 	 * Test get blobs.
 	 */
 	@Test
-	public void testGetBlobs() {
+	public void testGetPullRequests() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Tree SHA."), TestConstants.TEST_TREE_SHA);
-		List<Blob> blobs = service.getBlobs(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_TREE_SHA);
-		assertNotNullOrEmpty("Blobs cannot be null or empty", blobs);
+		List<PullRequest> pullRequests = service.getPullRequests(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+		assertNotNullOrEmpty("Pull requests cannot be null or empty", pullRequests);
 	}
 
 	/**
 	 * Test get object content.
 	 */
 	@Test
-	public void testGetObjectContent() {
+	public void testCreatePullRequest() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Tree SHA."), TestConstants.TEST_TREE_SHA);
-		InputStream objectContent = service.getObjectContent(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_TREE_SHA);
-		assertNotNullOrEmpty("Object content cannot be null or empty", convertStreamToString(objectContent));
-	}
-
-	/**
-	 * Test get tree.
-	 */
-	@Test
-	public void testGetTree() {
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Tree SHA."), TestConstants.TEST_TREE_SHA);
-		List<Tree> trees = service.getTree(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_TREE_SHA);
-		assertNotNullOrEmpty("Tree cannot be null or empty", trees);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Base SHA."), TestConstants.TEST_BASE_SHA);
+    	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Head SHA."), TestConstants.TEST_HEAD_SHA);
+		service.createPullRequest(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_BASE_SHA, TestConstants.TEST_HEAD_SHA, TestConstants.TEST_ISSUE_TITLE, TestConstants.TEST_ISSUE_BODY);
 	}
 }

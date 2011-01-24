@@ -16,8 +16,10 @@
  */
 package com.github.api.v2.schema;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -115,6 +117,38 @@ public class Issue extends SchemaEntity {
 	/** The created at. */
 	private Date createdAt;
 	
+	private Date closedAt;
+	
+	private List<String> labels = new ArrayList<String>();
+	
+	/**
+	 * @return the closedAt
+	 */
+	public Date getClosedAt() {
+		return closedAt;
+	}
+
+	/**
+	 * @param closedAt the closedAt to set
+	 */
+	public void setClosedAt(Date closedAt) {
+		this.closedAt = closedAt;
+	}
+
+	/**
+	 * @return the labels
+	 */
+	public List<String> getLabels() {
+		return labels;
+	}
+
+	/**
+	 * @param labels the labels to set
+	 */
+	public void setLabels(List<String> labels) {
+		this.labels = labels;
+	}
+
 	/**
 	 * Gets the user.
 	 * 
