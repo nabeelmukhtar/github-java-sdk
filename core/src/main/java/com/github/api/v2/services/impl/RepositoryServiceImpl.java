@@ -44,9 +44,9 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	 * @see com.github.api.v2.services.RepositoryService#addCollaborator(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void addCollaborator(String repositoryName, String collaboratorName) {
+	public void addCollaborator(String userName, String repositoryName, String collaboratorName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.ADD_COLLABORATOR_URL);
-        String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.USER_NAME, collaboratorName).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.COLLABORATOR_NAME, collaboratorName).buildUrl();
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 
@@ -258,10 +258,10 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	 * @see com.github.api.v2.services.RepositoryService#removeCollaborator(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void removeCollaborator(String repositoryName,
+	public void removeCollaborator(String userName, String repositoryName,
 			String collaboratorName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.REMOVE_COLLABORATOR_URL);
-        String                apiUrl  = builder.withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.USER_NAME, collaboratorName).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.COLLABORATOR_NAME, collaboratorName).buildUrl();
         unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
 	}
 

@@ -75,7 +75,7 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	public void testAddCollaborator() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-		service.addCollaborator(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_USER_NAME);
+		service.addCollaborator(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_USER_NAME);
 	}
 
 	/**
@@ -232,7 +232,7 @@ public class RepositoryServiceTest extends BaseGitHubServiceTest {
 	public void testRemoveCollaborator() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-		service.removeCollaborator(TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_USER_NAME);
+		service.removeCollaborator(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, TestConstants.TEST_USER_NAME);
 	}
 
 	/**

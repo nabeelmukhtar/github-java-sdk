@@ -179,5 +179,8 @@ public interface ParameterNames {
 
 	/** The Constant HEAD. */
 	public static final String HEAD = "head";
+
+	/** The Constant COLLABORATOR_NAME. */
+	public static final String COLLABORATOR_NAME = "collaboratorName";
 	
 }

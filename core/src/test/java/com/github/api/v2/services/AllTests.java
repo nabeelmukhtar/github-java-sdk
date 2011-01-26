@@ -32,15 +32,17 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite("Test for com.github.api.v2.services");
 		//$JUnit-BEGIN$
-//		suite.addTestSuite(OAuthServiceTest.class);
 		suite.addTestSuite(CommitServiceTest.class);
-		suite.addTestSuite(RepositoryServiceTest.class);
 		suite.addTestSuite(IssueServiceTest.class);
-		suite.addTestSuite(ObjectServiceTest.class);
 		suite.addTestSuite(NetworkServiceTest.class);
-		suite.addTestSuite(UserServiceTest.class);
 		suite.addTestSuite(GistServiceTest.class);
+		suite.addTestSuite(OrganizationServiceTest.class);
 		suite.addTestSuite(FeedServiceTest.class);
+		suite.addTestSuite(RepositoryServiceTest.class);
+		suite.addTestSuite(PullRequestServiceTest.class);
+		suite.addTestSuite(OAuthServiceTest.class);
+		suite.addTestSuite(ObjectServiceTest.class);
+		suite.addTestSuite(UserServiceTest.class);
 		//$JUnit-END$
 		return suite;
 	}
