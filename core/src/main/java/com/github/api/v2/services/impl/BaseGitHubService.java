@@ -129,19 +129,6 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 		GsonBuilder builder = new GsonBuilder();
 		builder.setDateFormat(ApplicationConstants.DATE_FORMAT);
 		builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-//		builder.setFieldNamingStrategy(new FieldNamingStrategy() {
-//			@Override
-//			public String translateName(Field field) {
-//				if (field.getType().equals(Repository.Visibility.class)) {
-//					return "private";
-//				} else if (field.getType().equals(Gist.Visibility.class)) {
-//					return "public";
-//				} else {
-//					return field.getName();
-//				}
-//			}
-//			
-//		});
 		builder.registerTypeAdapter(Issue.State.class, new JsonDeserializer<Issue.State>() {
 			@Override
 			public Issue.State deserialize(JsonElement arg0, Type arg1,

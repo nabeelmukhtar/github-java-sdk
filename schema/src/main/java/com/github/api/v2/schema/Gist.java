@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * The Class Gist.
  */
@@ -90,7 +92,8 @@ public class Gist extends SchemaEntity {
 	private String repo;
 	
 	/** The visibility. */
-	private Visibility visibility;
+	@SerializedName("public")
+	private boolean visibility;
 	
 	/** The created at. */
 	private Date createdAt;
@@ -145,7 +148,7 @@ public class Gist extends SchemaEntity {
 	 * @return the visibility
 	 */
 	public Visibility getVisibility() {
-		return visibility;
+		return visibility ? Visibility.PUBLIC : Visibility.PRIVATE;
 	}
 	
 	/**
@@ -155,7 +158,7 @@ public class Gist extends SchemaEntity {
 	 *            the new visibility
 	 */
 	public void setVisibility(Visibility visibility) {
-		this.visibility = visibility;
+		this.visibility = (visibility == Visibility.PUBLIC);
 	}
 	
 	/**

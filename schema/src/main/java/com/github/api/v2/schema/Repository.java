@@ -20,6 +20,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * The Class Repository.
  */
@@ -98,7 +100,8 @@ public class Repository extends SchemaEntity {
 	private String description;
 	
 	/** The visibility. */
-	private Visibility visibility;
+	@SerializedName("private")
+	private boolean visibility;
 	
 	/** The url. */
 	private String url;
@@ -140,10 +143,10 @@ public class Repository extends SchemaEntity {
 	private String id;
 	
 	/** The pushed. */
-	private Date pushed;
+	private Date pushedAt;
 	
 	/** The created. */
-	private Date created;
+	private Date createdAt;
 	
 	/** The source. */
 	private String source;
@@ -248,7 +251,7 @@ public class Repository extends SchemaEntity {
 	 * @return the visibility
 	 */
 	public Visibility getVisibility() {
-		return visibility;
+		return visibility ? Visibility.PRIVATE : Visibility.PUBLIC ;
 	}
 	
 	/**
@@ -258,7 +261,7 @@ public class Repository extends SchemaEntity {
 	 *            the new visibility
 	 */
 	public void setVisibility(Visibility visibility) {
-		this.visibility = visibility;
+		this.visibility = (visibility == Visibility.PRIVATE);
 	}
 	
 	/**
@@ -513,8 +516,8 @@ public class Repository extends SchemaEntity {
 	 * 
 	 * @return the pushed
 	 */
-	public Date getPushed() {
-		return pushed;
+	public Date getPushedAt() {
+		return pushedAt;
 	}
 	
 	/**
@@ -523,8 +526,8 @@ public class Repository extends SchemaEntity {
 	 * @param pushed
 	 *            the new pushed
 	 */
-	public void setPushed(Date pushed) {
-		this.pushed = pushed;
+	public void setPushedAt(Date pushedAt) {
+		this.pushedAt = pushedAt;
 	}
 	
 	/**
@@ -532,8 +535,8 @@ public class Repository extends SchemaEntity {
 	 * 
 	 * @return the created
 	 */
-	public Date getCreated() {
-		return created;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 	
 	/**
@@ -542,8 +545,8 @@ public class Repository extends SchemaEntity {
 	 * @param created
 	 *            the new created
 	 */
-	public void setCreated(Date created) {
-		this.created = created;
+	public void setCreated(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 	
 	/**
@@ -684,14 +687,14 @@ public class Repository extends SchemaEntity {
 	 */
 	@Override
 	public String toString() {
-		return "Repository [actions=" + actions + ", created=" + created
+		return "Repository [actions=" + actions + ", created=" + createdAt
 				+ ", description=" + description + ", followers=" + followers
 				+ ", fork=" + fork + ", forks=" + forks + ", hasDownloads="
 				+ hasDownloads + ", hasIssues=" + hasIssues + ", hasWiki="
 				+ hasWiki + ", homepage=" + homepage + ", id=" + id
 				+ ", language=" + language + ", name=" + name + ", openIssues="
 				+ openIssues + ", owner=" + owner + ", parent=" + parent
-				+ ", pushed=" + pushed + ", score=" + score + ", size=" + size
+				+ ", pushed=" + pushedAt + ", score=" + score + ", size=" + size
 				+ ", source=" + source + ", type=" + type + ", url=" + url
 				+ ", username=" + username + ", visibiity=" + visibility
 				+ ", watchers=" + watchers + "]";

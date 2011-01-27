@@ -30,7 +30,6 @@ import com.github.api.v2.services.RepositoryService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -372,14 +371,5 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.GET_REPOSITORY_ARCHIVE_URL);
 	    String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branchName).buildUrl();
 	    return new ZipInputStream(callApiGet(apiUrl));
-	}
-	
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
-	 */
-	protected GsonBuilder getGsonBuilder() {
-		GsonBuilder gson = super.getGsonBuilder();
-		gson.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		return gson;
 	}
 }
