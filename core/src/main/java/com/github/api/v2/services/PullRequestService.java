@@ -82,5 +82,5 @@ public interface PullRequestService extends GitHubService {
 	 * @param body
 	 *            the body
 	 */
-	public void createPullRequest(String userName, String repositoryName, String base, String head, String title, String body);
+	public PullRequest createPullRequest(String userName, String repositoryName, String base, String head, String title, String body);
 }

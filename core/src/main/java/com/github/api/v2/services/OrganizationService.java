@@ -19,6 +19,7 @@ package com.github.api.v2.services;
 import java.util.List;
 
 import com.github.api.v2.schema.Organization;
+import com.github.api.v2.schema.Permission;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.Team;
 import com.github.api.v2.schema.User;
@@ -96,7 +97,7 @@ public interface OrganizationService extends GitHubService {
 	 * @param team
 	 *            the team
 	 */
-	public void createTeam(Team team);
+	public Team createTeam(String organizationName, String teamName, Permission permission, List<String> repoNames);
 	
 	/**
 	 * Gets the team.
@@ -172,7 +173,7 @@ public interface OrganizationService extends GitHubService {
 	 * @param repositoryName
 	 *            the repository name
 	 */
-	public void addTeamRepository(String userName, String repositoryName);
+	public void addTeamRepository(String teamId, String userName, String repositoryName);
 	
 	/**
 	 * Removes the team repository.

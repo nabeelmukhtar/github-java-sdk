@@ -77,14 +77,16 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	 * @see com.github.api.v2.services.IssueService#createIssue(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void createIssue(String userName, String repositoryName,
+	public Issue createIssue(String userName, String repositoryName,
 			String title, String body) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.CREATE_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put(ParameterNames.TITLE, title);
         parameters.put(ParameterNames.BODY, body);
-		callApiPost(apiUrl, parameters);
+        JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
+        
+        return unmarshall(new TypeToken<Issue>(){}, json.get("issue"));
 	}
 
 	/* (non-Javadoc)

@@ -111,7 +111,7 @@ public interface IssueService extends GitHubService {
 	 * @param body
 	 *            the body
 	 */
-	public void createIssue(String userName, String repositoryName, String title, String body);
+	public Issue createIssue(String userName, String repositoryName, String title, String body);
 	
 	/**
 	 * Close issue.

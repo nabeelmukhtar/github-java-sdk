@@ -80,7 +80,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
 	 * @see com.github.api.v2.services.RepositoryService#createRepository(java.lang.String, java.lang.String, java.lang.String, com.github.api.v2.schema.Repository.Visibility)
 	 */
 	@Override
-	public void createRepository(String name, String description,
+	public Repository createRepository(String name, String description,
 			String homePage, Visibility visibility) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.RepositoryApiUrls.CREATE_REPOSITORY_URL);
         String                apiUrl  = builder.buildUrl();
@@ -91,7 +91,7 @@ public class RepositoryServiceImpl extends BaseGitHubService implements
         parameters.put(ParameterNames.PUBLIC, ((visibility == Visibility.PUBLIC)? "1" : "0"));
         JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
         
-        unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
+        return unmarshall(new TypeToken<Repository>(){}, json.get("repository"));
 	}
 
 	/* (non-Javadoc)

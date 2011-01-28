@@ -153,7 +153,7 @@ public interface RepositoryService extends GitHubService {
 	 * @param visibility
 	 *            the visibility
 	 */
-	public void createRepository(String name, String description, String homePage, Visibility visibility);
+	public Repository createRepository(String name, String description, String homePage, Visibility visibility);
 	
 	/**
 	 * Delete repository.

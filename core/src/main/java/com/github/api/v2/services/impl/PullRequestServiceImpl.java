@@ -75,7 +75,7 @@ public class PullRequestServiceImpl extends BaseGitHubService implements
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.ObjectService#getObjectContent(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	public void createPullRequest(String userName, String repositoryName, String base, String head, String title, String body) {
+	public PullRequest createPullRequest(String userName, String repositoryName, String base, String head, String title, String body) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.PullRequestApiUrls.CREATE_PULL_REQUEST_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
@@ -83,7 +83,9 @@ public class PullRequestServiceImpl extends BaseGitHubService implements
         parameters.put("pull[" + ParameterNames.HEAD + "]", head);
         parameters.put("pull[" + ParameterNames.TITLE + "]", title);
         parameters.put("pull[" + ParameterNames.BODY + "]", body);
-		callApiPost(apiUrl, parameters);
+        JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
+        
+        return unmarshall(new TypeToken<PullRequest>(){}, json.get("pull"));
 	}
 	
 	/* (non-Javadoc)

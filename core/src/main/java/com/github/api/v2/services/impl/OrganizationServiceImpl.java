@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.api.v2.schema.Organization;
+import com.github.api.v2.schema.Permission;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.Team;
 import com.github.api.v2.schema.User;
@@ -28,7 +29,7 @@ import com.github.api.v2.services.OrganizationService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
-import com.google.gson.GsonBuilder;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -38,48 +39,46 @@ import com.google.gson.reflect.TypeToken;
 public class OrganizationServiceImpl extends BaseGitHubService implements
 		OrganizationService {
 
-	
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
-	 */
-	protected GsonBuilder getGsonBuilder() {
-		GsonBuilder gson = super.getGsonBuilder();
-		gson.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		return gson;
-	}
-
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.OrganizationService#addTeamMember(java.lang.String, java.lang.String)
 	 */
 	@Override
 	public void addTeamMember(String teamId, String userName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.ADD_TEAM_MEMBER_URL);
-        String                apiUrl  = builder.withField(ParameterNames.TEAM_ID, teamId).withParameter(ParameterNames.NAME, userName).buildUrl();
-        unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
+        String                apiUrl  = builder.withField(ParameterNames.TEAM_ID, teamId).buildUrl();
+        Map<String, String> parameters = new HashMap<String, String>();
+        parameters.put(ParameterNames.NAME, userName);
+        unmarshall(callApiPost(apiUrl, parameters));
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.OrganizationService#addTeamRepository(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void addTeamRepository(String userName, String repositoryName) {
+	public void addTeamRepository(String teamId, String userName, String repositoryName) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.ADD_TEAM_REPOSITORY_URL);
-        String                apiUrl  = builder.withParameter(ParameterNames.USER_REPOSITORY_PAIR, userName + "/" + repositoryName).buildUrl();
-        unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
+        String                apiUrl  = builder.withField(ParameterNames.TEAM_ID, teamId).buildUrl();
+        Map<String, String> parameters = new HashMap<String, String>();
+        parameters.put(ParameterNames.NAME, userName + "/" + repositoryName);
+        unmarshall(callApiPost(apiUrl, parameters));
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.OrganizationService#createTeam(com.github.api.v2.schema.Team)
 	 */
 	@Override
-	public void createTeam(Team team) {
+	public Team createTeam(String organizationName, String teamName, Permission permission, List<String> repoNames) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.CREATE_TEAM_URL);
-        String                apiUrl  = builder.buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.ORGANIZATION_NAME, organizationName).buildUrl();
         Map<String, String> parameters = new HashMap<String, String>();
-        parameters.put("team[" + ParameterNames.NAME + "]", team.getName());
-        parameters.put("team[" + ParameterNames.PERMISSION + "]", team.getPermission().value());
-        parameters.put("team[" + ParameterNames.REPO_NAMES + "]", team.getRepoNames().toString());
-		callApiPost(apiUrl, parameters);
+        parameters.put("team[" + ParameterNames.NAME + "]", teamName);
+        parameters.put("team[" + ParameterNames.PERMISSION + "]", permission.value());
+        for (String repoName : repoNames) {
+            parameters.put("team[" + ParameterNames.REPO_NAMES + "][]", repoName);
+		}
+        JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
+        
+        return unmarshall(new TypeToken<Team>(){}, json.get("team"));
 	}
 
 	/* (non-Javadoc)
@@ -111,11 +110,10 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
 	public Organization getOrganization(String name) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_ORGANIZATION_URL);
         String                apiUrl  = builder.withField(ParameterNames.ORGANIZATION_NAME, name).buildUrl();
-        System.out.println(convertStreamToString(callApiGet(apiUrl)));
-//        JsonObject json = unmarshall(callApiGet(apiUrl));
-//        
-//        return unmarshall(new TypeToken<Organization>(){}, json.get("organization"));
-        return new Organization();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+		Gson gson = getGsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+		return gson.fromJson(json.get("organization"), new TypeToken<Organization>(){}.getType());
 	}
 
 	/* (non-Javadoc)

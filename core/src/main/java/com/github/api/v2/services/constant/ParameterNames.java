@@ -52,19 +52,19 @@ public interface ParameterNames {
 	public static final String FILE_NAME = "fileName";
 	
 	/** The Constant NET_HASH. */
-	public static final String NET_HASH = "netHash";
+	public static final String NET_HASH = "nethash";
 	
 	/** The Constant START_INDEX. */
-	public static final String START_INDEX = "startIndex";
+	public static final String START_INDEX = "start";
 	
 	/** The Constant END_INDEX. */
-	public static final String END_INDEX = "endIndex";
+	public static final String END_INDEX = "end";
 	
 	/** The Constant LANGUAGE. */
 	public static final String LANGUAGE = "language";
 	
 	/** The Constant START_PAGE. */
-	public static final String START_PAGE = "startPage";
+	public static final String START_PAGE = "start_page";
 	
 	/** The Constant VISIBILITY. */
 	public static final String VISIBILITY = "visibility";
@@ -155,9 +155,6 @@ public interface ParameterNames {
 
 	/** The Constant NUM. */
 	public static final String NUM = "num";
-	
-	/** The Constant USER_REPOSITORY_PAIR. */
-	public static final String USER_REPOSITORY_PAIR = "userRepositoryPair";
 	
 	/** The Constant ORGANIZATION_NAME. */
 	public static final String ORGANIZATION_NAME = "organizationName";
