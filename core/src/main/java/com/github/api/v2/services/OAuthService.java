@@ -34,9 +34,15 @@ public interface OAuthService extends GitHubService {
 		
 		/** The USER. */
 		USER("user"), 
+		
+		/** The PUBLIC_REPO. */
+		PUBLIC_REPO("public_repo"),
  
- /** The REPOSITORY. */
- REPOSITORY("repo");
+		/** The REPOSITORY. */
+		REPOSITORY("repo"),
+		
+		/** The GIST. */
+ 		GIST("gist");
 		
 	    /** The Constant stringToEnum. */
 		private static final Map<String, Scope> stringToEnum = new HashMap<String, Scope>();
