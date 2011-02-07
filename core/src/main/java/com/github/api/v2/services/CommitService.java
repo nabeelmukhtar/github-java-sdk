@@ -48,6 +48,22 @@ public interface CommitService extends GitHubService {
 	 *            the repository name
 	 * @param branch
 	 *            the branch
+	 * @param pageNumber
+	 *            the page number
+	 * 
+	 * @return the commits
+	 */
+	public List<Commit> getCommits(String userName, String repositoryName, String branch, int pageNumber);
+	
+	/**
+	 * Gets the commits.
+	 * 
+	 * @param userName
+	 *            the user name
+	 * @param repositoryName
+	 *            the repository name
+	 * @param branch
+	 *            the branch
 	 * @param filePath
 	 *            the file path
 	 * 

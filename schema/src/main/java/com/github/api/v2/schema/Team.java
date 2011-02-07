@@ -16,6 +16,7 @@
  */
 package com.github.api.v2.schema;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ public class Team extends SchemaEntity {
 	private Permission permission;
 	
 	/** The repo names. */
-	private List<String> repoNames;
+	private List<String> repoNames = new ArrayList<String>();
 	
 	/**
 	 * Gets the id.

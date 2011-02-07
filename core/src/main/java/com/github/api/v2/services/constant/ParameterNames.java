@@ -180,4 +180,6 @@ public interface ParameterNames {
 	/** The Constant COLLABORATOR_NAME. */
 	public static final String COLLABORATOR_NAME = "collaboratorName";
 	
+	/** The Constant PAGE. */
+	public static final String PAGE = "page";
 }

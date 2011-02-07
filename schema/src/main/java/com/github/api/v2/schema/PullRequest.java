@@ -16,6 +16,8 @@
  */
 package com.github.api.v2.schema;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +28,9 @@ import com.github.api.v2.schema.Issue.State;
  * The Class PullRequest.
  */
 public class PullRequest extends SchemaEntity {
+	
+	/** The Constant DATE_FORMAT. */
+	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9155892708485181542L;
@@ -37,7 +42,7 @@ public class PullRequest extends SchemaEntity {
 	private String gravatarId;
 	
 	/** The issue updated at. */
-	private Date issueUpdatedAt;
+	private String issueUpdatedAt;
 	
 	/** The votes. */
 	private int votes;
@@ -61,10 +66,10 @@ public class PullRequest extends SchemaEntity {
 	private State state;
 	
 	/** The created at. */
-	private Date createdAt;
+	private String createdAt;
 	
 	/** The issue created at. */
-	private Date issueCreatedAt;
+	private String issueCreatedAt;
 	
 	/** The html url. */
 	private String htmlUrl;
@@ -86,6 +91,9 @@ public class PullRequest extends SchemaEntity {
 	
 	/** The labels. */
 	private List<String> labels = new ArrayList<String>();
+	
+	/** The discussion. */
+	private List<Discussion> discussion = new ArrayList<Discussion>();
 	
 	/**
 	 * Gets the user.
@@ -131,7 +139,11 @@ public class PullRequest extends SchemaEntity {
 	 * @return the issue updated at
 	 */
 	public Date getIssueUpdatedAt() {
-		return issueUpdatedAt;
+		try {
+			return DATE_FORMAT.parse(issueUpdatedAt);
+		} catch (ParseException e) {
+			return null;
+		}
 	}
 	
 	/**
@@ -141,7 +153,7 @@ public class PullRequest extends SchemaEntity {
 	 *            the new issue updated at
 	 */
 	public void setIssueUpdatedAt(Date updatedAt) {
-		this.issueUpdatedAt = updatedAt;
+		this.issueUpdatedAt = DATE_FORMAT.format(updatedAt);
 	}
 	
 	/**
@@ -264,7 +276,11 @@ public class PullRequest extends SchemaEntity {
 	 * @return the created at
 	 */
 	public Date getCreatedAt() {
-		return createdAt;
+		try {
+			return DATE_FORMAT.parse(createdAt);
+		} catch (ParseException e) {
+			return null;
+		}
 	}
 	
 	/**
@@ -274,7 +290,7 @@ public class PullRequest extends SchemaEntity {
 	 *            the new created at
 	 */
 	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
+		this.createdAt = DATE_FORMAT.format(createdAt);
 	}
 	
 	/**
@@ -302,7 +318,11 @@ public class PullRequest extends SchemaEntity {
 	 * @return the issue created at
 	 */
 	public Date getIssueCreatedAt() {
-		return issueCreatedAt;
+		try {
+			return DATE_FORMAT.parse(issueCreatedAt);
+		} catch (ParseException e) {
+			return null;
+		}
 	}
 
 	/**
@@ -312,7 +332,7 @@ public class PullRequest extends SchemaEntity {
 	 *            the new issue created at
 	 */
 	public void setIssueCreatedAt(Date issueCreatedAt) {
-		this.issueCreatedAt = issueCreatedAt;
+		this.issueCreatedAt = DATE_FORMAT.format(issueCreatedAt);
 	}
 
 	/**
@@ -446,6 +466,25 @@ public class PullRequest extends SchemaEntity {
 	 */
 	public void setLabels(List<String> labels) {
 		this.labels = labels;
+	}
+
+	/**
+	 * Gets the discussion.
+	 * 
+	 * @return the discussion
+	 */
+	public List<Discussion> getDiscussion() {
+		return discussion;
+	}
+
+	/**
+	 * Sets the discussion.
+	 * 
+	 * @param discussion
+	 *            the new discussion
+	 */
+	public void setDiscussion(List<Discussion> discussion) {
+		this.discussion = discussion;
 	}
 
 	/* (non-Javadoc)

@@ -26,7 +26,6 @@ import com.github.api.v2.services.PullRequestService;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -86,14 +85,5 @@ public class PullRequestServiceImpl extends BaseGitHubService implements
         JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
         
         return unmarshall(new TypeToken<PullRequest>(){}, json.get("pull"));
-	}
-	
-	/* (non-Javadoc)
-	 * @see com.github.api.v2.services.impl.BaseGitHubService#getGsonBuilder()
-	 */
-	protected GsonBuilder getGsonBuilder() {
-		GsonBuilder gson = super.getGsonBuilder();
-		gson.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		return gson;
 	}
 }

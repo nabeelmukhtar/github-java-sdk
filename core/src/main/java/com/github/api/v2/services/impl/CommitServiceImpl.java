@@ -51,8 +51,17 @@ public class CommitServiceImpl extends BaseGitHubService implements
 	@Override
 	public List<Commit> getCommits(String userName, String repositoryName,
 			String branch) {
+        return getCommits(userName, repositoryName, branch, 1);
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.CommitService#getCommits(java.lang.String, java.lang.String, java.lang.String, int)
+	 */
+	@Override
+	public List<Commit> getCommits(String userName, String repositoryName,
+			String branch, int pageNumber) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.CommitApiUrls.GET_COMMITS_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branch).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.BRANCH, branch).withParameter(ParameterNames.PAGE, String.valueOf(pageNumber)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
         return unmarshall(new TypeToken<List<Commit>>(){}, json.get("commits"));

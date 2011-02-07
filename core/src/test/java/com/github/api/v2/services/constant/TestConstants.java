@@ -145,7 +145,16 @@ public final class TestConstants {
 	
 	/** The Constant TEST_HEAD_SHA. */
 	public static final String TEST_HEAD_SHA = testConstants.getProperty("com.github.api.v2.services.testHeadSha");
+	
+	/** The Constant TEST_ORGANIZATION_NAME. */
+	public static final String TEST_ORGANIZATION_NAME = testConstants.getProperty("com.github.api.v2.services.testOrgName");
+
+	/** The Constant TEST_TEAM_NAME. */
+	public static final String TEST_TEAM_NAME = testConstants.getProperty("com.github.api.v2.services.testTeamName");
     
+	/** The Constant TEST_PULL_REQUEST_NUMBER. */
+	public static final String TEST_PULL_REQUEST_NUMBER = testConstants.getProperty("com.github.api.v2.services.testPullRequestNumber");
+	
     /**
 	 * Instantiates a new test constants.
 	 */

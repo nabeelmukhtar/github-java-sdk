@@ -94,8 +94,16 @@ public interface OrganizationService extends GitHubService {
 	/**
 	 * Creates the team.
 	 * 
-	 * @param team
-	 *            the team
+	 * @param organizationName
+	 *            the organization name
+	 * @param teamName
+	 *            the team name
+	 * @param permission
+	 *            the permission
+	 * @param repoNames
+	 *            the repo names
+	 * 
+	 * @return the team
 	 */
 	public Team createTeam(String organizationName, String teamName, Permission permission, List<String> repoNames);
 	
@@ -168,6 +176,8 @@ public interface OrganizationService extends GitHubService {
 	/**
 	 * Adds the team repository.
 	 * 
+	 * @param teamId
+	 *            the team id
 	 * @param userName
 	 *            the user name
 	 * @param repositoryName

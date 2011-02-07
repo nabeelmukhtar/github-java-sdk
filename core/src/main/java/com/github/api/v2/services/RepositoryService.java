@@ -152,6 +152,8 @@ public interface RepositoryService extends GitHubService {
 	 *            the home page
 	 * @param visibility
 	 *            the visibility
+	 * 
+	 * @return the repository
 	 */
 	public Repository createRepository(String name, String description, String homePage, Visibility visibility);
 	

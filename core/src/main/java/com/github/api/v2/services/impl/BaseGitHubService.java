@@ -23,6 +23,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.api.v2.schema.Discussion;
 import com.github.api.v2.schema.Gist;
 import com.github.api.v2.schema.Issue;
 import com.github.api.v2.schema.Language;
@@ -169,6 +170,13 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 			public Organization.Type deserialize(JsonElement arg0, Type arg1,
 					JsonDeserializationContext arg2) throws JsonParseException {
 				return Organization.Type.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Discussion.Type.class, new JsonDeserializer<Discussion.Type>() {
+			@Override
+			public Discussion.Type deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Discussion.Type.fromValue(arg0.getAsString());
 			}
 		});
 		builder.registerTypeAdapter(Permission.class, new JsonDeserializer<Permission>() {

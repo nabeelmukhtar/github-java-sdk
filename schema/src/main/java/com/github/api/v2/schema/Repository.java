@@ -142,10 +142,10 @@ public class Repository extends SchemaEntity {
 	/** The id. */
 	private String id;
 	
-	/** The pushed. */
+	/** The pushed at. */
 	private Date pushedAt;
 	
-	/** The created. */
+	/** The created at. */
 	private Date createdAt;
 	
 	/** The source. */
@@ -512,28 +512,28 @@ public class Repository extends SchemaEntity {
 	}
 	
 	/**
-	 * Gets the pushed.
+	 * Gets the pushed at.
 	 * 
-	 * @return the pushed
+	 * @return the pushed at
 	 */
 	public Date getPushedAt() {
 		return pushedAt;
 	}
 	
 	/**
-	 * Sets the pushed.
+	 * Sets the pushed at.
 	 * 
-	 * @param pushed
-	 *            the new pushed
+	 * @param pushedAt
+	 *            the new pushed at
 	 */
 	public void setPushedAt(Date pushedAt) {
 		this.pushedAt = pushedAt;
 	}
 	
 	/**
-	 * Gets the created.
+	 * Gets the created at.
 	 * 
-	 * @return the created
+	 * @return the created at
 	 */
 	public Date getCreatedAt() {
 		return createdAt;
@@ -542,7 +542,7 @@ public class Repository extends SchemaEntity {
 	/**
 	 * Sets the created.
 	 * 
-	 * @param created
+	 * @param createdAt
 	 *            the new created
 	 */
 	public void setCreated(Date createdAt) {
