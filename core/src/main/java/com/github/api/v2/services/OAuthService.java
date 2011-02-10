@@ -35,7 +35,7 @@ public interface OAuthService extends GitHubService {
 		/** The USER. */
 		USER("user"), 
 		
-		/** The PUBLIC_REPO. */
+		/** The PUBLI c_ repo. */
 		PUBLIC_REPO("public_repo"),
  
 		/** The REPOSITORY. */

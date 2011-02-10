@@ -106,7 +106,7 @@ public class UserServiceImpl extends BaseGitHubService implements
         String                apiUrl  = builder.buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Key>>(){}, json.get("keys"));
+        return unmarshall(new TypeToken<List<Key>>(){}, json.get("public_keys"));
 	}
 
 	/* (non-Javadoc)
