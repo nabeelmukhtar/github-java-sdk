@@ -154,6 +154,12 @@ public final class TestConstants {
     
 	/** The Constant TEST_PULL_REQUEST_NUMBER. */
 	public static final String TEST_PULL_REQUEST_NUMBER = testConstants.getProperty("com.github.api.v2.services.testPullRequestNumber");
+
+	/** The Constant TEST_JOB_ID. */
+	public static final String TEST_JOB_ID = testConstants.getProperty("com.github.api.v2.services.testJobId");
+
+	/** The Constant TEST_JOB_QUERY. */
+	public static final String TEST_JOB_QUERY = testConstants.getProperty("com.github.api.v2.services.testJobQuery");
 	
     /**
 	 * Instantiates a new test constants.

@@ -43,6 +43,7 @@ public class Discussion extends SchemaEntity {
 		
 		/** The ISSU e_ comment. */
 		ISSUE_COMMENT("IssueComment"), 
+ 
  /** The PUL l_ reques t_ revie w_ comment. */
  PULL_REQUEST_REVIEW_COMMENT("PullRequestReviewComment"),
  

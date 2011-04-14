@@ -26,6 +26,7 @@ import java.util.List;
 import com.github.api.v2.schema.Discussion;
 import com.github.api.v2.schema.Gist;
 import com.github.api.v2.schema.Issue;
+import com.github.api.v2.schema.Job;
 import com.github.api.v2.schema.Language;
 import com.github.api.v2.schema.Organization;
 import com.github.api.v2.schema.Permission;
@@ -57,7 +58,7 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 	protected static final Charset UTF_8_CHAR_SET = Charset.forName(ApplicationConstants.CONTENT_ENCODING);
 	
     /** The parser. */
-    private final JsonParser parser = new JsonParser();
+    protected final JsonParser parser = new JsonParser();
     
     /** The handlers. */
     private List<AsyncResponseHandler<List<? extends SchemaEntity>>> handlers = new ArrayList<AsyncResponseHandler<List<? extends SchemaEntity>>>();
@@ -184,6 +185,13 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 			public Permission deserialize(JsonElement arg0, Type arg1,
 					JsonDeserializationContext arg2) throws JsonParseException {
 				return Permission.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Job.Type.class, new JsonDeserializer<Job.Type>() {
+			@Override
+			public Job.Type deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Job.Type.fromValue(arg0.getAsString());
 			}
 		});
 		return builder;

@@ -43,6 +43,7 @@ public class AllTests {
 		suite.addTestSuite(OAuthServiceTest.class);
 		suite.addTestSuite(ObjectServiceTest.class);
 		suite.addTestSuite(UserServiceTest.class);
+		suite.addTestSuite(JobServiceTest.class);
 		//$JUnit-END$
 		return suite;
 	}

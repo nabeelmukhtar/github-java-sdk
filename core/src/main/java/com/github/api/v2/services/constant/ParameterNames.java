@@ -182,4 +182,16 @@ public interface ParameterNames {
 	
 	/** The Constant PAGE. */
 	public static final String PAGE = "page";
+
+	/** The Constant SEARCH. */
+	public static final String SEARCH = "search";
+	
+	/** The Constant LATITUDE. */
+	public static final String LATITUDE = "lat";
+	
+	/** The Constant LONGITUDE. */
+	public static final String LONGITUDE = "long";
+	
+	/** The Constant FULL_TIME. */
+	public static final String FULL_TIME = "full_time";
 }

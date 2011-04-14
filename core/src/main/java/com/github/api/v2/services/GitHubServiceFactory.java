@@ -20,6 +20,7 @@ import com.github.api.v2.services.impl.CommitServiceImpl;
 import com.github.api.v2.services.impl.FeedServiceImpl;
 import com.github.api.v2.services.impl.GistServiceImpl;
 import com.github.api.v2.services.impl.IssueServiceImpl;
+import com.github.api.v2.services.impl.JobServiceImpl;
 import com.github.api.v2.services.impl.NetworkServiceImpl;
 import com.github.api.v2.services.impl.OAuthServiceImpl;
 import com.github.api.v2.services.impl.ObjectServiceImpl;
@@ -153,5 +154,14 @@ public class GitHubServiceFactory {
 	 */
     public PullRequestService createPullRequestService() {
     	return new PullRequestServiceImpl();    	
+    }
+    
+    /**
+	 * Creates a new GitHubService object.
+	 * 
+	 * @return the job service
+	 */
+    public JobService createJobService() {
+    	return new JobServiceImpl();    	
     }
 }

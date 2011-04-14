@@ -14,8 +14,6 @@
         <pathelement location="target"/>
         <pathelement location="dev-lib/junit-4.5.jar"/>
         <pathelement location="lib/gson-1.4.jar"/>
-        <pathelement location="lib/rome-1.0.jar"/>
-        <pathelement location="lib/jdom-1.0.jar"/>
     </path>
     <target name="init">
         <mkdir dir="target"/>

@@ -376,6 +376,17 @@ public final class GitHubApiUrls {
 	    public static final String GET_PULL_REQUEST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.pullRequestService.getPullRequest");
     }
     
+    /**
+	 * The Interface JobApiUrls.
+	 */
+    public static interface JobApiUrls {
+    	
+	    /** The Constant SEARCH_JOBS_URL. */
+	    public static final String SEARCH_JOBS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.jobService.searchJobs");
+    	
+	    /** The Constant GET_JOB_URL. */
+	    public static final String GET_JOB_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.jobService.getJob");
+    }
     
     /**
 	 * The Interface FeedUrls.
