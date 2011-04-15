@@ -23,6 +23,7 @@ The library is divided into various services each implementing a specific portio
 * ObjectService: Provides methods of the [Object API](http://develop.github.com/p/object.html).
 * OrganizationService: Provides methods of the [Organization API](http://develop.github.com/p/orgs.html).
 * PullRequestService: Provides methods of the [Pull Request API](http://develop.github.com/p/pulls.html).
+* JobService: Provides methods of the [Job API](http://jobs.github.com/api).
 * FeedService: Provides methods for reading the Atom/RSS feeds.
 * OAuthService: Provides methods for OAuth 2.0 authentication and authorization.
 
