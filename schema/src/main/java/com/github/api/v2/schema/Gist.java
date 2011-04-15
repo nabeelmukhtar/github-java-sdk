@@ -16,6 +16,7 @@
  */
 package com.github.api.v2.schema;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -99,7 +100,10 @@ public class Gist extends SchemaEntity {
 	private Date createdAt;
 	
 	/** The files. */
-	private List<String> files;
+	private List<String> files = new ArrayList<String>();
+	
+	/** The comments. */
+	private List<Comment> comments = new ArrayList<Comment>();
 	
 	/** The owner. */
 	private String owner;
@@ -216,6 +220,25 @@ public class Gist extends SchemaEntity {
 	 */
 	public void setOwner(String owner) {
 		this.owner = owner;
+	}
+
+	/**
+	 * Gets the comments.
+	 * 
+	 * @return the comments
+	 */
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	/**
+	 * Sets the comments.
+	 * 
+	 * @param comments
+	 *            the new comments
+	 */
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	/* (non-Javadoc)
