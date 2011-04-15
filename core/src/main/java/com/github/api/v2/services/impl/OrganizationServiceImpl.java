@@ -129,6 +129,17 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
 	}
 
 	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.OrganizationService#getOwners(java.lang.String)
+	 */
+	public List<User> getOwners(String organizationName) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.GET_OWNERS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.ORGANIZATION_NAME, organizationName).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<User>>(){}, json.get("users"));
+	}
+	
+	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.OrganizationService#getPublicRepositories(java.lang.String)
 	 */
 	@Override

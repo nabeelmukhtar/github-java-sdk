@@ -359,6 +359,9 @@ public final class GitHubApiUrls {
 	    
 	    /** The Constant REMOVE_TEAM_REPOSITORY_URL. */
 	    public static final String REMOVE_TEAM_REPOSITORY_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.removeTeamRepository");
+
+		/** The Constant GET_OWNERS_URL. */
+		public static final String GET_OWNERS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.organizationService.getOwners");;
     }
     
     /**

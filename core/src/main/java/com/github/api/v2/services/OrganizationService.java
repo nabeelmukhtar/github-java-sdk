@@ -82,6 +82,16 @@ public interface OrganizationService extends GitHubService {
 	public List<User> getPublicMembers(String organizationName);
 	
 	/**
+	 * Gets the owners.
+	 * 
+	 * @param organizationName
+	 *            the organization name
+	 * 
+	 * @return the owners
+	 */
+	public List<User> getOwners(String organizationName);
+	
+	/**
 	 * Gets the teams.
 	 * 
 	 * @param organizationName
