@@ -41,6 +41,7 @@ import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -97,6 +98,19 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 		return (T) gson.fromJson(response, typeToken.getType());
 	}
 
+	/**
+	 * Marshall.
+	 * 
+	 * @param src
+	 *            the src
+	 * 
+	 * @return the string
+	 */
+	protected <T> String marshall(T src) {
+		Gson gson = getGsonBuilder().create();
+		return gson.toJson(src);
+	}
+	
 	/**
 	 * Notify observers.
 	 * 
@@ -210,6 +224,29 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
         	JsonElement element = parser.parse(new InputStreamReader(jsonContent, UTF_8_CHAR_SET));
         	if (element.isJsonObject()) {
         		return element.getAsJsonObject();
+        	} else {
+        		throw new GitHubException("Unknown content found in response." + element);
+        	}
+        } catch (Exception e) {
+            throw new GitHubException(e);
+        } finally {
+	        closeStream(jsonContent);
+	    }
+	}
+	
+	/**
+	 * Unmarshall array.
+	 * 
+	 * @param jsonContent
+	 *            the json content
+	 * 
+	 * @return the json array
+	 */
+	protected JsonArray unmarshallArray(InputStream jsonContent) {
+        try {
+        	JsonElement element = parser.parse(new InputStreamReader(jsonContent, UTF_8_CHAR_SET));
+        	if (element.isJsonArray()) {
+        		return element.getAsJsonArray();
         	} else {
         		throw new GitHubException("Unknown content found in response." + element);
         	}

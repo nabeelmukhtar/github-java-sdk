@@ -39,7 +39,7 @@ public class Comment extends SchemaEntity {
 	private long id;
 	
 	/** The user. */
-	private String user;
+	private User user;
 	
 	/** The gravatar id. */
 	private String gravatarId;
@@ -125,7 +125,7 @@ public class Comment extends SchemaEntity {
 	 * 
 	 * @return the user
 	 */
-	public String getUser() {
+	public User getUser() {
 		return user;
 	}
 	
@@ -135,7 +135,7 @@ public class Comment extends SchemaEntity {
 	 * @param user
 	 *            the new user
 	 */
-	public void setUser(String user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 	

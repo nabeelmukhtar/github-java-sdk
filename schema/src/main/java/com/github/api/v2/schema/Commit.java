@@ -249,20 +249,15 @@ public class Commit extends SchemaEntity {
 		this.login = login;
 	}
 	
-	/**
-	 * Gets the url.
-	 * 
-	 * @return the url
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.schema.SchemaEntity#getUrl()
 	 */
 	public String getUrl() {
 		return url;
 	}
 	
-	/**
-	 * Sets the url.
-	 * 
-	 * @param url
-	 *            the new url
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.schema.SchemaEntity#setUrl(java.lang.String)
 	 */
 	public void setUrl(String url) {
 		this.url = url;

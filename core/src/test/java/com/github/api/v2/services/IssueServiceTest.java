@@ -24,6 +24,7 @@ import org.junit.Test;
 
 import com.github.api.v2.schema.Comment;
 import com.github.api.v2.schema.Issue;
+import com.github.api.v2.schema.Label;
 import com.github.api.v2.services.constant.TestConstants;
 
 /**
@@ -131,7 +132,7 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
 	public void testGetIssueLabels() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-		List<String> issueLabels = service.getIssueLabels(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+		List<Label> issueLabels = service.getIssueLabels(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Issue labels should not be null or empty.", issueLabels);
 	}
 
@@ -155,7 +156,7 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Label."), TestConstants.TEST_ISSUE_LABEL);
-		List<String> labels = service.removeLabel(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_LABEL);
+		List<Label> labels = service.removeLabel(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_LABEL);
 		assertFalse("Label should not be in the list.", labels.contains(TestConstants.TEST_ISSUE_LABEL));
 	}
 

@@ -69,6 +69,15 @@ public final class ApplicationConstants {
     /** The Constant ACCESS_DENIED_PATTERN. */
     public static final Pattern ACCESS_DENIED_PATTERN = getPatternProperty("com.github.api.v2.services.accessDeniedPattern");
     
+    /** The Constant MAX_RATE_LIMIT_HEADER. */
+    public static final String MAX_RATE_LIMIT_HEADER = getProperty("com.github.api.v2.services.maxRateLimitHeader");
+
+    /** The Constant CURRENT_RATE_LIMIT_HEADER. */
+    public static final String CURRENT_RATE_LIMIT_HEADER = getProperty("com.github.api.v2.services.currentRateLimitHeader");
+    
+    /** The Constant CONTENT_TYPE_JSON. */
+    public static final String CONTENT_TYPE_JSON = getProperty("com.github.api.v2.services.contentTypeJson");
+    
     /**
 	 * Instantiates a new application constants.
 	 */

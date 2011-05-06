@@ -16,10 +16,8 @@
  */
 package com.github.api.v2.schema;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
@@ -100,10 +98,10 @@ public class Gist extends SchemaEntity {
 	private Date createdAt;
 	
 	/** The files. */
-	private List<String> files = new ArrayList<String>();
+	private Map<String, File> files = new HashMap<String, File>();
 	
 	/** The comments. */
-	private List<Comment> comments = new ArrayList<Comment>();
+	private int comments;
 	
 	/** The owner. */
 	private String owner;
@@ -189,7 +187,7 @@ public class Gist extends SchemaEntity {
 	 * 
 	 * @return the files
 	 */
-	public List<String> getFiles() {
+	public Map<String, File> getFiles() {
 		return files;
 	}
 	
@@ -197,9 +195,9 @@ public class Gist extends SchemaEntity {
 	 * Sets the files.
 	 * 
 	 * @param files
-	 *            the new files
+	 *            the files
 	 */
-	public void setFiles(List<String> files) {
+	public void setFiles(Map<String, File> files) {
 		this.files = files;
 	}
 	
@@ -227,7 +225,7 @@ public class Gist extends SchemaEntity {
 	 * 
 	 * @return the comments
 	 */
-	public List<Comment> getComments() {
+	public int getComments() {
 		return comments;
 	}
 
@@ -237,7 +235,7 @@ public class Gist extends SchemaEntity {
 	 * @param comments
 	 *            the new comments
 	 */
-	public void setComments(List<Comment> comments) {
+	public void setComments(int comments) {
 		this.comments = comments;
 	}
 

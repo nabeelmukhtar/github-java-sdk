@@ -194,4 +194,7 @@ public interface ParameterNames {
 	
 	/** The Constant FULL_TIME. */
 	public static final String FULL_TIME = "full_time";
+	
+	/** The Constant COMMENT_ID. */
+	public static final String COMMENT_ID = "commentId";
 }

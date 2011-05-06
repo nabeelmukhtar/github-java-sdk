@@ -156,14 +156,71 @@ public final class GitHubApiUrls {
 	    /** The Constant ADD_LABEL_URL. */
 	    public static final String ADD_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.addLabel");
     	
-	    /** The Constant REMOVE_LABEL_URL. */
-	    public static final String REMOVE_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.removeLabel");
+	    /** The Constant DELETE_LABEL_URL. */
+	    public static final String DELETE_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.deleteLabel");
     	
-	    /** The Constant ADD_COMMENT_URL. */
-	    public static final String ADD_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.addComment");
+	    /** The Constant ADD_ISSUE_COMMENT_URL. */
+	    public static final String ADD_ISSUE_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.addIssueComment");
 
 		/** The Constant GET_ISSUES_BY_LABEL_URL. */
 		public static final String GET_ISSUES_BY_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssuesByLabel");
+		
+		/** The Constant GET_LABELS_URL. */
+		public static final String GET_LABELS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getLabels");
+		
+		/** The Constant GET_LABEL_URL. */
+		public static final String GET_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getLabel");
+		
+		/** The Constant UPDATE_LABEL_URL. */
+		public static final String UPDATE_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.updateLabel");
+		
+		/** The Constant ADD_ISSUE_LABEL_URL. */
+		public static final String ADD_ISSUE_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.addIssueLabel");
+		
+		/** The Constant DELETE_ISSUE_LABEL_URL. */
+		public static final String DELETE_ISSUE_LABEL_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.deleteIssueLabel");
+		
+		/** The Constant UPDATE_ISSUE_LABELS_URL. */
+		public static final String UPDATE_ISSUE_LABELS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.updateIssueLabels");
+		
+		/** The Constant DELETE_ISSUE_LABELS_URL. */
+		public static final String DELETE_ISSUE_LABELS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.deleteIssueLabels");
+	    
+    	/** The Constant GET_ISSUE_COMMENT_URL. */
+    	public static final String GET_ISSUE_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssueComment");
+	    
+    	/** The Constant UPDATE_ISSUE_COMMENT_URL. */
+    	public static final String UPDATE_ISSUE_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.updateIssueComment");
+	    
+    	/** The Constant DELETE_ISSUE_COMMENT_URL. */
+    	public static final String DELETE_ISSUE_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.deleteIssueComment");
+	    
+    	/** The Constant GET_MILESTONES_URL. */
+    	public static final String GET_MILESTONES_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getMilestones");
+	    
+    	/** The Constant GET_MILESTONE_LABELS_URL. */
+    	public static final String GET_MILESTONE_LABELS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getMilestoneLabels");
+	    
+    	/** The Constant GET_MILESTONE_URL. */
+    	public static final String GET_MILESTONE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getMilestone");
+	    
+    	/** The Constant CREATE_MILESTONE_URL. */
+    	public static final String CREATE_MILESTONE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.createMilestone");
+	    
+    	/** The Constant UPDATE_MILESTONE_URL. */
+    	public static final String UPDATE_MILESTONE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.updateMilestone");
+	    
+    	/** The Constant DELETE_MILESTONE_URL. */
+    	public static final String DELETE_MILESTONE_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.deleteMilestone");
+	    
+    	/** The Constant GET_ISSUE_EVENTS_URL. */
+    	public static final String GET_ISSUE_EVENTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssueEvents");
+	    
+    	/** The Constant GET_ISSUE_EVENT_URL. */
+    	public static final String GET_ISSUE_EVENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getIssueEvent");
+	    
+    	/** The Constant GET_REPOSITORY_EVENTS_URL. */
+    	public static final String GET_REPOSITORY_EVENTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.issueService.getRepositoryEvents");
     }
     
     /**
@@ -174,11 +231,56 @@ public final class GitHubApiUrls {
 	    /** The Constant GET_GIST_URL. */
 	    public static final String GET_GIST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getGist");
     	
+	    /** The Constant CREATE_GIST_URL. */
+	    public static final String CREATE_GIST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.createGist");
+	    
+	    /** The Constant UPDATE_GIST_URL. */
+	    public static final String UPDATE_GIST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.updateGist");
+	    
+	    /** The Constant STAR_GIST_URL. */
+	    public static final String STAR_GIST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.starGist");
+	    
+	    /** The Constant UNSTAR_GIST_URL. */
+	    public static final String UNSTAR_GIST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.unstarGist");
+	    
+	    /** The Constant IS_GIST_STARRED_URL. */
+	    public static final String IS_GIST_STARRED_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.isGistStarred");
+	    
+	    /** The Constant FORK_GIST_URL. */
+	    public static final String FORK_GIST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.forkGist");
+	    
+	    /** The Constant DELETE_GIST_URL. */
+	    public static final String DELETE_GIST_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.deleteGist");
+	    
 	    /** The Constant GET_GIST_CONTENT_URL. */
 	    public static final String GET_GIST_CONTENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getGistContent");
     	
 	    /** The Constant GET_USER_GISTS_URL. */
 	    public static final String GET_USER_GISTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getUserGists");
+
+	    /** The Constant GET_OWNED_GISTS_URL. */
+	    public static final String GET_OWNED_GISTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getOwnedGists");
+	    
+	    /** The Constant GET_PUBLIC_GISTS_URL. */
+	    public static final String GET_PUBLIC_GISTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getPublicGists");
+
+	    /** The Constant GET_STARRED_GISTS_URL. */
+	    public static final String GET_STARRED_GISTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getStarredGists");
+	    
+	    /** The Constant GET_GIST_COMMENTS_URL. */
+	    public static final String GET_GIST_COMMENTS_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getGistComments");
+	    
+	    /** The Constant GET_GIST_COMMENT_URL. */
+	    public static final String GET_GIST_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.getGistComment");
+
+	    /** The Constant CREATE_GIST_COMMENT_URL. */
+	    public static final String CREATE_GIST_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.createGistComment");
+
+	    /** The Constant UPDATE_GIST_COMMENT_URL. */
+	    public static final String UPDATE_GIST_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.updateGistComment");
+
+	    /** The Constant DELETE_GIST_COMMENT_URL. */
+	    public static final String DELETE_GIST_COMMENT_URL = gitHubApiUrls.getProperty("com.github.api.v2.services.gistService.deleteGistComment");
     }
     
     /**

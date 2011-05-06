@@ -98,9 +98,6 @@ public class Job extends SchemaEntity {
 	/** The title. */
 	private String title;
 	
-	/** The url. */
-	private String url;
-	
 	/** The id. */
 	private String id;
 	
@@ -209,25 +206,6 @@ public class Job extends SchemaEntity {
 	 */
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	
-	/**
-	 * Gets the url.
-	 * 
-	 * @return the url
-	 */
-	public String getUrl() {
-		return url;
-	}
-	
-	/**
-	 * Sets the url.
-	 * 
-	 * @param url
-	 *            the new url
-	 */
-	public void setUrl(String url) {
-		this.url = url;
 	}
 	
 	/**

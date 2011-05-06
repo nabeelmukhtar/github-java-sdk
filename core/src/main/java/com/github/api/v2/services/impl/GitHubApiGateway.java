@@ -22,11 +22,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -54,6 +57,9 @@ public abstract class GitHubApiGateway {
 	/** The Constant REFERRER. */
 	private static final String REFERRER = "Referer";
 	
+    /** The Constant UTF_8_CHAR_SET. */
+    private static final Charset UTF_8_CHAR_SET = Charset.forName(ApplicationConstants.CONTENT_ENCODING);
+	
 	/** The request headers. */
 	protected Map<String, String> requestHeaders = new HashMap<String, String>();
 	
@@ -66,7 +72,31 @@ public abstract class GitHubApiGateway {
 	/** The api version. */
 	protected String apiVersion = ApplicationConstants.DEFAULT_API_VERSION;
 	
-	/**
+	/** The max rate limit. */
+	private int maxRateLimit = -1;
+	
+	/** The current rate limit. */
+	private int currentRateLimit = -1;
+	
+    /**
+	 * Gets the max rate limit.
+	 * 
+	 * @return the max rate limit
+	 */
+    public int getMaxRateLimit() {
+    	return maxRateLimit;
+    }
+    
+    /**
+	 * Gets the current rate limit.
+	 * 
+	 * @return the current rate limit
+	 */
+    public int getCurrentRateLimit() {
+    	return currentRateLimit;
+    }
+
+    /**
 	 * Gets the api version.
 	 * 
 	 * @return the api version
@@ -246,6 +276,8 @@ public abstract class GitHubApiGateway {
 	        }
 	        
 	        request.connect();
+	        maxRateLimit = request.getHeaderFieldInt(ApplicationConstants.MAX_RATE_LIMIT_HEADER, -1);
+	        currentRateLimit = request.getHeaderFieldInt(ApplicationConstants.CURRENT_RATE_LIMIT_HEADER, -1);
 	        
 	        if (request.getResponseCode() != expected) {
 	            throw new GitHubException(convertStreamToString(getWrappedInputStream(request.getErrorStream(),
@@ -314,6 +346,8 @@ public abstract class GitHubApiGateway {
             out.close();
 
             request.connect();
+	        maxRateLimit = request.getHeaderFieldInt(ApplicationConstants.MAX_RATE_LIMIT_HEADER, -1);
+	        currentRateLimit = request.getHeaderFieldInt(ApplicationConstants.CURRENT_RATE_LIMIT_HEADER, -1);
             
             if (request.getResponseCode() != expected) {
             	throw new GitHubException(convertStreamToString(getWrappedInputStream(request.getErrorStream(),
@@ -372,6 +406,9 @@ public abstract class GitHubApiGateway {
             request.setRequestMethod("DELETE");
             
 	        request.connect();
+	        maxRateLimit = request.getHeaderFieldInt(ApplicationConstants.MAX_RATE_LIMIT_HEADER, -1);
+	        currentRateLimit = request.getHeaderFieldInt(ApplicationConstants.CURRENT_RATE_LIMIT_HEADER, -1);
+	        
 	        
 	        if (request.getResponseCode() != expected) {
 	            throw new GitHubException(convertStreamToString(getWrappedInputStream(request.getErrorStream(),
@@ -451,7 +488,7 @@ public abstract class GitHubApiGateway {
 	        }
 	
 	        if (xmlContent != null) {
-	            PrintStream out = new PrintStream(new BufferedOutputStream(request.getOutputStream()));
+                PrintWriter out = new PrintWriter(new OutputStreamWriter(request.getOutputStream(), UTF_8_CHAR_SET));
 	
 	            out.print(xmlContent);
 	            out.flush();
@@ -459,6 +496,8 @@ public abstract class GitHubApiGateway {
 	        }
 	
 	        request.connect();
+	        maxRateLimit = request.getHeaderFieldInt(ApplicationConstants.MAX_RATE_LIMIT_HEADER, -1);
+	        currentRateLimit = request.getHeaderFieldInt(ApplicationConstants.CURRENT_RATE_LIMIT_HEADER, -1);
 	        
 	        if (request.getResponseCode() != expected) {
 	            throw new GitHubException(convertStreamToString(getWrappedInputStream(request.getErrorStream(),
