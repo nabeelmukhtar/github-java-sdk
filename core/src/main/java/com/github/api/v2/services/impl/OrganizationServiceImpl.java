@@ -26,6 +26,7 @@ import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.Team;
 import com.github.api.v2.schema.User;
 import com.github.api.v2.services.OrganizationService;
+import com.github.api.v2.services.constant.ApplicationConstants;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
@@ -256,6 +257,6 @@ public class OrganizationServiceImpl extends BaseGitHubService implements
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.OrganizationApiUrls.UPDATE_TEAM_URL);
 		String                apiUrl  = builder.withField(ParameterNames.TEAM_ID, team.getId()).buildUrl();
 		
-        callApiMethod(apiUrl, getGsonBuilder().create().toJson(team), "application/json", "PUT", 200);
+        callApiMethod(apiUrl, getGsonBuilder().create().toJson(team), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.PUT, 200);
 	}
 }

@@ -85,7 +85,10 @@ public class Issue extends SchemaEntity {
 	private static final long serialVersionUID = 9155892708485181542L;
 	
 	/** The user. */
-	private String user;
+	private User user;
+	
+	/** The assignee. */
+	private User assignee;
 	
 	/** The gravatar id. */
 	private String gravatarId;
@@ -121,7 +124,13 @@ public class Issue extends SchemaEntity {
 	private Date closedAt;
 	
 	/** The labels. */
-	private List<String> labels = new ArrayList<String>();
+	private List<Label> labels = new ArrayList<Label>();
+	
+	/** The milestone. */
+	private Milestone milestone;
+	
+	/** The pull request. */
+	private PullRequest pullRequest;
 	
 	/**
 	 * Gets the closed at.
@@ -147,7 +156,7 @@ public class Issue extends SchemaEntity {
 	 * 
 	 * @return the labels
 	 */
-	public List<String> getLabels() {
+	public List<Label> getLabels() {
 		return labels;
 	}
 
@@ -157,7 +166,7 @@ public class Issue extends SchemaEntity {
 	 * @param labels
 	 *            the new labels
 	 */
-	public void setLabels(List<String> labels) {
+	public void setLabels(List<Label> labels) {
 		this.labels = labels;
 	}
 
@@ -166,17 +175,36 @@ public class Issue extends SchemaEntity {
 	 * 
 	 * @return the user
 	 */
-	public String getUser() {
+	public User getUser() {
 		return user;
 	}
 	
+	/**
+	 * Gets the assignee.
+	 * 
+	 * @return the assignee
+	 */
+	public User getAssignee() {
+		return assignee;
+	}
+
+	/**
+	 * Sets the assignee.
+	 * 
+	 * @param assignee
+	 *            the new assignee
+	 */
+	public void setAssignee(User assignee) {
+		this.assignee = assignee;
+	}
+
 	/**
 	 * Sets the user.
 	 * 
 	 * @param user
 	 *            the new user
 	 */
-	public void setUser(String user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 	
@@ -369,6 +397,45 @@ public class Issue extends SchemaEntity {
 	public void setComments(int comments) {
 		this.comments = comments;
 	}
+	
+	/**
+	 * Gets the milestone.
+	 * 
+	 * @return the milestone
+	 */
+	public Milestone getMilestone() {
+		return milestone;
+	}
+
+	/**
+	 * Sets the milestone.
+	 * 
+	 * @param milestone
+	 *            the new milestone
+	 */
+	public void setMilestone(Milestone milestone) {
+		this.milestone = milestone;
+	}
+
+	/**
+	 * Gets the pull request.
+	 * 
+	 * @return the pull request
+	 */
+	public PullRequest getPullRequest() {
+		return pullRequest;
+	}
+
+	/**
+	 * Sets the pull request.
+	 * 
+	 * @param pullRequest
+	 *            the new pull request
+	 */
+	public void setPullRequest(PullRequest pullRequest) {
+		this.pullRequest = pullRequest;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

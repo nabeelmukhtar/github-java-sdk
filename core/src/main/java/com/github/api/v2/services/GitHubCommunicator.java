@@ -22,6 +22,28 @@ import java.util.Map;
  * The Interface GitHubCommunicator.
  */
 public interface GitHubCommunicator {
+	
+	/**
+	 * The Enum HttpMethod.
+	 */
+	public enum HttpMethod {
+		
+		/** The GET. */
+		 GET, 
+ 
+		 /** The POST. */
+		 POST, 
+		 
+		 /** The PUT. */
+		 PUT, 
+		 
+		 /** The PATCH. */
+		 PATCH,
+		 
+		 /** The DELETE. */
+		 DELETE;
+	}
+	
 
     /**
 	 * Sets the request headers.

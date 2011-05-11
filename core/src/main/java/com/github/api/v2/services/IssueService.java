@@ -130,8 +130,10 @@ public interface IssueService extends GitHubService {
 	 *            the title
 	 * @param body
 	 *            the body
+	 * 
+	 * @return the issue
 	 */
-	public void createIssue(String userName, String repositoryName, String title, String body);
+	public Issue createIssue(String userName, String repositoryName, String title, String body);
 	
 	/**
 	 * Close issue.
@@ -172,8 +174,10 @@ public interface IssueService extends GitHubService {
 	 *            the title
 	 * @param body
 	 *            the body
+	 * 
+	 * @return the issue
 	 */
-	public void updateIssue(String userName, String repositoryName, int issueNumber, String title, String body);
+	public Issue updateIssue(String userName, String repositoryName, int issueNumber, String title, String body);
 	
 	/**
 	 * Update issue.
@@ -190,8 +194,22 @@ public interface IssueService extends GitHubService {
 	 *            the body
 	 * @param state
 	 *            the state
+	 * 
+	 * @return the issue
 	 */
-	public void updateIssue(String userName, String repositoryName, int issueNumber, String title, String body, State state);
+	public Issue updateIssue(String userName, String repositoryName, int issueNumber, String title, String body, State state);
+	
+	/**
+	 * Gets the labels.
+	 * 
+	 * @param userName
+	 *            the user name
+	 * @param repositoryName
+	 *            the repository name
+	 * 
+	 * @return the labels
+	 */
+	public List<Label> getLabels(String userName, String repositoryName);
 	
 	/**
 	 * Gets the issue labels.
@@ -200,10 +218,12 @@ public interface IssueService extends GitHubService {
 	 *            the user name
 	 * @param repositoryName
 	 *            the repository name
+	 * @param issueNumber
+	 *            the issue number
 	 * 
 	 * @return the issue labels
 	 */
-	public List<Label> getIssueLabels(String userName, String repositoryName);
+	public List<Label> getIssueLabels(String userName, String repositoryName, int issueNumber);
 	
 	/**
 	 * Gets the milestone labels.
@@ -234,7 +254,7 @@ public interface IssueService extends GitHubService {
 	public Label getIssueLabel(String userName, String repositoryName, String labelId);
 	
 	/**
-	 * Adds the label.
+	 * Adds the issue labels.
 	 * 
 	 * @param userName
 	 *            the user name
@@ -242,12 +262,12 @@ public interface IssueService extends GitHubService {
 	 *            the repository name
 	 * @param issueNumber
 	 *            the issue number
-	 * @param label
-	 *            the label
+	 * @param labels
+	 *            the labels
 	 * 
 	 * @return the list< label>
 	 */
-	public List<Label> addLabel(String userName, String repositoryName, int issueNumber, String label);
+	public List<Label> addIssueLabels(String userName, String repositoryName, int issueNumber, List<String> labels);
 	
 	/**
 	 * Adds the label.
@@ -296,7 +316,7 @@ public interface IssueService extends GitHubService {
 	public void deleteLabel(String userName, String repositoryName, String labelId);
 	
 	/**
-	 * Removes the label.
+	 * Removes the issue label.
 	 * 
 	 * @param userName
 	 *            the user name
@@ -309,10 +329,10 @@ public interface IssueService extends GitHubService {
 	 * 
 	 * @return the list< label>
 	 */
-	public List<Label> removeLabel(String userName, String repositoryName, int issueNumber, String labelId);
+	public List<Label> removeIssueLabel(String userName, String repositoryName, int issueNumber, String labelId);
 	
 	/**
-	 * Removes the labels.
+	 * Removes the issue labels.
 	 * 
 	 * @param userName
 	 *            the user name
@@ -321,10 +341,10 @@ public interface IssueService extends GitHubService {
 	 * @param issueNumber
 	 *            the issue number
 	 */
-	public void removeLabels(String userName, String repositoryName, int issueNumber);
+	public void removeIssueLabels(String userName, String repositoryName, int issueNumber);
 	
 	/**
-	 * Update labels.
+	 * Update issue labels.
 	 * 
 	 * @param userName
 	 *            the user name
@@ -337,10 +357,10 @@ public interface IssueService extends GitHubService {
 	 * 
 	 * @return the list< label>
 	 */
-	public List<Label> updateLabels(String userName, String repositoryName, int issueNumber, List<String> labels);
+	public List<Label> updateIssueLabels(String userName, String repositoryName, int issueNumber, List<String> labels);
 	
 	/**
-	 * Adds the comment.
+	 * Adds the issue comment.
 	 * 
 	 * @param userName
 	 *            the user name
@@ -350,11 +370,13 @@ public interface IssueService extends GitHubService {
 	 *            the issue number
 	 * @param comment
 	 *            the comment
+	 * 
+	 * @return the comment
 	 */
-	public void addComment(String userName, String repositoryName, int issueNumber, String comment);
+	public Comment addIssueComment(String userName, String repositoryName, int issueNumber, String comment);
 	
 	/**
-	 * Update comment.
+	 * Update issue comment.
 	 * 
 	 * @param userName
 	 *            the user name
@@ -364,11 +386,13 @@ public interface IssueService extends GitHubService {
 	 *            the comment id
 	 * @param comment
 	 *            the comment
+	 * 
+	 * @return the comment
 	 */
-	public void updateComment(String userName, String repositoryName, String commentId, String comment);
+	public Comment updateIssueComment(String userName, String repositoryName, String commentId, String comment);
 	
 	/**
-	 * Delete comment.
+	 * Delete issue comment.
 	 * 
 	 * @param userName
 	 *            the user name
@@ -377,7 +401,7 @@ public interface IssueService extends GitHubService {
 	 * @param commentId
 	 *            the comment id
 	 */
-	public void deleteComment(String userName, String repositoryName, String commentId);
+	public void deleteIssueComment(String userName, String repositoryName, String commentId);
 	
 	/**
 	 * Gets the milestones.

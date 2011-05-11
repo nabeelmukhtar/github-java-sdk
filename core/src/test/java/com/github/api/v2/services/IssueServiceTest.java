@@ -16,6 +16,7 @@
  */
 package com.github.api.v2.services;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
@@ -63,7 +64,7 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Comment."), TestConstants.TEST_ISSUE_COMMENT);
-		service.addComment(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_COMMENT);
+		service.addIssueComment(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_COMMENT);
 	}
 
 	/**
@@ -75,7 +76,7 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Label."), TestConstants.TEST_ISSUE_LABEL);
-		service.addLabel(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_LABEL);
+		service.addIssueLabels(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), Arrays.asList(TestConstants.TEST_ISSUE_LABEL));
 	}
 
 	/**
@@ -132,7 +133,7 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
 	public void testGetIssueLabels() {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Username."), TestConstants.TEST_USER_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
-		List<Label> issueLabels = service.getIssueLabels(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
+		List<Label> issueLabels = service.getLabels(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME);
 		assertNotNullOrEmpty("Issue labels should not be null or empty.", issueLabels);
 	}
 
@@ -156,7 +157,7 @@ public class IssueServiceTest extends BaseGitHubServiceTest {
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Repository."), TestConstants.TEST_REPOSITORY_NAME);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Issue No."), TestConstants.TEST_ISSUE_NUMBER);
     	assertNotNullOrEmpty(String.format(RESOURCE_MISSING_MESSAGE, "Test Label."), TestConstants.TEST_ISSUE_LABEL);
-		List<Label> labels = service.removeLabel(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_LABEL);
+		List<Label> labels = service.removeIssueLabel(TestConstants.TEST_USER_NAME, TestConstants.TEST_REPOSITORY_NAME, Integer.parseInt(TestConstants.TEST_ISSUE_NUMBER), TestConstants.TEST_ISSUE_LABEL);
 		assertFalse("Label should not be in the list.", labels.contains(TestConstants.TEST_ISSUE_LABEL));
 	}
 

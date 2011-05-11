@@ -38,6 +38,7 @@ import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 
 import com.github.api.v2.services.GitHubException;
+import com.github.api.v2.services.GitHubCommunicator.HttpMethod;
 import com.github.api.v2.services.auth.Authentication;
 import com.github.api.v2.services.auth.HeaderBasedAuthentication;
 import com.github.api.v2.services.auth.ParameterBasedAuthentication;
@@ -336,7 +337,7 @@ public abstract class GitHubApiGateway {
             
             parameters.putAll(requestParameters);
 
-            request.setRequestMethod("POST");
+            request.setRequestMethod(HttpMethod.POST.name());
             request.setDoOutput(true);
 
             PrintStream out = new PrintStream(new BufferedOutputStream(request.getOutputStream()));
@@ -388,6 +389,13 @@ public abstract class GitHubApiGateway {
 	protected InputStream callApiDelete(String apiUrl, int expected) {
 	    try {
 	        URL               url     = new URL(apiUrl);
+	        if (!requestParameters.isEmpty()) {
+	        	if (url.getQuery() == null) {
+	        		url = new URL(apiUrl + "?" + getParametersString(requestParameters));
+	        	} else {
+	        		url = new URL(apiUrl + "&" + getParametersString(requestParameters));
+	        	}
+	        }
 
 	        HttpURLConnection request = (HttpURLConnection) url.openConnection();
 	
@@ -403,7 +411,7 @@ public abstract class GitHubApiGateway {
 	            request.setRequestProperty(headerName, requestHeaders.get(headerName));
 	        }
 	        
-            request.setRequestMethod("DELETE");
+            request.setRequestMethod(HttpMethod.DELETE.name());
             
 	        request.connect();
 	        maxRateLimit = request.getHeaderFieldInt(ApplicationConstants.MAX_RATE_LIMIT_HEADER, -1);
@@ -463,9 +471,17 @@ public abstract class GitHubApiGateway {
 	 * @return the input stream
 	 */
 	protected InputStream callApiMethod(String apiUrl, String xmlContent, String contentType,
-			String method, int expected) {
+			HttpMethod method, int expected) {
 	    try {
 	        URL               url     = new URL(apiUrl);
+	        if (!requestParameters.isEmpty()) {
+	        	if (url.getQuery() == null) {
+	        		url = new URL(apiUrl + "?" + getParametersString(requestParameters));
+	        	} else {
+	        		url = new URL(apiUrl + "&" + getParametersString(requestParameters));
+	        	}
+	        }
+	        
 	        HttpURLConnection request = (HttpURLConnection) url.openConnection();
 	
 	        if (ApplicationConstants.CONNECT_TIMEOUT > -1) {
@@ -480,7 +496,7 @@ public abstract class GitHubApiGateway {
 	            request.setRequestProperty(headerName, requestHeaders.get(headerName));
 	        }
 	
-	        request.setRequestMethod(method);
+	        request.setRequestMethod(method.name());
 	        request.setDoOutput(true);
 	
 	        if (contentType != null) {

@@ -19,7 +19,6 @@ package com.github.api.v2.services.impl;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.github.api.v2.schema.Comment;
 import com.github.api.v2.schema.Event;
@@ -28,6 +27,7 @@ import com.github.api.v2.schema.Label;
 import com.github.api.v2.schema.Milestone;
 import com.github.api.v2.schema.Issue.State;
 import com.github.api.v2.services.IssueService;
+import com.github.api.v2.services.constant.ApplicationConstants;
 import com.github.api.v2.services.constant.GitHubApiUrls;
 import com.github.api.v2.services.constant.ParameterNames;
 import com.github.api.v2.services.constant.GitHubApiUrls.GitHubApiUrlBuilder;
@@ -46,26 +46,26 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	 * @see com.github.api.v2.services.IssueService#addComment(java.lang.String, java.lang.String, int, java.lang.String)
 	 */
 	@Override
-	public void addComment(String userName, String repositoryName,
+	public Comment addIssueComment(String userName, String repositoryName,
 			int issueNumber, String comment) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.ADD_ISSUE_COMMENT_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        Map<String, String> parameters = new HashMap<String, String>();
-        parameters.put(ParameterNames.COMMENT, comment);
-        callApiPost(apiUrl, parameters, 201);
+		Comment bean = new Comment();
+		bean.setBody(comment);
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(bean), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 201));
+        return unmarshall(new TypeToken<Comment>(){}, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#addLabel(java.lang.String, java.lang.String, int, java.lang.String)
 	 */
 	@Override
-	public List<Label> addLabel(String userName, String repositoryName,
-			int issueNumber, String label) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.ADD_LABEL_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
-        
-        return unmarshall(new TypeToken<List<Label>>(){}, json.get("labels"));
+	public List<Label> addIssueLabels(String userName, String repositoryName,
+			int issueNumber, List<String> labels) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.ADD_ISSUE_LABEL_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
+        JsonElement json = unmarshallArray(callApiMethod(apiUrl, marshall(labels), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200));
+        return unmarshall(new TypeToken<List<Label>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -74,25 +74,26 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public void closeIssue(String userName, String repositoryName,
 			int issueNumber) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.CLOSE_ISSUE_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-		callApiPost(apiUrl, new HashMap<String, String>());
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.UPDATE_ISSUE_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
+		Issue issue = new Issue();
+		issue.setState(Issue.State.CLOSED);
+        callApiMethod(apiUrl, marshall(issue), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#createIssue(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void createIssue(String userName, String repositoryName,
+	public Issue createIssue(String userName, String repositoryName,
 			String title, String body) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.CREATE_ISSUE_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        Map<String, String> parameters = new HashMap<String, String>();
-        parameters.put(ParameterNames.TITLE, title);
-        parameters.put(ParameterNames.BODY, body);
-//        JsonObject json = unmarshall(callApiPost(apiUrl, parameters));
-        callApiPost(apiUrl, parameters, 201);
-//        return unmarshall(new TypeToken<Issue>(){}, json.get("issue"));
+		Issue issue = new Issue();
+		issue.setTitle(title);
+		issue.setBody(body);
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(issue), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 201));
+        return unmarshall(new TypeToken<Issue>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -105,7 +106,7 @@ public class IssueServiceImpl extends BaseGitHubService implements
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<Issue>(){}, json.get("issue"));
+        return unmarshall(new TypeToken<Issue>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -125,14 +126,26 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	 * @see com.github.api.v2.services.IssueService#getIssueLabels(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Label> getIssueLabels(String userName, String repositoryName) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUE_LABELS_URL);
+	public List<Label> getLabels(String userName, String repositoryName) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_LABELS_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        JsonElement json = unmarshallArray(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Label>>(){}, json.get("labels"));
+        return unmarshall(new TypeToken<List<Label>>(){}, json);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.api.v2.services.IssueService#getIssueLabels(java.lang.String, java.lang.String, int)
+	 */
+	@Override
+	public List<Label> getIssueLabels(String userName, String repositoryName, int issueNumber) {
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUE_LABELS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
+        JsonElement json = unmarshallArray(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<Label>>(){}, json);
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#getIssues(java.lang.String, java.lang.String, com.github.api.v2.schema.Issue.State)
 	 */
@@ -140,23 +153,23 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	public List<Issue> getIssues(String userName, String repositoryName,
 			State state) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUES_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withFieldEnum(ParameterNames.STATE, state).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl));
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameterEnum(ParameterNames.STATE, state).buildUrl();
+        JsonElement json = unmarshallArray(callApiGet(apiUrl));
         
-        return unmarshall(new TypeToken<List<Issue>>(){}, json.get("issues"));
+        return unmarshall(new TypeToken<List<Issue>>(){}, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#removeLabel(java.lang.String, java.lang.String, int, java.lang.String)
 	 */
 	@Override
-	public List<Label> removeLabel(String userName, String repositoryName,
+	public List<Label> removeIssueLabel(String userName, String repositoryName,
 			int issueNumber, String label) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.DELETE_ISSUE_LABEL_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL, label).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        JsonObject json = unmarshall(callApiPost(apiUrl, new HashMap<String, String>()));
+        JsonElement json = unmarshallArray(callApiPost(apiUrl, new HashMap<String, String>()));
         
-        return unmarshall(new TypeToken<List<Label>>(){}, json.get("labels"));
+        return unmarshall(new TypeToken<List<Label>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -165,9 +178,11 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public void reopenIssue(String userName, String repositoryName,
 			int issueNumber) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.REOPEN_ISSUE_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-		callApiPost(apiUrl, new HashMap<String, String>());
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.UPDATE_ISSUE_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
+		Issue issue = new Issue();
+		issue.setState(Issue.State.OPEN);
+        callApiMethod(apiUrl, marshall(issue), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200);
 	}
 
 	/* (non-Javadoc)
@@ -200,14 +215,15 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	 * @see com.github.api.v2.services.IssueService#updateIssue(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void updateIssue(String userName, String repositoryName,
+	public Issue updateIssue(String userName, String repositoryName,
 			int issueNumber, String title, String body) {
 		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.UPDATE_ISSUE_URL);
-        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
-        Map<String, String> parameters = new HashMap<String, String>();
-        parameters.put(ParameterNames.TITLE, title);
-        parameters.put(ParameterNames.BODY, body);
-		callApiPost(apiUrl, parameters);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
+		Issue issue = new Issue();
+		issue.setTitle(title);
+		issue.setBody(body);
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(issue), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200));
+        return unmarshall(new TypeToken<Issue>(){}, json);
 	}
 	
 	/* (non-Javadoc)
@@ -226,8 +242,14 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public Label addLabel(String userName, String repositoryName, String label,
 			String color) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.ADD_LABEL_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
+        Label bean = new Label();
+        bean.setName(label);
+        bean.setColor(color);
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(bean), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 201));
+        
+        return unmarshall(new TypeToken<Label>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -237,18 +259,27 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	public Milestone createMilestone(String userName, String repositoryName,
 			String title, String description,
 			com.github.api.v2.schema.Milestone.State state, Date dueDate) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.CREATE_MILESTONE_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
+        Milestone bean = new Milestone();
+        bean.setTitle(title);
+        bean.setDescription(description);
+        bean.setState(state);
+        bean.setDueOn(dueDate);
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(bean), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 201));
+        
+        return unmarshall(new TypeToken<Milestone>(){}, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#deleteComment(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void deleteComment(String userName, String repositoryName,
+	public void deleteIssueComment(String userName, String repositoryName,
 			String commentId) {
-		// TODO Auto-generated method stub
-		
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.DELETE_ISSUE_COMMENT_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.COMMENT_ID, commentId).buildUrl();
+		callApiDelete(apiUrl, 200);
 	}
 
 	/* (non-Javadoc)
@@ -257,8 +288,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public void deleteLabel(String userName, String repositoryName,
 			String labelId) {
-		// TODO Auto-generated method stub
-		
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.DELETE_LABEL_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL_ID, labelId).buildUrl();
+		callApiDelete(apiUrl, 200);
 	}
 
 	/* (non-Javadoc)
@@ -267,8 +299,9 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public void deleteMilestone(String userName, String repositoryName,
 			String milestoneId) {
-		// TODO Auto-generated method stub
-		
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.DELETE_MILESTONE_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.MILESTONE_ID, milestoneId).buildUrl();
+		callApiDelete(apiUrl, 200);
 	}
 
 	/* (non-Javadoc)
@@ -277,8 +310,11 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public Comment getIssueComment(String userName, String repositoryName,
 			int issueNumber, String commentId) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUE_COMMENT_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).withField(ParameterNames.COMMENT_ID, commentId).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<Comment>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -287,8 +323,11 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public Event getIssueEvent(String userName, String repositoryName,
 			String eventId) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUE_EVENT_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.EVENT_ID, eventId).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<Event>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -297,8 +336,11 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public List<Event> getIssueEvents(String userName, String repositoryName,
 			int issueNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_ISSUE_EVENTS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
+        JsonElement json = unmarshallArray(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<Event>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -307,8 +349,11 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public Label getIssueLabel(String userName, String repositoryName,
 			String labelId) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_LABEL_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL_ID, labelId).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<Label>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -317,8 +362,11 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public Milestone getMilestone(String userName, String repositoryName,
 			String milestoneId) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_MILESTONE_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.MILESTONE_ID, milestoneId).buildUrl();
+        JsonObject json = unmarshall(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<Milestone>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -327,8 +375,11 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public List<Label> getMilestoneLabels(String userName,
 			String repositoryName, String milestoneId) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_MILESTONE_LABELS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.MILESTONE_ID, milestoneId).buildUrl();
+        JsonElement json = unmarshallArray(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<Label>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -336,8 +387,11 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	 */
 	@Override
 	public List<Milestone> getMilestones(String userName, String repositoryName) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_MILESTONES_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
+        JsonElement json = unmarshallArray(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<Milestone>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -347,8 +401,11 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	public List<Milestone> getMilestones(String userName,
 			String repositoryName,
 			com.github.api.v2.schema.Milestone.State state) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_MILESTONES_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withParameterEnum(ParameterNames.STATE, state).buildUrl();
+        JsonElement json = unmarshallArray(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<Milestone>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -357,38 +414,52 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public List<Event> getRepositoryEvents(String userName,
 			String repositoryName) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.GET_REPOSITORY_EVENTS_URL);
+        String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).buildUrl();
+        JsonElement json = unmarshallArray(callApiGet(apiUrl));
+        
+        return unmarshall(new TypeToken<List<Event>>(){}, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#removeLabels(java.lang.String, java.lang.String, int)
 	 */
 	@Override
-	public void removeLabels(String userName, String repositoryName,
+	public void removeIssueLabels(String userName, String repositoryName,
 			int issueNumber) {
-		// TODO Auto-generated method stub
-		
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.DELETE_ISSUE_LABELS_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
+		callApiDelete(apiUrl, 200);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#updateComment(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void updateComment(String userName, String repositoryName,
+	public Comment updateIssueComment(String userName, String repositoryName,
 			String commentId, String comment) {
-		// TODO Auto-generated method stub
-		
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.UPDATE_ISSUE_COMMENT_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.COMMENT_ID, commentId).buildUrl();
+		Comment bean = new Comment();
+		bean.setBody(comment);
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(bean), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200));
+        return unmarshall(new TypeToken<Comment>(){}, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#updateIssue(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, com.github.api.v2.schema.Issue.State)
 	 */
 	@Override
-	public void updateIssue(String userName, String repositoryName,
+	public Issue updateIssue(String userName, String repositoryName,
 			int issueNumber, String title, String body, State state) {
-		// TODO Auto-generated method stub
-		
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.UPDATE_ISSUE_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
+		Issue issue = new Issue();
+		issue.setTitle(title);
+		issue.setBody(body);
+		issue.setState(state);
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(issue), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200));
+        return unmarshall(new TypeToken<Issue>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -397,18 +468,25 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	@Override
 	public Label updateLabel(String userName, String repositoryName,
 			String labelId, String label, String color) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.UPDATE_LABEL_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.LABEL_ID, labelId).buildUrl();
+		Label bean = new Label();
+		bean.setName(label);
+		bean.setColor(color);
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(bean), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200));
+        return unmarshall(new TypeToken<Label>(){}, json);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.github.api.v2.services.IssueService#updateLabels(java.lang.String, java.lang.String, int, java.util.List)
 	 */
 	@Override
-	public List<Label> updateLabels(String userName, String repositoryName,
+	public List<Label> updateIssueLabels(String userName, String repositoryName,
 			int issueNumber, List<String> labels) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.UPDATE_LABEL_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.ISSUE_NUMBER, String.valueOf(issueNumber)).buildUrl();
+        JsonElement json = unmarshallArray(callApiMethod(apiUrl, marshall(labels), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.PUT, 200));
+        return unmarshall(new TypeToken<List<Label>>(){}, json);
 	}
 
 	/* (non-Javadoc)
@@ -418,7 +496,14 @@ public class IssueServiceImpl extends BaseGitHubService implements
 	public Milestone updateMilestone(String userName, String repositoryName,
 			String milestoneId, String title, String description,
 			com.github.api.v2.schema.Milestone.State state, Date dueDate) {
-		// TODO Auto-generated method stub
-		return null;
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.IssueApiUrls.UPDATE_MILESTONE_URL);
+		String apiUrl = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.MILESTONE_ID, milestoneId).buildUrl();
+		Milestone milestone = new Milestone();
+		milestone.setTitle(title);
+		milestone.setDescription(description);
+		milestone.setState(state);
+		milestone.setDueOn(dueDate);
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(milestone), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200));
+        return unmarshall(new TypeToken<Milestone>(){}, json);
 	}
 }

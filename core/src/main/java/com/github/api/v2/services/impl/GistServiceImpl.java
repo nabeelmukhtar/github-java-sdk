@@ -128,7 +128,7 @@ public class GistServiceImpl extends BaseGitHubService implements
 			
 			gist.getFiles().put(filename, file);
 		}
-        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(gist), ApplicationConstants.CONTENT_TYPE_JSON, "POST", 201));
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(gist), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 201));
         return unmarshall(new TypeToken<Gist>(){}, json);
 	}
 
@@ -205,7 +205,7 @@ public class GistServiceImpl extends BaseGitHubService implements
 			
 			gist.getFiles().put(filename, file);
 		}
-        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(gist), ApplicationConstants.CONTENT_TYPE_JSON, "POST", 200));
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(gist), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200));
         return unmarshall(new TypeToken<Gist>(){}, json);
 	}
 	
@@ -218,7 +218,7 @@ public class GistServiceImpl extends BaseGitHubService implements
 		String apiUrl = builder.withField(ParameterNames.GIST_ID, gistId).buildUrl();
 		Comment comment = new Comment();
 		comment.setBody(commentText);
-        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(comment), ApplicationConstants.CONTENT_TYPE_JSON, "POST", 201));
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(comment), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 201));
         return unmarshall(new TypeToken<Comment>(){}, json);
 	}
 
@@ -264,7 +264,7 @@ public class GistServiceImpl extends BaseGitHubService implements
 		String apiUrl = builder.withField(ParameterNames.COMMENT_ID, commentId).buildUrl();
 		Comment comment = new Comment();
 		comment.setBody(commentText);
-        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(comment), ApplicationConstants.CONTENT_TYPE_JSON, "POST", 200));
+        JsonObject json = unmarshall(callApiMethod(apiUrl, marshall(comment), ApplicationConstants.CONTENT_TYPE_JSON, HttpMethod.POST, 200));
         return unmarshall(new TypeToken<Comment>(){}, json);
 	}
 	

@@ -197,4 +197,13 @@ public interface ParameterNames {
 	
 	/** The Constant COMMENT_ID. */
 	public static final String COMMENT_ID = "commentId";
+
+	/** The Constant LABEL_ID. */
+	public static final String LABEL_ID = "labelId";
+
+	/** The Constant MILESTONE_ID. */
+	public static final String MILESTONE_ID = "milestoneId";
+
+	/** The Constant EVENT_ID. */
+	public static final String EVENT_ID = "eventId";
 }

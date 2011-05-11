@@ -24,15 +24,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.api.v2.schema.Discussion;
+import com.github.api.v2.schema.Event;
 import com.github.api.v2.schema.Gist;
 import com.github.api.v2.schema.Issue;
 import com.github.api.v2.schema.Job;
 import com.github.api.v2.schema.Language;
+import com.github.api.v2.schema.Milestone;
 import com.github.api.v2.schema.Organization;
 import com.github.api.v2.schema.Permission;
 import com.github.api.v2.schema.Repository;
 import com.github.api.v2.schema.SchemaEntity;
 import com.github.api.v2.schema.Tree;
+import com.github.api.v2.schema.Milestone.State;
 import com.github.api.v2.services.AsyncResponseHandler;
 import com.github.api.v2.services.GitHubException;
 import com.github.api.v2.services.GitHubService;
@@ -48,6 +51,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -152,6 +158,20 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 				return Issue.State.fromValue(arg0.getAsString());
 			}
 		});
+		builder.registerTypeAdapter(Milestone.State.class, new JsonDeserializer<Milestone.State>() {
+			@Override
+			public Milestone.State deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Milestone.State.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Milestone.State.class, new JsonSerializer<Milestone.State>() {
+			@Override
+			public JsonElement serialize(State arg0, Type arg1,
+					JsonSerializationContext arg2) {
+				return new JsonPrimitive(arg0.value());
+			}
+		});
 		builder.registerTypeAdapter(Repository.Visibility.class, new JsonDeserializer<Repository.Visibility>() {
 			@Override
 			public Repository.Visibility deserialize(JsonElement arg0, Type arg1,
@@ -192,6 +212,13 @@ public abstract class BaseGitHubService extends GitHubApiGateway implements GitH
 			public Discussion.Type deserialize(JsonElement arg0, Type arg1,
 					JsonDeserializationContext arg2) throws JsonParseException {
 				return Discussion.Type.fromValue(arg0.getAsString());
+			}
+		});
+		builder.registerTypeAdapter(Event.Type.class, new JsonDeserializer<Event.Type>() {
+			@Override
+			public Event.Type deserialize(JsonElement arg0, Type arg1,
+					JsonDeserializationContext arg2) throws JsonParseException {
+				return Event.Type.fromValue(arg0.getAsString());
 			}
 		});
 		builder.registerTypeAdapter(Permission.class, new JsonDeserializer<Permission>() {

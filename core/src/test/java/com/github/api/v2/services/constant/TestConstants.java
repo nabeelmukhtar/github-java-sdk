@@ -68,6 +68,10 @@ public final class TestConstants {
     public static final String TEST_USER_NAME =
         testConstants.getProperty("com.github.api.v2.services.testUserName");
 
+    /** The Constant TEST_PASSWORD. */
+    public static final String TEST_PASSWORD =
+        testConstants.getProperty("com.github.api.v2.services.testPassword");
+    
     /** The Constant TEST_REPOSITORY_NAME. */
     public static final String TEST_REPOSITORY_NAME =
         testConstants.getProperty("com.github.api.v2.services.testRepositoryName");
