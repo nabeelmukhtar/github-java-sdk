@@ -31,7 +31,8 @@ The library is divided into various services each implementing a specific portio
 ## Usage
 Most of the methods of the API can be invoked without using any authentication. However some need the user to be authenticated.
 ### Typical
-The typical usage includes the creation of the appropriate servive using a factory and invoking the methods of that service.
+The typical usage includes the creation of the appropriate service using a factory and invoking the methods of that service.
+```java
 	GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 	RepositoryService service = factory.createRepositoryService();
 	List<Repository> repositories = service.searchRepositories("hadoop");
@@ -40,12 +41,15 @@ The typical usage includes the creation of the appropriate servive using a facto
 	}
 	Repository repository = service.getRepository("nabeelmukhtar", "github-java-sdk");
 	printResult(repository);
+```
 ### Authenticated
 Authenticated usage is not very different from typical usage. Before calling any service method that requires authentication, you have to set the credentials on the service instance. Subsequent method calls from the same instance will not need further authentication.
+```java
 	GitHubServiceFactory factory = GitHubServiceFactory.newInstance();
 	RepositoryService service = factory.createRepositoryService();
 	service.setAuthentication(new LoginTokenAuthentication("nabeelmukhtar", "xxx-xxx-xxx"));
 	service.createRepository("new-repo", "Creating new repository.", "http://www.example.com", Repository.Visibility.PUBLIC);
+```
 ## More Information
 For more information see the following wiki pages.
 

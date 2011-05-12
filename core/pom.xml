@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.github.api.v2</groupId>
     <artifactId>github-java-sdk</artifactId>
-    <version>0.1</version>
+    <version>3.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>github-java-core</artifactId>
   <packaging>jar</packaging>
@@ -19,33 +19,19 @@
           </configuration>
         </plugin>
       </plugins>
-    </pluginManagement> 
+    </pluginManagement>
+    <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+    </testResources>     
   </build>
   <dependencies>
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
-      <version>1.4</version>
-      <scope>compile</scope>
-    </dependency>
-	<!--
-	<dependency>
-		<groupId>rome</groupId>
-		<artifactId>rome</artifactId>
-		<version>0.9</version>
-		<scope>compile</scope>
-	</dependency>
-	<dependency>
-		<groupId>jdom</groupId>
-		<artifactId>jdom</artifactId>
-		<version>1.1</version>
-		<scope>compile</scope>
-	</dependency>
-	-->
-    <dependency>
-      <groupId>com.github.api.v2</groupId>
-      <artifactId>github-java-schema</artifactId>
-      <version>0.1</version>
+      <version>1.7.1</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

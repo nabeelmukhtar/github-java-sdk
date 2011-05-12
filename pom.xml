@@ -3,7 +3,7 @@
   <groupId>com.github.api.v2</groupId>
   <artifactId>github-java-sdk</artifactId>
   <packaging>pom</packaging>
-  <version>0.1</version>
+  <version>3.0.1-SNAPSHOT</version>
   <name>GitHub API Java SDK</name>
   <inceptionYear>2010</inceptionYear>
   <description>A Java wrapper for GitHub API.</description>
@@ -28,9 +28,8 @@
   </developers>
 	
   <modules>
-    <module>schema</module>
     <module>core</module>
-	<module>dist</module>
+	<module>examples</module>
   </modules>
   <build>
 	<plugins>
@@ -45,4 +44,18 @@
 		</plugin>
 	</plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>1.7.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.5</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 </project>

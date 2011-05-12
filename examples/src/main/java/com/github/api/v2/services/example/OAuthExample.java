@@ -29,13 +29,13 @@ import com.github.api.v2.services.OAuthService;
 public class OAuthExample {
 	
 	/** The Constant CLIENT_ID. */
-	private static final String CLIENT_ID = "18790e7033ab0148f05c";
+	private static final String CLIENT_ID = "6cea639f319dc2e12c1b";
 	
 	/** The Constant CLIENT_SECRET. */
-	private static final String CLIENT_SECRET = "52695c3febf1721b8bc6f569c5210d38d043696c";
+	private static final String CLIENT_SECRET = "eee5acc0fc20f34639646ab705411acfffea7213";
 	
 	/** The Constant CALLBACK_URL. */
-	private static final String CALLBACK_URL = "http://www.githubapitest.com";
+	private static final String CALLBACK_URL = "http://github.com/githubapitest2";
 
 	/**
 	 * The main method.

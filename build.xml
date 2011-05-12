@@ -18,9 +18,6 @@
     <target name="init">
         <mkdir dir="target"/>
         <copy includeemptydirs="false" todir="target">
-            <fileset dir="schema/src/main/java" excludes="**/*.launch, **/*.java"/>
-        </copy>
-        <copy includeemptydirs="false" todir="target">
             <fileset dir="core/src/main/java" excludes="**/*.launch, **/*.java"/>
         </copy>
         <copy includeemptydirs="false" todir="target">
@@ -33,10 +30,7 @@
             <fileset dir="core/src/test/resources" excludes="**/*.launch, **/*.java"/>
         </copy>
         <copy includeemptydirs="false" todir="target">
-            <fileset dir="examples/src/resources" excludes="**/*.launch, **/*.java"/>
-        </copy>
-        <copy includeemptydirs="false" todir="target">
-            <fileset dir="examples/src/java" excludes="**/*.launch, **/*.java"/>
+            <fileset dir="examples/src/main/java" excludes="**/*.launch, **/*.java"/>
         </copy>
     </target>
     <target name="clean">
@@ -47,10 +41,6 @@
     <target name="build-subprojects"/>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
-            <src path="schema/src/main/java"/>
-            <classpath refid="github-java-sdk.classpath"/>
-        </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
             <src path="core/src/main/java"/>
             <classpath refid="github-java-sdk.classpath"/>
@@ -68,11 +58,7 @@
             <classpath refid="github-java-sdk.classpath"/>
         </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
-            <src path="examples/src/resources"/>
-            <classpath refid="github-java-sdk.classpath"/>
-        </javac>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="target" source="${source}" target="${target}">
-            <src path="examples/src/java"/>
+            <src path="examples/src/main/java"/>
             <classpath refid="github-java-sdk.classpath"/>
         </javac>
     </target>
