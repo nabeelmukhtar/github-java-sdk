@@ -8,7 +8,7 @@
   <artifactId>github-java-core</artifactId>
   <packaging>jar</packaging>
 	
-<build>
+  <build>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -21,10 +21,10 @@
       </plugins>
     </pluginManagement>
     <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-                <filtering>true</filtering>
-            </testResource>
+      <testResource>
+          <directory>src/test/resources</directory>
+          <filtering>true</filtering>
+      </testResource>
     </testResources>     
   </build>
   <dependencies>

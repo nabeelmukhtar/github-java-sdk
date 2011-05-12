@@ -14,5 +14,11 @@
             <artifactId>github-java-core</artifactId>
             <version>3.0.1-SNAPSHOT</version>
         </dependency>
+	    <dependency>
+	      <groupId>com.google.code.gson</groupId>
+	      <artifactId>gson</artifactId>
+	      <version>1.7.1</version>
+	      <scope>compile</scope>
+	    </dependency>
     </dependencies>
 </project>
