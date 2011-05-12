@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.github.api.v2</groupId>
+        <groupId>com.github.nabeelmukhtar</groupId>
         <artifactId>github-java-sdk</artifactId>
         <version>3.0.1-SNAPSHOT</version>
     </parent>
@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>com.github.api.v2</groupId>
+            <groupId>com.github.nabeelmukhtar</groupId>
             <artifactId>github-java-core</artifactId>
             <version>3.0.1-SNAPSHOT</version>
         </dependency>

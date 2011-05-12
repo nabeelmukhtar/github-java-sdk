@@ -13,7 +13,7 @@
     <path id="github-java-sdk.classpath">
         <pathelement location="target"/>
         <pathelement location="dev-lib/junit-4.5.jar"/>
-        <pathelement location="lib/gson-1.4.jar"/>
+        <pathelement location="lib/gson-1.7.1.jar"/>
     </path>
     <target name="init">
         <mkdir dir="target"/>
