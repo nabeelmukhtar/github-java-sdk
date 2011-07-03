@@ -40,7 +40,7 @@ public class ObjectServiceImpl extends BaseGitHubService implements
 	@Override
 	public Blob getBlob(String userName, String repositoryName, String treeSha,
 			String filePath) {
-		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.ObjectApiUrls.GET_BLOBS_URL);
+		GitHubApiUrlBuilder builder = createGitHubApiUrlBuilder(GitHubApiUrls.ObjectApiUrls.GET_BLOB_URL);
         String                apiUrl  = builder.withField(ParameterNames.USER_NAME, userName).withField(ParameterNames.REPOSITORY_NAME, repositoryName).withField(ParameterNames.SHA, treeSha).withField(ParameterNames.FILE_PATH, filePath).buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl));
         
