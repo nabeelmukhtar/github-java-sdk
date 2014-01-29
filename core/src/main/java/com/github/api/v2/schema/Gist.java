@@ -36,7 +36,7 @@ public class Gist extends SchemaEntity {
 		PUBLIC("public"), 
  
  /** The PRIVATE. */
- PRIVATE("private");
+		PRIVATE("private");
 		
 	    /** The Constant stringToEnum. */
 		private static final Map<String, Visibility> stringToEnum = new HashMap<String, Visibility>();
